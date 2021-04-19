@@ -13,7 +13,6 @@
                 margin: auto;
                 width: 1000px;
                 height: 1850px;
-                margin-top:-65px;
                 }
             .mainOuter p{cursor: default;}
         

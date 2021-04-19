@@ -77,24 +77,26 @@
     </style>
 </head>
 <body>
+
+<form action="<%= request.getContextPath() %>/login.me" method="post" id="loginForm">
     <div class="loginOuter" align="center">
-        <img  src="../../resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <img  src="resources/images/logo.PNG" width="180px" style="margin-right: 2px; margin-top: 70px;">
         <br> <br>
         <div class="loginInput">
-            <input type="text" id="loginId" placeholder="  아이디" required><br>
-            <input type="text" id="loginPwd" placeholder="  비밀번호" required>
+            <input type="text" id="userId" name="userId" placeholder="  아이디" required><br>
+            <input type="password" id="userPwd" name="userPwd" placeholder="  비밀번호" required>
         </div>
         <div class="loginMid">
-            <button id="loginBtn">로그인</button> <br>
+            <button type="submit" id="loginBtn">로그인</button> <br>
             <span id="loginHoldYN"><input type="checkbox"> 로그인 상태 유지</span>
-            <span id="joinNow"><a href="">회원가입</a></span>
+            <span id="joinNow"><a href="<%= request.getContextPath() %>/enrollForm.me">회원가입</a></span>
         </div>
         <div class="loginSns" align="center">
             <br>
             <p>간편로그인</p>
-            <input type="image" src="../../resources/images/naverlogin.png" id="naverLogin">
-            <input type="image" src="../../resources/images/kakaologin.png" id="kakaoLogin">
-            <input type="image" src="../../resources/images/facebooklogin.png" id="facebookLogin">
+            <input type="image" src="resources/images/naverlogin.png" id="naverLogin">
+            <input type="image" src="resources/images/kakaologin.png" id="kakaoLogin">
+            <input type="image" src="resources/images/facebooklogin.png" id="facebookLogin">
         </div>
         <div class="loginFind">
             <span id="loginFindId"><a href="">아이디 찾기</a></span>
@@ -104,5 +106,7 @@
 
 
     </div>
+    
+  </form>
 </body>
 </html>

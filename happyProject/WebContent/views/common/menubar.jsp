@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
+<%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	String contextPath = request.getContextPath();
+%>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -110,22 +114,33 @@
                 <img src="resources/images/logo.PNG" style="width: 120px;" id="menubarLogoImg">
                 <input type="text" id="menubarSearchInput" > <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색">
     			
-    			
+    		<% if(loginUser == null) { %>
+    		
                 <!-- 로그인전 div -->
-                <div id="loginBefore"  >
-                    <input type="image" id="menubarCartBtn" src="resources/images/장바구니.PNG">
-                    <input type="image" id="menubarJoinBtn" src="resources/images/회원가입.PNG">
-                    <input type="image" id="menubarLoginBtn" src="resources/images/로그인.PNG">
-                </div>
-    
+               
+	                <div id="loginBefore"  >
+	                    <input type="image" id="menubarCartBtn" src="resources/images/장바구니.PNG">
+	                    <input type="image" id="menubarJoinBtn" src="resources/images/회원가입.PNG">
+	                    <input type="image" id="menubarLoginBtn" src="resources/images/로그인.PNG" onclick="loginPage();">
+	                </div>
     			
+    			<script>
+    				function loginPage(){
+    					location.href = "<%= contextPath %>/loginForm.me";
+    				}
+    			</script>
+    		
+    		<% }else { %>
+    		
                 <!-- 로그인후 div -->
-                <div id="loginAfter" hidden>
+                <div id="loginAfter">
                     <input type="image" id="menubarCartBtn" src="resources/images/장바구니.PNG">
                     <input type="image" id="menubarMypageBtn" src="resources/images/mypage.PNG">
                     <input type="image" id="menubarLogoutBtn" src="resources/images/로그아웃.PNG">
                 </div>
             </div>
+            <% } %>
+            
             
             <br clear="both">
             <br> <br>
