@@ -4,25 +4,31 @@
 
 	<entry key="loginMember">
 		SELECT 
-			   USER_NO
-			 , USER_ID
-			 , USER_PWD
-			 , USER_NAME
-			 , PHONE
+			   MEM_NO
+		 	 , MEM_ID
+			 , MEM_PWD
+			 , MEM_NAME
+			 , MEM_ADDRESS
+			 , MEM_PHONE
+			 , NICKNAME
 			 , EMAIL
-			 , ADDRESS
-		 	 , INTEREST
-		     , ENROLL_DATE
-			 , MODIFY_DATE
-			 , STATUS
+			 , EMAIL_YN
+			 , ENROLL_ROUTE
+			 , ENROLL_DATE
+			 , RECENT_LOGIN
+			 , ADMIN_YN
 		  FROM 
 		       MEMBER
 		 WHERE 
 		       STATUS = 'Y'
-		   AND USER_ID = ?
-		   AND USER_PWD = ? 
+		   AND MEM_ID = ?
+		   AND MEM_PWD = ? 
 	</entry>
 	
+	
+	
+	
+	<!-- 수업시간에 했던 것들 -->
 	<entry key="insertMember">
 		INSERT
            INTO MEMBER
