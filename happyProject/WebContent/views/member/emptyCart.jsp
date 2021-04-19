@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ë¹ì¥ë°êµ¬ë</title>
+    <title>빈장바구니</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -21,7 +21,7 @@
             float:left;
         }
         
-        /* ì£¼ë¬¸ ë¨ê³ */
+        /* 주문 단계 */
         .emptyCartOuter .step{
             text-align: right;
         }
@@ -35,7 +35,7 @@
             background: rgb(248, 229, 165);
         }
 
-        /* ë¹ ì¹´í¸ ì°½ */
+        /* 빈 카트 창 */
         .emptyCartOuter .emptyCart{
             border:1px solid darkgray;
             width:680px;
@@ -50,7 +50,7 @@
             margin-top:120px;
         }
 
-        /* ì¨ë¨¸ë¦¬ ì°½ */
+        /* 써머리 창 */
         .emptyCartOuter .summaryBox{
             border:1px solid darkgray;
             width:300px;
@@ -83,7 +83,7 @@
             height:100%;
             font-size:18px
         }
-        /* ë²í¼ */
+        /* 버튼 */
         .emptyCartOuter #selectBuy{
             width:300px;
             height:60px;
@@ -98,62 +98,60 @@
     </style>
 </head>
 <body>
-
-    
-    <div class="emptyCartOuter">
+	 <div class="emptyCartOuter">
         <br>
 
-        <!-- ì¥ë°êµ¬ëíì´í, ë¨ê³-->
+        <!-- 장바구니타이틀, 단계-->
         <div>
             <div class="text">
-                <h2 style="display:inline;">ì¥ë°êµ¬ë</h2>
+                <h2 style="display:inline;">장바구니</h2>
             </div>
             <div class="step">
-                <button class="showStep btn btn-primary" disabled>01 ì¥ë°êµ¬ë ></button>
-                <button class="showStep step1 btn btn-primary" disabled>02 ì£¼ë¬¸íê¸° ></button>
-                <button class="showStep step1 btn btn-primary" disabled>03 ê²°ì ìë£ </button>
+                <button class="showStep btn btn-primary" disabled>01 장바구니 ></button>
+                <button class="showStep step1 btn btn-primary" disabled>02 주문하기 ></button>
+                <button class="showStep step1 btn btn-primary" disabled>03 결제완료 </button>
             </div>
         </div>
         
         <hr>
 
         <div>
-            <!-- ë¹ ì¥ë°êµ¬ë ì°½ -->
+            <!-- 빈 장바구니 창 -->
             <div class="emptyCart" align="center">
-                <img id="cartImg" src="../ááªáá§á«áá®áá§á«/img/áá¡á¼áá¡áá®ááµ.png" alt="">
-                <p>ì¥ë°êµ¬ëì ë´ê¸´ ì±ì´ ììµëë¤.</p>
+                <img id="cartImg" src="../화면구현/img/장바구니.png" alt="">
+                <p>장바구니에 담긴 책이 없습니다.</p>
             </div>
 
-            <!-- ë¹ ì¥ë°êµ¬ë ì¨ë¨¸ë¦¬ ì°½ -->
+            <!-- 빈 장바구니 써머리 창 -->
             <div class="summaryBox">
                 <div class="priceInfo">
                     <table>
                         <tr>
                             <td colspan="2">
-                                <img src="../ááªáá§á«áá®áá§á«/img/checked.png" style="width:20px;"> 
-                                <label for="">0ê¶ì ì ííì¨ìµëë¤.</label> 
+                                <img src="../화면구현/img/checked.png" style="width:20px;"> 
+                                <label for="">0권을 선택하셨습니다.</label> 
                             </td>
                         </tr>
                         <tr>
-                            <td>ì´ ìí ê¸ì¡</td>
-                            <td class="price" style="text-align: right;">0ì</td>
+                            <td>총 상품 금액</td>
+                            <td class="price" style="text-align: right;">0원</td>
                         </tr>
                         <tr>
-                            <td>í ì¸ ê¸ì¡</td>
-                            <td class="price" style="text-align: right;">0ì</td>
+                            <td>할인 금액</td>
+                            <td class="price" style="text-align: right;">0원</td>
                         </tr>
                     </table>
                 </div>
                 <div class="totalInfo">
                     <table>
                         <tr>
-                            <td>í©ê³</td>
-                            <td style="text-align: right;">0ì</td>
+                            <td>합계</td>
+                            <td style="text-align: right;">0원</td>
                         </tr>
                     </table>
                 </div>
             </div>
-            <button id="selectBuy" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#clickButton">ì í êµ¬ë§¤íê¸°</button>
+            <button id="selectBuy" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#clickButton">선택 구매하기</button>
         </div>
 
         <!-- The Modal -->
@@ -163,7 +161,7 @@
             
                 <!-- Modal Header -->
                 <div class="modal-body" align="center">
-                <h6 class="modal-title" style="text-align: center;"><br><br> ì ííì  ëìê° ììµëë¤ <br><br> </h6>
+                <h6 class="modal-title" style="text-align: center;"><br><br> 선택하신 도서가 없습니다 <br><br> </h6>
                 </div>
             
                 <!-- Modal footer -->
@@ -179,5 +177,6 @@
 
 
     <br><br><br><br><br><br>
+
 </body>
 </html>
