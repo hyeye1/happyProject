@@ -132,6 +132,9 @@
     </style>
 </head>
 <body>
+
+	<%@ include file = "../common/menubar.jsp" %>
+	
 	<div class="bookDetailOuter">
         <br>
 
@@ -249,9 +252,13 @@
         <form action="">
             <div class="inputReview">
                 <div class="reviewBt" align="right">
+                	<% if(loginUser == null){ %>
                     <!-- 로그인 전 -->
-                    <!-- 로그인 후 -->
-                    <button type="submit" id="inputReview" onclick="review();" class="btn btn-primary" style="width:80px; background:rgb(249, 219, 122); color:black; border:none; margin-top:8px; margin-right:8px;">등록</button>
+                    <button type="submit" onclick="review();" class="btn btn-primary" style="width:80px; background:rgb(249, 219, 122); color:black; border:none; margin-top:8px; margin-right:8px;">등록</button>
+                	<% }else { %>
+                	<!-- 로그인 후 -->
+                	 <button type="submit" id="inputReview" class="btn btn-primary" style="width:80px; background:rgb(249, 219, 122); color:black; border:none; margin-top:8px; margin-right:8px;">등록</button>
+               		<% } %>
                 </div>
                 <div class="reviewContent">
                     <textarea name="content" id="reviewContent" placeholder="작품과 무관한 광고,욕설, 및 비방,청소년보호정책에 위배되는 내용은 사전 동의 없이 비공개 처리 될 수 있습니다." required></textarea>
