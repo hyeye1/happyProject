@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String contextPath = request.getContextPath(); %>    
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,6 +144,7 @@
     </style>
 </head>
 <body>
+
     <div class="outer">
         <span id="text1">고객센터</span><hr>
         <span>&nbsp;해피북스데이</span>
@@ -149,7 +152,7 @@
     
         <div class="faq">
             <form action="" id="faqSearch" method="GET">
-                <img src="../resources/image/faq.png" width="100px" height="40"><br>
+                <a href="<%=contextPath%>/list.faq" target=_blank><img src="../../resources/images/faq.png" width="100px" height="40"></a><br>
                 <div class="faqSearchBox">
                     <span id="faq1">FAQ</span>&nbsp;
                     <input id="faq2" type="text" value="검색어 입력">
@@ -176,8 +179,7 @@
         </div>
     
                 <div class="question1">
-                    <img src="../resources/image/question.png" width="120px" height="50">
-                    <button type="button" id="qbtn">1:1문의하기</button><br>
+                    <a href="이동될 페이지 주소" target=_blank><img src="../../resources/images/question.png" width="120px" height="50"></a><br>
                     <div class="questionBox">
                         <span id="qtext1">1:1 문의로 빠른 답변 받기</span><br><br>
                         <span id="qtext2">해피북스데이에 대한 모든 궁금증은 1:1 문의하기로 부담없이 확인하세요.</span>
@@ -186,8 +188,7 @@
                     <br>
 
             <div class="notice">
-                <img src="../resources/image/notice.png" width="130px" height="50"><br>
-                
+                <a href="<%=contextPath%>/list.no" target=_blank><img src="../../resources/images/notice.png" width="130px" height="50"></a><br>
                 <table class="noticeList">
                     <thead>
                         <tr id="noticeNew">
