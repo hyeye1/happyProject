@@ -101,7 +101,6 @@
 </head>
 <body>
 		
-		
 	<div class="outer">
         <span id="text1">FAQ</span>
         <span>&nbsp;고객님의</span>
