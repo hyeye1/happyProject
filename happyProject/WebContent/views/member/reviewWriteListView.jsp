@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +77,7 @@
         <table class="review" width="800">
             <tr>
                 <td rowspan="5">
-                    <img src="../resources/image/book.png" width="140" height="180">
+                    <img src="resources/image/book.png" width="140" height="180">
                 </td>
             </tr>
             <tr>
@@ -94,7 +96,7 @@
         <table class="review" width="800">
             <tr>
                 <td rowspan="5">
-                    <img src="../resources/image/book.png" width="140" height="180">
+                    <img src="resources/image/book.png" width="140" height="180">
                 </td>
             </tr>
             <tr>

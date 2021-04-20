@@ -28,51 +28,52 @@
             cursor: pointer;
     }
     #btn:hover{background-color: rgb(249, 219, 122); color:white;}
-    .button{margin-left: 200px;}
-    #writeForm>table{
+    .button{margin-left: 170px;}
+    .page{margin-left: 500px; font-size: medium;}
+    #updateForm>table{
         border: 1px solid gray; 
-        padding: 10px;
-        }
-    #detailArea{border: 1px solid black; background-color: rgb(249, 219, 122);}
-    #detailArea p{height: 200px;}
-    #detailArea td{background-color: white;}
-    #detailArea th{background-color: rgba(253, 240, 198, 0.993);}
+        background-color: rgb(249, 219, 122);
+        padding: 10px;}
+    #updateForm input, #updateForm textarea
+    {
+        width: 100%;
+        box-sizing: border-box;
+    }
 </style>
 
 </head>
 <body>
 	<div class="outer">
-        <span id="text1">공지사항</span>
-        <span id="text1"style="color:rgb(241, 196, 15)">상세보기</span>
+        <span id="text1">FAQ</span>
+        <span id="text1"style="color:rgb(241, 196, 15)">작성하기</span>
         <hr>
-        <form id="writeForm" action="" method="POST">
+        <form id="updateForm" action="" method="POST">
         	<input type="hidden" name="nno" value="">
-            <table id="detailArea" border="1">
+            <table>
                 <tr>
-                    <th width="70">제목</th>
-                    <td colspan="3" width="500">공지사항 상세보기 "제목" 입니다.</td>
-                </tr>
-                <tr>
-                    <th>작성자</th>
-                    <td width="200">admin</td>
-                    <th>작성일</th>
-                    <td>2021-04-10</td>
+                    <th width="50">제목</th>
+                    <td colspan="3" width="400">
+                        <input type="text" name="title" required value="FAQ 작성제목">
+                    </td>
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td colspan="3">
-                        <p>공지사항 상세보기 내용</p>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <textarea name="content" rows="10" style="resize: none;" required>FAQ 작성내용</textarea>
                     </td>
                 </tr>
             </table>
             <br>
             <div class="button">
-                <button id="btn" type="button">목록가기</button>
-                <button id="btn" type="submit">수정하기</button>
-                <button id="btn" type="reset">삭제하기</button>
+                <button id="btn" type="submit">등록하기</button>
+                <button id="btn" type="reset">초기화</button>
             </div>
         </form>
     </div>
         
 </body>
 </html>
+  

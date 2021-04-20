@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +44,7 @@
 </head>
 <body>
     <div class="outer" align="center">
-        <img src="../resources/image/check.png"><br><br>
+        <img src="resources/image/check.png"><br><br>
         <span>회원탈퇴가</span>
         <span id="text">완료되었습니다.</span>
     </div>

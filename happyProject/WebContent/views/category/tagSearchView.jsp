@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +99,7 @@
 </head>
 <body>
     <div class="outer">
-        <img src="../resources/image/tag.png" width="1000" height="250">
+        <img src="resources/image/tag.png" width="1000" height="250">
         <br><br><br>
         <form class="tagSearch" action="" method="GET" align="center">
             <span>#</span>
@@ -129,17 +131,17 @@
             <table class="bookList">
                 <tr>
                     <th>
-                        <img src="../resources/image/book.png" width="120px" height="150px">
+                        <img src="resources/image/book.png" width="120px" height="150px">
                     </th>
                     <th id="book">
-                        <img src="../resources/image/bestbook.png" width="80"><br>
+                        <img src="resources/image/bestbook.png" width="80"><br>
                         1.<br>
                         아몬드<br>
                         손원평<br>
                         창비출판
                     </th>
                     <th>
-                        <img src="../resources/image/book.png" width="120px" height="150px">
+                        <img src="resources/image/book.png" width="120px" height="150px">
                     </th>
                     <th id="book">
                         2.<br>
@@ -148,7 +150,7 @@
                         창비출판
                     </th>
                     <th>
-                        <img src="../resources/image/book.png" width="120px" height="150px">
+                        <img src="resources/image/book.png" width="120px" height="150px">
                     </th>
                     <th id="book">
                         3.<br>
@@ -157,7 +159,7 @@
                         창비출판
                     </th>
                     <th>
-                        <img src="../resources/image/book.png" width="120px" height="150px">
+                        <img src="resources/image/book.png" width="120px" height="150px">
                     </th>
                     <th id="book">
                         4.<br>
@@ -168,7 +170,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <img src="../resources/image/book.png" width="120px" height="150px">
+                        <img src="resources/image/book.png" width="120px" height="150px">
                     </th>
                     <th id="book">
                         5.<br>
@@ -177,7 +179,7 @@
                         창비출판
                     </th>
                     <th>
-                        <img src="../resources/image/book.png" width="120px" height="150px">
+                        <img src="resources/image/book.png" width="120px" height="150px">
                     </th>
                     <th id="book">
                         6.<br>
@@ -186,7 +188,7 @@
                         창비출판
                     </th>
                     <th>
-                        <img src="../resources/image/book.png" width="120px" height="150px">
+                        <img src="resources/image/book.png" width="120px" height="150px">
                     </th>
                     <th id="book">
                         7.<br>
@@ -195,7 +197,7 @@
                         창비출판
                     </th>
                     <th>
-                        <img src="../resources/image/book.png" width="120px" height="150px">
+                        <img src="resources/image/book.png" width="120px" height="150px">
                     </th>
                     <th id="book">
                         8.<br>

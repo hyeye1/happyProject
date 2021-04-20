@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +92,10 @@
         .noQuestion{
             font-size: x-large;
             font-weight: bold;
+            border: 2px solid lightgrey;
+            border-left: 0;
+            border-right: 0;
+            padding-bottom: 10px;
         }
     </style>
 </head>
@@ -115,6 +121,7 @@
             </div><br>
         </div>
         <br>
+        
         <div class="dateSearch">&nbsp;
             <button id="btn2">최근 일주일</button>
             <button id="btn2">1 개월</button>
@@ -123,6 +130,7 @@
             <input type="date" name="start"> ~ <input type="date" name="end">
             <button id="btn2">조회</button>
         </div><br>
+        <!-- 문의내역 있을 때 보여지는 화면
         <table class="listArea">
             <thead>
                 <tr id="top">
@@ -158,24 +166,27 @@
 		        </tr>
             </tbody>
         </table>
+        -->
 
-        <!-- 문의내역 없을 때 보여지는 화면
+        <!-- 문의내역 없을 때 보여지는 화면 -->
         <div class="noQuestion" align="center"><br><br>
             <img src="resources/image/noquestion.png"><br>
             <span>1:1 문의 내역이 없습니다.</span><br><br><br>
         </div>
-        -->
-
         <br>
+        
         <div class="pageButton" align="center">
+            <!-- 문의내역 없을 때 사용자에게보여지는 버튼 
             <button id="btn3"><<</button>
             <button id="btn3">1</button>
             <button id="btn3">2</button>
             <button id="btn3">3</button>
             <button id="btn3">>></button>
-            <!-- 문의내역 없을 때 보여지는 버튼 
-            <button type="submit" id="btn1">1:1 문의하기</button>
             -->
+
+            <!-- 문의내역 없을 때 사용자에게보여지는 버튼 -->
+            <button type="submit" id="btn1">1:1 문의하기</button>
+            
         </div><br>
         
         <script>
