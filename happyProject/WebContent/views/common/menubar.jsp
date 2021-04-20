@@ -178,7 +178,7 @@
                 <div class="menubarMenu"><a href="">신간도서</a></div>
                 <div class="menubarMenu"><a href="">국내도서</a></div>
                 <div class="menubarMenu"><a href="">외국도서</a></div>
-                <div class="menubarMenu"><a href="">고객센터</a></div>
+                <div class="menubarMenu"><a href="<%=contextPath%>/Service.me">고객센터</a></div>
             </div>
     
         </div>
