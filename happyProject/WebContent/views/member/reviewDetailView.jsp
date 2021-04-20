@@ -47,16 +47,12 @@
         	<input type="hidden" name="nno" value="">
             <table id="detailArea" border="1">
                 <tr>
-                    <th width="70">제목</th>
-                    <td colspan="3" width="500">리뷰 상세보기 "제목" 입니다.</td>
-                </tr>
-                <tr>
                     <th>작성일</th>
-                    <td>2021-04-10</td>
+                    <td width="400">2021-04-10</td>
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td colspan="3">
+                    <td>
                         <p>리뷰 상세보기 내용</p>
                     </td>
                 </tr>

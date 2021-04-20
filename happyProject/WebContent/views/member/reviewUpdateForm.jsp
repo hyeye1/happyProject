@@ -59,17 +59,7 @@
         	<input type="hidden" name="nno" value="">
             <table>
                 <tr>
-                    <th width="50">제목</th>
-                    <td colspan="3" width="400">
-                        <input type="text" name="title" required value="리뷰 수정제목">
-                    </td>
-                </tr>
-                <tr>
-                    <th>내용</th>
-                    <td colspan="3"></td>
-                </tr>
-                <tr>
-                    <td colspan="4">
+                    <td width="400">
                         <textarea name="content" rows="10" style="resize: none;" required>리뷰 수정내용</textarea>
                     </td>
                 </tr>

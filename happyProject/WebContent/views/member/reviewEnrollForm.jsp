@@ -24,7 +24,7 @@
             border-radius: 4px;
             padding: 5px;
             cursor: pointer;
-            margin-left: 40px;
+            margin-left: 30px;
     }
     #btn:hover{background-color: rgb(249, 219, 122); color:white;}
     .button{margin-left: 170px;}
@@ -50,17 +50,7 @@
         	<input type="hidden" name="nno" value="">
             <table>
                 <tr>
-                    <th width="50">제목</th>
-                    <td colspan="3" width="400">
-                        <input type="text" name="title" required value="리뷰 작성제목">
-                    </td>
-                </tr>
-                <tr>
-                    <th>내용</th>
-                    <td colspan="3"></td>
-                </tr>
-                <tr>
-                    <td colspan="4">
+                    <td width="400">
                         <textarea name="content" rows="10" style="resize: none;" required>리뷰 작성내용</textarea>
                     </td>
                 </tr>
@@ -74,4 +64,4 @@
         
 </body>
 </html>
-  
+    
