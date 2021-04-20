@@ -28,7 +28,7 @@ public class MemberDao {
 		
 	}
 	
-	public Member loginMember(Connection conn, String userId, String userPwd) {
+	public Member loginMember(Connection conn, String memId, String memPwd) {
 		// select문 => ResultSet객체 (한행) => Member객체
 		Member m = null;
 		PreparedStatement pstmt = null;
@@ -38,8 +38,8 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
-			pstmt.setString(1, userId);
-			pstmt.setString(2, userPwd);
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memPwd);
 			
 			// 실행
 			rset = pstmt.executeQuery();
