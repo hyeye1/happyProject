@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% String contextPath = request.getContextPath(); %>    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -188,11 +188,7 @@
                     <br>
 
             <div class="notice">
-
-                <a href="이동될 페이지 주소" target=_blank><img src="../../resources/images/notice.png" width="130px" height="50"></a><br>
-
                 <a href="<%=contextPath%>/list.no" target=_blank><img src="../../resources/images/notice.png" width="130px" height="50"></a><br>
-
                 <table class="noticeList">
                     <thead>
                         <tr id="noticeNew">
