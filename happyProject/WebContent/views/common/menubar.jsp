@@ -22,7 +22,7 @@
          <link rel="stylesheet" href="css/hover-min.css">
         
         <style>
-            .menubarOuter{width: 1000px; height: 300px; margin: auto;}
+            .menubarOuter{width: 1000px; height: 236px; margin: auto;}
             
             #menubarLogoImg{
                 float: left; 
@@ -107,7 +107,7 @@
         </style>
     </head>
     <body>
-        <div class="menubarOuter" style="margin-top: ;">
+        <div class="menubarOuter" >
             
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
@@ -131,7 +131,7 @@
     				
     				function joinPage(){
     					location.href = "<%= contextPath %>/joinForm.me";
-    				}
+    				} 
     			</script>
     		
     		<% }else { %>
