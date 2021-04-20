@@ -21,7 +21,6 @@
         color: white;
     }
     #text1{font-size:x-large; font-weight: bold;}
-    #text2{color:rgb(241, 196, 15); font-weight: bold;}
     #btn{
             width: 70px;
             height: 30px;
