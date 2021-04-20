@@ -125,8 +125,8 @@
 <body>
     <div class="homeWrap">
         <div id="login">
-            <input type="image" id="adLock" src="../resources/admin/adminhomelock.png" >
-            <img src="../resources/admin/adminhome.png" id="adLogo" >
+            <input type="image" id="adLock" src="../../resources/images/admin/adminhomelock.png">
+            <img src="../../resources/images/admin/adminhome.png" id="adLogo" >
         </div>
 
         <div id="content">
@@ -137,21 +137,39 @@
                 <table id="first">
                     <tr>
                         <td>
-                            <button class="homeBtn" id="adm_membbe" type="button">회원관리</button>
+                            <button class="homeBtn" id="adm_member" type="button">회원관리</button>
                             <button class="homeBtn" id="adm_book" type="button">도서관리</button>
-                            <button class="homeBtn" id="adm_clause" type="button">결제관리</button>
+                            
                         </td>
                     </tr>
                 </table>
+                <script>
+                	const adm_member = document.getElementById("adm_member");
+                	adm_member.addEventListener('click', function(){
+                		location.href='<%=request.getContextPath()%>/views/admin/ad_member';
+                	});
+                	const adm_book = document.getElementById("adm_book");
+                	adm_book.addEventListener('click', function(){
+                		location.href='<%=request.getContextPath()%>/views/admin/ad_book';
+                	})
+                	
+                </script>
                 <table>
                     <tr>
                         <td>
-                            <button class="homeBtn" id="adm_review" type="button">리뷰관리</button>
-                            <button class="homeBtn" id="adm_pay" type="button">약관</button>
-                            <button class="homeBtn" id="adm_cs" type="button">고객센터</button>
+                            <button class="homeBtn" id="adm_pay" type="button">결제관리</button>
+                            <button class="homeBtn" id="adm_clause" type="button">약관</button>
+                            
                         </td>
                     </tr>
                 </table>
+                <script>
+	                const adm_pay = document.getElementById("adm_pay");
+	            	adm_pay.addEventListener('click', function(){
+	            		location.href='<%=request.getContextPath()%>/views/admin/ad_pay';
+	            	});
+
+                </script>
             </div>
         </div>
         
