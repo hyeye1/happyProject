@@ -188,11 +188,11 @@
                     <br>
 
             <div class="notice">
-<<<<<<< HEAD
+
                 <a href="이동될 페이지 주소" target=_blank><img src="../../resources/images/notice.png" width="130px" height="50"></a><br>
-=======
+
                 <a href="<%=contextPath%>/list.no" target=_blank><img src="../../resources/images/notice.png" width="130px" height="50"></a><br>
->>>>>>> 9786bcba6d6d63a6f0b162f56d4230e4e0c8a516
+
                 <table class="noticeList">
                     <thead>
                         <tr id="noticeNew">
