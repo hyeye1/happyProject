@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,6 @@
     .listArea{
         border: 1px solid black;
         text-align: center;
-        margin-left: 250px;
     }
     .listArea>tbody>tr:hover{
         cursor:pointer;
@@ -36,7 +37,7 @@
             cursor: pointer;
         }
     #btn:hover{background-color: rgb(249, 219, 122); color:white;}
-    .outer2{margin-right: 250px;}
+    .outer2{margin-right: 45px; padding-top: 10px; padding-bottom: 2px;}
     #btn2{
             border: 1px solid lightgray;
             color: black;
@@ -45,7 +46,7 @@
             padding: 6px;
             }
     #btn2:hover{background-color: rgb(249, 219, 122); color:white;}
-    .page{margin-left: 555px; font-size: medium;}
+    .page{font-size: medium; margin-right: 40px;}
     #top{height: 30px; background-color: rgb(249, 219, 122);}
     #btn3{
             width: 150px;
@@ -66,7 +67,6 @@
             height: 35px;
             padding-top: 5px;
             padding-left: 20px;
-            margin-left: 250px;
             }
         #faq{font-size: large;}
         #faq2{width:300px; height: 25px;}
@@ -92,7 +92,6 @@
             background-color: rgb(255, 233, 161);
             padding-left: 185px;
             padding-top: 20px;
-            margin-left: 250px;
         }
 </style>
 
@@ -103,13 +102,6 @@
         <span>&nbsp;고객님의</span>
         <span id="text2">궁금한 점</span>에 대해 정성을 다해 알려드리겠습니다.<hr>
 
-    </div>
-        <!-- 로그인했고, 로그인한 사용자가 admin일 경우 보여지는 div
-        <div class="outer2" align="right">
-            <button id="btn" onclick="location.href='요청할 url';">글작성</button>
-            <br>
-        </div>
-        --> 
         <div class="faqSearch">
             <form action="" id="faqlForm" method="get">
                 <span id="faq">FAQ</span>&nbsp;
@@ -121,7 +113,13 @@
                 <span id="faq5">회원 | 배송 | 구매 | 영수증 | 적립금 | 쿠폰</span>
             </div>
         </div>
-        <br>
+        
+
+        <!-- 로그인했고, 로그인한 사용자가 admin일 경우 보여지는 div -->
+        <div class="outer2" align="right">
+            <button id="btn" onclick="location.href='요청할 url';">글작성</button>
+        </div>
+
         <table class="listArea">
             <thead>
                 <tr id="top">
@@ -159,7 +157,8 @@
             </tbody>
         </table>
         <br>
-        <div class="page">
+
+        <div class="page" align="center">
             <button id="btn2"><<</button>
             <button id="btn2">1</button>
             <button id="btn2">2</button>
@@ -168,8 +167,12 @@
         </div>
         <br>
         <div class="bottom">
-            <span>&nbsp;찾으시는 질문이 없으신가요? 1:1로 문의해주세요.</span>&emsp;
+            <span>찾으시는 질문이 없으신가요? 1:1로 문의해주세요.</span>&emsp;
             <button id="btn3">1:1 상담요청하기</button>
         </div>
+
+    </div>
+
+        
 </body>
 </html>
