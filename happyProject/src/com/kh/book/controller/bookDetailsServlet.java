@@ -27,10 +27,6 @@ public class bookDetailsServlet extends HttpServlet {
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
-      
-      /*
-       * *asgasdgsadg
-       */
    }
 
    /**
