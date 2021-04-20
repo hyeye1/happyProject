@@ -125,12 +125,16 @@
                 <!-- 로그인전 div -->
                
 	                <div id="loginBefore"  >
-	                    <input type="image" id="menubarCartBtn" src="resources/images/장바구니.PNG">
+	                    <input type="image" id="menubarCartBtn" src="resources/images/장바구니.PNG" onclick="checkCart();">
 	                    <input type="image" id="menubarJoinBtn" src="resources/images/회원가입.PNG" onclick="joinPage();">
 	                    <input type="image" id="menubarLoginBtn" src="resources/images/로그인.PNG" onclick="loginPage();">
 	                </div>
     			
     			<script>
+    				function checkCart(){
+    					alert("로그인 후 이용 가능합니다.");
+    				}
+    			
     				function loginPage(){
     					location.href = "<%= contextPath %>/loginForm.me";
     				}
