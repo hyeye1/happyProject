@@ -7,15 +7,16 @@
     .outer{
             margin-top: 50px;
             margin-left: 250px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            border: 1px solid white;
+            width:800px;
     }
     #text1{font-size:x-large; font-weight: bold;}
     #text2{color:rgb(241, 196, 15); font-weight: bold;}
-    #text3{font-size: large; font-weight: bold; text-align: center; margin-left: 20px;}
     #btn{
-            width: 80px;
-            height: 40px;
-            font-size: medium;
+            width: 70px;
+            height: 30px;
+            font-size: small;
             font-weight: bold;
             color: gray;
             border: 1px solid lightgrey;
@@ -23,50 +24,20 @@
             border-radius: 4px;
             padding: 5px;
             cursor: pointer;
-            margin-right: 530px;
-        }
+            margin-left: 40px;
+    }
     #btn:hover{background-color: rgb(249, 219, 122); color:white;}
+    .button{margin-left: 170px;}
     .page{margin-left: 500px; font-size: medium;}
     #updateForm>table{
         border: 1px solid gray; 
         background-color: rgb(249, 219, 122);
         padding: 10px;}
-    #updateForm input, #updateForm textarea{
+    #updateForm input, #updateForm textarea
+    {
         width: 100%;
         box-sizing: border-box;
     }
-    *{margin: 0; padding: 0;}
-    .rate {
-        float: left;
-        height: 100px;
-        padding: 0 10px;
-        margin-left: 110px;
-    }
-    .rate:not(:checked) > input {
-        position:absolute;
-        top:-9999px;
-    }
-    .rate:not(:checked) > label {
-        float:right;
-        width:1em;
-        overflow:hidden;
-        white-space:nowrap;
-        cursor:pointer;
-        font-size:50px;
-        color:rgba(233, 227, 214, 0.705);
-    }
-    .rate:not(:checked) > label:before {
-        content: '★ ';
-    }
-    .rate > input:checked ~ label {
-        color: rgb(249, 219, 122);    
-    }
-    .rate:not(:checked) > label:hover,
-    .rate:not(:checked) > label:hover ~ label {
-        color: rgb(249, 219, 122);  
-    }
-   
-    
 </style>
 
 </head>
@@ -75,40 +46,32 @@
         <span id="text1">리뷰</span>
         <span id="text1"style="color:rgb(241, 196, 15)">작성하기</span>
         <hr>
-   
-        <form class="reviewform" method="post" action="/save">
-        	<input type="hidden" name="nno" value=""><br>
-            <table align="center" border="1">
+        <form id="updateForm" action="" method="POST">
+        	<input type="hidden" name="nno" value="">
+            <table>
                 <tr>
+                    <th width="50">제목</th>
                     <td colspan="3" width="400">
-                        <div class="wrap">
-                                <input type="hidden" name="rate" id="rate" value="0"/>
-                                <div class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4" />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2" />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1" />
-                                    <label for="star1" title="text">1 star</label><br>
-                                    <span id="text3">별점도 함께 평가해주세요!</span>
-                                </div>
-                                  <div class="review_contents">
-                                    <textarea cols="70" rows="10" class="review_textarea" style="resize: none;" required>내용입력</textarea>
-                                 </div>
-                        </div>
-                        <br>
+                        <input type="text" name="title" required value="리뷰 작성제목">
+                    </td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <textarea name="content" rows="10" style="resize: none;" required>리뷰 작성내용</textarea>
                     </td>
                 </tr>
             </table>
             <br>
-            <div align="center">
-                <button id="btn" type="submit">작성완료</button>
+            <div class="button">
+                <button id="btn" type="submit">작성하기</button>
             </div>
         </form>
-    </div>   
+    </div>
+        
 </body>
 </html>
+  
