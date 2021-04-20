@@ -173,8 +173,8 @@
                     <ul>
                         <li>
                             <div class="todayBk" >
-                                <a href="<%=contextPath %>/bookDetails.bk"">
-                                    <img src="resources/images/도서이미지(수정)/소설/달러구트.jpg" class="coverImg">
+                                <a href="<%= contextPath %>/bookDetails.bk"">
+                                    <img class="coverImg" src="resources/images/도서이미지(수정)/소설/달러구트.jpg" >
                                     달러구트 꿈 백화점
                                 </a>
                                 <p>이미예</p>
@@ -182,46 +182,46 @@
                         </li>
                         <li>
                             <div class="todayBk">
-                                <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/경제경영/02_돈의심리학.jpg" alt="도서이미지-돈의심리학">
-                                <p>
-                                    <a href="">돈의 심리학</a>
-                                </p>
+                                <a href="">
+                                    <img class="coverImg" src="resources/images/도서이미지(수정)/경제경영/02_돈의심리학.jpg">
+                                    돈의 심리학
+                                </a>
                                 <p>모건 하우절</p>
                             </div>
                         </li>
                         <li>
                             <div class="todayBk">
-                                <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                                <p>
-                                    <a href="">그런 사람 또 없습니다</a>
-                                </p>
+                                <a href="">
+                                    <img class="coverImg" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg">
+                                    그런 사람 또 없습니다
+                                </a>
                                 <p>원태연</p>
                             </div>
                         </li>
                         <li>
                             <div class="todayBk">
-                                <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/소설/아몬드.jpg" alt="도서이미지-아몬드">
-                                <p>
-                                    <a href="">아몬드</a>
-                                </p>
+                                <a href="">
+                                    <img class="coverImg" src="resources/images/도서이미지(수정)/소설/아몬드.jpg">
+                                    아몬드
+                                </a>
                                 <p>손원평</p>
                             </div>
                         </li>
                         <li>
                             <div class="todayBk">
-                                <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/여행/bk16.jfif" alt="도서이미지-아름다운사찰여행">
-                                <p>
-                                    <a href="">아름다운 사찰여행</a>
-                                </p>
+                                <a href="">
+                                    <img class="coverImg" src="resources/images/도서이미지(수정)/여행/bk16.jfif">
+                                    아름다운 사찰여행
+                                </a>
                                 <p>유철상</p>
                             </div>
                         </li>
                         <li>
-                            <div class="todayBk" style="margin-right: 50px;">
-                                <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/인문과학/사피엔스.jpg" alt="도서이미지-사피엔스">
-                                <p>
-                                    <a href="">사피엔스</a>
-                                </p>
+                            <div class="todayBk">
+                                <a href="">
+                                    <img class="coverImg" src="resources/images/도서이미지(수정)/인문과학/사피엔스.jpg">
+                                    사피엔스
+                                </a>
                                 <p>유발 하라리</p>
                             </div>
                         </li>
