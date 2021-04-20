@@ -143,9 +143,14 @@
             <% }else if(loginUser.getAdminYN().equals("Y")) { %>
             <!-- 관리자 div -->
             <div id="loginAdmin">
-                <input type="image" id="menubarAdminBtn" src="resources/images/admin.PNG">
+                <input type="image" id="menubarAdminBtn" src="resources/images/admin.PNG" onclick="adminPage()">
                 <input type="image" id="menubarLogoutBtn" src="resources/images/로그아웃.PNG">
             </div>
+            	<script>
+    				function adminPage(){
+    					location.href = "<%= contextPath %>/adminForm.me";
+    				}
+    			</script>
             
     		<% }else { %>
     		
@@ -157,6 +162,8 @@
                 </div>
             </div>
             <% } %>
+            
+            
             
             <br clear="both">
             <br> <br>
