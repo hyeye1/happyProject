@@ -51,7 +51,6 @@ public class MemberDao {
 							   rset.getString("mem_name"),
 							   rset.getString("mem_address"),
 							   rset.getString("mem_phone"),
-							   rset.getString("nickname"),
 							   rset.getString("email"),
 							   rset.getString("email_yn"),
 							   rset.getString("enroll_route"),

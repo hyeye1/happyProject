@@ -10,7 +10,6 @@
 			 , MEM_NAME
 			 , MEM_ADDRESS
 			 , MEM_PHONE
-			 , NICKNAME
 			 , EMAIL
 			 , EMAIL_YN
 			 , ENROLL_ROUTE

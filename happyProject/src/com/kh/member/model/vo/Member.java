@@ -10,7 +10,6 @@ public class Member {
 	private String memName;
 	private String memAddress;
 	private String memPhone;
-	private String nickname;
 	private String email;
 	private String emailYN;
 	private String enrollRoute;
@@ -21,7 +20,7 @@ public class Member {
 	public Member() {}
 
 	public Member(int memNo, String memId, String memPwd, String memName, String memAddress, String memPhone,
-			String nickname, String email, String emailYN, String enrollRoute, Date enrollDate, Date recentLogin,
+			String email, String emailYN, String enrollRoute, Date enrollDate, Date recentLogin,
 			String adminYN) {
 		super();
 		this.memNo = memNo;
@@ -30,7 +29,6 @@ public class Member {
 		this.memName = memName;
 		this.memAddress = memAddress;
 		this.memPhone = memPhone;
-		this.nickname = nickname;
 		this.email = email;
 		this.emailYN = emailYN;
 		this.enrollRoute = enrollRoute;
@@ -87,13 +85,6 @@ public class Member {
 		this.memPhone = memPhone;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
 
 	public String getEmail() {
 		return email;
@@ -146,7 +137,7 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", memName=" + memName
-				+ ", memAddress=" + memAddress + ", memPhone=" + memPhone + ", nickname=" + nickname + ", email="
+				+ ", memAddress=" + memAddress + ", memPhone=" + memPhone + ", email="
 				+ email + ", emailYN=" + emailYN + ", enrollRoute=" + enrollRoute + ", enrollDate=" + enrollDate
 				+ ", recentLogin=" + recentLogin + ", adminYN=" + adminYN + "]";
 	}
