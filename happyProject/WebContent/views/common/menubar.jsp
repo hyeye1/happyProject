@@ -151,9 +151,10 @@
                 <input type="image" id="menubarLogoutBtn" src="resources/images/로그아웃.PNG">
             </div>
             	<script>
-    				function adminPage(){
-    					location.href = "<%= contextPath %>/adminForm.me";
-    				}
+    				const menubarAdminBtn = document.getElementById('menubarAdminBtn');
+    				menubarAdminBtn.addEventListener('click',function(){
+    					window.open("${pageContext.request.contextPath}/views/admin/ad_home.jsp", "관리자 로그인", "width=1000, height=700"); 
+    				});
     			</script>
             
     		<% }else { %>
