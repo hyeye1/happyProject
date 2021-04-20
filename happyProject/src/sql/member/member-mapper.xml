@@ -3,25 +3,25 @@
 <properties>
 
 	<entry key="loginMember">
-		SELECT 
-			   MEM_NO
-		 	 , MEM_ID
-			 , MEM_PWD
-			 , MEM_NAME
-			 , MEM_ADDRESS
-			 , MEM_PHONE
-			 , EMAIL
-			 , EMAIL_YN
-			 , ENROLL_ROUTE
-			 , ENROLL_DATE
-			 , RECENT_LOGIN
-			 , ADMIN_YN
-		  FROM 
-		       MEMBER
-		 WHERE 
-		       STATUS = 'Y'
-		   AND MEM_ID = ?
-		   AND MEM_PWD = ? 
+  	SELECT 
+            MEM_NO
+          , MEM_ID
+          , MEM_PWD
+          , MEM_NAME
+          , MEM_ADDRESS
+          , MEM_PHONE
+          , EMAIL
+          , EMAIL_YN
+          , ENROLL_ROUTE
+          , ENROLL_DATE
+          , RECENT_LOGIN
+          , ADMIN_YN
+        FROM 
+             TB_MEMBER
+       WHERE 
+            ADMIN_YN = 'N'
+         AND MEM_ID =  ?
+         AND MEM_PWD = ? 
 	</entry>
 	
 	
