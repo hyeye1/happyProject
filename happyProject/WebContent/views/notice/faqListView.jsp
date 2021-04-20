@@ -65,6 +65,7 @@
             width: 753px;
             height: 35px;
             padding-top: 5px;
+            padding-left: 20px;
             margin-left: 250px;
             }
         #faq{font-size: large;}

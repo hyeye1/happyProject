@@ -183,10 +183,9 @@
                 </div>
                     <br>
 
-                <div class="notice">
+            <div class="notice">
                 <img src="../resources/image/notice.png" width="130px" height="50"><br>
                 
-            </form>
                 <table class="noticeList">
                     <thead>
                         <tr id="noticeNew">
@@ -209,7 +208,7 @@
                         </tr>
                     </tbody>
                 </table>
-        </div>
+            </div>
             
         <script>
             const items = document.querySelectorAll('.question');

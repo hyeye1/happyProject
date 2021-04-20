@@ -76,7 +76,7 @@
         <span id="text1"style="color:rgb(241, 196, 15)">작성하기</span>
         <hr>
    
-        <form form name="reviewform" class="reviewform" method="post" action="/save">
+        <form class="reviewform" method="post" action="/save">
         	<input type="hidden" name="nno" value=""><br>
             <table align="center" border="1">
                 <tr>
@@ -112,4 +112,3 @@
     </div>   
 </body>
 </html>
-

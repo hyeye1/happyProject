@@ -118,6 +118,7 @@
                 <button id="tag">#재테크</button>
             </div>
         </div>
+        <br><br>
        <div class="searchBook" align="center">
             <span id="tagpoint">'# 해쉬태그'</span> 
             <span>검색어로 총</span>
