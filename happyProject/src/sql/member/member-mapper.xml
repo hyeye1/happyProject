@@ -19,8 +19,7 @@
         FROM 
              TB_MEMBER
        WHERE 
-            ADMIN_YN = 'N'
-         AND MEM_ID =  ?
+             MEM_ID =  ?
          AND MEM_PWD = ? 
 	</entry>
 	

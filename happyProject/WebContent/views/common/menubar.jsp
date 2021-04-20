@@ -80,6 +80,12 @@
                 margin-top: 80.5px;
                 margin-right: 150px;
             }
+            #menubarAdminBtn{
+            width: 44px;
+            float: right;
+            margin-top: 81px;
+            margin-right: 200px;
+        }
             .menubarCatWrap{
                 border-top: 2px solid lightgray;
                 border-bottom: 1.4px solid lightgray;
@@ -133,7 +139,14 @@
     					location.href = "<%= contextPath %>/joinForm.me";
     				} 
     			</script>
-    		
+    			
+            <% }else if(loginUser.getAdminYN().equals("Y")) { %>
+            <!-- 관리자 div -->
+            <div id="loginAdmin">
+                <input type="image" id="menubarAdminBtn" src="resources/images/admin.PNG">
+                <input type="image" id="menubarLogoutBtn" src="resources/images/로그아웃.PNG">
+            </div>
+            
     		<% }else { %>
     		
                 <!-- 로그인후 div -->
@@ -144,7 +157,6 @@
                 </div>
             </div>
             <% } %>
-            
             
             <br clear="both">
             <br> <br>
