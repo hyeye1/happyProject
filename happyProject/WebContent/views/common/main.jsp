@@ -175,7 +175,9 @@
                             <div class="todayBk" >
                                 <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/소설/달러구트.jpg" alt="도서이미지-달러구트 꿈 백화점">
                                 <p>
-                                    <a href="<%=contextPath %>/bookDetails.bk">달러구트 꿈 백화점</a>
+
+                                    <a href="">달러구트 꿈 백화점</a>
+
                                 </p>
                                 <p>이미예</p>
                             </div>
