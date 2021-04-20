@@ -35,10 +35,10 @@ public class LoginServlet extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
+		String memId = request.getParameter("memId");
+		String memPwd = request.getParameter("memPwd");
 		
-		Member m = new MemberService().loginMember(userId, userPwd);
+		Member m = new MemberService().loginMember(memId, memPwd);
 		
 		if(m == null) {
 			// 로그인실패

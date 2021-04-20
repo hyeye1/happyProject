@@ -83,8 +83,8 @@
         <img  src="resources/images/logo.PNG" width="180px" style="margin-right: 2px; margin-top: 70px;">
         <br> <br>
         <div class="loginInput">
-            <input type="text" id="userId" name="userId" placeholder="  아이디" required><br>
-            <input type="password" id="userPwd" name="userPwd" placeholder="  비밀번호" required>
+            <input type="text" id="memId" name="memId" placeholder="  아이디" required><br>
+            <input type="password" id="memPwd" name="memPwd" placeholder="  비밀번호" required>
         </div>
         <div class="loginMid">
             <button type="submit" id="loginBtn">로그인</button> <br>

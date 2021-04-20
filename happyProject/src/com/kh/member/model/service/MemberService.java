@@ -10,11 +10,11 @@ import com.kh.member.model.vo.Member;
 public class MemberService {
 	
 
-	public Member loginMember(String userId, String userPwd) {
+	public Member loginMember(String memId, String memPwd) {
 		
 		Connection conn = getConnection();
 		
-		Member loginMember = new MemberDao().loginMember(conn, userId, userPwd);
+		Member loginMember = new MemberDao().loginMember(conn, memId, memPwd);
 		
 		close(conn);
 		
