@@ -98,8 +98,11 @@
     </style>
 </head>
 <body>
+
+	<%@ include file = "../common/menubar.jsp" %>
+	
 	 <div class="emptyCartOuter">
-        <br>
+        <br><br><br>
 
         <!-- 장바구니타이틀, 단계-->
         <div>
