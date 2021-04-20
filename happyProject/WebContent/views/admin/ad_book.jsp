@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.admin.model.vo.Ad_Book, com.kh.common.model.vo.PageInfo" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Ad_Book> list = (ArrayList<Ad_Book>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -377,7 +387,7 @@
     <div class="wrap">
         <div id="menubar">
             <div id="home">
-                <a href="" id="homelogo">HOME</a>
+                <a href="${pageContext.request.contextPath}/views/admin/ad_home.jsp" id="homelogo">HOME</a>
             </div>
             
             <div id="title_name">
@@ -386,16 +396,26 @@
             
             <div id="title_Btn">
                 <ul id="btns">
-                    <li><button class="menuBtn" id="memberBtn" type="button" style="background-color: rgb(249, 219, 122);">도서 조회</button></li>
-                    <li><button class="menuBtn" id="couponBtn" type="button" >도서 등록</button></li>
+                    <li><button class="menuBtn" id="bkListBtn" type="button" style="background-color: rgb(249, 219, 122);">도서 조회</button></li>
+                    <li><button class="menuBtn" id="bkEnrollBtn" type="button" >도서 등록</button></li>
                 </ul>
+                <script>
+                const bkListBtn = document.getElementById('bkListBtn');
+                bkListBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/list.bk';
+            	});
+                const bkEnrollBtn = document.getElementById('bkEnrollBtn');
+                bkEnrollBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/enroll.bk';
+            	});
+                </script>
             </div>
         </div>
         
         <div id="content">
             <div id="login">
-                <input type="image" id="adLock" src="../resources/admin/adminlock.png" >
-                <img src="../resources/admin/adminlogo.png" align="right" id="adLogo">
+                <input type="image" id="adLock" src="../../resources/images/admin/adminlock.png" >
+                <img src="../../resources/images/admin/adminlogo.png"  id="adLogo">
             </div>
 
             <div id="sub_title">도서 조회</div>
@@ -408,7 +428,7 @@
                         <option value="end" selected>최근 등록일 순</option>
                     </select>
                     &nbsp;
-                    <label for="countMem" style="font-weight: bold;">총 도서</label>
+                    <label for="countMem" style="font-weight: bold;">총 도서</label> 
 
                 </div>
                 <div id="choice_btn" style="padding: 20px;">
@@ -434,140 +454,49 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td> <input type="radio"></td>
-                            <td>1100</td>
-                            <td class="bkName">해리포터 1</a></td>
-                            <td>조앤 K 롤링</td>
-                            <td>Scholastic</td>
-                            <td>국내>소설</td>
-                            <td>15000</td>
-                            <td>13000</td>
-                            <td>2021.04.15</td>
-                            <td style="color: red; font-weight: bold;">5</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td class="bkName">해리포터 2</a></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">72</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">18</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">9</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">55</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">1</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">2</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">10</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">품절</td>
-                            
-                            
-                        </tr>
-                        <tr>
-                            <td><input type="radio"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="color: red; font-weight: bold;">1</td>
-                        </tr>
+                        <!-- 조회 결과 없을 경우 -->
+                        <% if(list.isEmpty()) { %>
+                            <tr>
+                                <td colspan="10">조회된 리스트가 없습니다.</td>
+                            </tr>
+                        <% }else { %>
+                        <!-- 조회된 결과가 있을 경우 -->
+                            <% for(Ad_Book b : list) { %>
+                                <tr>
+                                    <td><input type="radio"></td>
+                                    <td><%= b.getBkNo() %></td>
+                                    <td class="bkName"><%= b.getBkName() %></td>
+                                    <td><%= b.getAuthor() %></td>
+                                    <td><%= b.getPublisher() %></td>
+                                    <td><%= b.getBkDivision() %> > <%= b.getBkGenre() %></td>
+                                    <td><%= b.getBkOriginPrice() %></td>
+                                    <td><%= b.getBkPrice() %></td>
+                                    <td><%= b.getBkEnrollDate() %></td>
+                                    <td style="color: red; font-weight: bold;"><%=b.getBkStock() %></td>
+                                </tr>
+                            <%}%>
+                        <% } %>
                     </tbody>                    
                 </table>
 
                 <br>
                 <div align="center" class="pagingArea">
-                    <button class="btn btn-outline-warning btn-sm"><</button>
-                    <button class="btn btn-outline-warning btn-sm">1</button>
-                    <button class="btn btn-outline-warning btn-sm">2</button>
-                    <button class="btn btn-outline-warning btn-sm">3</button>
-                    <button class="btn btn-outline-warning btn-sm">4</button>
-                    <button class="btn btn-outline-warning btn-sm">5</button>
-                    <button class="btn btn-outline-warning btn-sm">></button>
+                    <% if(currentPage != 1) { %>        
+                        <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%=currentPage-1%>';"> < </button>
+					<% } %>
+			
+					<% for(int p=startPage; p<=endPage; p++) { %>
+				
+						<% if(currentPage == p){ %>
+                            <button class="btn btn-outline-warning btn-sm" disabled><%= p %></button>
+                        <% }else{ %>
+                            <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%= p %>';"><%= p %></button>
+                        <% } %>
+					<% } %>
+			
+					<% if(currentPage != maxPage){ %> 
+                        <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%=currentPage+1%>';"> > </button>
+					<% } %>
                 </div>
                 <br>
                 <select name="searchList" id="searchList" style="margin-left: 25%; width: 60px;">

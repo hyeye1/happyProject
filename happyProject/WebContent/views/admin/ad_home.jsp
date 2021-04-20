@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Administrator</title>
+<script>
+	window.resizeTo(1000,800);
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -146,11 +149,11 @@
                 <script>
                 	const adm_member = document.getElementById("adm_member");
                 	adm_member.addEventListener('click', function(){
-                		location.href='<%=request.getContextPath()%>/views/admin/ad_member';
+                		location.href='<%=request.getContextPath()%>/list.mem';
                 	});
                 	const adm_book = document.getElementById("adm_book");
                 	adm_book.addEventListener('click', function(){
-                		location.href='<%=request.getContextPath()%>/views/admin/ad_book';
+                		location.href='<%=request.getContextPath()%>/list.bk';
                 	})
                 	
                 </script>
@@ -166,7 +169,7 @@
                 <script>
 	                const adm_pay = document.getElementById("adm_pay");
 	            	adm_pay.addEventListener('click', function(){
-	            		location.href='<%=request.getContextPath()%>/views/admin/ad_pay';
+	            		location.href='<%=request.getContextPath()%>/';
 	            	});
 
                 </script>
