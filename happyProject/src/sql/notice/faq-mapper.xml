@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectFaqList">
+		SELECT
+		         FA_NO
+		       , FA_TITLE
+		       , COUNT
+		 	FROM TB_FAQ
+		   WHERE FA_STATUS = 'N'
+		   ORDER
+		      BY COUNT DESC
+	</entry>
+	
+
+</properties>
