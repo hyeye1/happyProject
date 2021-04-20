@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq"%>
+<%
+	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,6 +100,8 @@
 
 </head>
 <body>
+		
+		
 	<div class="outer">
         <span id="text1">FAQ</span>
         <span>&nbsp;고객님의</span>
@@ -129,31 +134,21 @@
                 </tr>
             </thead>
             <tbody>
+            	
+            	<% if(list.isEmpty()) { %>
+            		<tr>
+            			<td colspan="3">존재하는 공지사항이 없습니다.</td>
+            		</tr>
+            	<% }else { %>
+            		<% for(Faq f:list) { %>
                 <tr>
-                    <td>1</td>
-                    <td>FAQ 제목</td>
-                    <td>10</td>
+                    <td><%= f.getFaNo() %></td>
+                    <td><%= f.getFaTitle() %></td>
+                    <td><%= f.getCount() %></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>FAQ 제목</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>FAQ 제목</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>FAQ 제목</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>FAQ 제목</td>
-                    <td>10</td>
-                </tr>  
+                <% } %>
+                
+              <% } %>
             </tbody>
         </table>
         <br>
