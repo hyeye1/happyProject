@@ -11,17 +11,27 @@
 	</entry>
 
 	<entry key="selectNoticeList">
-		SELECT
-		         NO_NO
-		       , NO_TITLE
-		       , MEM_ID
-		       , NO_COUNT
-		       , NO_DATE
-		 	FROM TB_NOTICE N
-		   JOIN TB_MEMBER ON (NO_WRITER = MEM_NO)
-		   WHERE N.NO_STATUS = 'Y'
-		   ORDER
-		      BY NO_DATE DESC
+		
+				SELECT *
+		  FROM (
+		         SELECT
+		                ROWNUM RNUM
+		              , A.*
+		          FROM (
+		                 SELECT
+		                        NO_NO
+                               , NO_TITLE
+                               , MEM_ID
+                               , NO_COUNT
+                               , NO_DATE
+		                  FROM TB_NOTICE N
+		                  JOIN TB_MEMBER ON (NO_WRITER = MEM_NO)
+		                 WHERE  N.NO_STATUS = 'Y'
+		                 ORDER
+		                    BY NO_DATE DESC
+		                ) A
+		        )
+                 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 
