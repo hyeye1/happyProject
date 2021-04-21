@@ -70,7 +70,7 @@
 </head>
 <body>
     <div class="join1Outer" align="center">
-        <img  src="resources/images/logo.PNG" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
         
         <div class="join1Title" align="center">
             <br>

@@ -80,7 +80,7 @@
 
 <form action="<%= request.getContextPath() %>/login.me" method="post" id="loginForm">
     <div class="loginOuter" align="center">
-        <img  src="resources/images/logo.PNG" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
         <br> <br>
         <div class="loginInput">
             <input type="text" id="memId" name="memId" placeholder="  아이디" required><br>
@@ -89,7 +89,7 @@
         <div class="loginMid">
             <button type="submit" id="loginBtn">로그인</button> <br>
             <span id="loginHoldYN"><input type="checkbox"> 로그인 상태 유지</span>
-            <span id="joinNow"><a href="<%= request.getContextPath() %>/enrollForm.me">회원가입</a></span>
+            <span id="joinNow"><a href="<%= request.getContextPath() %>/joinForm.me">회원가입</a></span>
         </div>
         <div class="loginSns" align="center">
             <br>
