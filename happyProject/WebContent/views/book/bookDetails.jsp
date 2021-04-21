@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.book.model.vo.*" %>
+<%
+	Review r = (Review)request.getAttribute("r");
+	// 리뷰번호, 회원번호, 책번호, 리뷰등록날짜, 리뷰내용
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -304,6 +308,7 @@
         <form action="">
             <div class="inputReview">
                 <div class="reviewBt" align="right">
+                
                 	<% if(loginUser == null){ %>
                     <!-- 로그인 전 -->
                     <button type="submit" onclick="review();" class="btn btn-primary" style="width:80px; background:rgb(249, 219, 122); color:black; border:none; margin-top:8px; margin-right:8px;">등록</button>
@@ -311,6 +316,7 @@
                 	<!-- 로그인 후 -->
                 	 <button type="submit" id="inputReview" class="btn btn-primary" style="width:80px; background:rgb(249, 219, 122); color:black; border:none; margin-top:8px; margin-right:8px;">등록</button>
                		<% } %>
+               		
                 </div>
                 <div class="reviewContent">
                     <textarea name="content" id="reviewContent" placeholder="작품과 무관한 광고,욕설, 및 비방,청소년보호정책에 위배되는 내용은 사전 동의 없이 비공개 처리 될 수 있습니다." required></textarea>
@@ -358,6 +364,26 @@
             </table>
         </div>
         
+        <script>
+        	$(function(){
+        		
+        		// HTML문서가 다 로딩되고 직후에 실행할 함
+        		selectReviewList();
+        	})
+        	
+        	function selectReviewList(){
+        		$.ajax({
+        			url:"<%= contextPath %>/rList.bo",
+        			data:{bookno:<%= r.getBookNo() %>},
+        			success:function(rList){
+        				console.log(rList);
+        			}, error{
+        				console.log("댓글리스트조회ajax실패");
+        			}
+        		});
+        	}
+        	  
+        </script>
         
 
         <!-- 비회원일 때 리뷰 등록 클릭시 뜨는 MODAL -->
