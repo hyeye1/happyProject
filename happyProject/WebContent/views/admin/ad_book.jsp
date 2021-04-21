@@ -414,8 +414,8 @@
         
         <div id="content">
             <div id="login">
-                <input type="image" id="adLock" src="../../resources/images/admin/adminlock.png" >
-                <img src="../../resources/images/admin/adminlogo.png"  id="adLogo">
+                <input type="image" id="adLock" src="${pageContext.request.contextPath}/resources/images/admin/adminlock.png" >
+                <img src="${pageContext.request.contextPath}/resources/images/admin/adminlogo.png"  id="adLogo">
             </div>
 
             <div id="sub_title">도서 조회</div>
