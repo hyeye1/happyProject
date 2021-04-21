@@ -54,7 +54,7 @@ public class NoticeListViewServlet extends HttpServlet {
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		
-		pageLimit =10;
+		pageLimit =5;
 		
 		
 		boardLimit= 10;

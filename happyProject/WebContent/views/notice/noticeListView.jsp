@@ -103,7 +103,16 @@
           
             </tbody>
         </table>
-        
+        <script>
+        	$(function(){
+        		$(".listArea>tbody>tr").click(function(){
+        			
+        			// /jsp/detail.bo?bno=글번호
+        					
+        			location.href = '<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text();
+        		})
+        	})
+        </script>
      
 
     

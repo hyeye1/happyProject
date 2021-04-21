@@ -5,9 +5,9 @@
 
 	<entry key="selectListCount">
 		SELECT COUNT(*) LISTCOUNT
-		  FROM BOARD
-		 WHERE BOARD_TYPE= 1
-		   AND STATUS= 'Y'
+		  FROM TB_NOTICE
+		 WHERE NO_STATUS = 'Y'
+		   
 	</entry>
 
 	<entry key="selectNoticeList">
