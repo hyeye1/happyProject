@@ -64,22 +64,22 @@ public class Ad_BookListServlet extends HttpServlet {
 		// 페이징정보 담기 
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		// System.out.println(pi);
+		//System.out.println(pi);
 		
 		// 현재 요청한 페이지에 보여질 도서 리스트 조회해오기
 		ArrayList<Ad_Book> list = new Ad_BookService().selectList(pi);
 		
-		//	for(Ad_Book b : list){
-		//		  System.out.println(b);
-		//		}
-		//	System.out.println("===========");
-		
-		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("views/admin/ad_book.jsp").forward(request, response);
+//			for(Ad_Book b : list){
+//				  System.out.println(b);
+//				}
+//			System.out.println("===========");
 		
 		
+			request.setAttribute("pi", pi);
+			request.setAttribute("list", list);
+			
+			request.getRequestDispatcher("views/admin/ad_book.jsp").forward(request, response);
+			
 		
 	}
 

@@ -14,7 +14,11 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
  <!-- Latest compiled JavaScript -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
  <link rel="stylesheet" href="css/hover-min.css">
+ 
 
     <style>
         .join2Outer{
@@ -200,7 +204,7 @@
             <table class="join2Input">
                 <tr>
                     <th>아이디 *</th>
-                    <td><input type="text" name="memId" placeholder="6자 이상" minlength=6 required></td>
+                    <td><input type="text" name="memId" placeholder="6자 이상" minlength=6 maxlength=20 required></td>
                     <td><button type="button" class="join2Check" onclick="idCheck();">중복확인</button></td>
                 </tr>
                 <tr>
@@ -242,20 +246,21 @@
                 </tr>
                 <tr>
                     <th>주소 *</th>
-                    <td colspan="2"> <button type="button" id="join2SearchAdd">주소검색</button></td>
+                    <td colspan="2"> <button type="button" id="join2SearchAdd" >주소검색</button></td>
                 </tr>
+        
             </table>
             
             <div id="join2CheckboxOuter">
                 <table class="join2Checkbox">
                     <tr>
                         <th colspan="2" >
-                            <input type="checkbox" id="checkAll" onclick="/*클릭시 전체 다 클릭*/"> 전체동의
+                            <input type="checkbox" id="allChecked"><label for="allChecked"> 전체동의</label>
                         </th>
                     </tr>
                     <tr>
                         <th>
-                            <input type="checkbox"> 이용약관 동의
+                            <input type="checkbox" class="agreeCheck" id="agree1"><label for="agree1"> 이용약관 동의</label>
                         </th>
                         <td>
                             <input type="button" onclick="" class="join2DetailBtn" value="자세히 보기">
@@ -263,7 +268,7 @@
                     </tr>
                     <tr>
                         <th>
-                            <input type="checkbox"> 개인정보 취급 방침
+                            <input type="checkbox"  class="agreeCheck" id="agree2"><label for="agree2"> 개인정보 취급 방침</label>
                         </th>
                         <td>
                             <input type="button" onclick="" class="join2DetailBtn" value="자세히 보기">
@@ -271,11 +276,12 @@
                     </tr>
                     <tr>
                         <th colspan="2">
-                            <input type="checkbox"> 이메일 수신 동의
+                            <input type="checkbox"  class="agreeCheck" id="agree3"><label for="agree3"> 이메일 수신 동의</label>
                         </th>
                     </tr>
                 </table>
                 
+
             </div>
             
             <div>
@@ -295,10 +301,11 @@
                     <p style="font-weight: 800;">
                         검색어(도로명, 건물명, 지번)를 입력해주세요 (지번 + 도로명 통합)
                     </p>
-                    <input type="search" name="searchAddress" id="searchAddress" placeholder="주소를 입력해주세요">
-                    <button type="button">검색</button>
+                    <input type="search" name="searchAddress" id="address" placeholder="주소를 입력해주세요">
+                    <button type="button" id="goPopup" onclick="goPopup();">검색</button>
                 </div>
                 <div id="searchAddTip">
+
                     <p style="font-size: 28px; font-weight: 700;">tip</p>
                     <p style="font-size: 14px; margin-top: -15px;">
                         아래와 같은 조합으로 검색을 하시면 더욱 정확한 결과가 검색됩니다.
@@ -339,10 +346,20 @@
                 <button type="button" class="okBtn">확인</button>
             </div>
         </div>
-
+        
+<!-- postcodify실험
+        <div id="postcodify">
+        	<input type="text" name="" id="postcode" value="" /><br />
+			<input type="text" name="" id="address" value="" /><br />
+			<input type="text" name="" id="details" value="" /><br />
+			<input type="text" name="" id="extra_info" value="" /><br />
+        </div>
+ -->
+ 
+ 
         <script>
 
-
+						// 주소찾기
                         $("#join2SearchAdd").click(function() {
                             $(".searchAddWrap").show();
                         });
@@ -351,9 +368,9 @@
                         });
 
 
-
+						// 휴대폰인증
                         $("#phoneCheck").click(function(){
-                            $("#memPhone").attr("disabled", true);
+                           // $("#memPhone").attr("disabled", true);
                             $("#phoneCheck").attr("disabled", true);
                             $(".phoneCheckNumWrap").show();
                             $(".phoneCheckInput").show();
@@ -368,17 +385,76 @@
                             $(".phoneCheckYWrap").show();
                         });
 
-                    
+                    	
+                        // 이용약관 동의 
+    	                $(function(){
+    	                    // 전체 동의 
+    	            		$("#allChecked").on("click",function(){
+    	                            //대표 checkbox 체크 여부
+    	            				var checked = $("#allChecked").is(":checked");
+    	                            
+    	            				if(checked){
+    	            					$(".agreeCheck").prop("checked",true);
+    	            				}
+    	            				else{
+    	            					$(".agreeCheck").prop("checked",false);
+    	            				}
+    	            		});
+    	                    $(".agreeCheck").on("click", function(){
+    	                    	var selectedL = $(".agreeCheck:checkbox:checked").length;
+    	                    	var checkedL = $(".agreeCheck:checkbox").length;
+    	                    	
+    	                        //전체동의 선택
+    	        				if(selectedL == checkedL){
+    	        					$("#allChecked").prop("checked",true);
+    	        				}
+    	                        //전체동의 해제
+    	        				else{
+    	        					$("#allChecked").prop("checked",false);
+    	        				}
+    	                    });
+    	                    
+                		});
+                        
+                        
+                        
+                        // postcodify 실험
+                        $(function(){
+                        	$("#goPopup").postcodifyPopUp();
+                        });
+                        
+                        $(function() { $("#postcodify").postcodify({
+                            insertPostcode5 : "#postcode",
+                            insertAddress : "#address",
+                            insertDetails : "#details",
+                            insertExtraInfo : "#extra_info",
+                            hideOldAddresses : false
+                        }); });
+                        
+                        
+                        /* juso.go.kr 
+                        function goPopup(){
+                        	var pop = window.open("${pageContext.request.contextPath}/views/member/jusoPopup.jsp", "pop", 
+                        			"width=570, height=420, scrollbars=yes, resizable=yes");
+                        }
+                        function jusoCallBack(roadFullAddr){
+                        	var addressEl = document.querySelector("#address");
+                        	addressEl.value = roadFullAddr;
+                        }
+                        */
 
 
 
-
-
-
-
-
-
-
+                        
+                        
+                        
+                       
+                        
+                        
+                        
+                        
+                        
+                        
             //수업시간에 했던 아이디 중복확인 내용
             function idCheck(){
                 

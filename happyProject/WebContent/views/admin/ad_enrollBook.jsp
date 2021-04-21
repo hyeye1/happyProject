@@ -34,13 +34,7 @@
         #content>div{width: 100%; float: left;}
         #login{height: 5%;}
         #sub_title{height: 12%;}
-        #bkNum{height:8%;}
-        #bktable{height: 75%;}
-
-       
-
-        
-
+        #bktable{height: 82%;}
 
 
         /* menubar */
@@ -108,12 +102,6 @@
             font-size: 40px;
             padding: 10px 20px;
         }
-
-        #bkNum>table{
-            width: 770px;
-            margin:11px;  
-        }
-        
         
         #choice_btn{
             text-align: center;
@@ -132,7 +120,7 @@
 
         #bktable>table{
             width: 770px;
-            height: 410px;
+            height: 470px;
             margin: 11px;
         }
 
@@ -357,99 +345,112 @@
             
             <div id="title_Btn">
                 <ul id="btns">
-                    <li><button class="menuBtn" id="memberBtn" type="button" >도서 조회</button></li>
-                    <li><button class="menuBtn" id="couponBtn" type="button" style="background-color: rgb(249, 219, 122);">도서 등록</button></li>
+                    <li><button class="menuBtn" id="bkListBtn" type="button" >도서 조회</button></li>
+                    <li><button class="menuBtn" id="bkEnrollBtn" type="button" style="background-color: rgb(249, 219, 122);">도서 등록</button></li>
                 </ul>
+            	<script>
+                const bkListBtn = document.getElementById('bkListBtn');
+                bkListBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/list.bk';
+            	});
+                const bkEnrollBtn = document.getElementById('bkEnrollBtn');
+                bkEnrollBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/enroll.bk';
+            	});
+                </script>
             </div>
         </div>
         <div id="content">
             <div id="login">
-                <input type="image" id="adLock" src="../resources/admin/adminlock.png" >
-                <img src="../resources/admin/adminlogo.png" align="right" id="adLogo">
+                <input type="image" id="adLock" src="${pageContext.request.contextPath}/resources/images/admin/adminlock.png" >
+                <img src="${pageContext.request.contextPath}/resources/images/admin/adminlogo.png"  id="adLogo">
             </div>
             <div id="sub_title">도서 등록</div>
-            <div id="bkNum">
-                <table>
-                    <tr>
-                        <th width="100">&nbsp;&nbsp;&nbsp; 번호</th>
-                        <td>1111</td>
-                    </tr>
-                </table>
-                <hr>
-            </div>
-            <div id="bktable">
-                <table>
-                    <tr>
-                        <th width="90"><b>*</b> 카테고리</th>
-                        <td width="30">
-                            <select name="category1" id="category1" style="width: 100px;" required>
-                                <option value="">국내도서</option>
-                                <option value="">해외도서</option>
-                            </select> 
-                            &nbsp;>&nbsp;
-                            <select name="" id="category2" style="width: 120px;" required>
-                                <option value="">문학</option>
-                                <option value="">경제/경영</option>
-                            </select> 
-                        </td>
-                        <th width="90">&nbsp;&nbsp;&nbsp;ISBN</th>
-                        <td width="100"><input type="text" placeholder="숫자 13개 입력"></td>
-                    </tr>
-                    <tr>
-                        <th><b>*</b> 도서명</th>
-                        <td><input type="text" placeholder="도서명을 입력하세요" required></td>
-                        <th>&nbsp;&nbsp;&nbsp;저자</th>
-                        <td><input type="text" placeholder="저자명을 입력하세요"></td>
-                    </tr>
-                    <tr>
-                        <th>&nbsp;&nbsp;&nbsp;출판사</th>
-                        <td><input type="text" placeholder="출판사를 입력하세요"></td>
-                        <th>&nbsp;&nbsp;&nbsp;출간일</th>
-                        <td><input type="date"> </td>
-                    </tr>
-                    <tr>
-                        <th>&nbsp;&nbsp;&nbsp;페이지수</th>
-                        <td><input type="text" placeholder="숫자만 입력하세요"></td>
-                        <th></th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>&nbsp;&nbsp;&nbsp;정가</th>
-                        <td><input type="text" placeholder="정가를 입력하세요"></td>
-                        <th><b>*</b> 판매가</th>
-                        <td><input type="text" placeholder="실제 판매 가격을 입력하세요" required></td>
-                    </tr>
-                    <tr>
-                        <th>&nbsp;&nbsp;&nbsp;도서 정보</th>
-                        <td>
-                            <div class="textInput" id="bkIntroInput">책소개/저자소개/목차 입력</div>
-                            
-                        </td>
-                        <th>&nbsp;&nbsp;&nbsp;키워드</th>
-                        <td>
-                            <div class="textInput" id="bkKeywordInput">키워드 입력</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>&nbsp;&nbsp;&nbsp;표지 이미지</th>
-                        <td><input type="file"></td>
-                        <th></th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>&nbsp;&nbsp;&nbsp;상세이미지</th>
-                        <td><input type="file"></td>
-                        <th><b>*</b> 수량</th>
-                        <td><input type="number" placeholder="입고 수량" style="width: 100px; color: red;" required></td>
-                    </tr>
-                </table>
-                <br>
-                <div id="choice_btn">
-                    
-                    <button type="button" id="enrollBtn" class="btn btn-primary">등록</button> &nbsp;
-                    <button type="reset" id="resetBtn" class="btn btn-primary">초기화</button>
-                    </div>
-                <br>
+            <form id="enrollForm" enctype="multipart/form-data"> action="<%=request.getContextPath()%>/enroll.bk" method="post">
+                
+            	<div id="bktable">
+                	<table>
+                        <tr style="border-bottom:1px solid #a8a5a5;">
+                            <th>&nbsp;&nbsp;&nbsp; 번호</th>
+                            <td colspan="3">1111</td>
+                        </tr>
+	                    <tr>
+	                        <th width="90"><b>*</b> 카테고리</th>
+	                        <td width="30">
+	                            <select name="category1" id="category1" style="width: 100px;" required>
+	                                <option value="">국내도서</option>
+	                                <option value="">해외도서</option>
+	                            </select> 
+	                            &nbsp;>&nbsp;
+	                            <select name="" id="category2" style="width: 120px;" required>
+	                                <option value="">문학</option>
+	                                <option value="">경제/경영</option>
+	                            </select> 
+	                        </td>
+	                        <th width="90">&nbsp;&nbsp;&nbsp;ISBN</th>
+	                        <td width="100"><input type="text" placeholder="숫자 13개 입력"></td>
+	                    </tr>
+	                    <tr>
+	                        <th><b>*</b> 도서명</th>
+	                        <td><input type="text" placeholder="도서명을 입력하세요" required></td>
+	                        <th>&nbsp;&nbsp;&nbsp;저자</th>
+	                        <td><input type="text" placeholder="저자명을 입력하세요"></td>
+	                    </tr>
+	                    <tr>
+	                        <th>&nbsp;&nbsp;&nbsp;출판사</th>
+	                        <td><input type="text" placeholder="출판사를 입력하세요"></td>
+	                        <th>&nbsp;&nbsp;&nbsp;출간일</th>
+	                        <td><input type="date"> </td>
+	                    </tr>
+	                    <tr>
+	                        <th>&nbsp;&nbsp;&nbsp;페이지수</th>
+	                        <td><input type="text" placeholder="숫자만 입력하세요"></td>
+	                        <th></th>
+	                        <td></td>
+	                    </tr>
+	                    <tr>
+	                        <th>&nbsp;&nbsp;&nbsp;정가</th>
+	                        <td><input type="text" placeholder="정가를 입력하세요"></td>
+	                        <th><b>*</b> 판매가</th>
+	                        <td><input type="text" placeholder="실제 판매 가격을 입력하세요" required></td>
+	                    </tr>
+	                    <tr>
+	                        <th>&nbsp;&nbsp;&nbsp;도서 정보</th>
+	                        <td>
+	                            <div class="textInput" id="bkIntroInput">책소개/저자소개/목차 입력</div>
+	                            
+	                        </td>
+	                        <th>&nbsp;&nbsp;&nbsp;키워드</th>
+	                        <td>
+	                            <div class="textInput" id="bkKeywordInput">키워드 입력</div>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th>&nbsp;&nbsp;&nbsp;표지 이미지</th>
+	                        <td><input type="file"></td>
+	                        <th><b>*</b> 수량</th>
+	                        <td><input type="number" placeholder="입고 수량" style="width: 100px; color: red;" required></td>
+	                    </tr>
+	                    <tr>
+	                        <th>&nbsp;&nbsp;&nbsp;상세이미지</th>
+	                        <td><input type="file"></td>
+	                        <th></th>
+	                        <td></td>
+	                    </tr>
+                        <tr>
+	                        <th></th>
+	                        <td><input type="file"></td>
+	                        <th></th>
+	                        <td></td>
+	                    </tr>
+                	</table>
+                	<br>
+                	<div id="choice_btn">
+                    	<button type="button" id="enrollBtn" class="btn btn-primary">등록</button> &nbsp;
+                    	<button type="reset" id="resetBtn" class="btn btn-primary">초기화</button>
+                	</div>
+                	<br>
+            	</form>
             </div>
         </div>
     </div>

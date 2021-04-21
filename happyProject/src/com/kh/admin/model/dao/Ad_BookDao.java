@@ -79,7 +79,6 @@ private Properties prop = new Properties();
 								   rset.getString("bk_genre"),
 								   rset.getInt("bk_origin_price"),
 								   rset.getInt("bk_price"),
-								   rset.getDate("bk_enroll_date"),
 								   rset.getInt("bk_stock")));
 			}
 			

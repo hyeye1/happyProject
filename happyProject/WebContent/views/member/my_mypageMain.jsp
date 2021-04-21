@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지 메인</title>
     <style>
-
-        .wrap{
+		.outer{
             margin: auto;
             border: 1px solid black;
             width: 1000px;
@@ -18,7 +17,7 @@
         .path{
             height:2%;
             text-align: right;
-           
+            width: 1000px;
         }
         
         .leftside{
@@ -33,14 +32,15 @@
             float: right; 
             width:620px; 
             height:1100px; 
-            margin-left:10px;      
+            margin-left:10px;  
+    
         } 
 
         .infobox{
-            box-sizing:border-box;
-            
+            box-sizing:border-box; 
             position:relative;
             padding: 5%;
+
         }
         .infoDetail{
          
@@ -72,17 +72,17 @@
         .btn{
             background-color:  rgb(249, 219, 122);
             border: none;
-            width: 100x;
+            width: 80px;
             height: 30px;
+            border-radius:5px; 
+
             cursor:pointer;
         }
         .btn:hover{
-        
-            background-color: rgb(249, 219, 122);
+            color: white
 
         }
         .btn:focus{
-            background-color: rgb(249, 219, 122);
            color: white;
         }
            
@@ -114,13 +114,14 @@
         .order_recent{
             box-sizing: border-box;
             border: relative;
-            padding: 80px;
+            padding-top: 20px;
+            padding-left: 30px;
         }
         .recent_list{
             text-align: center;
-            width:500px;
+            width:560px;
             height:300px;
-          
+            
         }
         thead{
             background-color: lightgray;
@@ -128,26 +129,31 @@
         #welcome{
             font-size: large;
        }
+       img{
+           width: 40px;
+           margin-right: 20px;
+       }
+       h2{margin-left: 30px;}
+      
     </style>
-</head>
-  
+</head>  
 <body>
   
    <!--전체-->
-<div class="wrap"> 
+<div class="outer"> 
     <div class="path">홈>마이페이지</div>
-    <div class="leftside">sideBar</div> <!--sideBar-->
+    <div class="leftside">sidebar</div> <!--sidebar-->
 
     <div class="rightside">
         <div class="infobox">
             <div class="infoDetail" >
                 <div class=detail_box>
                     <div id="userIcon"> 
-                        <img src="my_resources/image/userIcon.jpg" alt="" width="60px" height="40px"><br><br>
+                        <img src="my_resources/image/user.png" alt="" width="60px" height="40px"><br><br>
                     </div>
     
-                    <div id="welcome"><strong>김독자 님 반갑습니다!</strong><br>
-                    <span id="level">등급: 일반</span></div>
+                    <div id="welcome"><strong>김독자 님 반갑습니다!</strong><br></div>
+                    <div id="level">등급: 일반</div>
                 </div><br><br>
                 <div class="detail_box2">
                     <button class="btn" id="modify_btn">회원정보수정</button>
@@ -184,7 +190,7 @@
             </div>
 
         </div>
-        <h3 class>▶ 나의 주문 현황</h3>
+        <h2 class> 나의 주문 현황</h2>
         <div class="order_status">
             <div class="orderbox">
                
@@ -202,9 +208,9 @@
                 </div>
             </div>
 
-            <h3>▶ 최근 주문 내역 </h3>
+            <h2> 최근 주문 내역</h2 >
         <div class="order_recent">
-            <table class="recent_list" border="1">
+            <table class="recent_list" border="1" style="border-collapse: collapse;">
                 <thead>
                 <tr>
                     <th>주문일</th>
@@ -226,40 +232,11 @@
                      <td>배송중<br><button class="btn">상세조회</button></td>
 
                 </tr>
-
             </table>
 
-
         </div>
-
-
-
-
-
     </div>
-   
-    
-
-
-
-
-
-
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 </body>
 </html>
