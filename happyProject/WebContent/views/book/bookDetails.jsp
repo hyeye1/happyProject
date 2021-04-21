@@ -223,11 +223,10 @@
 	            
 	                <!-- Modal Header -->
 	                <div class="modal-body" align="center">
-	                    <h6 class="modal-title" style="text-align: center;"><br><br> 
+	                    <h5 class="modal-title" style="text-align: center;"><br><br> 
 	                        장바구니에 담겼습니다.  <br>
-	                        <a href="<%= contextPath %>/cList2.or" style="text-decoration:none; color:rgb(249, 219, 122);">장바구니로 이동</a>
-	                        <br><br> 
-	                    </h6>
+	                        <a href="<%= contextPath %>/cList2.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
+	                    </h5>
 	                </div>
 	                
 	                    <!-- Modal footer -->
