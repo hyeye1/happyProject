@@ -10,6 +10,14 @@
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
 %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+		Date nowTime = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+		
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,7 +167,7 @@
 
     .detailWrap>*{width: 100%;}
     #bktitle{height: 35px; background-color: rgb(249, 219, 122);}
-    #bkContent{height: 365px; background-color: white;;}
+    #bkContent{height: 380px; background-color: white;;}
 
     #bkContent>div{height: 100%;float: left;}
     #bkContent1{width: 28%;}
@@ -174,12 +182,12 @@
     }
     .detailWrap{
         position: absolute;
-        top:39%;
-        left:48%;
+        top:38%;
+        left:46%;
         z-index: 10;
         box-sizing: border-box;
         width: 650px; 
-        height: 400px; 
+        height: 415px; 
         margin-top: -75px;
         margin-left: -150px;
         display:none;
@@ -424,8 +432,8 @@
                 <div id="sort" style="padding: 18px 15px;">
                     <select name="sortlist" id="sortlist" style="width: 100px; height: 40px; font-size: small;">
                         <option value="all">도서명 순</option>
-                        <option value="start">도서번호 순</option>
-                        <option value="end" selected>최근 등록일 순</option>
+                        <option value="start" selected>도서번호 순</option>
+                        <option value="end">최근 등록일 순</option>
                     </select>
                     &nbsp;
                     <label for="countMem" style="font-weight: bold;">총 도서</label> 
@@ -443,13 +451,12 @@
                         <tr> 
                             <th width="20"><input type="radio" id="all" name="memcheck"></th>
                             <th width="40">번호</th>
-                            <th width="200">도서명</th>
-                            <th width="110">저자</th>
-                            <th width="100">출판사</th>
-                            <th width="90">장르</th>
+                            <th width="220">도서명</th>
+                            <th width="120">저자</th>
+                            <th width="120">출판사</th>
+                            <th width="120">장르</th>
                             <th width="50">정가</th>
                             <th width="50">판매가</th>
-                            <th width="80">등록일</th>
                             <th width="40">재고</th>
                         </tr>
                     </thead>
@@ -471,7 +478,7 @@
                                     <td><%= b.getBkDivision() %> > <%= b.getBkGenre() %></td>
                                     <td><%= b.getBkOriginPrice() %></td>
                                     <td><%= b.getBkPrice() %></td>
-                                    <td><%= b.getBkEnrollDate() %></td>
+                               
                                     <td style="color: red; font-weight: bold;"><%=b.getBkStock() %></td>
                                 </tr>
                             <%}%>
@@ -500,13 +507,14 @@
                 </div>
                 <br>
                 <select name="searchList" id="searchList" style="margin-left: 25%; width: 60px;">
-                    <option value="" selected>도서명</option>
-                    <option value="">저자</option>
-                    <option value="">출판사</option>
-                </select>
-                <input type="text" id="searchText" style="width: 270px;" placeholder="입력해주세요" > 
-                <input type="button" class="search" id="searchBtn" value="검색" style="font-weight: bold; background-color: rgb(249, 219, 122); border: none; width: 55px;">
-
+                            <option value="" selected>도서명</option>
+                            <option value="">저자</option>
+                            <option value="">출판사</option>
+                        </select>
+                        <input type="text" id="searchText" style="width: 270px;" placeholder="입력해주세요" > 
+                        <input type="submit" class="search" id="searchBtn" value="검색" style="font-weight: bold; background-color: rgb(249, 219, 122); border: none; width: 55px;">
+        
+                
             </div>
         </div>
     </div>
@@ -528,6 +536,10 @@
                 </div>
                 <div id="bkContent2">
                     <table id="bkDetail">
+                    	<tr>
+                            <th>등록일</th>
+                            <td>2021/</td>
+                        </tr>
                         <tr>
                             <th width="70px">도서번호</th>
                             <td>1020</td>
@@ -711,7 +723,8 @@
                     관리메뉴를 종료하시겠습니까?
                 </div>    
                 <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    2021.04.18 15:01:33
+                    <%= sf.format(nowTime)%>
+
                 </div>
                 <div id="adEndBtn" style="margin-left: 26%;">
                     <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>

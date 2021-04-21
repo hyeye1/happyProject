@@ -55,7 +55,7 @@ public class Ad_Book {
 	
 
 	public Ad_Book(int bkNo, String bkName, String author, String publisher, String bkDivision, String bkGenre,
-			int bkOriginPrice, int bkPrice, Date bkEnrollDate, int bkStock) {
+			int bkOriginPrice, int bkPrice, int bkStock) {
 		super();
 		this.bkNo = bkNo;
 		this.bkName = bkName;
@@ -65,7 +65,6 @@ public class Ad_Book {
 		this.bkGenre = bkGenre;
 		this.bkOriginPrice = bkOriginPrice;
 		this.bkPrice = bkPrice;
-		this.bkEnrollDate = bkEnrollDate;
 		this.bkStock = bkStock;
 	}
 

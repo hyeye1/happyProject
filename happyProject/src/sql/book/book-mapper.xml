@@ -23,11 +23,10 @@
                              , BK_GENRE
                              , BK_ORIGIN_PRICE
                              , BK_PRICE
-                             , BK_ENROLL_DATE
                              , BK_STOCK
                           FROM TB_BOOK
                          ORDER
-                            BY BK_ENROLL_DATE DESC
+                            BY BK_NO DESC
 		               ) A
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
