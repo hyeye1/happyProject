@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String contextPath = request.getContextPath(); 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +11,12 @@
 <style>
     .outer{
             margin-top: 50px;
-            margin-left: 250px;
+            margin: auto;
             margin-bottom: 20px;
             border: 1px solid white;
             width:800px;
     }
-    #text1{font-size:x-large; font-weight: bold;}
+    #text1, #text1_1{font-size:x-large; font-weight: bold;}
     #text2{color:rgb(241, 196, 15); font-weight: bold;}
     #btn{
             width: 70px;
@@ -30,11 +33,11 @@
     #btn:hover{background-color: rgb(249, 219, 122); color:white;}
     .button{margin-left: 170px;}
     .page{margin-left: 500px; font-size: medium;}
-    #updateForm>table{
+    #insertForm>table{
         border: 1px solid gray; 
         background-color: rgb(249, 219, 122);
         padding: 10px;}
-    #updateForm input, #updateForm textarea
+    #insertForm input, #insertForm textarea
     {
         width: 100%;
         box-sizing: border-box;
@@ -45,15 +48,15 @@
 <body>
 	<div class="outer">
         <span id="text1">공지사항</span>
-        <span id="text1"style="color:rgb(241, 196, 15)">작성하기</span>
+        <span id="text1_1"style="color:rgb(241, 196, 15)">작성하기</span>
         <hr>
-        <form id="updateForm" action="" method="POST">
-        	<input type="hidden" name="nno" value="">
+        <form id="insertForm" action="<%= contextPath %>/insert.no" method="POST">
+        	
             <table>
                 <tr>
                     <th width="50">제목</th>
                     <td colspan="3" width="400">
-                        <input type="text" name="title" required value="공지사항 작성제목">
+                        <input type="text" name="title" required placeholder="공지사항 제목">
                     </td>
                 </tr>
                 <tr>
@@ -62,7 +65,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <textarea name="content" rows="10" style="resize: none;" required>공지사항 작성내용</textarea>
+                        <textarea name="content" rows="10" style="resize: none;" required placeholder="공지사항 내용"></textarea>
                     </td>
                 </tr>
             </table>
