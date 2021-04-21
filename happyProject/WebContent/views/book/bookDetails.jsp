@@ -196,31 +196,51 @@
         </div>
         <!-- 로그인 전 -->
         <% if(loginUser == null) { %>
-        <!-- The Modal for 로그인전 장바구니버튼 클릭 -->
-        <div class="modal" id="goToCart">
-            <div class="modal-dialog">
-	            <div class="modal-content">
+	        <!-- The Modal for 로그인전 장바구니버튼 클릭 -->
+	        <div class="modal" id="goToCart">
+	            <div class="modal-dialog">
+		            <div class="modal-content">
+		            
+		                <!-- Modal Header -->
+		                <div class="modal-body" align="center">
+		                <h6 class="modal-title" style="text-align: center;"><br><br> 로그인 후 서비스 이용 가능합니다. <br><br> </h6>
+		                </div>
+		            
+		                <!-- Modal footer -->
+		                <div class="modal-footer">
+		                <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">OK</button>
+		                </div>
+		                
+		            </div>
+	            </div>
+	        </div>
+        <!-- 로그인 후  -->
+		<% }else { %>
+			<!-- The Modal for 로그인후 장바구니버튼 클릭 -->
+	        <div class="modal" id="goToCart">
+	            <div class="modal-dialog">
+	                <div class="modal-content">
 	            
 	                <!-- Modal Header -->
 	                <div class="modal-body" align="center">
-	                <h6 class="modal-title" style="text-align: center;"><br><br> 로그인 후 서비스 이용 가능합니다. <br><br> </h6>
-	                </div>
-	            
-	                <!-- Modal footer -->
-	                <div class="modal-footer">
-	                <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">OK</button>
+	                    <h6 class="modal-title" style="text-align: center;"><br><br> 
+	                        장바구니에 담겼습니다.  <br>
+	                        <a href="<%= contextPath %>/cList2.or" style="text-decoration:none; color:rgb(249, 219, 122);">장바구니로 이동</a>
+	                        <br><br> 
+	                    </h6>
 	                </div>
 	                
+	                    <!-- Modal footer -->
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">
+	                    	<h6 style="margin-top:10px;"> 쇼핑 계속하기 </h6>
+	                    </button>
+	                </div>
+	                
+	                </div>
 	            </div>
-            </div>
-        </div>
-        <!-- 로그인 후  -->
-		<% }else { %>
-			<script>
-				function cart(){
-					location.href="<%= contextPath %>//cList2.or";
-				}
-			</script>
+	        </div>
+	        <!-- //Modal -->
 		<% } %>
         <br><br>
         <hr>
