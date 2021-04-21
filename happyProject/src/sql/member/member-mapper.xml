@@ -29,34 +29,29 @@
  		WHERE ADMIN_YN='N'
 	</entry>
 	
-	
-	<!-- 수업시간에 했던 것들 -->
 	<entry key="insertMember">
 		INSERT
-           INTO MEMBER
+           INTO TB_MEMBER
 		        (
-		        USER_NO
-		      , USER_ID
-		      , USER_PWD
-		      , USER_NAME
-		      , PHONE
+		        MEM_NO
+		      , MEM_ID
+		      , MEM_PWD
+		      , MEM_NAME
 		      , EMAIL
-		      , ADDRESS
-		      , INTEREST
+		      , MEM_PHONE
 		        )
 		 VALUES 
 		        (
-		         SEQ_UNO.NEXTVAL
-		       , ?
-		       , ?
-		       , ?
-		       , ?
-		       , ?
-		       , ?
-		       , ?
+		        SEQ_MNO.NEXTVAL
+		      , ?
+		      , ?
+		      , ?
+		      , ?
+		      , ?
 		         )
-	
 	</entry>
+	
+	<!-- 수업시간에 했던 것들 -->
 	
 	<entry key="updateMember">
 		UPDATE

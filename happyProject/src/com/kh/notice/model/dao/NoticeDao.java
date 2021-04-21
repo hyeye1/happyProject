@@ -91,5 +91,26 @@ public class NoticeDao {
 		
 	}
 	
+	public int insertNotice(Connection conn, Notice n) {
+		
+		int result =0;
+		PreparedStatement pstmt =null;
+		String sql = prop.getProperty("insertNotice");
+		
+		try {
+			pstmt=conn.prepareStatement(sql); 
+			pstmt.setString(1, n.getNoTitle());
+			pstmt.setInt(2, Integer.parseInt(n.getNoWriter()));
+			pstmt.setString(3, n.getNoContent());
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	
 }

@@ -34,5 +34,23 @@
                  WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="insertNotice">
+		INSERT
+		  INTO TB_NOTICE
+		  (
+		    NO_NO
+		  , NO_TITLE
+		  , NO_WRITER
+		  , NO_CONTENT
+		  )
+		  VALUES
+		  (
+		    SEQ_NNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
 
 </properties>

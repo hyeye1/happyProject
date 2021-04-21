@@ -84,7 +84,7 @@
 		
 		<script>
 			function joinNowPage(){
-				location.href = "<%= contextPath %>/join.me";
+				location.href = "<%= contextPath %>/joinForm2.me";
 			}
 		</script>
 		

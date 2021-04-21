@@ -36,6 +36,17 @@ public class Member {
 		this.recentLogin = recentLogin;
 		this.adminYN = adminYN;
 	}
+	
+	
+
+	public Member(String memId, String memPwd, String memName, String email, String memPhone) {
+		super();
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.email = email;
+		this.memPhone = memPhone;
+	}
 
 	public int getMemNo() {
 		return memNo;

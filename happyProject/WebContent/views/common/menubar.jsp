@@ -142,7 +142,7 @@
     				}
     				
     				function joinPage(){
-    					location.href = "<%= contextPath %>/joinForm.me";
+    					location.href = "<%= contextPath %>/joinForm1.me";
     				} 
     			</script>
     			

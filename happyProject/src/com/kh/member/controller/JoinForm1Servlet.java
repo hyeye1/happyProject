@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class JoinFormServlet
  */
-@WebServlet("/joinForm.me")
-public class JoinFormServlet extends HttpServlet {
+@WebServlet("/joinForm1.me")
+public class JoinForm1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JoinFormServlet() {
+    public JoinForm1Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
