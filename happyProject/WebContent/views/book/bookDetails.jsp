@@ -154,7 +154,7 @@
         <div style="margin-left:200px">
             <!-- 책 표지 이미지 -->
             <div class="bookImg">
-                <img src="../화면구현/img/달러구트_표지.png" width="300" height="400">
+                <img src="resources/images/cart/달러구트_표지.png" width="300" height="400">
             </div>
             <!-- 책 정보 -->
             <div class="bookInfo" align="left">
