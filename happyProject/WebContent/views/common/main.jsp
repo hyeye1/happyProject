@@ -210,7 +210,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/books/travel/bk16.jfif">
+                                    <img class="coverImg" src="resources/images/books/travel/bk16.jpg">
                                     아름다운 사찰여행
                                 </a>
                                 <p>유철상</p>
