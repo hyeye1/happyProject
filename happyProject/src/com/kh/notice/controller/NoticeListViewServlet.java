@@ -35,7 +35,7 @@ public class NoticeListViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*
+		
 		int listCount;		
 		int currentPage;	
 		int pageLimit;		
@@ -76,10 +76,10 @@ public class NoticeListViewServlet extends HttpServlet {
 		
 		
 		
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit,maxPage, startPage, endPage);*/
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit,maxPage, startPage, endPage);
 
-		ArrayList<Notice> list = new NoticeService().selectNotcieList(/*pi*/);
-		/*request.setAttribute("pi", pi);*/
+		ArrayList<Notice> list = new NoticeService().selectNotcieList(pi);
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 	
 		request.getRequestDispatcher("views/notice/noticeListView.jsp").forward(request, response);

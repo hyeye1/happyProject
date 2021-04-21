@@ -27,7 +27,7 @@ public class NoticeDao {
 			e.printStackTrace();
 		}
 	}
-	/*
+	
 	public int selectListCount(Connection conn) {
 		// select문 => ResultSet객체(총게시글갯수 == 정수)
 		int listCount =0;
@@ -53,9 +53,9 @@ public class NoticeDao {
 		
 		return listCount;
 	}
-	*/
 	
-	public ArrayList<Notice> selectNoticeList(Connection conn/*, PageInfo pi*/){
+	
+	public ArrayList<Notice> selectNoticeList(Connection conn, PageInfo pi){
 		
 		ArrayList<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt =null;
@@ -65,10 +65,10 @@ public class NoticeDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql); // 
-			/*
+			
 			pstmt.setInt(1, (pi.getCurrentPage()-1) * pi.getBoardLimit() +1);
 			pstmt.setInt(2, pi.getCurrentPage() * pi.getBoardLimit());
-			*/
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {

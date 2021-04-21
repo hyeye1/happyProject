@@ -13,7 +13,7 @@ import com.kh.notice.model.dao.NoticeDao;
 import com.kh.notice.model.vo.Notice;
 
 public class NoticeService {
-	/*
+	
 	public int selectListCount() {
 		Connection conn = getConnection();
 		int listCount = new NoticeDao().selectListCount(conn);
@@ -27,13 +27,13 @@ public class NoticeService {
 		
 		return listCount;
 	}
-*/
+
 
 	
-	public ArrayList<Notice> selectNotcieList(/*PageInfo pi*/){
+	public ArrayList<Notice> selectNotcieList(PageInfo pi){
 		Connection conn = getConnection();
 		
-		ArrayList<Notice> list = new NoticeDao().selectNoticeList(conn/*, pi*/);
+		ArrayList<Notice> list = new NoticeDao().selectNoticeList(conn, pi);
 		
 		close(conn);
 		return list;

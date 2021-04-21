@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Notice, com.kh.common.model.vo.PageInfo"%>
-<%/*
-	PageInfo pi = (PageInfo)request.getAttribute("pi");*/
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
  	String contextPath = request.getContextPath(); 
- 	/*
+ 	
  	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
-	*/
+	
 %>   
 
 <!DOCTYPE html>
@@ -104,13 +104,35 @@
             </tbody>
         </table>
         
+     
 
     
     
-      <br><br>
+         <br><br>
+	
+        <div align="center" class="pagingArea">
 
+			<% if(currentPage != 1) { %>
+            	<button onclick="location.href='<%=contextPath%>/list.no?currentPage=<%=currentPage-1%>';">이전</button>
+			<% } %>
+			
+			<% for(int p=startPage; p<=endPage; p++) { %>
+				
+				<% if(currentPage == p){ %>
+            		<button disabled><%= p %></button>
+            	<% }else{ %>
+            		<button onclick="location.href='<%=contextPath%>/list.no?currentPage=<%= p %>';"><%= p %></button>
+            	<% } %>
+            	
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button onclick="location.href='<%=contextPath%>/list.no?currentPage=<%=currentPage+1%>';">다음</button>
+			<% } %>
+			
+        </div>
+    
     </div>
-    
    
 	
         

@@ -189,7 +189,7 @@
                     <br>
 
             <div class="notice">
-                <a href="<%=contextPath%>/list.no"><img src="resources/images/notice.png" width="130px" height="50"></a><br>
+                <a href="<%=contextPath%>/list.no?currentPage=1"><img src="resources/images/notice.png" width="130px" height="50"></a><br>
                 <table class="noticeList">
                     <thead>
                         <tr id="noticeNew">
