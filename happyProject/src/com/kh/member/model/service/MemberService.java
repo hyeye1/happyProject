@@ -21,6 +21,27 @@ public class MemberService {
 		return loginMember;
 	}
 	
+	/**
+	 * 회원가입용
+	 * @param m 회원가입폼에 사용자가 입력한 값
+	 * @return 처리된 행 수 
+	 */
+	public int insertMember(Member m) {
+		
+		Connection conn = getConnection();
+		int result = new MemberDao().insertMember(conn, m);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	
 	
 }
 

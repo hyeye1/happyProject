@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class JoinServlet
@@ -26,7 +30,29 @@ public class JoinServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		String memId = request.getParameter("memId");
+		String memPwd = request.getParameter("memPwd");
+		String memName = request.getParameter("memName");
+		String email = request.getParameter("email");
+		String memPhone = request.getParameter("memPhone");
 
+		Member m = new Member(memId, memPwd, memName, email, memPhone);
+		
+		int result = new MemberService().insertMember(m);
+		
+		if(result > 0) {
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "회원가입이 완료되었습니다!");
+			
+			response.sendRedirect(request.getContextPath());
+		}else {
+			request.setAttribute("errorMsg", "회원가입에 실패했습니다.");
+			
+		}
+		
 		
 	}
 

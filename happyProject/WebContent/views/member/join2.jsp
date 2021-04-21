@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <!-- jQuery library -->
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+ <!-- jQuery library -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <!-- Popper JS -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -190,27 +190,27 @@
 </head>
 <body>
     <div class="join2Outer" align="center">
-        <img src="../../resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <img src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
         <div class="join2Title" align="center">
             <br>
             <p>회원가입</p>
         </div>
         
-        <form action="" method="post" id="enrollForm">
+        <form action="<%= request.getContextPath() %>/join.me" method="post" id="enrollForm">
             <table class="join2Input">
                 <tr>
                     <th>아이디 *</th>
-                    <td><input type="text" name="userId" placeholder="6자 이상" minlength=6 required></td>
+                    <td><input type="text" name="memId" placeholder="6자 이상" minlength=6 required></td>
                     <td><button type="button" class="join2Check" onclick="idCheck();">중복확인</button></td>
                 </tr>
                 <tr>
                     <th>비밀번호 *</th>
                     <td colspan="2"> 
-                        <input type="password" placeholder="영문/숫자/특수문자 2가지 이상 (8~20자)" required minlength=8 maxlength=20>
+                        <input type="password" name="memPwd" placeholder="영문/숫자/특수문자 2가지 이상 (8~20자)" required minlength=8 maxlength=20>
                     </td>
                 </tr>
                 <tr>
-                    <th>비밀번호 확인 *</th>
+                    <th>비밀번호 확인</th>
                     <td colspan="2"> 
                         <input type="password" placeholder="비밀번호를 한번 더 입력해주세요" required>
                     </td>
@@ -218,23 +218,23 @@
                 <tr>
                     <th>이름 *</th>
                     <td colspan="2"> 
-                        <input type="text" placeholder="이름을 입력해주세요" required>
+                        <input type="text" name="memName" placeholder="이름을 입력해주세요" required>
                     </td>
                 </tr>
                 <tr>
                     <th>이메일 *</th>
-                    <td><input type="email" placeholder="abc@happybook.com" required></td>
+                    <td><input type="email" name="email" placeholder="abc@happybook.com" required></td>
                     <td><button type="button" class="join2Check">중복확인</button></td>
                 </tr>
                 <tr>
                     <th>휴대폰 *</th>
-                    <td><input type="tel" id="joinPhone" placeholder="숫자만 입력해주세요" size="11" required></td>
+                    <td><input type="text" id="memPhone" name="memPhone" placeholder="010-xxxx-xxxx"  required></td>
                     <td><button type="button" id="phoneCheck" class="join2Check">인증번호받기</button></td>
                 </tr>
                 <tr class="phoneCheckInput">
                     <th></th>
                     <td><input type="number" id="phoneCheckNum" required></td>
-                    <td><button type="submit" id="phoneCheckYN" class="join2Check">인증번호확인</button></td>
+                    <td><button type="button" id="phoneCheckYN" class="join2Check">인증번호확인</button></td>
                 </tr>
                 <tr class="phoneCheckInput">
                     <th></th>
@@ -242,7 +242,7 @@
                 </tr>
                 <tr>
                     <th>주소 *</th>
-                    <td colspan="2"> <button id="join2SearchAdd">주소검색</button></td>
+                    <td colspan="2"> <button type="button" id="join2SearchAdd">주소검색</button></td>
                 </tr>
             </table>
             
@@ -353,7 +353,7 @@
 
 
                         $("#phoneCheck").click(function(){
-                            $("#joinPhone").attr("disabled", true);
+                            $("#memPhone").attr("disabled", true);
                             $("#phoneCheck").attr("disabled", true);
                             $(".phoneCheckNumWrap").show();
                             $(".phoneCheckInput").show();
