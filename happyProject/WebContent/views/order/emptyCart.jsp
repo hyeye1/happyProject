@@ -121,7 +121,7 @@
         <div>
             <!-- 빈 장바구니 창 -->
             <div class="emptyCart" align="center">
-                <img id="cartImg" src="../화면구현/img/장바구니.png" alt="">
+                <img id="cartImg" src="resources/images/cart/장바구니.png" alt="">
                 <p>장바구니에 담긴 책이 없습니다.</p>
             </div>
 
@@ -131,7 +131,7 @@
                     <table>
                         <tr>
                             <td colspan="2">
-                                <img src="../화면구현/img/checked.png" style="width:20px;"> 
+                                <img src="resources/images/cart/checked2.png" style="width:20px;"> 
                                 <label for="">0권을 선택하셨습니다.</label> 
                             </td>
                         </tr>

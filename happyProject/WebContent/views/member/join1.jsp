@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +70,7 @@
 </head>
 <body>
     <div class="join1Outer" align="center">
-        <img  src="../../resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <img  src="resources/images/logo.PNG" width="180px" style="margin-right: 2px; margin-top: 70px;">
         
         <div class="join1Title" align="center">
             <br>
@@ -76,15 +79,21 @@
 
         <div class="join1Mid">
             <span id="join1YN"><input type="checkbox" required> 만 14세 이상입니다.</span>
-            <button type="submit" id="join1Btn">회원가입</button> <br>
+            <button type="submit" id="join1Btn" onclick="joinNowPage();">회원가입</button> <br>
         </div>
-
+		
+		<script>
+			function joinNowPage(){
+				location.href = "<%= contextPath %>/join.me";
+			}
+		</script>
+		
         <div class="joinSns" align="center">
             <br>
             <p>소셜 계정 간편 회원가입</p>
-            <input type="image" src="../../resources/images/naverlogin.png" id="naverJoin">
-            <input type="image" src="../../resources/images/kakaologin.png" id="kakaoJoin">
-            <input type="image" src="../../resources/images/facebooklogin.png" id="facebookJoin">
+            <input type="image" src="resources/images/naverlogin.png" id="naverJoin">
+            <input type="image" src="resources/images/kakaologin.png" id="kakaoJoin">
+            <input type="image" src="resources/images/facebooklogin.png" id="facebookJoin">
         </div>
 
 
