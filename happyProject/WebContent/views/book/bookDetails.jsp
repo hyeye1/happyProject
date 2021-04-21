@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.book.model.vo.*" %>
 <%
+	Book b = (Book)request.getAttribute("b");
 	Review r = (Review)request.getAttribute("r");
 	// 리뷰번호, 회원번호, 책번호, 리뷰등록날짜, 리뷰내용
  %>
@@ -364,6 +365,7 @@
             </table>
         </div>
         
+        <!-- 오류가 뜬다 오류가.. 왜뜨는지 몰라..
         <script>
         	$(function(){
         		
@@ -373,9 +375,11 @@
         	
         	function selectReviewList(){
         		$.ajax({
-        			url:"<%= contextPath %>/rList.bo",
-        			data:{bookno:<%= r.getBookNo() %>},
-        			success:function(rList){
+        			url:"<%= contextPath %>/rList.me",
+        			type:"post"
+        			data:{
+        				bookno:<%= r.getBookNo() %>
+        			}, success:function(rList){
         				console.log(rList);
         			}, error{
         				console.log("댓글리스트조회ajax실패");
@@ -384,7 +388,7 @@
         	}
         	  
         </script>
-        
+         -->
 
         <!-- 비회원일 때 리뷰 등록 클릭시 뜨는 MODAL -->
         <div class="modal" id="inputReview">

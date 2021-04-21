@@ -23,13 +23,25 @@
                              , BK_GENRE
                              , BK_ORIGIN_PRICE
                              , BK_PRICE
-                             , BK_ENROLL_DATE
                              , BK_STOCK
                           FROM TB_BOOK
                          ORDER
-                            BY BK_ENROLL_DATE DESC
+                            BY BK_NO DESC
 		               ) A
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectReviewList">
+		SELECT
+		       RE_NO
+		     , RE_CONTENT
+		     , MEM_NO
+		     , RE_DATE
+		  FROM TB_REVIEW
+		  JOIN TB_MEMBER USING(MEM_NO)
+		  JOIN TB_BOOK USING(BK_NO)
+		 WHERE BK_NO = ?
+		 ORDER BY RE_DATE DESC;
 	</entry>
 </properties>

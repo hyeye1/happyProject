@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import=" com.kh.member.model.vo.Member"%>
 <%
 String contextPath = request.getContextPath(); 
+Member loginUser = (Member)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -46,6 +47,7 @@ String contextPath = request.getContextPath();
 
 </head>
 <body>
+	
 	<div class="outer">
         <span id="text1">공지사항</span>
         <span id="text1_1"style="color:rgb(241, 196, 15)">작성하기</span>
