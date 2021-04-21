@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Notice, com.kh.common.model.vo.PageInfo"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+ 	String contextPath = request.getContextPath(); 
+ 	
+ 	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	
+%>   
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +74,7 @@
             <br>
         </div>
          
-        <table class="listArea">
+        <table class="listArea" align="center">
             <thead>
                 <tr id="top">
                     <th>글번호</th>
@@ -73,57 +85,66 @@
                 </tr>
             </thead>
             <tbody>
-                    <!-- 게시글 없을 때
-            		<tr>
-            			<td colspan="5">존재하는 공지사항이 없습니다.</td>
-            		</tr>
-                    -->
-		                <tr>
-		                    <td>1</td>
-		                    <td>공지사항제목</td>
-		                    <td>admin</td>
-		                    <td>10</td>
-		                    <td>2021-04-10</td>
-		                </tr>
-                        <tr>
-		                    <td>2</td>
-		                    <td>공지사항제목</td>
-		                    <td>admin</td>
-		                    <td>10</td>
-		                    <td>2021-04-10</td>
-		                </tr>
-                        <tr>
-		                    <td>3</td>
-		                    <td>공지사항제목</td>
-		                    <td>admin</td>
-		                    <td>10</td>
-		                    <td>2021-04-10</td>
-		                </tr>
-                        <tr>
-		                    <td>4</td>
-		                    <td>공지사항제목</td>
-		                    <td>admin</td>
-		                    <td>10</td>
-		                    <td>2021-04-10</td>
-		                </tr>
-                        <tr>
-		                    <td>5</td>
-		                    <td>공지사항제목</td>
-		                    <td>admin</td>
-		                    <td>10</td>
-		                    <td>2021-04-10</td>
-		                </tr>
+            <% if(list.isEmpty()){ %>
+             	<tr>
+             		<td colspan="5">존재하는 공지사항이 없습니다. </td>
+             	</tr>
+            <%} else { %>
+            	<% for(Notice n:list) { %>
+	                <tr>
+	                    <td><%= n.getNoNo() %></td>
+	                    <td><%= n.getNoTitle() %></td>
+	                    <td><%= n.getNoWriter() %></td>
+	                    <td><%= n.getNoCount() %></td>
+	                    <td><%= n.getNoDate() %></td>
+	                </tr>
+	            <%} %>
+             <%} %>
+          
             </tbody>
         </table>
-        <br>
-        <div class="pageButton"> 
-            <button id="btn2"><<</button>
-            <button id="btn2">1</button>
-            <button id="btn2">2</button>
-            <button id="btn2">3</button>
-            <button id="btn2">>></button>
+        <script>
+        	$(function(){
+        		$(".listArea>tbody>tr").click(function(){
+        			
+        			// /jsp/detail.bo?bno=글번호
+        					
+        			location.href = '<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text();
+        		})
+        	})
+        </script>
+     
+
+    
+    
+         <br><br>
+	
+        <div align="center" class="pagingArea">
+
+			<% if(currentPage != 1) { %>
+            	<button onclick="location.href='<%=contextPath%>/list.no?currentPage=<%=currentPage-1%>';">이전</button>
+			<% } %>
+			
+			<% for(int p=startPage; p<=endPage; p++) { %>
+				
+				<% if(currentPage == p){ %>
+            		<button disabled><%= p %></button>
+            	<% }else{ %>
+            		<button onclick="location.href='<%=contextPath%>/list.no?currentPage=<%= p %>';"><%= p %></button>
+            	<% } %>
+            	
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button onclick="location.href='<%=contextPath%>/list.no?currentPage=<%=currentPage+1%>';">다음</button>
+			<% } %>
+			
         </div>
+    
     </div>
+    
+    
+   
 	
         
 </body>

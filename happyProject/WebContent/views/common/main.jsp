@@ -183,7 +183,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/books/economy/02_돈의심리학.jpg">
+                                    <img class="coverImg" src="resources/books/economy/02_돈의심리학.jpg">
                                     돈의 심리학
                                 </a>
                                 <p>모건 하우절</p>
@@ -192,7 +192,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/books/poem/그런사람또없습니다_표지.jpg">
+                                    <img class="coverImg" src="resources/books/poem/그런사람또없습니다_표지.jpg">
                                     그런 사람 또 없습니다
                                 </a>
                                 <p>원태연</p>
@@ -201,7 +201,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/books/novel/아몬드.jpg">
+                                    <img class="coverImg" src="resources/books/novel/아몬드.jpg">
                                     아몬드
                                 </a>
                                 <p>손원평</p>
@@ -210,7 +210,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/books/travel/bk16.jpg">
+                                    <img class="coverImg" src="resources/books/travel/bk16.jpg">
                                     아름다운 사찰여행
                                 </a>
                                 <p>유철상</p>
@@ -219,7 +219,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/books/science/사피엔스.jpg">
+                                    <img class="coverImg" src="resources/books/science/사피엔스.jpg">
                                     사피엔스
                                 </a>
                                 <p>유발 하라리</p>

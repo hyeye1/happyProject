@@ -9,8 +9,6 @@
 		       , COUNT
 		 	FROM TB_FAQ
 		   WHERE FA_STATUS = 'Y'
-		   ORDER
-		      BY COUNT DESC
 	</entry>
 	
 	<entry key="insertFaq">
@@ -48,6 +46,15 @@
 	        AND FA_STATUS = 'Y'   
 	</entry>
 	
+	<entry key="selectTop5">
+		SELECT
+		  		 FA_TITLE
+		       , COUNT
+		 	FROM TB_FAQ
+		   WHERE FA_STATUS = 'Y'
+		   ORDER
+		   	  BY COUNTDESC
+	</entry>
 	
 	
 </properties>

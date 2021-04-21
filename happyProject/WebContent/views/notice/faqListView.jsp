@@ -96,7 +96,7 @@
         <div class="outer2" align="right">
             <button id="btn" onClick="location.href='<%= contextPath %>/enrollForm.faq'">글작성</button>
         </div>
-
+        
         <table class="listArea">
             <thead>
                 <tr id="top">

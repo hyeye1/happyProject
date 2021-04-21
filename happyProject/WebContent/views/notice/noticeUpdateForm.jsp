@@ -53,6 +53,7 @@
 
 </head>
 <body>
+
 	<div class="outer">
         <span id="text1">공지사항</span>
         <span id="text1"style="color:rgb(241, 196, 15)">수정하기</span>

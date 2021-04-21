@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% String contextPath = request.getContextPath(); %>    
+<% 
+	String contextPath = request.getContextPath(); 
+%>    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -11,9 +13,8 @@
     <title>Insert title here</title>
     <style>
         .outer{
-            margin-top: 50px;
-            margin-left: 250px;
-            margin-bottom: 20px;
+        	
+            margin:auto;
             border: 1px solid white;
             width:800px;
         }
@@ -145,6 +146,8 @@
     </style>
 </head>
 <body>
+	
+	
 
     <div class="outer">
         <span id="text1">고객센터</span><hr>
@@ -186,7 +189,7 @@
                     <br>
 
             <div class="notice">
-                <a href="<%=contextPath%>/list.no"><img src="resources/images/notice.png" width="130px" height="50"></a><br>
+                <a href="<%=contextPath%>/list.no?currentPage=1"><img src="resources/images/notice.png" width="130px" height="50"></a><br>
                 <table class="noticeList">
                     <thead>
                         <tr id="noticeNew">
