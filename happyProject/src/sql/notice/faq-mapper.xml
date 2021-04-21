@@ -9,8 +9,6 @@
 		       , COUNT
 		 	FROM TB_FAQ
 		   WHERE FA_STATUS = 'Y'
-		   ORDER
-		      BY COUNT DESC
 	</entry>
 	
 	<entry key="insertFaq">
