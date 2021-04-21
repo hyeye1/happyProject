@@ -174,7 +174,7 @@
                         <li>
                             <div class="todayBk" >
                                 <a href="<%= contextPath %>/bookDetails.bk"">
-                                    <img class="coverImg" src="resources/images/books/novel/달러구트.jpg" >
+                                    <img class="coverImg" src="resources/books/novel/달러구트.jpg" >
                                     달러구트 꿈 백화점
                                 </a>
                                 <p>이미예</p>
