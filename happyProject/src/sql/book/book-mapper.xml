@@ -1,1 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectListCount">
+		SELECT COUNT(*) LISTCOUNT
+		  FROM TB_BOOK
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT
+                               BK_NO
+                             , BK_NAME
+                             , AUTHOR
+                             , PUBLISHER
+                             , BK_DIVISION
+                             , BK_GENRE
+                             , BK_ORIGIN_PRICE
+                             , BK_PRICE
+                             , BK_ENROLL_DATE
+                             , BK_STOCK
+                          FROM TB_BOOK
+                         ORDER
+                            BY BK_ENROLL_DATE DESC
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+</properties>

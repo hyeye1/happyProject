@@ -136,8 +136,12 @@
     </style>
 </head>
 <body>
- <div class="cartOuter">
-        <br>
+
+	<%@ include file = "../common/menubar.jsp" %>
+	
+	 <div class="cartOuter">
+
+        <br><br><br>
 
         <!-- 장바구니타이틀, 단계-->
         <div>
@@ -164,7 +168,7 @@
                 </tr>
                 <tr>
                     <td style="height:100px;"><input type="checkbox" checked></td>
-                    <td align="center"><img src="../화면구현/img/달러구트_표지.png" style="width:80px; height:100px;"></td>
+                    <td align="center"><img src="resources/images/도서이미지(수정)/소설/달러구트.jpg" style="width:80px; height:100px;"></td>
                     <td>
                         <p>달러구트 꿈 백화점 | 잠들어야만 입장 가능합니다</p>
                         <small>이미예</small> <br><br>
@@ -199,7 +203,7 @@
                     <td align="center">20,000 원</td>
                 </tr>
                 <tr>
-                    <td style="height:100px;"><input type="checkbox" checked></td>
+                    <td style="height:100px;"><input type="checkbox" ></td>
                     <td align="center"><img src="../화면구현/img/아몬드.png" style="width:80px; height:100px;"></td>
                     <td>
                         <p>아몬드</p>
@@ -219,7 +223,7 @@
                 <table>
                     <tr>
                         <td colspan="2">
-                            <img src="../화면구현/img/checked.png" style="width:20px;"> 
+                            <img src="resources/images/cart/checked2.png" style="width:20px;"> 
                             <label for="">3권을 선택하셨습니다.</label> 
                         </td>
                     </tr>

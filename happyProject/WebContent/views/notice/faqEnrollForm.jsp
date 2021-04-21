@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +42,7 @@
         width: 100%;
         box-sizing: border-box;
     }
+    
 </style>
 
 </head>
@@ -47,7 +51,7 @@
         <span id="text1">FAQ</span>
         <span id="text1"style="color:rgb(241, 196, 15)">작성하기</span>
         <hr>
-        <form id="updateForm" action="" method="POST">
+        <form id="updateForm" action="<%=contextPath%>/insert.faq" method="POST">
         	<input type="hidden" name="nno" value="">
             <table>
                 <tr>
@@ -58,11 +62,10 @@
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td colspan="3"></td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <textarea name="content" rows="10" style="resize: none;" required>FAQ 작성내용</textarea>
+                        <textarea id="content" name="content" rows="10" required >FAQ 작성내용</textarea>
                     </td>
                 </tr>
             </table>

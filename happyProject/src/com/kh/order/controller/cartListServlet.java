@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class cartListServlet
  */
-@WebServlet("/cList.or")
+@WebServlet("/cList2.or")
 public class cartListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +27,7 @@ public class cartListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/order/emptyCart.jsp").forward(request, response);
+		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
 	}
 
 	/**

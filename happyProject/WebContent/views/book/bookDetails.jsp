@@ -41,6 +41,13 @@
             -webkit-appearance: none;
             margin:0px;
         }
+        /* 바로구매,장바구니,보관함버튼 */
+        .bookDetailOuter .goToLink{
+            background-color: rgb(249, 219, 122);
+            color:white;
+            border:none;
+        }
+        
         /*-- 책소개, 목차, 저자소개, 리뷰 a태그 --*/
         .bookDetailOuter .detail{
             width:180px;
@@ -70,7 +77,7 @@
             font-size:16px;
             color:dimgray
         }
-        .bookDetailOuter .link p{
+        .bookDetailOuter .link p,pre{
             margin-bottom:200px;
         }
 
@@ -154,7 +161,7 @@
         <div style="margin-left:200px">
             <!-- 책 표지 이미지 -->
             <div class="bookImg">
-                <img src="../화면구현/img/달러구트_표지.png" width="300" height="400">
+                <img src="resources/images/cart/달러구트_표지.png" width="300" height="400">
             </div>
             <!-- 책 정보 -->
             <div class="bookInfo" align="left">
@@ -183,11 +190,57 @@
         
         <!-- 주문하기, 보관하기 버튼 -->
         <div align="center" >
-            <button class="btn btn-primary btn-lg" style="background:rgb(249, 219, 122); border:none;">바로구매</button>&nbsp;&nbsp;
-            <button class="btn btn-primary btn-lg" style="background:rgb(249, 219, 122); border:none;">장바구니</button>&nbsp;&nbsp;
-            <button class="btn btn-primary btn-lg" style="background:rgb(249, 219, 122); border:none;">보관함</button>
+            <button class="goToLink btn btn-warning btn-lg">바로구매</button>&nbsp;&nbsp;
+            <button class="goToLink btn btn-warning btn-lg" data-toggle="modal" data-target="#goToCart" onclick="cart();">장바구니</button>&nbsp;&nbsp;
+            <button class="goToLink btn btn-warning btn-lg">보관함</button>
         </div>
-
+        <!-- 로그인 전 -->
+        <% if(loginUser == null) { %>
+	        <!-- The Modal for 로그인전 장바구니버튼 클릭 -->
+	        <div class="modal" id="goToCart">
+	            <div class="modal-dialog">
+		            <div class="modal-content">
+		            
+		                <!-- Modal Header -->
+		                <div class="modal-body" align="center">
+		                <h6 class="modal-title" style="text-align: center;"><br><br> 로그인 후 서비스 이용 가능합니다. <br><br> </h6>
+		                </div>
+		            
+		                <!-- Modal footer -->
+		                <div class="modal-footer">
+		                <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">OK</button>
+		                </div>
+		                
+		            </div>
+	            </div>
+	        </div>
+        <!-- 로그인 후  -->
+		<% }else { %>
+			<!-- The Modal for 로그인후 장바구니버튼 클릭 -->
+	        <div class="modal" id="goToCart">
+	            <div class="modal-dialog">
+	                <div class="modal-content">
+	            
+	                <!-- Modal Header -->
+	                <div class="modal-body" align="center">
+	                    <h5 class="modal-title" style="text-align: center;"><br><br> 
+	                        장바구니에 담겼습니다.  <br>
+	                        <a href="<%= contextPath %>/cList2.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
+	                    </h5>
+	                </div>
+	                
+	                    <!-- Modal footer -->
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">
+	                    	<h6 style="margin-top:10px;"> 쇼핑 계속하기 </h6>
+	                    </button>
+	                </div>
+	                
+	                </div>
+	            </div>
+	        </div>
+	        <!-- //Modal -->
+		<% } %>
         <br><br>
         <hr>
         <br>
@@ -218,23 +271,22 @@
         <!-- 목차 -->
         <h5  class="detailTitle" id="contentLink">목차</h5>
         <div class="link">
-            <p>
-            [달러구트 꿈 백화점] <br>
+<pre>
+[달러구트 꿈 백화점]
 
-            작가의 말 <br>
-            프롤로그. 3번째 제자의 유서 깊은 가게 <br>
-            1. 주문하신 꿈은 매진입니다 <br>
-            2. 한밤의 연애지침서 <br>
-            3. 미래를 보여 드립니다. <br>
-            4. 환불 요청 대소동 <br>
-            5. 노 쇼는 사양합니다. <br>
-            6. 이 달의 베스트셀러 <br>
-            7. 비틀즈와 벤젠고리 <br>
-            8. ‘타인의 삶(체험판)’ 출시 <br>
-            9. 예약하신 꿈이 도착하였습니다 <br>
-            에필로그 1. 비고 마이어스의 면접 <br>
-            에필로그 2. 스피도의 완벽한 하루 <br>
-            </p>
+작가의 말
+프롤로그. 3번째 제자의 유서 깊은 가게 
+1. 주문하신 꿈은 매진입니다
+2. 한밤의 연애지침서
+3. 미래를 보여 드립니다.
+4. 환불 요청 대소동
+5. 노 쇼는 사양합니다.
+7. 비틀즈와 벤젠고리
+8. ‘타인의 삶(체험판)’ 출시 
+9. 예약하신 꿈이 도착하였습니다
+에필로그 1. 비고 마이어스의 면접
+에필로그 2. 스피도의 완벽한 하루
+</pre>
         </div>
 
         <!-- 저자소개 -->
@@ -305,12 +357,14 @@
                 </tbody>
             </table>
         </div>
+        
+        
 
         <!-- 비회원일 때 리뷰 등록 클릭시 뜨는 MODAL -->
         <div class="modal" id="inputReview">
             
         </div>
-
+		
 
     </div>
 

@@ -52,6 +52,7 @@
             font-weight: bold; 
             padding-left: 25px;
             line-height: 40px;
+            color: #f3d00c;
         }
         .top5List, .noticeList{
             border: 1px solid black;
@@ -153,14 +154,10 @@
     
         <div class="faq">
             <form action="" id="faqSearch" method="GET">
-                <a href="<%=contextPath%>/list.faq"><img src="resources/images/faq.png" width="100px" height="40"></a><br>
-                <div class="faqSearchBox">
-                    <span id="faq1">FAQ</span>&nbsp;
-                    <input id="faq2" type="text" value="검색어 입력">
-                    <button id="faq3" type="submit">검색</button>
-                </div>
+                <a href="<%=contextPath%>/list.faq"><img src="resources/images/faq.png" width="100px" height="40"></a>
             </form>
             <span id="top5Title">자주 묻는 질문 TOP 5</span>
+            <span></span>
                 <div class="top5">
                     <button class="question" id="que-1"><span id="que-1-toggle"></span><span>자주 묻는 질문 1</span></button>
                     <div class="answer" id="ans-1">내용내용내용</div>
@@ -180,7 +177,8 @@
         </div>
     
                 <div class="question1">
-                    <a href="이동될 페이지 주소"><img src="resources/images/question.png" width="120px" height="50"></a><br>
+                    <a href="이동될 페이지 주소"><img src="resources/images/question.png" width="120px" height="50"></a>
+                    <button type="button" id="qbtn">1:1문의하기</button><br>
                     <div class="questionBox">
                         <span id="qtext1">1:1 문의로 빠른 답변 받기</span><br><br>
                         <span id="qtext2">해피북스데이에 대한 모든 궁금증은 1:1 문의하기로 부담없이 확인하세요.</span>

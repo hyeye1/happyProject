@@ -23,7 +23,11 @@
          AND MEM_PWD = ? 
 	</entry>
 	
-	
+	<entry key="selectListCount">
+		SELECT COUNT(*) LISTCOUNT
+  		FROM TB_MEMBER
+ 		WHERE ADMIN_YN='N'
+	</entry>
 	
 	
 	<!-- 수업시간에 했던 것들 -->

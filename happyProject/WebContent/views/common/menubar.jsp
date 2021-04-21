@@ -120,7 +120,7 @@
             
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
-                <img src="resources/images/logo.PNG" style="width: 120px;" id="menubarLogoImg">
+                <img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg">
                 <input type="text" id="menubarSearchInput" > <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색">
     			
     		<% if(loginUser == null) { %>
@@ -128,9 +128,9 @@
                 <!-- 로그인전 div -->
                
 	                <div id="loginBefore"  >
-	                    <input type="image" id="menubarCartBtn" src="resources/images/장바구니.PNG" onclick="beforeCheckCart();">
-	                    <input type="image" id="menubarJoinBtn" src="resources/images/회원가입.PNG" onclick="joinPage();">
-	                    <input type="image" id="menubarLoginBtn" src="resources/images/로그인.PNG" onclick="loginPage();">
+	                    <input type="image" id="menubarCartBtn" src="resources/images/cart.png" onclick="beforeCheckCart();">
+	                    <input type="image" id="menubarJoinBtn" src="resources/images/join.png" onclick="joinPage();">
+	                    <input type="image" id="menubarLoginBtn" src="resources/images/login.png" onclick="loginPage();">
 	                </div>
     			
     			<script>
@@ -149,8 +149,8 @@
             <% }else if(loginUser.getAdminYN().equals("Y")) { %>
             <!-- 관리자 div -->
             <div id="loginAdmin">
-                <input type="image" id="menubarAdminBtn" src="resources/images/admin.PNG" onclick="adminPage()">
-                <input type="image" id="menubarLogoutBtn" src="resources/images/로그아웃.PNG">
+                <input type="image" id="menubarAdminBtn" src="resources/images/admin.png" onclick="adminPage()">
+                <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png">
             </div>
             	<script>
     				const menubarAdminBtn = document.getElementById('menubarAdminBtn');
@@ -163,9 +163,9 @@
     		
                 <!-- 로그인후 div -->
                 <div id="loginAfter">
-                    <input type="image" id="menubarCartBtn" src="resources/images/장바구니.PNG" onclick="afterCheckCart();">
-                    <input type="image" id="menubarMypageBtn" src="resources/images/mypage.PNG">
-                    <input type="image" id="menubarLogoutBtn" src="resources/images/로그아웃.PNG">
+                    <input type="image" id="menubarCartBtn" src="resources/images/cart.png" onclick="afterCheckCart();">
+                    <input type="image" id="menubarMypageBtn" src="resources/images/mypage.png">
+                    <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png">
                 </div>
                 	<script>
                 		function afterCheckCart(){
@@ -175,7 +175,6 @@
                 	</script>
             </div>
             <% } %>
-            
             
             
             <br clear="both">

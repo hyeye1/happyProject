@@ -174,7 +174,7 @@
                         <li>
                             <div class="todayBk" >
                                 <a href="<%= contextPath %>/bookDetails.bk"">
-                                    <img class="coverImg" src="resources/images/도서이미지(수정)/소설/달러구트.jpg" >
+                                    <img class="coverImg" src="resources/images/books/novel/달러구트.jpg" >
                                     달러구트 꿈 백화점
                                 </a>
                                 <p>이미예</p>
@@ -183,7 +183,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/도서이미지(수정)/경제경영/02_돈의심리학.jpg">
+                                    <img class="coverImg" src="resources/images/books/economy/02_돈의심리학.jpg">
                                     돈의 심리학
                                 </a>
                                 <p>모건 하우절</p>
@@ -192,7 +192,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg">
+                                    <img class="coverImg" src="resources/images/books/poem/그런사람또없습니다_표지.jpg">
                                     그런 사람 또 없습니다
                                 </a>
                                 <p>원태연</p>
@@ -201,7 +201,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/도서이미지(수정)/소설/아몬드.jpg">
+                                    <img class="coverImg" src="resources/images/books/novel/아몬드.jpg">
                                     아몬드
                                 </a>
                                 <p>손원평</p>
@@ -210,7 +210,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/도서이미지(수정)/여행/bk16.jfif">
+                                    <img class="coverImg" src="resources/images/books/travel/bk16.jpg">
                                     아름다운 사찰여행
                                 </a>
                                 <p>유철상</p>
@@ -219,7 +219,7 @@
                         <li>
                             <div class="todayBk">
                                 <a href="">
-                                    <img class="coverImg" src="resources/images/도서이미지(수정)/인문과학/사피엔스.jpg">
+                                    <img class="coverImg" src="resources/images/books/science/사피엔스.jpg">
                                     사피엔스
                                 </a>
                                 <p>유발 하라리</p>
@@ -288,7 +288,7 @@
                         <br>
                         <div class="weeklyTop1" >
                             <br>
-                            <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <p>
                                 <p class="rankNum">1</p>
@@ -301,7 +301,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <div class="tops">
                                 <p>
@@ -315,7 +315,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <div class="tops">
                                 <p>
@@ -328,7 +328,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <div class="tops">
                                 <p>
@@ -341,7 +341,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <div class="tops">
                                 <p>
@@ -362,7 +362,7 @@
                         <br>
                         <div class="weeklyTop1" >
                             <br>
-                            <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/소설/달러구트.jpg" alt="도서이미지-달러구트 꿈 백화점">
+                            <input class="coverImg" type="image" src="resources/images/books/novel/달러구트.jpg" alt="도서이미지-달러구트 꿈 백화점">
                             <p>
                                 <p class="rankNum">1</p>
                                 <a class="title" href="">달러구트 꿈 백화점</a>
@@ -374,7 +374,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             <div class="tops">
                                 <p>
                                     <p class="rankNum">2</p>
@@ -387,7 +387,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <div class="tops">
                                 <p>
@@ -400,7 +400,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <div class="tops">
                                 <p>
@@ -412,7 +412,7 @@
                     </li>
                     <li>                    <div class="weeklyTops" >
                         <br>
-                        <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                        <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                         
                         <div class="tops">
                             <p>
@@ -432,7 +432,7 @@
                         <br>
                         <div class="weeklyTop1" >
                             <br>
-                            <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/경제경영/02_돈의심리학.jpg" alt="도서이미지-돈의심리학">
+                            <input class="coverImg" type="image" src="resources/images/books/economy/02_돈의심리학.jpg" alt="도서이미지-돈의심리학">
                             <p>
                                 <p class="rankNum">1</p>
                                 <a class="title" href="">돈의 심리학</a>
@@ -444,7 +444,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             <div class="tops">
                                 <p>
                                     <p class="rankNum">2</p>
@@ -457,7 +457,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <div class="tops">
                                 <p>
@@ -470,7 +470,7 @@
                     <li>
                         <div class="weeklyTops" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                             
                             <div class="tops">
                                 <p>
@@ -482,7 +482,7 @@
                     </li>
                     <li>                    <div class="weeklyTops" >
                         <br>
-                        <input class="coverImg2" type="image" src="resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                        <input class="coverImg2" type="image" src="resources/images/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
                         
                         <div class="tops">
                             <p>

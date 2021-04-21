@@ -59,7 +59,6 @@
         <span id="text2">사용 가능한 쿠폰</span>
         <div class="deleteButton" align="right">
             <button id="btn" type="button">선택삭제</button>
-            <button id="btn" type="button">전체삭제</button>
         </div>
         <table class="couponList">
             <tr id="back">
@@ -89,7 +88,6 @@
         <span id="text2">사용 만료 쿠폰</span>
         <div class="deleteButton" align="right">
             <button id="btn" type="button">선택삭제</button>
-            <button id="btn" type="button">전체삭제</button>
         </div>
 
         <table class="couponList">
