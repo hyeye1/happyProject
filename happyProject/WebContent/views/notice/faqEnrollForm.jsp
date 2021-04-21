@@ -42,6 +42,7 @@
         width: 100%;
         box-sizing: border-box;
     }
+    
 </style>
 
 </head>
@@ -61,11 +62,10 @@
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td colspan="3"></td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <textarea name="content" rows="10" style="resize: none;" required>FAQ 작성내용</textarea>
+                        <textarea id="content" name="content" rows="10" required >FAQ 작성내용</textarea>
                     </td>
                 </tr>
             </table>

@@ -39,7 +39,7 @@
         padding: 10px;
         }
     #detailArea{border: 1px solid black; background-color: rgb(249, 219, 122); margin-top: 20px;}
-    #detailArea p{height: 200px;}
+    #detailArea p{height: auto;}
     #detailArea td{background-color: white;}
     #detailArea th{background-color: rgba(253, 240, 198, 0.993);}
 </style>
