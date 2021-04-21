@@ -11,9 +11,8 @@
     <title>Insert title here</title>
     <style>
         .outer{
-            margin-top: 50px;
-            margin-left: 250px;
-            margin-bottom: 20px;
+        	
+            margin:auto;
             border: 1px solid white;
             width:800px;
         }
@@ -144,6 +143,8 @@
     </style>
 </head>
 <body>
+	
+	
 
     <div class="outer">
         <span id="text1">고객센터</span><hr>
