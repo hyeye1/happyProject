@@ -76,18 +76,15 @@
             <br>
             <p align="left">해피북스데이 간편가입하기</p>
         </div>
-
+		
+	<form action="<%= request.getContextPath() %>/joinForm2.me">
         <div class="join1Mid">
             <span id="join1YN"><input type="checkbox" required> 만 14세 이상입니다.</span>
-            <button type="submit" id="join1Btn" onclick="joinNowPage();">회원가입</button> <br>
+            <button type="submit" id="join1Btn" >회원가입</button> <br>
         </div>
+	</form>
 		
-		<script>
-			function joinNowPage(){
-				location.href = "<%= contextPath %>/joinForm2.me";
-			}
-		</script>
-		
+
         <div class="joinSns" align="center">
             <br>
             <p>소셜 계정 간편 회원가입</p>

@@ -39,13 +39,13 @@ public class Member {
 	
 	
 
-	public Member(String memId, String memPwd, String memName, String email, String memPhone) {
+	public Member(String memId, String memPwd, String memName, String memPhone, String email) {
 		super();
 		this.memId = memId;
 		this.memPwd = memPwd;
 		this.memName = memName;
-		this.email = email;
 		this.memPhone = memPhone;
+		this.email = email;
 	}
 
 	public int getMemNo() {

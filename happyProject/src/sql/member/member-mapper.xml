@@ -37,8 +37,8 @@
 		      , MEM_ID
 		      , MEM_PWD
 		      , MEM_NAME
-		      , EMAIL
 		      , MEM_PHONE
+		      , EMAIL
 		        )
 		 VALUES 
 		        (
