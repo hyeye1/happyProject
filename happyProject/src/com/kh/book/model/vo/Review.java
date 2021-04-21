@@ -22,6 +22,17 @@ public class Review {
 		this.reviewDate = reviewDate;
 		this.rieviewContent = rieviewContent;
 	}
+	
+	
+
+	public Review(int reviewNo, String rieviewContent, int memberNo, Date reviewDate) {
+		super();
+		this.reviewNo = reviewNo;
+		this.rieviewContent = rieviewContent;
+		this.memberNo = memberNo;
+		this.reviewDate = reviewDate;
+		
+	}
 
 
 	public int getReviewNo() {

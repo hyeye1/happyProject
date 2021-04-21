@@ -18,8 +18,6 @@ public class BookService {
 		
 		close(conn);
 		return list;
-		
-		
 	}
 	
 	
