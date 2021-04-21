@@ -2,7 +2,8 @@
     pageEncoding="UTF-8" import="com.kh.book.model.vo.*" %>
 <%
 	Book b = (Book)request.getAttribute("b");
-	Review r = (Review)request.getAttribute("r");
+	Image img = (Image)request.getAttribute("img");
+	//Review r = (Review)request.getAttribute("r");
 	// 리뷰번호, 회원번호, 책번호, 리뷰등록날짜, 리뷰내용
  %>
 <!DOCTYPE html>
@@ -365,46 +366,8 @@
             </table>
         </div>
         
-        <!-- 오류가 뜬다 오류가.. 왜뜨는지 몰라..
-        <script>
-        	$(function(){
-        		
-        		// HTML문서가 다 로딩되고 직후에 실행할 함
-        		selectReviewList();
-        	})
-        	
-        	function selectReviewList(){
-        		$.ajax({
-        			url:"<%= contextPath %>/rList.me",
-        			type:"post"
-        			data:{
-        				bookno:<%= r.getBookNo() %>
-        			}, success:function(rList){
-        				console.log(rList);
-        			}, error{
-        				console.log("댓글리스트조회ajax실패");
-        			}
-        		});
-        	}
-        	  
-        </script>
-         -->
-
-        <!-- 비회원일 때 리뷰 등록 클릭시 뜨는 MODAL -->
-        <div class="modal" id="inputReview">
-            
-        </div>
-		
-
+        
     </div>
 
-    <!-- 주문수량 : -/+ 버튼 클릭시 증감,증가효과 주기 -->
-    
-    <!-- 아무것도 입력하지 않고 등록버튼 클릭시 뜨는 알람메시지-->
-    <script>
-        function review(){
-            alert("작성하신 리뷰 내용이 없습니다.");
-        }
-    </script>
 </body>
 </html>

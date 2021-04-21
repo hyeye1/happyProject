@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.book.model.vo.*, java.util.ArrayList"%>
+<%
+	Image img = (Image)request.getAttribute("img");
+	ArrayList<Book> list = (ArrayList<Book>)request.getAttribute("list");
+%>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -163,7 +167,7 @@
         </style>
     </head>
     <body>
-
+		
         <div class="mainOuter">
     
             <div class="todayPick" align="center">
@@ -227,6 +231,14 @@
                         </li>
                     </ul>   
             </div>
+            <script>
+            	$(function(){
+            		$(".todayPick>ul>.todayBk").click(function(){
+            			location.href="<%= contextPath %>/bookDetails.bk?"
+            		})
+            	})
+            	
+            </script>
     
             <br><br><br>
     

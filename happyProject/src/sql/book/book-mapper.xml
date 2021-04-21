@@ -43,6 +43,6 @@
 		  JOIN TB_MEMBER USING(MEM_NO)
 		  JOIN TB_BOOK USING(BK_NO)
 		 WHERE BK_NO = ?
-		 ORDER BY RE_DATE DESC;
+		 ORDER BY RE_DATE DESC
 	</entry>
 </properties>

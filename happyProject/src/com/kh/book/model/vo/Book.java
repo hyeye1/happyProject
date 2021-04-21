@@ -4,34 +4,34 @@ import java.sql.Date;
 
 public class Book {
 	
-	private int bkNo;
-	private String bkName;
-	private String author;
-	private String publisher;
-	private String bkPubDate;
-	private String bkDivision;
-	private String bkGenre;
-	private int bkOrgPrice;
-	private int bkPrice;
-	private String ISBN;
-	private int bkStock;
-	private int bkPageNo;
-	private String bkDescription;
-	private String atDescription;
-	private String bkContentList;
-	private String bkKeyword;
-	private Date bkEnrollDate;
-	private String bkMainImg;
-	private int bkHits;
+	private int bookNo;				// 책 번호
+	private String bkName;			// 책 이름
+	private String author;			// 작가
+	private String publisher;		// 출판사
+	private String bkPubDate;		// 출간일
+	private String bkDivision;		// 국내or국외 구분
+	private String bkGenre;			// 장르
+	private int bkOrgPrice;			// 정가
+	private int bkPrice;			// 판매가
+	private String isbn;			// ISBN
+	private int bkStock;			// 재고
+	private int bkPageNo;			// 페이지수
+	private String bkDescription;	// 책소개
+	private String atDescription;	// 작가소개
+	private String bkContentList;	// 목차
+	private String bkKeyword;		// 키워드
+	private Date bkEnrollDate;		// 책 등록일
+	private String bkMainImg;		// 표지이미지
+	private int bkHits;				// 조회수
 	
 	public Book() {}
 
-	public Book(int bkNo, String bkName, String author, String publisher, String bkPubDate, String bkDivision,
-			String bkGenre, int bkOrgPrice, int bkPrice, String iSBN, int bkStock, int bkPageNo, String bkDescription,
+	public Book(int bookNo, String bkName, String author, String publisher, String bkPubDate, String bkDivision,
+			String bkGenre, int bkOrgPrice, int bkPrice, String isbn, int bkStock, int bkPageNo, String bkDescription,
 			String atDescription, String bkContentList, String bkKeyword, Date bkEnrollDate, String bkMainImg,
 			int bkHits) {
 		super();
-		this.bkNo = bkNo;
+		this.bookNo = bookNo;
 		this.bkName = bkName;
 		this.author = author;
 		this.publisher = publisher;
@@ -40,7 +40,7 @@ public class Book {
 		this.bkGenre = bkGenre;
 		this.bkOrgPrice = bkOrgPrice;
 		this.bkPrice = bkPrice;
-		this.ISBN = iSBN;
+		this.isbn = isbn;
 		this.bkStock = bkStock;
 		this.bkPageNo = bkPageNo;
 		this.bkDescription = bkDescription;
@@ -52,12 +52,12 @@ public class Book {
 		this.bkHits = bkHits;
 	}
 
-	public int getBkNo() {
-		return bkNo;
+	public int getBookNo() {
+		return bookNo;
 	}
 
-	public void setBkNo(int bkNo) {
-		this.bkNo = bkNo;
+	public void setBookNo(int bookNo) {
+		this.bookNo = bookNo;
 	}
 
 	public String getBkName() {
@@ -124,12 +124,12 @@ public class Book {
 		this.bkPrice = bkPrice;
 	}
 
-	public String getISBN() {
-		return ISBN;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public int getBkStock() {
@@ -206,15 +206,13 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [bkNo=" + bkNo + ", bkName=" + bkName + ", author=" + author + ", publisher=" + publisher
+		return "Book [bookNo=" + bookNo + ", bkName=" + bkName + ", author=" + author + ", publisher=" + publisher
 				+ ", bkPubDate=" + bkPubDate + ", bkDivision=" + bkDivision + ", bkGenre=" + bkGenre + ", bkOrgPrice="
-				+ bkOrgPrice + ", bkPrice=" + bkPrice + ", ISBN=" + ISBN + ", bkStock=" + bkStock + ", bkPageNo="
+				+ bkOrgPrice + ", bkPrice=" + bkPrice + ", isbn=" + isbn + ", bkStock=" + bkStock + ", bkPageNo="
 				+ bkPageNo + ", bkDescription=" + bkDescription + ", atDescription=" + atDescription
 				+ ", bkContentList=" + bkContentList + ", bkKeyword=" + bkKeyword + ", bkEnrollDate=" + bkEnrollDate
 				+ ", bkMainImg=" + bkMainImg + ", bkHits=" + bkHits + "]";
 	}
-	
-	
 	
 	
 	
