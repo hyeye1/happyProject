@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Notice, com.kh.common.model.vo.PageInfo"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Notice, com.kh.common.model.vo.PageInfo, com.kh.member.model.vo.Member "%>
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
  	String contextPath = request.getContextPath(); 
+ 	Member loginUser = (Member)session.getAttribute("loginUser");
  	
  	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -17,10 +18,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
     .outer{
             margin-top: 50px;
-            margin-left: 250px;
+            margin: auto;
             margin-bottom: 20px;
             border: 1px solid white;
             width:800px;
@@ -69,10 +81,14 @@
         <span id="text2">해피북스데이</span>
         <span> 소식을 확인하실 수 있습니다.</span><hr>
         <!-- 로그인했고, 로그인한 사용자가 admin일 경우 보여지는 div -->
-        <div class="outer2">
-            <button id="btn" onclick="location.href='요청할 url';">글작성</button>
-            <br>
-        </div>
+        <% if(loginUser != null) { %>
+	        <div align="right" style="width:800px" >
+	            <a href="<%= contextPath %>/enrollForm.no" class="btn btn-secondary btn-sm" id="btn">
+                    글작성</a>
+	           
+	        </div>
+	         <br>
+        <% } %>
          
         <table class="listArea" align="center">
             <thead>
