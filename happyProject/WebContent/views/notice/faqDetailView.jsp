@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq"%>
+<%
+	String contextPath = request.getContextPath();
+	Faq f = (Faq)request.getAttribute("f");
+	// 번호, 제목, 내용, 작성일
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +20,7 @@
     }
     #text1{font-size:x-large; font-weight: bold;}
     #text2{color:rgb(241, 196, 15); font-weight: bold;}
-    .button{margin-left: 280px;}
+    .button{margin-right: 150px;}
     #btn{
             width: 70px;
             height: 30px;
@@ -49,19 +54,25 @@
         	<input type="hidden" name="nno" value="">
             <table id="detailArea" border="1">
                 <tr>
-                    <th width="70">제목</th>
-                    <td colspan="3" width="500">FAQ 상세보기 제목입니다.</td>
+                    <th width="80">제목</th>
+                    <td colspan="3" width="500"><%= f.getFaTitle()%></td>
+                </tr>
+                <tr>
+                    <th width="70">작성일</th>
+                    <td colspan="3" width="500"><%= f.getFaDate()%></td>
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td colspan="3">
-                        <p>FAQ 상세보기 내용</p>
+                    <td colspan="3" width="550">
+                        <p><%= f.getFaContent()%></p>
                     </td>
                 </tr>
             </table>
             <br>
-            <div class="button">
-                <button id="btn" type="button">목록가기</button>
+            <div class="button" align="center">
+                <button id="btn" type="button" onClick="location.href='<%= contextPath %>/list.faq'">목록가기</button>
+                <button id="btn" type="submit" onClick="location.href='<%= contextPath %>'">수정하기</button>
+                <button id="btn" type="reset" onClick="location.href='<%= contextPath %>'">삭제하기</button>
             </div>
         </form>
 

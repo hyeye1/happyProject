@@ -6,30 +6,37 @@ public class Faq {
 	
 	private int faNo; 
 	private String faTitle;
-	private String Content;
+	private String faContent;
 	private Date faDate;
 	private String faStatus;
 	private int count;
 
 	public Faq(){}
 
-	public Faq(int faNo, String faTitle, String content, Date faDate, String faStatus, int count) {
+	public Faq(int faNo, String faTitle, String faContent, Date faDate, String faStatus, int count) {
 		super();
 		this.faNo = faNo;
 		this.faTitle = faTitle;
-		Content = content;
+		this.faContent = faContent;
 		this.faDate = faDate;
 		this.faStatus = faStatus;
 		this.count = count;
 	}
 	
-	
-
 	public Faq(int faNo, String faTitle, int count) {
 		super();
 		this.faNo = faNo;
 		this.faTitle = faTitle;
 		this.count = count;
+	}
+	
+
+	public Faq(int faNo, String faTitle, String faContent, Date faDate) {
+		super();
+		this.faNo = faNo;
+		this.faTitle = faTitle;
+		this.faContent = faContent;
+		this.faDate = faDate;
 	}
 
 	public int getFaNo() {
@@ -48,12 +55,12 @@ public class Faq {
 		this.faTitle = faTitle;
 	}
 
-	public String getContent() {
-		return Content;
+	public String getFaContent() {
+		return faContent;
 	}
 
-	public void setContent(String content) {
-		Content = content;
+	public void setFaContent(String faContent) {
+		this.faContent = faContent;
 	}
 
 	public Date getFaDate() {
@@ -82,9 +89,12 @@ public class Faq {
 
 	@Override
 	public String toString() {
-		return "Faq [faNo=" + faNo + ", faTitle=" + faTitle + ", Content=" + Content + ", faDate=" + faDate
+		return "Faq [faNo=" + faNo + ", faTitle=" + faTitle + ", faContent=" + faContent + ", faDate=" + faDate
 				+ ", faStatus=" + faStatus + ", count=" + count + "]";
 	}
+
+	
+
 	
 	
 }

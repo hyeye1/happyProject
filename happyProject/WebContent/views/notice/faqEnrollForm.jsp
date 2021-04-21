@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +50,7 @@
         <span id="text1">FAQ</span>
         <span id="text1"style="color:rgb(241, 196, 15)">작성하기</span>
         <hr>
-        <form id="updateForm" action="" method="POST">
+        <form id="updateForm" action="<%=contextPath%>/insert.faq" method="POST">
         	<input type="hidden" name="nno" value="">
             <table>
                 <tr>
