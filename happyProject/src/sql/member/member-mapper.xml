@@ -55,6 +55,13 @@
 		         )
 	</entry>
 	
+		<entry key="idCheck">
+		SELECT
+		       COUNT(*) "COUNT"
+		  FROM TB_MEMBER
+		 WHERE MEM_ID = ?
+	</entry>
+	
 	<!-- 수업시간에 했던 것들 -->
 	
 	<entry key="updateMember">
@@ -103,12 +110,7 @@
 		   AND USER_PWD = ?
 	</entry>
 	
-	<entry key="idCheck">
-		SELECT
-		       COUNT(*) "COUNT"
-		  FROM MEMBER
-		 WHERE USER_ID = ?
-	</entry>
+
 	
 
 </properties>
