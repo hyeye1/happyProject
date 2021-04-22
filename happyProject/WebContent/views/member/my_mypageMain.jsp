@@ -10,7 +10,7 @@
     <style>
 		.outer{
             margin: auto;
-            border: 1px solid black;
+            border: 1px solid white;
             width: 1000px;
             height: 1140px;
         }
@@ -21,7 +21,7 @@
         }
         
         .leftside{
-            border: 1px solid black;
+            border: 1px solid white;
             float: left;
             width: 350px;
             height: 1100px;
@@ -138,11 +138,12 @@
     </style>
 </head>  
 <body>
-  
+    <%@ include file = "../common/menubar.jsp" %>
+    <%@ include file = "../common/sideBar.jsp" %>
    <!--전체-->
 <div class="outer"> 
     <div class="path">홈>마이페이지</div>
-    <div class="leftside">sidebar</div> <!--sidebar-->
+    <div class="leftside"></div> <!--sidebar-->
 
     <div class="rightside">
         <div class="infobox">

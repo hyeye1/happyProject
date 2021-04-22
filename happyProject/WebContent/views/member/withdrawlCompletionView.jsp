@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +62,7 @@
     <br><br>
 
     <div align="center">
-        <button id="btn">해피북스데이 첫 화면</button>
+        <button id="btn" onClick="location.href='<%= contextPath %>'">해피북스데이 첫 화면</button>
     </div>
 </body>
 </html>

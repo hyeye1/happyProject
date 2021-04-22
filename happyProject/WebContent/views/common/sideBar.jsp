@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>  
+
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +75,7 @@
 										<td><a href="" style="color: lightslategrey">보관함</a></td>
 									</tr>
 									<tr>
-										<td><a href="" style="color: lightslategrey">나의 리뷰</a></td>
+										<td><a href="/happyProject/review.me" style="color: lightslategrey">나의 리뷰</a></td>
 									</tr>
 								</table>
                                 <br><br>
