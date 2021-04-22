@@ -91,4 +91,43 @@ private Properties prop = new Properties();
 		return list;
 	}
 	
+	public int insertBook(Connection conn, Ad_Book b) {
+		// insert문 => 처리된행수
+	
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertBook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			pstmt.setString(1, b.getBkName());
+			pstmt.setString(2, b.getAuthor());
+			pstmt.setString(3, b.getAuthor());
+			pstmt.setString(4, b.getPublisher());
+			pstmt.setString(5, b.getBkPublishDate());
+			pstmt.setString(6, b.getBkDivision());
+			pstmt.setString(7, b.getBkGenre());
+			pstmt.setInt(8, b.getBkOriginPrice());
+			pstmt.setInt(9, b.getBkPrice());
+			pstmt.setString(10, b.getIsbn());
+			pstmt.setInt(11, b.getBkStock());
+			pstmt.setInt(12, b.getBkPageNo());
+			pstmt.setString(13, b.getBkDescription());
+			pstmt.setString(14, b.getAtDescription());
+			pstmt.setString(15, b.getBkContentList());
+			pstmt.setInt(16, b.getBkStock());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
 }

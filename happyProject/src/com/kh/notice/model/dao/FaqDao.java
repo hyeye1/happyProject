@@ -9,9 +9,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+
 import com.kh.notice.model.vo.Faq;
 
+
 import static com.kh.common.JDBCTemplate.*;
+
 
 public class FaqDao {
 
@@ -47,7 +50,6 @@ public class FaqDao {
 								 rset.getInt("count")));
 			}
 			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -56,9 +58,7 @@ public class FaqDao {
 			close(pstmt);
 		}
 		
-		
 		return list;
-		
 		
 	}
 	
@@ -130,7 +130,8 @@ public class FaqDao {
 				f = new Faq(rset.getInt("fa_no"),
 							rset.getString("fa_title"),
 							rset.getString("fa_content"),
-							rset.getDate("fa_date"));
+							rset.getDate("fa_date"),
+							rset.getString("mem_id"));
 			}
 			
 		} catch (SQLException e) {
@@ -144,5 +145,51 @@ public class FaqDao {
 			return f;
 	}
 	
+	
+
+	public int updateFaq(Connection conn, Faq f) {
+		// update문 => 처리된 행수
+			int result = 0;
+			PreparedStatement pstmt = null;
+						
+			String sql = prop.getProperty("updateFaq");
+					
+			try {
+				pstmt = conn.prepareStatement(sql); // 미완성
+				pstmt.setString(1, f.getFaTitle());
+				pstmt.setString(2, f.getFaContent());
+				pstmt.setInt(3, f.getFaNo());
+						
+				result = pstmt.executeUpdate();
+						
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					
+					close(pstmt);
+				}
+					return result;
+			}
+	
+	
+	public int deleteFaq(Connection conn, int faNo) {
+		// update문 => 처리된 행수
+		int result =0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, faNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 }

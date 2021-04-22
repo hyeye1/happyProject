@@ -112,5 +112,132 @@ public class NoticeDao {
 		return result;
 	}
 	
+	public int increaseCount(Connection conn, int noticeNo) {
+		// update문 => 처리된 행수
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("increaseCount");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public Notice selectNotice(Connection conn, int noticeNo) {
+		
+		
+		Notice n = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				n= new Notice(rset.getInt("no_no"),
+						  	  rset.getString("no_title"),
+						  	  rset.getString("mem_id"),
+						  	  rset.getString("no_content"),
+						  	  rset.getDate("no_date")
+							 );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return n;
+		
+	}
+	
+	public int updateNotice(Connection conn, Notice n) {
+		
+		int result=0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, n.getNoTitle());
+			pstmt.setString(2, n.getNoContent());
+			pstmt.setInt(3, n.getNoNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int deleteNotice(Connection conn, int noticeNo) {
+		// update문 => 처리된 행수
+		int result =0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+public ArrayList<Notice> serviceNoticeList(Connection conn, PageInfo pi){
+		
+	ArrayList<Notice> list = new ArrayList<>();
+	PreparedStatement pstmt =null;
+	ResultSet rset = null;
+	
+	String sql = prop.getProperty("serviceNoticeList"); 
+	
+	try {
+		pstmt = conn.prepareStatement(sql); // 
+		
+		
+		rset = pstmt.executeQuery();
+		
+		while(rset.next()) {
+				
+				list.add(new Notice(rset.getInt("NO_NO"),
+									rset.getString("NO_TITLE"),
+									rset.getDate("NO_DATE")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
 	
 }

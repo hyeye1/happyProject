@@ -120,7 +120,7 @@
             
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
-                <img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg">
+                <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
                 <input type="text" id="menubarSearchInput" > <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색">
     			
     		<% if(loginUser == null) { %>
@@ -150,13 +150,17 @@
             <!-- 관리자 div -->
             <div id="loginAdmin">
                 <input type="image" id="menubarAdminBtn" src="resources/images/admin.png" onclick="adminPage()">
-                <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png">
+                <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png" onclick="logoutPage()">
             </div>
             	<script>
     				const menubarAdminBtn = document.getElementById('menubarAdminBtn');
     				menubarAdminBtn.addEventListener('click',function(){
     					window.open("${pageContext.request.contextPath}/views/admin/ad_home.jsp", "관리자 로그인", "left=200, top=200, width=1000, height=700"); 
     				});
+    				
+    				function logoutPage(){
+            			location.href="<%= contextPath %>/logout.me";
+            		}
     			</script>
             
     		<% }else { %>
@@ -164,12 +168,15 @@
                 <!-- 로그인후 div -->
                 <div id="loginAfter">
                     <input type="image" id="menubarCartBtn" src="resources/images/cart.png" onclick="afterCheckCart();">
-                    <input type="image" id="menubarMypageBtn" src="resources/images/mypage.png">
-                    <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png">
+                    <input type="image" id="menubarMypageBtn" src="resources/images/mypage.png" onclick="location.href='<%=contextPath%>/mypage.me'">
+                    <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png" onclick="logoutPage()">
                 </div>
                 	<script>
                 		function afterCheckCart(){
                 			location.href="<%= contextPath %>/cList.or";
+                		}
+                		function logoutPage(){
+                			location.href="<%= contextPath %>/logout.me";
                 		}
                 		
                 	</script>

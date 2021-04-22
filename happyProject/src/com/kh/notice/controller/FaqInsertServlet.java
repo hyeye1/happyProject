@@ -36,11 +36,11 @@ public class FaqInsertServlet extends HttpServlet {
 		
 		String faTitle = request.getParameter("title");
 		String faContent = request.getParameter("content");
-		/* 사용자 관리자 구분하는 구문
+		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		int memNo = loginUser.getMemNo();
-		*/
+		int userNo = loginUser.getMemNo();
+		
 		Faq f = new Faq();
 		f.setFaTitle(faTitle);
 		f.setFaContent(faContent);

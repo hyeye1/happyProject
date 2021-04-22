@@ -42,6 +42,44 @@ public class Notice {
 		this.noCount = noCount;
 		this.noDate = noDate;
 	}
+	
+
+
+
+	public Notice(int noNo, String noTitle, String noWriter, String noContent, Date noDate) {
+		super();
+		this.noNo = noNo;
+		this.noTitle = noTitle;
+		this.noWriter = noWriter;
+		this.noContent = noContent;
+		this.noDate = noDate;
+	}
+
+	
+
+
+
+
+
+
+	public Notice(String noTitle, Date noDate) {
+		super();
+		this.noTitle = noTitle;
+		this.noDate = noDate;
+	}
+	
+	
+	
+	
+
+
+
+	public Notice(int noNo, String noTitle, Date noDate) {
+		super();
+		this.noNo = noNo;
+		this.noTitle = noTitle;
+		this.noDate = noDate;
+	}
 
 
 

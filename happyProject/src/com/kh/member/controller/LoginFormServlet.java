@@ -32,6 +32,7 @@ public class LoginFormServlet extends HttpServlet {
 		// 응답페이지 => 로그인페이지
 		RequestDispatcher view = request.getRequestDispatcher("views/member/login.jsp");
 		view.forward(request, response);
+		
 	}
 
 	/**

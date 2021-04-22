@@ -414,7 +414,7 @@
             	});
                 const bkEnrollBtn = document.getElementById('bkEnrollBtn');
                 bkEnrollBtn.addEventListener('click', function(){
-            		location.href='<%=request.getContextPath()%>/enroll.bk';
+            		location.href='<%=request.getContextPath()%>/enrollForm.bk';
             	});
                 </script>
             </div>
@@ -440,10 +440,19 @@
 
                 </div>
                 <div id="choice_btn" style="padding: 20px;">
+                	<button type="button" id="enrollBook" class="btn btn-primary" >도서등록</button> &nbsp;
                     <button type="button" id="modifyBook" class="btn btn-primary">도서수정</button> &nbsp;
                     <button type="button" id="deleteBook" class="btn btn-primary">도서삭제</button>
                 </div>
+                
             </div>
+            <script>
+                	
+                	const enrollBook = document.getElementById('enrollBook');
+                    bkEnrollBtn.addEventListener('click', function(){
+                		location.href='<%=request.getContextPath()%>/enrollForm.bk';
+                	});
+                </script>
             
             <div id="table">
                 <table>
@@ -518,7 +527,7 @@
             </div>
         </div>
     </div>
-
+	
 
     <!-- 도서 상세정보 팝업 -->
     <div id="modal">

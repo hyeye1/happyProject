@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq, java.util.ArrayList, com.kh.common.model.vo.PageInfo, com.kh.notice.model.vo.Notice"%>
 <% 
-	String contextPath = request.getContextPath(); 
+   String contextPath = request.getContextPath(); 
+   Faq f = (Faq)request.getAttribute("f");
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
 %>    
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +14,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert title here</title>
+    
     <style>
         .outer{
-        	
+           
             margin:auto;
             border: 1px solid white;
             width:800px;
@@ -121,7 +125,7 @@
             padding: 10px;
             margin-top: 2px;
             margin-bottom: 10px;
-            padding-bottom: 50px;
+            padding-bottom: 15px;
             background-color: rgb(250, 248, 248);
             border-radius: 5px;
             box-sizing: border-box;
@@ -146,8 +150,11 @@
     </style>
 </head>
 <body>
-	
-	
+
+
+
+   
+   
 
     <div class="outer">
         <span id="text1">고객센터</span><hr>
@@ -156,25 +163,31 @@
     
         <div class="faq">
             <form action="" id="faqSearch" method="GET">
-                <a href="<%=contextPath%>/list.faq"><img src="resources/images/faq.png" width="100px" height="40"></a>
+                <a href="<%=contextPath%>/list.faq?currentPage=1"><img src="resources/images/faq.png" width="100px" height="40"></a>
             </form>
-            <span id="top5Title">자주 묻는 질문 TOP 5</span>
+            <span id="top5Title">&nbsp;자주 묻는 질문들</span>
             <span></span>
                 <div class="top5">
-                    <button class="question" id="que-1"><span id="que-1-toggle"></span><span>자주 묻는 질문 1</span></button>
-                    <div class="answer" id="ans-1">내용내용내용</div>
+                    <button class="question" id="que-1"><span id="que-1-toggle"></span>
+                    <span>Q. 회원가입/탈퇴는 어떻게 하나요?</span></button>
+                    <div class="answer" id="ans-1">A. 회원가입과 회원탈퇴 절차는 다음과 같습니다. 회원가입 화면상의 [회원가입]을 클릭한 후, 약관동의 -> 회원구분 및 본인인증 -> 고객정보입력 -> 가입완료의 단계를 거치면 회원가입이 가능합니다. 회원탈퇴는 [마이페이지] 접속 후 정보내역 → 회원탈퇴에서 정보 확인, 탈퇴사유와 비밀번호를 입력 후 회원 탈퇴가 가능합니다.
+                    </div>
                   
-                    <button class="question" id="que-2"><span id="que-1-toggle"></span><span>자주 묻는 질문 2</span></button>
-                    <div class="answer" id="ans-2">내용내용내용</div>
+                    <button class="question" id="que-2"><span id="que-1-toggle"></span>
+                    <span>Q. 주문 후 취소도 가능한가요?</span></button>
+                    <div class="answer" id="ans-2">A. 홈페이지 [주문/배송조회]에서 [입금확인중] 단계에서 직접 주문취소 하실 수 있습니다.</div>
                   
-                    <button class="question" id="que-3"><span id="que-1-toggle"></span><span>자주 묻는 질문 3</span></button>
-                    <div class="answer" id="ans-3">내용내용내용</div>
+                    <button class="question" id="que-3"><span id="que-1-toggle"></span>
+                    <span>Q. 주문도서 중 일부 도서만 취소하고 싶어요!</span></button>
+                    <div class="answer" id="ans-3">A. 주문도서 중 일부취소는 불가능하며, 전체 주문취소 후 재 주문을 해 주셔야 합니다.</div>
                
-                    <button class="question" id="que-4"><span id="que-1-toggle"></span><span>자주 묻는 질문 4</span></button>
-                    <div class="answer" id="ans-4">내용내용내용</div>
+                    <button class="question" id="que-4"><span id="que-1-toggle"></span>
+                    <span>Q. 회원정보 변경은 어떻게 하나요?</span></button>
+                    <div class="answer" id="ans-4">A. 홈페이지 로그인 후 상단 [마이페이지] 선택하시면 왼쪽 [내 정보 수정]에서 변경이 가능합니다.</div>
                   
-                    <button class="question" id="que-5"><span id="que-1-toggle"></span><span>자주 묻는 질문 5</span></button>
-                    <div class="answer" id="ans-5">내용내용내용</div>
+                    <button class="question" id="que-5"><span id="que-1-toggle"></span>
+                    <span>Q. 카트란 무엇이며 어떤 기능이 있나요?</span></button>
+                    <div class="answer" id="ans-5">A. 카트란?고객님이 구매할 상품을 담아놓는 곳입니다. (장바구니 개념과 유사합니다.)</div>
                 </div>
         </div>
     
@@ -193,28 +206,39 @@
                 <table class="noticeList">
                     <thead>
                         <tr id="noticeNew">
-                            <th width="600">글제목</th>
+                        	<th width="100">글번호</th>
+                            <th width="500">글제목</th>
                             <th width="100">작성일</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>새로운 공지사항2</td>
-                            <td>2021-04-12</td>
-                        </tr>
-                        <tr>
-                            <td>새로운 공지사항2</td>
-                            <td>2021-04-11</td>
-                        </tr>
-                        <tr>
-                            <td>새로운 공지사항3</td>
-                            <td>2021-04-10</td>
-                        </tr>
+                        <% if(list.isEmpty()) { %>
+	                <tr>
+	                    <td colspan="2">공지사항이 없습니다.</td>
+	                </tr>
+                <%} else { %>
+            	<% for(Notice n:list) { %>
+	                <tr>
+	                    <td><%= n.getNoNo() %></td>
+	                    <td><%= n.getNoTitle() %></td>
+	                    <td><%= n.getNoDate() %></td>
+	                </tr>
+	            <%} %>
+             <%} %>
                     </tbody>
                 </table>
             </div>
-            
-        <script>
+             <script>
+             
+		    	$(function(){
+		    		$(".noticeList>tbody>tr").click(function(){
+		    			
+		    			// 쿼리스트링 이용해서 요청할 url 작성
+		    			location.href = "<%=contextPath%>/detail.no?nno=" + $(this).children().eq(0).text();
+		    		})
+		    	})
+    </script>
+    <script>
             const items = document.querySelectorAll('.question');
           
             function openCloseAnswer() {
@@ -231,6 +255,8 @@
           
             items.forEach(item => item.addEventListener('click', openCloseAnswer));
           </script>
+            
+        
          
     </div>
     
