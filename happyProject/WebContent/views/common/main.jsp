@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.kh.book.model.vo.Book, java.util.ArrayList"%>
 <%
 	Book b = (Book)request.getAttribute("b");
+	System.out.println(b);
 %>
     <!DOCTYPE html>
     <html lang="en">
@@ -230,6 +231,7 @@
                         </li>
                     </ul>   
             </div>
+            <!--
             <script>
             	$(function(){
             		
@@ -255,7 +257,7 @@
             	}
             	
             </script>
-    
+    		  -->
             <br><br><br>
     
             <div class="hash">
