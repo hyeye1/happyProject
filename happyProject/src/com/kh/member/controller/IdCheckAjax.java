@@ -30,12 +30,19 @@ public class IdCheckAjax extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String checkId = request.getParameter("checkId");
 		
-		int count = new MemberService().idCheck(checkId);
-		
-		if(count>0) { // 사용불가능
-			response.getWriter().print("NN");
-		}else { // 사용가능
+		if(checkId == "" || checkId == null) {
+			response.getWriter().print("");
+		}else {
+			int count = new MemberService().idCheck(checkId);
+			
+			if(count>0) { // 사용불가능
+				response.getWriter().print("NN");
+			}else { // 사용가능
+				response.getWriter().print("YY");
+			}
+			
 		}
+		
 	}
 	
 

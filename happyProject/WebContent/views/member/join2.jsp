@@ -280,11 +280,8 @@
 	        	
 	        	// 아이디 중복확인
 	        	function idCheck(){
-	        		var $memId = $("#enrollForm input[name=memId]");
 	        		
-	        		if($memId == ''){
-	        			alert("아이디를 입력해주세요.");
-	        		}else{
+	        		var $memId = $("#enrollForm input[name=memId]");
 	        		
 	        		$.ajax({
 	        			url:"idCheck.me",
@@ -304,6 +301,16 @@
 		        				$memId.val(null);
 	        					$memId.focus();
 	        						
+	        				}else if (result == ""){ // 입력안함
+	        					
+	        					Swal.fire({
+	        						  icon: 'error',
+	        						  title: '',
+	        						  text: '아이디를 입력해주세요',
+	        						  confirmButtonColor: 'rgb(249, 219, 122)'
+	        						})
+		        				$memId.val(null);
+	        					$memId.focus();
 
 	        				}else{ // 사용가능
 	        					
@@ -329,7 +336,7 @@
 	        				console.log("아이디 중복체크 통신 실패")
 	        			}
 	        		});
-	        		}
+	        		
 	        	}
 	        	
 	        
@@ -405,60 +412,7 @@
                            
                     	  });
                         
-                        
 
-
-
-                        
-                        
-                        
-                       
-                        
-                        
-                        
-                        
-                        
-             
-                        /*
-            //수업시간에 했던 아이디 중복확인 내용
-            function idCheck(){
-                
-                // 아이디 입력하는 input요소 객체
-                var $userId = $("#enrollForm input[name=userId]");
-                
-                $.ajax({
-                    url:"idCheck.me",
-                    type:"get",
-                    data:{checkId:$memId.val()},
-                    success:function(result){
-                        
-                        //console.log(result);
-                        if(result == 'NNNNN'){ // 사용불가능
-                            alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.");
-                            $userId.focus();
-                        } else{//사용가능
-                            
-                            if(confirm("사용가능한 아이디입니다. 정말로 사용하시겠습니까?")){
-                                //사용하겠다! => 더이상 변경불가, 회원가입버튼 활성화
-                                $userId.attr("readonly", true);
-                                $("#enrollForm :submit").removeAttr("disabled");
-                                
-                            }else{
-                                // 다시입력하겠다! => 
-                                $userId.focus();
-                                
-                            }
-                        
-                        }
-                        
-                    },error:function(){
-                        console.log("아이디 중복체크용 ajax 통신 실패");
-                    }
-                });
-                
-            };
-            
-            */
         </script>
   
 
