@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq"%>
+    
+<%
+	String contextPath = request.getContextPath();
+	Faq f = (Faq)request.getAttribute("f");
+	//글번호, 제목, 내용, 작성일
+%>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +24,7 @@
         border: 1px solid black;
         text-align: center;
     }
-    .listArea>tbody>tr:hover{
+    .listArea>tbody>tr:hover{ 
         cursor:pointer;
         background: rgb(249, 219, 122);
         color: white;
@@ -57,13 +64,13 @@
         <span id="text1">FAQ</span>
         <span id="text1"style="color:rgb(241, 196, 15)">수정하기</span>
         <hr>
-        <form id="updateForm" action="" method="POST">
-        	<input type="hidden" name="nno" value="">
+        <form id="updateForm" action="<%=contextPath%>/update.faq" method="POST">
+        	<input type="hidden" name="fno" value="<%= f.getFaNo() %>">
             <table>
                 <tr>
                     <th width="50">제목</th>
                     <td colspan="3" width="400">
-                        <input type="text" name="title" required value="FAQ 수정제목">
+                        <input type="text" name="title" required value="<%=f.getFaTitle() %>">
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +79,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <textarea name="content" rows="10" style="resize: none;" required>FAQ 수정내용</textarea>
+                        <textarea name="content" rows="10" style="resize: none;" required><%=f.getFaContent() %></textarea>
                     </td>
                 </tr>
             </table>

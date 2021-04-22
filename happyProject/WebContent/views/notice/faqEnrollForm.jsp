@@ -57,7 +57,7 @@
                 <tr>
                     <th width="50">제목</th>
                     <td colspan="3" width="400">
-                        <input type="text" name="title" required value="FAQ 작성제목">
+                        <input type="text" name="title" required value="">
                     </td>
                 </tr>
                 <tr>
@@ -65,7 +65,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <textarea id="content" name="content" rows="10" required >FAQ 작성내용</textarea>
+                        <textarea id="content" name="content" rows="10" required ></textarea>
                     </td>
                 </tr>
             </table>

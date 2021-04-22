@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
     pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Notice, com.kh.common.model.vo.PageInfo, com.kh.member.model.vo.Member "%>
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
@@ -12,6 +13,13 @@
 	int maxPage = pi.getMaxPage();
 	
 %>     
+=======
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq"%>
+<% 
+	String contextPath = request.getContextPath(); 
+	
+%>    
+>>>>>>> 189d6a7844d2377103d54e2463365feb80cc92ea
     
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +28,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert title here</title>
+    
     <style>
         .outer{
         	
@@ -165,13 +174,13 @@
     
         <div class="faq">
             <form action="" id="faqSearch" method="GET">
-                <a href="<%=contextPath%>/list.faq"><img src="resources/images/faq.png" width="100px" height="40"></a>
+                <a href="<%=contextPath%>/list.faq?currentPage=1"><img src="resources/images/faq.png" width="100px" height="40"></a>
             </form>
             <span id="top5Title">자주 묻는 질문 TOP 5</span>
             <span></span>
                 <div class="top5">
-                    <button class="question" id="que-1"><span id="que-1-toggle"></span><span>자주 묻는 질문 1</span></button>
-                    <div class="answer" id="ans-1">내용내용내용</div>
+                    <button class="question" id="que-1"><span id="que-1-toggle"></span><span>111111</span></button>
+                    <div class="answer" id="ans-1">2222222</div>
                   
                     <button class="question" id="que-2"><span id="que-1-toggle"></span><span>자주 묻는 질문 2</span></button>
                     <div class="answer" id="ans-2">내용내용내용</div>

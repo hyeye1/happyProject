@@ -1,21 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq, com.kh.member.model.vo.Member"%>
 <%
 	String contextPath = request.getContextPath();
 	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
+	Member loginUser = (Member)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<title>Insert title here</title><script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Popper JS -->
          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
          <!-- Latest compiled JavaScript -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		
          
 <style>
     .outer{
@@ -93,9 +94,11 @@
 
 
         <!-- 로그인했고, 로그인한 사용자가 admin일 경우 보여지는 div -->
+        <% if(loginUser != null && loginUser.getMemId().equals("admin")) { %>
         <div class="outer2" align="right">
             <button id="btn" onClick="location.href='<%= contextPath %>/enrollForm.faq'">글작성</button>
         </div>
+        <% } %>
         
         <table class="listArea">
             <thead>
