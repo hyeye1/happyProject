@@ -1,4 +1,4 @@
-package com.kh.member.controller;
+package com.kh.admin.controller;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class Ad_BookEnrollFormServlet
  */
-@WebServlet("/loginForm.me")
-public class LoginFormServlet extends HttpServlet {
+@WebServlet("/enrollForm.bk")
+public class Ad_BookEnrollFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginFormServlet() {
+    public Ad_BookEnrollFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +28,9 @@ public class LoginFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// 응답페이지 => 로그인페이지
-		RequestDispatcher view = request.getRequestDispatcher("views/member/login.jsp");
-		view.forward(request, response);
-		
+		// 응답페이지 => 회원가입페이지 
+				RequestDispatcher view = request.getRequestDispatcher("views/admin/ad_enrollBook.jsp");
+				view.forward(request, response);
 	}
 
 	/**
