@@ -1,25 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Notice, com.kh.common.model.vo.PageInfo, com.kh.member.model.vo.Member "%>
-<%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
- 	String contextPath = request.getContextPath(); 
- 	Member loginUser = (Member)session.getAttribute("loginUser");
- 	
- 	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
-	
-%>     
-=======
     pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq"%>
 <% 
-	String contextPath = request.getContextPath(); 
-	
+   String contextPath = request.getContextPath(); 
+   
 %>    
->>>>>>> 189d6a7844d2377103d54e2463365feb80cc92ea
     
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +15,7 @@
     
     <style>
         .outer{
-        	
+           
             margin:auto;
             border: 1px solid white;
             width:800px;
@@ -164,8 +148,8 @@
     </style>
 </head>
 <body>
-	
-	
+   
+   
 
     <div class="outer">
         <span id="text1">고객센터</span><hr>
