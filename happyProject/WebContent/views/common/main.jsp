@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.book.model.vo.*, java.util.ArrayList"%>
-<%
-	Image img = (Image)request.getAttribute("img");
-	ArrayList<Book> list = (ArrayList<Book>)request.getAttribute("list");
-%>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>

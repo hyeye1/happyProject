@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.kh.book.model.vo.*" %>
 <%
 	Book b = (Book)request.getAttribute("b");
+	// 책 번호, 책 이름, 
 	Image img = (Image)request.getAttribute("img");
 	//Review r = (Review)request.getAttribute("r");
 	// 리뷰번호, 회원번호, 책번호, 리뷰등록날짜, 리뷰내용
