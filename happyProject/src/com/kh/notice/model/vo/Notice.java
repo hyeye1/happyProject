@@ -55,6 +55,32 @@ public class Notice {
 		this.noDate = noDate;
 	}
 
+	
+
+
+
+
+
+
+	public Notice(String noTitle, Date noDate) {
+		super();
+		this.noTitle = noTitle;
+		this.noDate = noDate;
+	}
+	
+	
+	
+	
+
+
+
+	public Notice(int noNo, String noTitle, Date noDate) {
+		super();
+		this.noNo = noNo;
+		this.noTitle = noTitle;
+		this.noDate = noDate;
+	}
+
 
 
 	public int getNoNo() {

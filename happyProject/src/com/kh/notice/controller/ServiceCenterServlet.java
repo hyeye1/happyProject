@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.notice.model.service.FaqService;
-import com.kh.notice.model.vo.Faq;
+import com.kh.common.model.vo.PageInfo;
+import com.kh.notice.model.service.NoticeService;
+import com.kh.notice.model.vo.Notice;
 
 /**
  * Servlet implementation class ServiceCenterServlet
@@ -31,6 +32,41 @@ public class ServiceCenterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int listCount;		
+		int currentPage;	
+		int pageLimit;		
+		int boardLimit;		
+		
+		int maxPage;		
+		int startPage;		
+		int endPage;		
+		
+		
+		listCount = new NoticeService().selectListCount();
+		
+
+		
+		
+
+		
+		
+		boardLimit= 3;
+		
+
+		
+		
+		
+		PageInfo pi = new PageInfo(listCount,boardLimit);
+
+		ArrayList<Notice> list = new NoticeService().serviceNoticeList(pi);
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		
+		
+		
+		
 		request.getRequestDispatcher("views/notice/serviceCenterMainView.jsp").forward(request, response);
 		
 

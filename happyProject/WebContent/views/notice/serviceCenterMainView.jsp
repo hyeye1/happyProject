@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq"%>
+    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq, java.util.ArrayList, com.kh.common.model.vo.PageInfo, com.kh.notice.model.vo.Notice"%>
 <% 
    String contextPath = request.getContextPath(); 
    Faq f = (Faq)request.getAttribute("f");
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
 %>    
 
 <!DOCTYPE html>
@@ -204,28 +206,39 @@
                 <table class="noticeList">
                     <thead>
                         <tr id="noticeNew">
-                            <th width="600">글제목</th>
+                        	<th width="100">글번호</th>
+                            <th width="500">글제목</th>
                             <th width="100">작성일</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>새로운 공지사항2</td>
-                            <td>2021-04-12</td>
-                        </tr>
-                        <tr>
-                            <td>새로운 공지사항2</td>
-                            <td>2021-04-11</td>
-                        </tr>
-                        <tr>
-                            <td>새로운 공지사항3</td>
-                            <td>2021-04-10</td>
-                        </tr>
+                        <% if(list.isEmpty()) { %>
+	                <tr>
+	                    <td colspan="2">공지사항이 없습니다.</td>
+	                </tr>
+                <%} else { %>
+            	<% for(Notice n:list) { %>
+	                <tr>
+	                    <td><%= n.getNoNo() %></td>
+	                    <td><%= n.getNoTitle() %></td>
+	                    <td><%= n.getNoDate() %></td>
+	                </tr>
+	            <%} %>
+             <%} %>
                     </tbody>
                 </table>
             </div>
-            
-        <script>
+             <script>
+             
+		    	$(function(){
+		    		$(".noticeList>tbody>tr").click(function(){
+		    			
+		    			// 쿼리스트링 이용해서 요청할 url 작성
+		    			location.href = "<%=contextPath%>/detail.no?nno=" + $(this).children().eq(0).text();
+		    		})
+		    	})
+    </script>
+    <script>
             const items = document.querySelectorAll('.question');
           
             function openCloseAnswer() {
@@ -242,6 +255,8 @@
           
             items.forEach(item => item.addEventListener('click', openCloseAnswer));
           </script>
+            
+        
          
     </div>
     

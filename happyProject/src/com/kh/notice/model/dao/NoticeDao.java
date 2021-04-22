@@ -207,5 +207,37 @@ public class NoticeDao {
 		return result;
 	}
 	
+public ArrayList<Notice> serviceNoticeList(Connection conn, PageInfo pi){
+		
+	ArrayList<Notice> list = new ArrayList<>();
+	PreparedStatement pstmt =null;
+	ResultSet rset = null;
+	
+	String sql = prop.getProperty("serviceNoticeList"); 
+	
+	try {
+		pstmt = conn.prepareStatement(sql); // 
+		
+		
+		rset = pstmt.executeQuery();
+		
+		while(rset.next()) {
+				
+				list.add(new Notice(rset.getInt("NO_NO"),
+									rset.getString("NO_TITLE"),
+									rset.getDate("NO_DATE")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
 	
 }

@@ -101,6 +101,17 @@ public class NoticeService {
 		return result;
 	}
 	
+	public ArrayList<Notice> serviceNoticeList(PageInfo pi){
+		Connection conn = getConnection();
+		
+		ArrayList<Notice> list = new NoticeDao().serviceNoticeList(conn, pi);
+		
+		close(conn);
+		return list;
+	}
+	
+	
+	
 	
 
 }

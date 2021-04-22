@@ -87,5 +87,26 @@
 		 WHERE NO_NO = ?
 	</entry>
 	
+	<entry key="serviceNoticeList">
+		
+				SELECT *
+		  FROM (
+		         SELECT
+		                ROWNUM RNUM
+		              , A.*
+		          FROM (
+		                 SELECT
+                                NO_NO
+                               , NO_TITLE
+                               , NO_DATE
+		                  FROM TB_NOTICE 
+		                 WHERE  NO_STATUS = 'Y'
+		                 ORDER
+		                    BY NO_DATE DESC
+		                ) A
+		        )
+                 WHERE RNUM BETWEEN 1 AND 3
+	</entry>
+	
 
 </properties>
