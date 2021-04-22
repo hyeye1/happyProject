@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import=" com.kh.member.model.vo.Member, com.kh.notice.model.vo.Notice" %>
+<%
+	String contextPath = request.getContextPath(); 
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	Notice n =(Notice)request.getAttribute("n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +13,7 @@
 <style>
     .outer{
             margin-top: 50px;
-            margin-left: 250px;
+            margin: auto;
             margin-bottom: 20px;
             border: 1px solid white;
             width:800px;
@@ -58,13 +63,13 @@
         <span id="text1">공지사항</span>
         <span id="text1"style="color:rgb(241, 196, 15)">수정하기</span>
         <hr>
-        <form id="updateForm" action="" method="POST">
-        	<input type="hidden" name="nno" value="">
+        <form id="updateForm" action="<%= contextPath %>/update.no" method="POST">
+  			<input type="hidden" name="nno" value="<%=n.getNoNo() %>">
             <table>
                 <tr>
                     <th width="50">제목</th>
                     <td colspan="3" width="400">
-                        <input type="text" name="title" required value="공지사항 수정제목">
+                        <input type="text" name="title" required value="<%=n.getNoTitle()%>">
                     </td>
                 </tr>
                 <tr>
@@ -73,7 +78,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <textarea name="content" rows="10" style="resize: none;" required>공지사항 수정내용</textarea>
+                        <textarea name="content" rows="10" style="resize: none;" required><%=n.getNoContent()%></textarea>
                     </td>
                 </tr>
             </table>

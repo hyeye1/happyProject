@@ -1,7 +1,6 @@
 package com.kh.notice.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,46 +8,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.notice.model.service.NoticeService;
-import com.kh.notice.model.vo.Notice;
-
-import oracle.net.aso.i;
 
 /**
- * Servlet implementation class NoticeDetailServlet
+ * Servlet implementation class NoticeDeleteServlet
  */
-@WebServlet("/detail.no")
-public class NoticeDetailServlet extends HttpServlet {
+@WebServlet("/delete.no")
+public class NoticeDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDetailServlet() {
+    public NoticeDeleteServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		int noticeNo = Integer.parseInt(request.getParameter("nno"));
+int noticeNo= Integer.parseInt(request.getParameter("nno"));
 		
-		int result = new NoticeService().increaseCount(noticeNo);
+		int result = new NoticeService().deleteNotice(noticeNo);
 		
-		
-		if(result>0) { // 조회수 증가성공(유효한 공지사항번호) => 해당 공지사항 조회 후 noticeDetailView.jsp 응답
+		if(result>0) {
 			
-			Notice n = new NoticeService().selectNotice(noticeNo);
-			
-			request.setAttribute("n", n);
-			
-			request.getRequestDispatcher("views/notice/noticeDetailView.jsp").forward(request, response);
-			
-		}else { // 조회수 증가실패 => 공지사항 상세조회 실패 => 에러문구 담아서 에러 페이지
+			response.sendRedirect(request.getContextPath()+ "/list.no?currentPage=1");
+		}else {
 			
 		}
-		 
 	}
 
 	/**

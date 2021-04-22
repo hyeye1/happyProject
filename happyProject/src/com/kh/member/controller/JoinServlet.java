@@ -36,10 +36,10 @@ public class JoinServlet extends HttpServlet {
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
 		String memName = request.getParameter("memName");
-		String email = request.getParameter("email");
 		String memPhone = request.getParameter("memPhone");
+		String email = request.getParameter("email");
 
-		Member m = new Member(memId, memPwd, memName, email, memPhone);
+		Member m = new Member(memId, memPwd, memName, memPhone, email);
 		
 		int result = new MemberService().insertMember(m);
 		

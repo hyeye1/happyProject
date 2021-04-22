@@ -120,14 +120,13 @@
             </tbody>
         </table>
         <script>
-        	$(function(){
-        		$(".listArea>tbody>tr").click(function(){
-        			
-        			// /jsp/detail.bo?bno=글번호
-        					
-        			location.href = '<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text();
-        		})
-        	})
+        $(function(){
+    		$(".listArea>tbody>tr").click(function(){
+    			
+    			// 쿼리스트링 이용해서 요청할 url 작성
+    			location.href = '<%=contextPath%>/detail.no?nno=' + $(this).children().eq(0).text();
+    		})
+    	})
         </script>
      
 

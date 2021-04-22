@@ -51,6 +51,41 @@
 		  , ?
 		  )
 	</entry>
+		<entry key="increaseCount">
+		UPDATE
+			   TB_NOTICE
+		   SET NO_COUNT = NO_COUNT+1
+		 WHERE NO_NO = ?
+		   AND NO_STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectNotice">
+		SELECT
+			   NO_NO
+			 , NO_TITLE
+			 , MEM_ID
+			 , NO_CONTENT
+			 , NO_DATE
+		  FROM TB_NOTICE N
+		  JOIN TB_MEMBER ON (NO_WRITER=MEM_NO)
+		 WHERE NO_NO = ?
+		   AND N.NO_STATUS = 'Y'
+	</entry>
+	
+	<entry key="updateNotice">
+		UPDATE
+		       TB_NOTICE
+		   SET NO_TITLE = ?
+		     , NO_CONTENT = ?
+		 WHERE NO_NO =? 
+	</entry>
+	
+	<entry key="deleteNotice">
+		UPDATE
+			   TB_NOTICE
+		   SET NO_STATUS = 'N'
+		 WHERE NO_NO = ?
+	</entry>
 	
 
 </properties>

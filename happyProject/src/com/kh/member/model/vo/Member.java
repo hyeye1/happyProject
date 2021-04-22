@@ -47,6 +47,17 @@ public class Member {
 		this.email = email;
 		this.memPhone = memPhone;
 	}
+	
+	
+
+	public Member(int memNo, String memId, String memPwd, String memName, String email) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.email = email;
+	}
 
 	public int getMemNo() {
 		return memNo;

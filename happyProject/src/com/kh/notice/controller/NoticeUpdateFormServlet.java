@@ -11,44 +11,33 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.notice.model.service.NoticeService;
 import com.kh.notice.model.vo.Notice;
 
-import oracle.net.aso.i;
-
 /**
- * Servlet implementation class NoticeDetailServlet
+ * Servlet implementation class NoticeUpdateFormServlet
  */
-@WebServlet("/detail.no")
-public class NoticeDetailServlet extends HttpServlet {
+@WebServlet("/updateForm.no")
+public class NoticeUpdateFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDetailServlet() {
+    public NoticeUpdateFormServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
 		int noticeNo = Integer.parseInt(request.getParameter("nno"));
 		
-		int result = new NoticeService().increaseCount(noticeNo);
+		Notice n = new NoticeService().selectNotice(noticeNo);
+		// 글번호, 제목, 내용, 작성자아이디, 작성일
 		
-		
-		if(result>0) { // 조회수 증가성공(유효한 공지사항번호) => 해당 공지사항 조회 후 noticeDetailView.jsp 응답
-			
-			Notice n = new NoticeService().selectNotice(noticeNo);
-			
-			request.setAttribute("n", n);
-			
-			request.getRequestDispatcher("views/notice/noticeDetailView.jsp").forward(request, response);
-			
-		}else { // 조회수 증가실패 => 공지사항 상세조회 실패 => 에러문구 담아서 에러 페이지
-			
-		}
-		 
+		request.setAttribute("n", n);
+		request.getRequestDispatcher("views/notice/noticeUpdateForm.jsp").forward(request,response);
 	}
 
 	/**

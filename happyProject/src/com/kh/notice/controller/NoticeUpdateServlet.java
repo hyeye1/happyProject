@@ -11,19 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.notice.model.service.NoticeService;
 import com.kh.notice.model.vo.Notice;
 
-import oracle.net.aso.i;
-
 /**
- * Servlet implementation class NoticeDetailServlet
+ * Servlet implementation class NoticeUpdateServlet
  */
-@WebServlet("/detail.no")
-public class NoticeDetailServlet extends HttpServlet {
+@WebServlet("/update.no")
+public class NoticeUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDetailServlet() {
+    public NoticeUpdateServlet() {
         super();
     }
 
@@ -31,24 +29,26 @@ public class NoticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+request.setCharacterEncoding("utf-8");
+		
 		int noticeNo = Integer.parseInt(request.getParameter("nno"));
+		String noticeTitle = request.getParameter("title");
+		String noticeContent = request.getParameter("content");
 		
-		int result = new NoticeService().increaseCount(noticeNo);
+		Notice n = new Notice();
+		n.setNoNo(noticeNo);
+		n.setNoTitle(noticeTitle);
+		n.setNoContent(noticeContent);
 		
+		int result = new NoticeService().updateNotice(n);
 		
-		if(result>0) { // 조회수 증가성공(유효한 공지사항번호) => 해당 공지사항 조회 후 noticeDetailView.jsp 응답
+		if(result>0) {
 			
-			Notice n = new NoticeService().selectNotice(noticeNo);
+			response.sendRedirect(request.getContextPath() + "/detail.no?nno=" + noticeNo);
+		}else { 
 			
-			request.setAttribute("n", n);
-			
-			request.getRequestDispatcher("views/notice/noticeDetailView.jsp").forward(request, response);
-			
-		}else { // 조회수 증가실패 => 공지사항 상세조회 실패 => 에러문구 담아서 에러 페이지
-			
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		 
 	}
 
 	/**
