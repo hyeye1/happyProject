@@ -164,7 +164,7 @@
                 <!-- 로그인후 div -->
                 <div id="loginAfter">
                     <input type="image" id="menubarCartBtn" src="resources/images/cart.png" onclick="afterCheckCart();">
-                    <input type="image" id="menubarMypageBtn" src="resources/images/mypage.png">
+                    <input type="image" id="menubarMypageBtn" src="resources/images/mypage.png" onclick="location.href='<%=contextPath%>/mypage.me'">
                     <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png">
                 </div>
                 	<script>
