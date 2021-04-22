@@ -116,4 +116,30 @@
 	       , ?
 	       )     
 	</entry>
+	
+	<entry key="selectBook">
+		SELECT 
+		       BK_ENROLL_DATE
+		     , BK_NO
+		     , BK_NAME
+		     , ISBN
+		     , BK_PAGE_NO
+		     , BK_KEYWORD
+		     , BK_DESCRIPTION
+		     , AT_DESCRIPTION
+		     , BK_CONTENT_LIST
+		     , BK_MAIN_IMG
+		  FROM TB_BOOK
+		 WHERE BK_NO = ?
+	</entry>
+	
+	<entry key="selectImage">
+		SELECT
+		       IMG_NO
+		     , BK_NO
+		     , IMG_PATH
+		     , IMG_ENROLL_DATE
+		  FROM TB_IMAGE
+		 WHERE BK_NO = ?;
+	</entry>
 </properties>

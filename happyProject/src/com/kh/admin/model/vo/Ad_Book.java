@@ -91,6 +91,24 @@ public class Ad_Book {
 		this.bkKeyword = bkKeyword;
 
 	}
+	
+	
+
+	public Ad_Book(Date bkEnrollDate, int bkNo, String bkName, String isbn, int bkPageNo, 
+			String bkKeyword, String bkDescription, String atDescription,
+			String bkContentList, String bkMainImg) {
+		super();
+		this.bkEnrollDate = bkEnrollDate;
+		this.bkNo = bkNo;
+		this.bkName = bkName;
+		this.isbn = isbn;
+		this.bkPageNo = bkPageNo;
+		this.bkKeyword = bkKeyword;
+		this.bkDescription = bkDescription;
+		this.atDescription = atDescription;
+		this.bkContentList = bkContentList;
+		this.bkMainImg = bkMainImg;
+	}
 
 	public int getBkNo() {
 		return bkNo;

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.admin.model.vo.Ad_Book;
+import com.kh.admin.model.vo.Ad_Image;
 import com.kh.common.model.vo.PageInfo;
 
 import static com.kh.common.JDBCTemplate.*;
@@ -57,9 +58,11 @@ private Properties prop = new Properties();
 	}
 	
 	public ArrayList<Ad_Book> selectList(Connection conn, PageInfo pi){
+		
 		ArrayList<Ad_Book> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
 		String sql = prop.getProperty("selectList");
 		
 		try {
@@ -127,6 +130,74 @@ private Properties prop = new Properties();
 			close(pstmt);
 		}
 		return result;
+		
+	}
+	public Ad_Book selectBook(Connection conn, int bkNo) {
+		// select문 => ResultSet객체(한행) 
+		Ad_Book b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,  bkNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b = new Ad_Book(rset.getDate("bk_enroll_date"),
+						rset.getInt("bk_no"),
+						rset.getString("bk_name"),
+						rset.getString("isbn"),
+						rset.getInt("bk_page_no"),
+						rset.getString("bk_keyword"),
+						rset.getString("bk_description"),
+						rset.getString("at_description"),
+						rset.getString("bk_content_list"),
+						rset.getString("bk_main_img"));
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return b;
+	}
+	
+	
+	public Ad_Image selectImage(Connection conn, int bkNo) {
+		// select문 => ResultSet객체 (한 행) 
+		
+		Ad_Image im = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectImage");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bkNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				im = new Ad_Image();
+				im.setImgNo(rset.getInt("img_no"));
+				im.setBookNo(rset.getInt("book_no"));
+				im.setImgPath(rset.getString("img_path"));
+				im.setImgEnrollDate(rset.getDate("img_enroll_date"));
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return im;
 		
 	}
 	
