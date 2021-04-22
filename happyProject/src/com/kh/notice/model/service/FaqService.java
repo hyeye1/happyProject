@@ -78,7 +78,18 @@ import static com.kh.common.JDBCTemplate.*;
 		
 	}
 	
-	
+	public int deleteFaq(int faNo) {
+		Connection conn = getConnection();
+		int result = new FaqDao().deleteFaq(conn, faNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 	
 		
 

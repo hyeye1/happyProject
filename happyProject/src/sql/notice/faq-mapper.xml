@@ -59,8 +59,8 @@
 	<entry key="deleteFaq">
 		UPDATE
 				TB_FAQ
-		   SET FA_STATUS = 'N'
-		 WHERE FA_NO = ?
+		    SET FA_STATUS = 'N'
+		  WHERE FA_NO = ? 
 	</entry>
 	
 	

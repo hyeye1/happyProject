@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq, com.kh.notice.model.vo.Notice, com.kh.common.model.vo.PageInfo, com.kh.member.model.vo.Member "%>
-<%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
- 	String contextPath = request.getContextPath(); 
+    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq"%>
+<% 
+   String contextPath = request.getContextPath(); 
+   Faq f = (Faq)request.getAttribute("f");
+%>    
 
-	
-%>   
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,8 +163,8 @@
             <span id="top5Title">자주 묻는 질문 TOP 5</span>
             <span></span>
                 <div class="top5">
-                    <button class="question" id="que-1"><span id="que-1-toggle"></span><span>111111</span></button>
-                    <div class="answer" id="ans-1">2222222</div>
+                    <button class="question" id="que-1"><span id="que-1-toggle"></span><span>1111111</span></button>
+                    <div class="answer" id="ans-1">22222222</div>
                   
                     <button class="question" id="que-2"><span id="que-1-toggle"></span><span>자주 묻는 질문 2</span></button>
                     <div class="answer" id="ans-2">내용내용내용</div>

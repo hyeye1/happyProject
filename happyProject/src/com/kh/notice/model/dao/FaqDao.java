@@ -50,7 +50,6 @@ public class FaqDao {
 								 rset.getInt("count")));
 			}
 			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -59,9 +58,7 @@ public class FaqDao {
 			close(pstmt);
 		}
 		
-		
 		return list;
-		
 		
 	}
 	
@@ -175,6 +172,24 @@ public class FaqDao {
 			}
 	
 	
-
+	public int deleteFaq(Connection conn, int faNo) {
+		// update문 => 처리된 행수
+		int result =0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, faNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 }

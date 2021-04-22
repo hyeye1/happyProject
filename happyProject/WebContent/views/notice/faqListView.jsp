@@ -76,7 +76,7 @@
         #btn3:hover{background-color: rgb(249, 219, 122); color:white;}
         .bottom{
             border: 1px solid grey;
-            width: 753px;
+            width: 735px;
             height: 35px;
             padding-top: 5px;
             padding-left: 20px;
@@ -136,15 +136,7 @@
         	})
         </script>
         
-        <br>
 
-        <div class="page" align="center">
-            <button id="btn2"><<</button>
-            <button id="btn2">1</button>
-            <button id="btn2">2</button>
-            <button id="btn2">3</button>
-            <button id="btn2">>></button>
-        </div>
         <br>
         <div class="bottom">
             <span>찾으시는 질문이 없으신가요? 1:1로 문의해주세요.</span>&emsp;
