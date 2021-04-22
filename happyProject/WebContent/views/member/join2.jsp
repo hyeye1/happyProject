@@ -16,9 +16,7 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-
- <link rel="stylesheet" href="css/hover-min.css">
- 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <style>
         .join2Outer{
@@ -149,17 +147,20 @@
             <p>회원가입</p>
         </div>
         
-        <form action="<%= request.getContextPath() %>/join.me" method="post" id="enrollForm">
+        <form action="/happyProject/join.me" method="post" id="enrollForm">
             <table class="join2Input">
                 <tr>
                     <th>아이디 *</th>
+                    <form action="idCheck();">
+                    
                     <td><input type="text" name="memId" placeholder="6자 이상" minlength=6 maxlength=20 required></td>
                     <td><button type="button" class="join2Check" onclick="idCheck();">중복확인</button></td>
+                    </form>
                 </tr>
                 <tr>
                     <th>비밀번호 *</th>
                     <td colspan="2"> 
-                        <input type="password" name="memPwd" placeholder="영문/숫자/특수문자 2가지 이상 (8~20자)" required minlength=8 maxlength=20>
+                        <input type="password" name="memPwd" id="memPwd" placeholder="영문/숫자/특수문자 2가지 이상 (8~20자)" required minlength=8 maxlength=20>
                     </td>
                 </tr>
                 <tr>
@@ -245,7 +246,7 @@
             </div>
             
             <div>
-                <button type="submit" id="join2Submit">가입하기</button>
+                <button type="submit" id="join2Submit" disabled>가입하기</button>
             </div>
         </form>
         
@@ -276,37 +277,89 @@
         </div>
 
         <script>     
-        
-        			// 주소검색
-                        $(function() { $("#postcodify").postcodify({
-                            insertPostcode5 : "#postcode",
-                            insertAddress : "#address",
-                            insertDetails : "#details",
-                            insertExtraInfo : "#extra_info",
-                            hideOldAddresses : false
-                        }); });
-                        
-                        $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
+	        	
+	        	// 아이디 중복확인
+	        	function idCheck(){
+	        		var $memId = $("#enrollForm input[name=memId]");
+	        		
+	        		if($memId == ''){
+	        			alert("아이디를 입력해주세요.");
+	        		}else{
+	        		
+	        		$.ajax({
+	        			url:"idCheck.me",
+	        			type:"get",
+	        			data:{checkId:$memId.val()},
+	        			success:function(result){
+	        				
+	        				console.log(result);
+	        				
+	        				if(result == 'NN'){ // 사용불가
+	        					Swal.fire({
+	        						  icon: 'error',
+	        						  title: '이미 존재하는 아이디입니다.',
+	        						  text: '새로운 아이디를 입력해주세요.',
+	        						  confirmButtonColor: 'rgb(249, 219, 122)'
+	        						})
+		        				$memId.val(null);
+	        					$memId.focus();
+	        						
 
-                        $(function(){    
-	                        $("#postcodify_search_button").on("click",function(){
-	                           
-	                        var Y = $(".postcodify_address").is(":text");
-	                            
-	                        if(Y){
-	                           $(".addressInput").show();
-	                        }
-	                        else{
-	                           $(".addressInput").hide();
-	                        }
-                 		 });
-                        
-                        });
-                        
+	        				}else{ // 사용가능
+	        					
+	        					Swal.fire({
+	        						  title: '사용가능한 아이디입니다.',
+	        						  text: "사용하시겠습니까?",
+	        						  icon: 'success',
+	        						  showCancelButton: true,
+	        						  confirmButtonColor: 'rgb(249, 219, 122)',
+	        						  cancelButtonColor: 'rgba(211, 211, 211, 0.653)',
+	        						  confirmButtonText: '사용',
+	        						  cancelButtonText: '취소'
+	        						}).then((result) => {
+	        						  if (result.value) {
+	        							$memId.attr("readonly", true);
+	  	    							$("#enrollForm :submit").removeAttr("disabled");
+	        						  } else{
+	        							$memId.val(null);
+	        						  }
+	        						})	        					
+	        				}
+	        			},error:function(){
+	        				console.log("아이디 중복체크 통신 실패")
+	        			}
+	        		});
+	        		}
+	        	}
+	        	
+	        
+	        	// 주소검색
+	            $(function() { $("#postcodify").postcodify({
+	                insertPostcode5 : "#postcode",
+	                insertAddress : "#address",
+	                insertDetails : "#details",
+	                insertExtraInfo : "#extra_info",
+	                hideOldAddresses : false
+	            }); });
+	        	
+	        	$(function() { $("#postcodify_search_button").postcodifyPopUp(); });
+	
+	            $(function(){    
+	                $("#postcodify_search_button").on("click",function(){
+		                var Y = $(".postcodify_address").is(":text");
+			                            
+		                if(Y){
+		                	$(".addressInput").show();
+		                }else{
+			                $(".addressInput").hide();
+			            }
+	            	});
+	             });
+	                        
                         
                   // 휴대폰인증
                         $("#phoneCheck").click(function(){
-                           // $("#memPhone").attr("disabled", true);
+                            $("#memPhone").attr("readonly", true);
                             $("#phoneCheck").attr("disabled", true);
                             $(".phoneCheckNumWrap").show();
                             $(".phoneCheckInput").show();
@@ -365,7 +418,8 @@
                         
                         
                         
-                        
+             
+                        /*
             //수업시간에 했던 아이디 중복확인 내용
             function idCheck(){
                 
@@ -375,7 +429,7 @@
                 $.ajax({
                     url:"idCheck.me",
                     type:"get",
-                    data:{checkId:$userId.val()},
+                    data:{checkId:$memId.val()},
                     success:function(result){
                         
                         //console.log(result);
@@ -403,6 +457,8 @@
                 });
                 
             };
+            
+            */
         </script>
   
 
