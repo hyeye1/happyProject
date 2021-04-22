@@ -23,7 +23,7 @@
     <style>
         .join2Outer{
             width: 1000px;
-            height: 1250px;
+            height: 1000px;
             margin: auto;
             font-size: 12px;
             color: rgb(94, 94, 94);
@@ -70,7 +70,7 @@
             float: right;
             font-size: 12px;
         }
-        #postcodify_search_button{ 
+        #join2SearchAdd{ 
             width: 100%; 
             font-size: 12px;
         }
@@ -97,7 +97,63 @@
             border-top: 1.5px solid darkgray;
             border-bottom: 1.5px solid darkgray;   
         }
-      
+        .searchAddWrap{
+            position:absolute;
+            top: 45%;
+            left: 40%;
+            height: 600px;
+            width: 600px;
+            margin-top: -75px;
+            margin-left: -150px;
+            font-size: 13px;
+            display: none;
+            box-shadow: 0px 0px 50px 1500px rgba(196, 196, 196, 0.455), 5px 5px 10px 1px rgba(35, 35, 35, 0.565);
+        }
+
+        #searchAddTitle{
+            height: 45px;
+            background-color: rgb(249, 219, 122);
+        }
+        #searchAddContent{
+            background-color: white;
+            height: 495px;
+            padding: 30px;
+        }
+        #searchAddTitleName{
+            display: inline-block;
+            margin-top: 12px;
+            margin-left: 30px;
+        }
+        #searchAddInput {border-bottom: 1px solid gray;}
+        #searchAddContent input{
+            width: 420px;
+            height: 32px;
+            border: 1.5px solid lightgray;
+            border-radius: 5px;
+        }
+        #searchAddContent button{
+            margin-top: -20px;
+            margin-bottom: 40px;
+            width: 110px;
+            height: 32px;
+            background-color: rgb(249, 219, 122);
+            color: grey;
+            border: none;
+            border-radius: 5px;
+            font-weight: 550;
+            cursor: pointer;
+        }
+        .addTips{font-size: 14px; margin-top: 30px; margin-bottom: -10px;}
+        .tipsEx{ font-weight:550; font-size: 14px; color:rgb(250, 188, 19);}
+        #searchAddClose{ 
+            border: none; 
+            float: right; 
+            margin-right: 10px; 
+            width: 40px; 
+            font-size: 30px; 
+            background-color: rgb(249, 219, 122);
+            cursor: pointer;
+            }
         input:disabled {background-color: rgba(211, 211, 211, 0.653); cursor: default;}
         button:disabled {background-color: rgba(211, 211, 211, 0.905); cursor: default;}
         .phoneCheckInput {display: none;}
@@ -133,11 +189,6 @@
             margin-top: -20px;
             margin-bottom: 15px;
 
-        }
-        .addressInput{display : none;}
-        .addressInput input {
-        	font-size: 12px;
-        	color: gray;
         }
     </style>
 </head>
@@ -195,18 +246,7 @@
                 </tr>
                 <tr>
                     <th>주소 *</th>
-                    <td colspan="2">
-					<button type="button" id="postcodify_search_button">검색</button><br />
-                    </td>
-                </tr>
-                <tr class="addressInput">
-                    <th></th>
-                    <td colspan="2">               		
-						<input type="text" name="address" class="postcodify_address" placeholder="주소" required value="" /><br />
-						<input type="text" name="extra" class="postcodify_extra_info" placeholder="동" required value="" /><br />
-						<input type="text" name="details" class="postcodify_details" placeholder="상세주소를 입력헤주세요." required value="" /><br />
-	                    <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" required value="" />
-           			</td>
+                    <td colspan="2"> <button type="button" id="join2SearchAdd" >주소검색</button></td>
                 </tr>
         
             </table>
@@ -220,7 +260,7 @@
                     </tr>
                     <tr>
                         <th>
-                            <input type="checkbox" class="agreeCheck" id="agree1"  required ><label for="agree1"> 이용약관 동의</label>
+                            <input type="checkbox" class="agreeCheck" id="agree1"><label for="agree1"> 이용약관 동의</label>
                         </th>
                         <td>
                             <input type="button" onclick="" class="join2DetailBtn" value="자세히 보기">
@@ -228,7 +268,7 @@
                     </tr>
                     <tr>
                         <th>
-                            <input type="checkbox"  class="agreeCheck" id="agree2"  required><label for="agree2"> 개인정보 취급 방침</label>
+                            <input type="checkbox"  class="agreeCheck" id="agree2"><label for="agree2"> 개인정보 취급 방침</label>
                         </th>
                         <td>
                             <input type="button" onclick="" class="join2DetailBtn" value="자세히 보기">
@@ -236,7 +276,7 @@
                     </tr>
                     <tr>
                         <th colspan="2">
-                            <input type="checkbox" class="agreeCheck" id="agree3" name="emailYN"><label for="agree3"> 이메일 수신 동의</label>
+                            <input type="checkbox"  class="agreeCheck" id="agree3"><label for="agree3"> 이메일 수신 동의</label>
                         </th>
                     </tr>
                 </table>
@@ -250,6 +290,38 @@
         </form>
         
     </div>
+        <div class="searchAddWrap" >
+            <div id="searchAddTitle">
+                <h3 id="searchAddTitleName">주소 찾기</h3>
+                <button id="searchAddClose" type="button">✖</button>
+            </div>
+            <div id="searchAddContent">
+                
+                <div id="searchAddInput">
+                    <p style="font-weight: 800;">
+                        검색어(도로명, 건물명, 지번)를 입력해주세요 (지번 + 도로명 통합)
+                    </p>
+                    <input type="search" name="searchAddress" id="address" placeholder="주소를 입력해주세요">
+                    <button type="button" id="goPopup" onclick="goPopup();">검색</button>
+                </div>
+                <div id="searchAddTip">
+
+                    <p style="font-size: 28px; font-weight: 700;">tip</p>
+                    <p style="font-size: 14px; margin-top: -15px;">
+                        아래와 같은 조합으로 검색을 하시면 더욱 정확한 결과가 검색됩니다.
+                    </p>
+                    
+                    <p class="addTips">도로명 + 건물번호</p>
+                    <p class="tipsEx">예) 강남대로 100, 제주 첨단로 100</p>
+                    
+                    <p class="addTips">지역명(동/리) + 번지</p>
+                    <p class="tipsEx">예) 역삼동 100, 제주 영평동 1000</p>
+                    
+                    <p class="addTips">지역명(동/리) + 건물명(아파트명)</p>
+                    <p class="tipsEx">예) 분당 주공, 역삼동 주공100차</p>
+                </div>
+            </div>
+        </div>
 
         <div class="phoneCheckNumWrap" align="center">
             <div id="phoneCheckNumTitle">
@@ -274,36 +346,28 @@
                 <button type="button" class="okBtn">확인</button>
             </div>
         </div>
-
-        <script>     
         
-        			// 주소검색
-                        $(function() { $("#postcodify").postcodify({
-                            insertPostcode5 : "#postcode",
-                            insertAddress : "#address",
-                            insertDetails : "#details",
-                            insertExtraInfo : "#extra_info",
-                            hideOldAddresses : false
-                        }); });
-                        
-                        $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
+<!-- postcodify실험
+        <div id="postcodify">
+           <input type="text" name="" id="postcode" value="" /><br />
+         <input type="text" name="" id="address" value="" /><br />
+         <input type="text" name="" id="details" value="" /><br />
+         <input type="text" name="" id="extra_info" value="" /><br />
+        </div>
+ -->
+ 
+ 
+        <script>
 
-                        $(function(){    
-	                        $("#postcodify_search_button").on("click",function(){
-	                           
-	                        var Y = $(".postcodify_address").is(":text");
-	                            
-	                        if(Y){
-	                           $(".addressInput").show();
-	                        }
-	                        else{
-	                           $(".addressInput").hide();
-	                        }
-                 		 });
-                        
+                  // 주소찾기
+                        $("#join2SearchAdd").click(function() {
+                            $(".searchAddWrap").show();
                         });
-                        
-                        
+                        $("#searchAddClose").click(function() {
+                            $(".searchAddWrap").hide();
+                        });
+
+
                   // 휴대폰인증
                         $("#phoneCheck").click(function(){
                            // $("#memPhone").attr("disabled", true);
@@ -326,7 +390,7 @@
                        $(function(){
                            // 전체 동의 
                          $("#allChecked").on("click",function(){
-                               //대표 checkbox 체크 여부
+                                   //대표 checkbox 체크 여부
                                var checked = $("#allChecked").is(":checked");
                                    
                                if(checked){
@@ -353,6 +417,21 @@
                       });
                         
                         
+                        
+                        // postcodify 실험
+                        $(function(){
+                           $("#goPopup").postcodifyPopUp();
+                        });
+                        
+                        $(function() { $("#postcodify").postcodify({
+                            insertPostcode5 : "#postcode",
+                            insertAddress : "#address",
+                            insertDetails : "#details",
+                            insertExtraInfo : "#extra_info",
+                            hideOldAddresses : false
+                        }); });
+                        
+
 
 
 

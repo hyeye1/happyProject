@@ -36,10 +36,20 @@ public class JoinServlet extends HttpServlet {
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
 		String memName = request.getParameter("memName");
+		String memAddress = request.getParameter("address") + " " + request.getParameter("extra") + " " + request.getParameter("details") + ", 우편번호 : " + request.getParameter("postcode");
 		String memPhone = request.getParameter("memPhone");
 		String email = request.getParameter("email");
+		String emailYN = request.getParameter("emailYN");
+       	
+		if("on".equals(emailYN)) {
+			emailYN = "Y";
+		}else {
+			emailYN = "N";
+		}
 
-		Member m = new Member(memId, memPwd, memName, memPhone, email);
+		Member m = new Member(memId, memPwd, memName, memAddress, memPhone, email, emailYN);
+		
+		//System.out.println(m);
 		
 		int result = new MemberService().insertMember(m);
 		
@@ -52,7 +62,7 @@ public class JoinServlet extends HttpServlet {
 			request.setAttribute("errorMsg", "회원가입에 실패했습니다.");
 			
 		}
-		
+
 		
 	}
 

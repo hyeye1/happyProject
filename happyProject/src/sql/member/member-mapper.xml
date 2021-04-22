@@ -37,12 +37,16 @@
 		      , MEM_ID
 		      , MEM_PWD
 		      , MEM_NAME
+		      , MEM_ADDRESS
 		      , MEM_PHONE
 		      , EMAIL
+		      , EMAIL_YN
 		        )
 		 VALUES 
 		        (
 		        SEQ_MNO.NEXTVAL
+		      , ?
+		      , ?
 		      , ?
 		      , ?
 		      , ?
