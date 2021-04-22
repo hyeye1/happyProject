@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq"%>
-<% 
-   String contextPath = request.getContextPath(); 
-   
-%>    
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq, com.kh.notice.model.vo.Notice, com.kh.common.model.vo.PageInfo, com.kh.member.model.vo.Member "%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+ 	String contextPath = request.getContextPath(); 
+
+	
+%>   
     
 <!DOCTYPE html>
 <html lang="en">
