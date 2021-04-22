@@ -52,14 +52,14 @@ public class Book {
 		this.bkHits = bkHits;
 	}
 	
-	
-	
 
 	public Book(String bkName, String author) {
 		super();
 		this.bkName = bkName;
 		this.author = author;
 	}
+	
+	
 
 	public int getBookNo() {
 		return bookNo;

@@ -38,9 +38,25 @@ public class MainServlet extends HttpServlet {
 		// 메인 책리스트 전체 조회
 		ArrayList<Book> list = new BookService().selectBookList(bookNo);
 		
+		Book b = new Book();
+		b.setBookNo(bookNo);
+		request.setAttribute("b", b);
+			
+		//request.setAttribute("bookNo", bookNo);
+		//request.setAttribute("list", list);
+		
+		
+		
 		response.setContentType("application/json; charset=UTF-8");
 		Gson gson = new Gson();
 		gson.toJson(list, response.getWriter());
+		
+		
+		
+				
+			
+		
+		
 		
 		
 		

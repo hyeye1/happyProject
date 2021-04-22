@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.book.model.vo.*, java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="com.kh.book.model.vo.Book, java.util.ArrayList"%>
 <%
-	//ArrayList<Image> i = (ArrayList<Image>)request.getAttribute("i");
 	Book b = (Book)request.getAttribute("b");
 %>
     <!DOCTYPE html>
@@ -237,10 +236,11 @@
             		selectBookList();
             		
             	})
-            	// 오늘의 추천에 보이는 책 리스트 조회용 AJAX
+            	// 오늘의 추천에 보여질 책 리스트 조회용 AJAX
             	function selectBookList(){
             		$.ajax({
-            			url:"<%= contextPath %>/mList.bk",
+            			
+            			url:"/mList.bk",
             			data:{bkno:<%= b.getBookNo() %>},
             			success:function(list){
             				
@@ -251,7 +251,7 @@
             				console.log("책뽑기에이작스실패...!");
             			}
             			
-            		})
+            		});
             	}
             	
             </script>
