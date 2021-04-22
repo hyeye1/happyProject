@@ -44,4 +44,47 @@
 		 WHERE BK_NO = ?
 		 ORDER BY RE_DATE DESC
 	</entry>
+	
+	<entry key="insertBook">
+		INSERT
+  		  INTO TB_BOOK
+		  (
+	         BK_NO
+	       , BK_NAME
+	       , AUTHOR
+	       , PUBLISHER
+	       , BK_PUBLISH_DATE
+	       , BK_DIVISION
+	       , BK_GENRE
+	       , BK_ORIGIN_PRICE
+	       , BK_PRICE
+	       , ISBN
+	       , BK_STOCK
+	       , BK_PAGE_NO
+	       , BK_DESCRIPTION
+	       , AT_DESCRIPTION
+	       , BK_CONTENT_LIST
+	       , BK_STOCK
+	       )		       
+		 VALUES
+	       (
+	         SEQ_BNO.NEXTVAL
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       )     
+	</entry>
 </properties>

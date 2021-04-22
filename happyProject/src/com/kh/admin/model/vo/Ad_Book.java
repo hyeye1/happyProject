@@ -67,6 +67,30 @@ public class Ad_Book {
 		this.bkPrice = bkPrice;
 		this.bkStock = bkStock;
 	}
+	
+	
+
+	public Ad_Book(String bkName, String author, String publisher, String bkPublishDate, String bkDivision,
+			String bkGenre, int bkOriginPrice, int bkPrice, String isbn, int bkStock, int bkPageNo,
+			String bkDescription, String atDescription, String bkContentList, String bkKeyword) {
+		super();
+		this.bkName = bkName;
+		this.author = author;
+		this.publisher = publisher;
+		this.bkPublishDate = bkPublishDate;
+		this.bkDivision = bkDivision;
+		this.bkGenre = bkGenre;
+		this.bkOriginPrice = bkOriginPrice;
+		this.bkPrice = bkPrice;
+		this.isbn = isbn;
+		this.bkStock = bkStock;
+		this.bkPageNo = bkPageNo;
+		this.bkDescription = bkDescription;
+		this.atDescription = atDescription;
+		this.bkContentList = bkContentList;
+		this.bkKeyword = bkKeyword;
+
+	}
 
 	public int getBkNo() {
 		return bkNo;
