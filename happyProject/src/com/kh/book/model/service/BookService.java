@@ -1,15 +1,26 @@
 package com.kh.book.model.service;
 
-import static com.kh.common.JDBCTemplate.getConnection;
-import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.book.model.dao.BookDao;
+import com.kh.book.model.vo.Book;
 import com.kh.book.model.vo.Review;
 
 public class BookService {
+	
+	public ArrayList<Book> selectBookList(int bookNo){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Book> list = new BookDao().selectBookList(conn, bookNo);
+		
+		close(conn);
+		
+		return list;
+	}
 
 	public ArrayList<Review> selectReviewList(int bookNo){
 		

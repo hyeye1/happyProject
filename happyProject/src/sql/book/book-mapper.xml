@@ -31,6 +31,35 @@
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	<entry key="selectBookList">
+		SELECT 
+		       BK_NAME
+		     , AUTHOR
+		  FROM TB_BOOK
+		 WHERE BK_NO = ?
+	</entry>
+	
+	
+	<entry key="selectBook">
+		SELECT
+		       BK_NO
+		     , BK_NAME
+		     , AUTHOR
+		     , PUBLISHER
+		     , BK_PUBLISH_DATE
+		     , BK_DIVISION
+		     , BK_GENRE
+		     , BK_ORIGIN_PRICE
+		     , BK_PRICE
+		     , BK_DESCRIPTION
+		     , AT_DESCRIPTION
+		     , BK_CONTENT_LIST
+		     , BK_MAIN_IMG
+		  FROM TB_BOOK
+		  JOIN TB_IMAGE USING (BK_NO)
+		 WHERE BK_NO = ?
+	</entry>
+	
 	
 	<entry key="selectReviewList">
 		SELECT

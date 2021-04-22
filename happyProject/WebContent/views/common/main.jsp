@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.book.model.vo.*, java.util.ArrayList"%>
-
+<%
+	//ArrayList<Image> i = (ArrayList<Image>)request.getAttribute("i");
+	Book b = (Book)request.getAttribute("b");
+%>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -174,7 +177,7 @@
                     <ul>
                         <li>
                             <div class="todayBk" >
-                                <a href="<%= contextPath %>/bookDetails.bk"">
+                                <a href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="resources/books/novel/달러구트.jpg" >
                                     달러구트 꿈 백화점
                                 </a>
@@ -230,10 +233,26 @@
             </div>
             <script>
             	$(function(){
-            		$(".todayPick>ul>.todayBk").click(function(){
-            			location.href="<%= contextPath %>/bookDetails.bk?"
-            		})
+            		
+            		selectBookList();
+            		
             	})
+            	// 오늘의 추천에 보이는 책 리스트 조회용 AJAX
+            	function selectBookList(){
+            		$.ajax({
+            			url:"<%= contextPath %>/mList.bk",
+            			data:{bkno:<%= b.getBookNo() %>},
+            			success:function(list){
+            				
+            				console.log(list); 
+            		
+            			}, error:function(){
+            				
+            				console.log("책뽑기에이작스실패...!");
+            			}
+            			
+            		})
+            	}
             	
             </script>
     
