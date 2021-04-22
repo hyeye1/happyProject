@@ -120,7 +120,7 @@
             
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
-                <img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg">
+                <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
                 <input type="text" id="menubarSearchInput" > <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색">
     			
     		<% if(loginUser == null) { %>
