@@ -154,7 +154,7 @@
                     <form action="idCheck();">
                     
                     <td><input type="text" name="memId" placeholder="6자 이상" minlength=6 maxlength=20 required></td>
-                    <td><button type="button" class="join2Check" onclick="idCheck();">중복확인</button></td>
+                    <td><button type="button " class="join2Check" onclick="idCheck();">중복확인</button></td>
                     </form>
                 </tr>
                 <tr>
