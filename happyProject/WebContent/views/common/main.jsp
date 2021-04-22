@@ -241,21 +241,26 @@
             	// 오늘의 추천에 보여질 책 리스트 조회용 AJAX
             	function selectBookList(){
             		$.ajax({
-            			
-            			url:"/mList.bk",
-            			data:{bkno:<%= b.getBookNo() %>},
-            			success:function(list){
-            				
-            				console.log(list); 
-            		
-            			}, error:function(){
-            				
-            				console.log("책뽑기에이작스실패...!");
-            			}
-            			
-            		});
-            	}
-            	
+                		
+                		val $bkN = $(" b.getBookNo()");
+                		
+                		$.ajax({
+                			
+                			url:"mList.bk",
+                			
+                			data:{bkno:bkN.val()},
+                			success:function(list){
+                				
+                				console.log(list); 
+                		
+                			}, error:function(){
+                				
+                				console.log("책뽑기에이작스실패...!");
+                			}
+                			
+                		});
+                	}
+                	
             </script>
     		  -->
             <br><br><br>
