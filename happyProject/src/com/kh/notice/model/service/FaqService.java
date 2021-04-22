@@ -3,12 +3,17 @@ package com.kh.notice.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.common.model.vo.PageInfo;
 import com.kh.notice.model.dao.FaqDao;
+import com.kh.notice.model.dao.NoticeDao;
 import com.kh.notice.model.vo.Faq;
+import com.kh.notice.model.vo.Notice;
+
 import static com.kh.common.JDBCTemplate.*;
 
-public class FaqService {
+	public class FaqService {
 	
+		
 	public ArrayList<Faq> selectFaqList(){
 		Connection conn = getConnection();
 		
@@ -56,8 +61,25 @@ public class FaqService {
 			return f;
 		}
 		
+	public int updateFaq(Faq f) {
+		Connection conn = getConnection();
+		int result = new FaqDao().updateFaq(conn, f);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+		
+	}
 	
 	
 	
+		
 
 }

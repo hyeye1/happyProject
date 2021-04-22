@@ -41,20 +41,29 @@
 			  , FA_TITLE
 			  , FA_CONTENT
 			  , FA_DATE
-	       FROM TB_FAQ
+			  , MEM_ID
+	       FROM TB_FAQ F
+	       JOIN TB_MEMBER ON (FA_WRITER = MEM_NO)
 	      WHERE FA_NO = ?
 	        AND FA_STATUS = 'Y'   
 	</entry>
 	
-	<entry key="selectTop5">
-		SELECT
-		  		 FA_TITLE
-		       , COUNT
-		 	FROM TB_FAQ
-		   WHERE FA_STATUS = 'Y'
-		   ORDER
-		   	  BY COUNTDESC
+	<entry key="updateFaq">
+		UPDATE 
+				 TB_FAQ
+			SET  FA_TITLE = ?
+			   , FA_CONTENT =?
+		  WHERE  FA_NO = ?
 	</entry>
+	
+	<entry key="deleteFaq">
+		UPDATE
+				TB_FAQ
+		   SET FA_STATUS = 'N'
+		 WHERE FA_NO = ?
+	</entry>
+	
+	
 	
 	
 </properties>

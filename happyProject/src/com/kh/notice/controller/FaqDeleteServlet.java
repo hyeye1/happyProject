@@ -6,23 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.kh.member.model.vo.Member;
 import com.kh.notice.model.service.FaqService;
-import com.kh.notice.model.vo.Faq;
 
 /**
- * Servlet implementation class FaqInsertServlet
+ * Servlet implementation class FaqDeleteServlet
  */
-@WebServlet("/insert.faq")
-public class FaqInsertServlet extends HttpServlet {
+@WebServlet("/delete.faq")
+public class FaqDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqInsertServlet() {
+    public FaqDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,25 +29,15 @@ public class FaqInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("utf-8");
+		int faNo = Integer.parseInt(request.getParameter("fno"));
 		
-		String faTitle = request.getParameter("title");
-		String faContent = request.getParameter("content");
+		int result = new FaqService().deleteFaq(faNo);
 		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		int userNo = loginUser.getMemNo();
-		
-		Faq f = new Faq();
-		f.setFaTitle(faTitle);
-		f.setFaContent(faContent);
-		
-		int result = new FaqService().insertFaq(f);
-		
-		if(result > 0) { // 성공 => /list.faq (다시 리스트 페이지로 돌아감)
-			response.sendRedirect(request.getContextPath() + "/list.faq");
+		if(result > 0) { // 삭제성공
 			
-		}else { // 실패 => 에러페이지
+		response.sendRedirect(request.getContextPath() + "/list.faq");	
+			
+		}else { // 삭제실패
 			
 		}
 		

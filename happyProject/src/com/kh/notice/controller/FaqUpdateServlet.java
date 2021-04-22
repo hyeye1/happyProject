@@ -6,23 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.kh.member.model.vo.Member;
 import com.kh.notice.model.service.FaqService;
 import com.kh.notice.model.vo.Faq;
 
 /**
- * Servlet implementation class FaqInsertServlet
+ * Servlet implementation class FaqUpdateServlet
  */
-@WebServlet("/insert.faq")
-public class FaqInsertServlet extends HttpServlet {
+@WebServlet("/update.faq")
+public class FaqUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqInsertServlet() {
+    public FaqUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,25 +32,27 @@ public class FaqInsertServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		
+		int faNo = Integer.parseInt(request.getParameter("fno"));
 		String faTitle = request.getParameter("title");
 		String faContent = request.getParameter("content");
 		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		int userNo = loginUser.getMemNo();
-		
 		Faq f = new Faq();
+		f.setFaNo(faNo);
 		f.setFaTitle(faTitle);
 		f.setFaContent(faContent);
 		
-		int result = new FaqService().insertFaq(f);
+		int result = new FaqService().updateFaq(f);
 		
-		if(result > 0) { // 성공 => /list.faq (다시 리스트 페이지로 돌아감)
-			response.sendRedirect(request.getContextPath() + "/list.faq");
+		if(result > 0) { //수정성공 => /detail.faq?fno=글번호  => 상세보기 페이지로 넘어가게
 			
-		}else { // 실패 => 에러페이지
+			response.sendRedirect(request.getContextPath() + "/detail.faq?fno=" + faNo);
+			
+		}else { // 수정 실패
 			
 		}
+		
+		
+		
 		
 	}
 
