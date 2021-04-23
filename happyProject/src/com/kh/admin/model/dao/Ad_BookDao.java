@@ -30,6 +30,8 @@ private Properties prop = new Properties();
 		}
 	}
 	
+	
+	
 	public int selectListCount(Connection conn) {
 		// 총게시글 수
 		int listCount = 0;
@@ -185,7 +187,7 @@ private Properties prop = new Properties();
 			if(rset.next()) {
 				im = new Ad_Image();
 				im.setImgNo(rset.getInt("img_no"));
-				im.setBookNo(rset.getInt("book_no"));
+				im.setBkNo(rset.getInt("bk_no"));
 				im.setImgPath(rset.getString("img_path"));
 				im.setImgEnrollDate(rset.getDate("img_enroll_date"));
 				
@@ -200,5 +202,30 @@ private Properties prop = new Properties();
 		return im;
 		
 	}
+	
+	public int deleteBook(Connection conn, int bkNo) {
+		// update문 
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteBook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bkNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
 	
 }

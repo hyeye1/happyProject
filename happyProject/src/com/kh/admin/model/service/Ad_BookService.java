@@ -12,6 +12,7 @@ import com.kh.admin.model.vo.Ad_Image;
 import com.kh.common.model.vo.PageInfo;
 
 public class Ad_BookService {
+	
 	public int selectListCount() {
 		Connection conn = getConnection();
 		int listCount = new Ad_BookDao().selectListCount(conn);
@@ -60,5 +61,19 @@ public class Ad_BookService {
 		Ad_Image im = new Ad_BookDao().selectImage(conn, bkNo);
 		close(conn);
 		return im;
+	}
+	
+	// 도서 삭제 
+	public int deleteBook(int bkNo) {
+		Connection conn = getConnection();
+		int result = new Ad_BookDao().deleteBook(conn, bkNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 }
