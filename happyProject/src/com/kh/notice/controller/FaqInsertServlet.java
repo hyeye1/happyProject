@@ -44,11 +44,12 @@ public class FaqInsertServlet extends HttpServlet {
 		Faq f = new Faq();
 		f.setFaTitle(faTitle);
 		f.setFaContent(faContent);
+		f.setFaWriter(String.valueOf(userNo));
 		
 		int result = new FaqService().insertFaq(f);
 		
 		if(result > 0) { // 성공 => /list.faq (다시 리스트 페이지로 돌아감)
-			response.sendRedirect(request.getContextPath() + "/list.faq");
+			response.sendRedirect(request.getContextPath() + "/list.faq?currentPage=1");
 			
 		}else { // 실패 => 에러페이지
 			

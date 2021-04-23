@@ -91,6 +91,28 @@ import static com.kh.common.JDBCTemplate.*;
 		return result;
 	}
 	
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = new FaqDao().selectListCount(conn);
+		
+		if(listCount>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return listCount;
+	}
+	
+	public ArrayList<Faq> selectListPage(PageInfo pi){
+		Connection conn = getConnection();
+		
+		ArrayList<Faq> list = new FaqDao().selectListPage(conn, pi);
+		
+		close(conn);
+		return list;
+	}
 		
 
 }

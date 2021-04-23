@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +28,18 @@
          margin: auto;
         }
         #text1{font-size:x-large; font-weight: bold;}
-        .btn{
+        .btn3{
+            width: 300px;
+            height: 30px;
+            border: 1px solid gray;
+            color: gray;
+            background-color: rgb(249, 219, 122);
+            border-radius: 8px;
+            padding: 5x;
+            font-size: medium;
+            cursor: pointer;
+        }
+        .btn4{
             width: 300px;
             height: 30px;
             border: 1px solid gray;
@@ -35,6 +49,9 @@
             padding: 5x;
             font-size: medium;
             cursor: pointer;
+        }
+        .btn4:hover{
+            background-color: rgb(249, 219, 122);
         }
         .clicked{background-color: rgb(249, 219, 122); color:white;}
         .btnouter{margin-top: 30px; margin-left: 100px;}
@@ -57,11 +74,7 @@
         }
         #btn1:hover, #btn2:hover{background-color: rgb(249, 219, 122); color:white;}
         #btn1{margin-top: 120px; margin-left: 50px;}
-        #btn2{
-            margin-right: 150px; 
-            margin-top: 180px; 
-            margin-bottom: 20px;
-        }
+        #btn2{margin-bottom: 20px;}
     </style>
 </head>
 <body>
@@ -69,19 +82,19 @@
         <div class="top">
             <span id="text1">나의 리뷰</span><hr>
             <div class="btnouter">
-                <button class="btn">작성 가능 리뷰(0 or 1)</button>
-                <button class="btn">작성한 리뷰(1)</button>
+                <button class="btn3" onClick="location.href='<%= contextPath %>/review.me'">작성 가능 리뷰(0 or 1)</button>
+                <button class="btn4" onClick="location.href='<%= contextPath %>/reviewWrite.me'">작성한 리뷰(1)</button>
             </div>
         </div>
         <div class="box" align="center"><br>
-        <!-- 작성한 리뷰 아예 없을 때
+        <!-- 리뷰 작성 없을 때
             <img src="resources/image/nowrite.png" width="60"><br><br>
-             <span id="text">리뷰를 작성한 도서가 없습니다.</span>
+             <span id="text">리뷰 작성이 가능한 도서가 없습니다.</span>
         -->
         <table class="review" width="800">
             <tr>
                 <td rowspan="5">
-                    <img src="resources/image/book.png" width="140" height="180">
+                    <img src="resources/books/travel/bk1.jpg" width="140" height="180">
                 </td>
             </tr>
             <tr>
@@ -92,41 +105,18 @@
                     출판 : 창비출판<br>
                 </td>
                 <td rowspan="5" width="450">
-                    <button type="button" id="btn1">리뷰 상세보기</button>
+                    <button type="button" id="btn1" onClick="location.href='<%= contextPath %>/enrollForm.review'">리뷰작성</button>
                 </td>
             </tr>
-        </table> 
+        </table>
         <hr>
-            </div>
-        <br><br><br>
+        <br>
+        <div class="btnouter2" align="center">
+            <button type="button" id="btn2">주문내역가기</button>
+        </div>
 
-        <script>
-            var btn = document.getElementsByClassName("btn");
-        
-                function handleClick(event) {
-                console.log(event.target);
-                
-                console.log(event.target.classList);
-        
-                if (event.target.classList[1] === "clicked") {
-                    event.target.classList.remove("clicked");
-                } else {
-                    for (var i = 0; i < btn.length; i++) {
-                    btn[i].classList.remove("clicked");
-                    }
-        
-                    event.target.classList.add("clicked");
-                  }
-                }
-                function init() {
-                    for (var i = 0; i < btn.length; i++) {
-                        btn[i].addEventListener("click", handleClick);
-                    }
-                }
-                init();
-        </script>
-        
     </div>
+
 </body>
 </html>
 

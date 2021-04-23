@@ -27,7 +27,7 @@
             cursor: pointer;
     }
     #btn:hover{background-color: rgb(249, 219, 122); color:white;}
-    .button{margin-left: 200px;}
+    .button{margin-left: 140px;}
     #writeForm>table{
         border: 1px solid gray; 
         padding: 10px;
