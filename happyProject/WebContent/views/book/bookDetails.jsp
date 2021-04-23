@@ -20,7 +20,7 @@
             height:4000px;
             margin:auto;
         }
-        /* HOME/국내도서 페이지로 바로가기*/
+        /* HOME/국내or해외 페이지로 바로가기*/
         .bookDetailOuter .category a{
             text-decoration:none;
             color:darkgray;
@@ -181,12 +181,12 @@
                         배송비 3,000원 (20,000원 이상 주문시 무료배송) <br><br>
                     </small>
                 </p>
-                <div>
+                <form>
                     <b>주문수량 </b> :
-                    <input type=button value="-" onClick="javascript:this.div.amount.value--;" class="btn btn-primary btn-sm" style="background:lightgray; border:none;">
+                    <input type=button value="-" onClick="javascript:this.form.amount.value--;" class="btn btn-primary btn-sm" style="background:lightgray; border:none;">
                     <input type=number name=amount value=1 min="1" max="10" readonly>
-                    <input type=button value="+" onClick="javascript:this.div.amount.value++;" class="btn btn-primary btn-sm" style="background:lightgray; border:none;">
-                </div>
+                    <input type=button value="+" onClick="javascript:this.form.amount.value++;" class="btn btn-primary btn-sm" style="background:lightgray; border:none;">
+                </form>
             </div>
         </div>
 
@@ -299,11 +299,11 @@
                 </div>
             </div>
         </form>
-        <br><br><br><br>
-
-
+        <br><br>
+	
+		
         <!-- 리뷰 없을 때 list -->
-        <h5 class="detailTitle">전체</h5>
+        <h6 class="detailTitle">전체</h6>
         <div class="reviewArea">
             <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
             <hr>
@@ -311,7 +311,7 @@
         </div>
         <br><br>
         <!-- 리뷰 있을 때 list -->
-        <h5 class="detailTitle">전체</h5>
+        <h6 class="detailTitle">전체</h6>
         <div class="reviewArea" id="reviewList">
             <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
             <hr>
