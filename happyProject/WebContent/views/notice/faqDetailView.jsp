@@ -74,7 +74,7 @@
             <br>
             <div class="button" align="center">
             
-                <button id="btn" type="button" onClick="location.href='<%= contextPath %>/list.faq'">목록가기</button>
+                <button id="btn" type="button" onClick="location.href='<%= contextPath %>/list.faq?currentPage=1'">목록가기</button>
                 <!-- 로그인했고, 로그인한 사용자가 admin일 경우 보여지는 div -->
         		<% if(loginUser != null && loginUser.getMemId().equals("admin")) { %>
                 <button id="btn" type="button" onClick="location.href='<%= contextPath %>/updateForm.faq?fno=<%=f.getFaNo() %>'">수정하기</button>

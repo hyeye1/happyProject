@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.book.model.vo.*, java.util.ArrayList"%>
-
+    pageEncoding="UTF-8" import="com.kh.book.model.vo.Book, java.util.ArrayList"%>
+<%
+	//Book b = (Book)request.getAttribute("b");
+%>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -173,70 +175,87 @@
                 <h2>오늘의 추천</h2>
                     <ul>
                         <li>
-                            <div class="todayBk" >
-                                <a href="<%= contextPath %>/bookDetails.bk"">
-                                    <img class="coverImg" src="resources/books/novel/달러구트.jpg" >
-                                    달러구트 꿈 백화점
+                            <div id="todayBk1" class="todayBk" >
+                                <a href="<%= contextPath %>/bkDetails.bk">
+                                    <img class="coverImg" src="" >
+                                    <span class="bookName"></span>
                                 </a>
-                                <p>이미예</p>
+                                <p class="author"></p>
                             </div>
                         </li>
                         <li>
-                            <div class="todayBk">
+                            <div id="todayBk2" class="todayBk">
                                 <a href="">
                                     <img class="coverImg" src="resources/books/economy/02_돈의심리학.jpg">
-                                    돈의 심리학
+                                    <span class="bookName"></span>
                                 </a>
-                                <p>모건 하우절</p>
+                                <p class="author"></p>
                             </div>
                         </li>
                         <li>
-                            <div class="todayBk">
+                            <div id="todayBk3" class="todayBk">
                                 <a href="">
                                     <img class="coverImg" src="resources/books/poem/그런사람또없습니다_표지.jpg">
-                                    그런 사람 또 없습니다
+                                    <span class="bookName"></span>
                                 </a>
-                                <p>원태연</p>
+                                <p class="author"></p>
                             </div>
                         </li>
                         <li>
-                            <div class="todayBk">
+                            <div id="todayBk4" class="todayBk">
                                 <a href="">
                                     <img class="coverImg" src="resources/books/novel/아몬드.jpg">
-                                    아몬드
+                                    <span class="bookName"></span>
                                 </a>
-                                <p>손원평</p>
+                                <p class="author"></p>
                             </div>
                         </li>
                         <li>
-                            <div class="todayBk">
+                            <div id="todayBk5" class="todayBk">
                                 <a href="">
                                     <img class="coverImg" src="resources/books/travel/bk16.jpg">
-                                    아름다운 사찰여행
+                                    <span class="bookName"></span>
                                 </a>
-                                <p>유철상</p>
+                                <p class="author"></p>
                             </div>
                         </li>
                         <li>
-                            <div class="todayBk">
+                            <div id="todayBk6" class="todayBk">
                                 <a href="">
                                     <img class="coverImg" src="resources/books/science/사피엔스.jpg">
-                                    사피엔스
+                                    <span class="bookName"></span>
                                 </a>
-                                <p>유발 하라리</p>
+                                <p class="author"></p>
                             </div>
                         </li>
                     </ul>   
             </div>
+          
             <script>
-            	$(function(){
-            		$(".todayPick>ul>.todayBk").click(function(){
-            			location.href="<%= contextPath %>/bookDetails.bk?"
-            		})
-            	})
+            $(function(){
             	
+            	for (var i=1; i<=6; i++) {
+            		(function(i) {
+            			
+            			$.ajax({
+		            		 url:"<%= contextPath %>/mList.bk",
+		            		 method:"GET",
+		            		 success: function(data) {
+		            			 console.log('list : ' + data[0].author);
+		            			 console.log('list :' + data[0]);
+		            			 var id = '#todayBk' + i;
+		            			 $(id + ' .bookName').text(data[0].bkName);
+		            			 $(id + ' .author').text(data[0].author);
+		            			 $(id + ' .coverImg').attr('src', data[0].bkMainImg);
+		            		 }
+		            	 });
+            		})(i);
+            	}
+            })
+            
+                		
             </script>
-    
+    	
             <br><br><br>
     
             <div class="hash">

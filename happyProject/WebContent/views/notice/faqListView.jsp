@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq, com.kh.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Faq, com.kh.member.model.vo.Member, com.kh.common.model.vo.PageInfo"%>
 <%
 	String contextPath = request.getContextPath();
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
 	Member loginUser = (Member)session.getAttribute("loginUser");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -56,7 +62,8 @@
             color: black;
             background-color: lightgray;
             border-radius: 5px;
-            padding: 6px;
+            padding: 10px;
+            
             }
     #btn2:hover{background-color: rgb(249, 219, 122); color:white;}
     .page{font-size: medium; margin-right: 40px;}
@@ -111,7 +118,7 @@
             <tbody>
             	<% if(list.isEmpty()) { %>
             		<tr>
-            			<td colspan="3">존재하는 공지사항이 없습니다.</td>
+            			<td colspan="3">존재하는 FAQ가 없습니다.</td>
             		</tr>
             	<% }else { %>
             		<% for(Faq f:list) { %>
@@ -136,6 +143,29 @@
         	})
         </script>
         
+        <br>
+        
+        <div align="center" class="pagingArea">
+
+			<% if(currentPage != 1) { %>
+            	<button id="btn2" onclick="location.href='<%=contextPath%>/list.faq?currentPage=<%=currentPage-1%>';">이전</button>
+			<% } %>
+			
+			<% for(int p=startPage; p<=endPage; p++) { %>
+				
+				<% if(currentPage == p){ %>
+            		<button id="btn2" disabled><%= p %></button>
+            	<% }else{ %>
+            		<button id="btn2" onclick="location.href='<%=contextPath%>/list.faq?currentPage=<%= p %>';"><%= p %></button>
+            	<% } %>
+            	
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button id="btn2" onclick="location.href='<%=contextPath%>/list.faq?currentPage=<%=currentPage+1%>';">다음</button>
+			<% } %>
+			
+        </div>
 
         <br>
         <div class="bottom">

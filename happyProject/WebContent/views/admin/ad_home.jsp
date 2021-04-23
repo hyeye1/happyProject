@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Administrator</title>
-<script>
-	window.resizeTo(1000,800);
-</script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -128,9 +131,10 @@
 <body>
     <div class="homeWrap">
         <div id="login">
-            <input type="image" id="adLock" src="../../resources/images/admin/adminhomelock.png">
-            <img src="../../resources/images/admin/adminhome.png" id="adLogo" >
-        </div>
+                <input type="image" id="adLock" src="${pageContext.request.contextPath}/resources/images/admin/adminhomelock.png" >
+                <img src="${pageContext.request.contextPath}/resources/images/admin/adminhome.png"  id="adLogo">
+            </div>
+       
 
         <div id="content">
             <div id="title">
@@ -140,8 +144,8 @@
                 <table id="first">
                     <tr>
                         <td>
-                            <button class="homeBtn" id="adm_member" type="button">회원관리</button>
-                            <button class="homeBtn" id="adm_book" type="button">도서관리</button>
+                            <button class="homeBtn" id="adm_member" type="button" onclick="adMember">회원관리</button>
+                            <button class="homeBtn" id="adm_book" type="button" onclick="adBook">도서관리</button>
                             
                         </td>
                     </tr>
@@ -157,6 +161,8 @@
                 	})
                 	
                 </script>
+                
+                
                 <table>
                     <tr>
                         <td>
@@ -190,10 +196,10 @@
                 관리메뉴를 종료하시겠습니까?
             </div>    
             <div id="adEndIntro" style="text-align: center; font-size:small;">
-                2021.04.18 15:01:33
+                <%= sf.format(nowTime)%>
             </div>
             <div id="adEndBtn" style="margin-left: 26%;">
-                <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
+                <button id="endBtn" onclick="location.href='<%= request.getContextPath() %>/mainPage.me" type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
                 &nbsp;&nbsp;
                 <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
             </div>    
@@ -212,7 +218,10 @@
                 $(".adEndWrap").hide();
                 $("#modal_End").removeClass('show-popup_End');
             });
+            
+            
         });
+        
     </script>
 
 </body>

@@ -1,4 +1,4 @@
-package com.kh.notice.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.notice.model.service.FaqService;
-
 /**
- * Servlet implementation class FaqDeleteServlet
+ * Servlet implementation class withdrawlCompletionServlet
  */
-@WebServlet("/delete.faq")
-public class FaqDeleteServlet extends HttpServlet {
+@WebServlet("/delete.me")
+public class DeleteCompletionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqDeleteServlet() {
+    public DeleteCompletionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,19 +26,8 @@ public class FaqDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int faNo = Integer.parseInt(request.getParameter("fno"));
-		
-		int result = new FaqService().deleteFaq(faNo);
-		
-		if(result > 0) { // 삭제성공
-			
-		response.sendRedirect(request.getContextPath() + "/list.faq?currentPage=1");	
-			
-		}else { // 삭제실패
-			
-		}
-		
+		// 응답페이지 => 회원탈퇴완료
+		request.getRequestDispatcher("views/member/deleteCompletionView.jsp").forward(request, response);
 	}
 
 	/**

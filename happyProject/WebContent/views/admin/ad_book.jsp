@@ -440,14 +440,13 @@
 
                 </div>
                 <div id="choice_btn" style="padding: 20px;">
-                	<button type="button" id="enrollBook" class="btn btn-primary" >도서등록</button> &nbsp;
+                	
                     <button type="button" id="modifyBook" class="btn btn-primary">도서수정</button> &nbsp;
                     <button type="button" id="deleteBook" class="btn btn-primary">도서삭제</button>
                 </div>
                 
             </div>
             <script>
-                	
                 	const enrollBook = document.getElementById('enrollBook');
                     bkEnrollBtn.addEventListener('click', function(){
                 		location.href='<%=request.getContextPath()%>/enrollForm.bk';
@@ -481,19 +480,23 @@
                                 <tr>
                                     <td><input type="radio"></td>
                                     <td><%= b.getBkNo() %></td>
-                                    <td class="bkName"><%= b.getBkName() %></td>
+                                    <td>
+                                     	<a href="${pageContext.request.contextPath}/detail.bk?bkno=<%=b.getBkNo()%>">
+                                    	<%= b.getBkName() %>
+                                    </td>
                                     <td><%= b.getAuthor() %></td>
                                     <td><%= b.getPublisher() %></td>
                                     <td><%= b.getBkDivision() %> > <%= b.getBkGenre() %></td>
                                     <td><%= b.getBkOriginPrice() %></td>
                                     <td><%= b.getBkPrice() %></td>
-                               
                                     <td style="color: red; font-weight: bold;"><%=b.getBkStock() %></td>
                                 </tr>
                             <%}%>
                         <% } %>
                     </tbody>                    
                 </table>
+	
+				
 
                 <br>
                 <div align="center" class="pagingArea">
@@ -519,120 +522,24 @@
                             <option value="" selected>도서명</option>
                             <option value="">저자</option>
                             <option value="">출판사</option>
-                        </select>
-                        <input type="text" id="searchText" style="width: 270px;" placeholder="입력해주세요" > 
-                        <input type="submit" class="search" id="searchBtn" value="검색" style="font-weight: bold; background-color: rgb(249, 219, 122); border: none; width: 55px;">
+                </select>
+                <input type="text" id="searchText" style="width: 270px;" placeholder="입력해주세요" > 
+                <input type="submit" class="search" id="searchBtn" value="검색" style="font-weight: bold; background-color: rgb(249, 219, 122); border: none; width: 55px;">
         
                 
             </div>
+            
         </div>
+
+        
     </div>
 	
+	
+    
 
-    <!-- 도서 상세정보 팝업 -->
-    <div id="modal">
-        <div class="detailWrap">
-            <div id="bktitle">
-                <h3 id=bktitleName>도서 상세정보</h3>
-                <div id="bkcloseBtn">&times;</div>   
-            </div>
+    
 
-            <div id="bkContent">
-                <div id="bkContent1" align="center">
-                    <img src="../resources/admin/booksample.jpg" alt="" width="130" height="180"" align="center">
-                    <br><br>
-                    <button id="detailImgBtn" class="btn btn-primary btn-sm" style="border:none; background-color: #c7c7c7;">상세 이미지</button>
-                </div>
-                <div id="bkContent2">
-                    <table id="bkDetail">
-                    	<tr>
-                            <th>등록일</th>
-                            <td>2021/</td>
-                        </tr>
-                        <tr>
-                            <th width="70px">도서번호</th>
-                            <td>1020</td>
-                        </tr>
-                        <tr>
-                            <th>도서명</th>
-                            <td>해리포터 1</td>
-                        </tr>
-                        <tr>
-                            <th>ISBN</th>
-                            <td>979116341909</td>
-                        </tr>
-                        <tr>
-                            <th>페이지수</th>
-                            <td>300</td>
-                        </tr>
-                        <tr>
-                            <th>키워드</th>
-                            <td>
-                                <div id="bkKeyword">
-                                    <button type="button" class="btn btn-dark btn-sm">#영미소설</button> 
-                                    <button type="button" class="btn btn-dark btn-sm">#영미소설</button>
-                                    <button type="button" class="btn btn-dark btn-sm">#영미소설</button>
-                                    <button type="button" class="btn btn-dark btn-sm">#영미소설</button>
-                                    <button type="button" class="btn btn-dark btn-sm">#영미소설</button>
-                                    <button type="button" class="btn btn-dark btn-sm">#영미소설</button>
-                                    <button type="button" class="btn btn-dark btn-sm">#영미소설</button>
-                                    <button type="button" class="btn btn-dark btn-sm">#판타지드라마</button>
-                                </div>                        
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style="height: 30px;">책 소개</th>
-                            <td>
-                                <div class="detailText" >책책책</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>저자 소개</th>
-                            <td>
-                                <div class="detailText">s저자저자저자</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>목차</th>
-                            <td>
-                                <div class="detailText">목차목차목차</div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- 도서 상세이미지 팝업 -->
-        <div class="detailImgWrap">
-            <div align="center" id="bkDetailImg">
-                <img src="../resources/admin/booksample.jpg" alt="" width="150" height="170">
-                <img src="../resources/admin/pandomsample.jpg" alt="" width="150" height="170">
-                <img src="../resources/admin/againsample.jpg" alt="" width="150" height="170">
-                <img src="../resources/admin/againsample.jpg" alt="" width="150" height="170">
-            </div>
-        </div>
-    </div>
-
-    <script>  // 도서상세 팝업
-        $(".bkName").click(function(){
-            $(".detailWrap").show();
-            $("#modal").addClass('show-popup');
-        });
-        $("#bkcloseBtn").click(function(){
-            $(".detailWrap").hide();
-            $("#modal").removeClass('show-popup');
-            });
-    </script>
-
-    <script>    // 상세이미지 팝업
-        $("#detailImgBtn").click(function(){
-            $(".detailImgWrap").show();
-        });
-        $("#detailImgBtn").dblclick(function(){
-            $(".detailImgWrap").hide();
-        });
-    </script>
+    
 
     <!-- 도서수정 팝업 -->
     <div id="modal2">
@@ -757,40 +664,6 @@
         });
     </script>
     
-    <!-- 관리자모드 종료 팝업 -->
-    <div id="modal_End">
-        <div class="adEndWrap">
-            <div id="adEndTitle">
-                <h3 id=adEndTitleName align="center">CONFIRM</h3>        
-            </div>
-
-            <div id="adEndContent">
-                <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
-                    관리메뉴를 종료하시겠습니까?
-                </div>    
-                <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    2021.04.18 15:01:33
-                </div>
-                <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
-            </div>    
-        </div>
-    </div>
-
-    <script>
-        $(function(){
-            $("#adLock").click(function(){
-                $(".adEndWrap").show();
-                $("#modal_End").addClass('show-popup_End');
-            });
-            $("#cancleEndBtn").click(function(){
-                $(".adEndWrap").hide();
-                $("#modal_End").removeClass('show-popup_End');
-            });
-        });
-    </script>
+ 
 </body>
 </html>

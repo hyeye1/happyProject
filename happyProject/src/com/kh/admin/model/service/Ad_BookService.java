@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.kh.admin.model.dao.Ad_BookDao;
 import com.kh.admin.model.vo.Ad_Book;
+import com.kh.admin.model.vo.Ad_Image;
 import com.kh.common.model.vo.PageInfo;
 
 public class Ad_BookService {
@@ -44,5 +45,20 @@ public class Ad_BookService {
 		
 		close(conn);
 		return result;
+	}
+	
+	// 도서 상세조회용 
+	public Ad_Book selectBook(int bkNo) {
+		Connection conn = getConnection();
+		Ad_Book b = new Ad_BookDao().selectBook(conn, bkNo);
+		close(conn);
+		return b;
+	}
+	
+	public Ad_Image selectImage(int bkNo) {
+		Connection conn = getConnection();
+		Ad_Image im = new Ad_BookDao().selectImage(conn, bkNo);
+		close(conn);
+		return im;
 	}
 }

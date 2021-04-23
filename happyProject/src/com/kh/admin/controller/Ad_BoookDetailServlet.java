@@ -1,4 +1,4 @@
-package com.kh.notice.controller;
+package com.kh.admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.notice.model.service.FaqService;
+import com.kh.admin.model.service.Ad_BookService;
+import com.kh.admin.model.vo.Ad_Book;
+import com.kh.admin.model.vo.Ad_Image;
 
 /**
- * Servlet implementation class FaqDeleteServlet
+ * Servlet implementation class Ad_BoookDetailServlet
  */
-@WebServlet("/delete.faq")
-public class FaqDeleteServlet extends HttpServlet {
+@WebServlet("/detail.bk")
+public class Ad_BoookDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqDeleteServlet() {
+    public Ad_BoookDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,19 +30,21 @@ public class FaqDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		int bkNo = Integer.parseInt(request.getParameter("bkno"));
 		
-		int faNo = Integer.parseInt(request.getParameter("fno"));
 		
-		int result = new FaqService().deleteFaq(faNo);
+			Ad_Book b = new Ad_BookService().selectBook(bkNo);
+			Ad_Image im = new Ad_BookService().selectImage(bkNo);
 		
-		if(result > 0) { // 삭제성공
+//			System.out.println(b);
+//			System.out.println(im);
 			
-		response.sendRedirect(request.getContextPath() + "/list.faq?currentPage=1");	
+			request.setAttribute("b", b);
+			request.setAttribute("im", im);
 			
-		}else { // 삭제실패
+			request.getRequestDispatcher("views/admin/ad_detailBook.jsp").forward(request, response);
 			
-		}
-		
 	}
 
 	/**

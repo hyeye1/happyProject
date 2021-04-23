@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member, com.kh.notice.model.vo.Faq"%>
     
 <%
 	String contextPath = request.getContextPath();
+	Member loginUser = (Member)session.getAttribute("loginUser");
 	Faq f = (Faq)request.getAttribute("f");
 	//글번호, 제목, 내용, 작성일
 %>    

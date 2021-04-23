@@ -31,6 +31,37 @@
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	<entry key="selectBookList">
+		SELECT 
+		       BK_NAME
+		     , AUTHOR
+		     , BK_MAIN_IMG
+		  FROM TB_BOOK
+		 WHERE BK_NO = ? 
+		  
+	</entry>
+	
+	
+	<entry key="selectBook">
+		SELECT
+		       BK_NO
+		     , BK_NAME
+		     , AUTHOR
+		     , PUBLISHER
+		     , BK_PUBLISH_DATE
+		     , BK_DIVISION
+		     , BK_GENRE
+		     , BK_ORIGIN_PRICE
+		     , BK_PRICE
+		     , BK_DESCRIPTION
+		     , AT_DESCRIPTION
+		     , BK_CONTENT_LIST
+		     , BK_MAIN_IMG
+		  FROM TB_BOOK
+		  JOIN TB_IMAGE USING (BK_NO)
+		 WHERE BK_NO = ?
+	</entry>
+	
 	
 	<entry key="selectReviewList">
 		SELECT
@@ -86,5 +117,31 @@
 	       , ?
 	       , ?
 	       )     
+	</entry>
+	
+	<entry key="selectBook">
+		SELECT 
+		       BK_ENROLL_DATE
+		     , BK_NO
+		     , BK_NAME
+		     , ISBN
+		     , BK_PAGE_NO
+		     , BK_KEYWORD
+		     , BK_DESCRIPTION
+		     , AT_DESCRIPTION
+		     , BK_CONTENT_LIST
+		     , BK_MAIN_IMG
+		  FROM TB_BOOK
+		 WHERE BK_NO = ?
+	</entry>
+	
+	<entry key="selectImage">
+		SELECT
+		       IMG_NO
+		     , BK_NO
+		     , IMG_PATH
+		     , IMG_ENROLL_DATE
+		  FROM TB_IMAGE
+		 WHERE BK_NO = ?;
 	</entry>
 </properties>

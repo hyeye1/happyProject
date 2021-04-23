@@ -51,6 +51,15 @@ public class Book {
 		this.bkMainImg = bkMainImg;
 		this.bkHits = bkHits;
 	}
+	
+
+	public Book(String bkName, String author, String bkMainImg) {
+		super();
+		this.bkName = bkName;
+		this.author = author;
+		this.bkMainImg = bkMainImg;
+	}
+
 
 	public int getBookNo() {
 		return bookNo;

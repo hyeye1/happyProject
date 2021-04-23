@@ -1,4 +1,4 @@
-package com.kh.notice.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.notice.model.service.FaqService;
+import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class FaqDeleteServlet
+ * Servlet implementation class IdCheckAjax
  */
-@WebServlet("/delete.faq")
-public class FaqDeleteServlet extends HttpServlet {
+@WebServlet("/idCheck.me")
+public class IdCheckAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqDeleteServlet() {
+    public IdCheckAjax() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,20 +28,23 @@ public class FaqDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String checkId = request.getParameter("checkId");
 		
-		int faNo = Integer.parseInt(request.getParameter("fno"));
-		
-		int result = new FaqService().deleteFaq(faNo);
-		
-		if(result > 0) { // 삭제성공
+		if(checkId == "" || checkId == null) {
+			response.getWriter().print("");
+		}else {
+			int count = new MemberService().idCheck(checkId);
 			
-		response.sendRedirect(request.getContextPath() + "/list.faq?currentPage=1");	
-			
-		}else { // 삭제실패
+			if(count>0) { // 사용불가능
+				response.getWriter().print("NN");
+			}else { // 사용가능
+				response.getWriter().print("YY");
+			}
 			
 		}
 		
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
