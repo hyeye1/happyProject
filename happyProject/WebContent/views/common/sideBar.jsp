@@ -15,7 +15,7 @@
 			.outer{  
 			margin: auto;
             border: 1px;
-            width: 1000px;
+            width: 300px;
             height: 1140px;
 
 			}
