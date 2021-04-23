@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.kh.book.model.dao.BookDao;
 import com.kh.book.model.vo.Book;
+import com.kh.book.model.vo.Image;
 import com.kh.book.model.vo.Review;
 
 public class BookService {
@@ -30,6 +31,16 @@ public class BookService {
 		
 		close(conn);
 		return b;
+		
+	}
+	
+	public Image bookInfoImg(int bookNo) {
+		
+		Connection conn = getConnection();
+		Image i = new BookDao().bookInfoImg(conn, bookNo);
+		
+		close(conn);
+		return i;
 		
 	}
 	

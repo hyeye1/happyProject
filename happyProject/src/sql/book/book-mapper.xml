@@ -43,7 +43,7 @@
 		 WHERE BK_NO = ? 
 	</entry>
 	
-	
+	<!-- 책 상세보기 -->
 	<entry key="bookDetail">
 		SELECT
 		       BK_NO
@@ -61,6 +61,15 @@
 		     , BK_MAIN_IMG
 		  FROM TB_BOOK
 		  JOIN TB_IMAGE USING (BK_NO)
+		 WHERE BK_NO = ?
+	</entry>
+	
+	<entry key="bookInfoImg">
+		SELECT
+			   IMG_NO
+			 , BK_NO 
+		     , IMG_PATH
+		  FROM TB_IMAGE
 		 WHERE BK_NO = ?
 	</entry>
 	
