@@ -5,7 +5,7 @@
 	<entry key="selectListCount">
 		SELECT COUNT(*) LISTCOUNT
 		  FROM TB_BOOK
-		   AND STATUS='Y';
+		 WHERE STATUS='Y'
 	</entry>
 	
 	<entry key="selectList">

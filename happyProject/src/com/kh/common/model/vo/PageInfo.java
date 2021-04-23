@@ -12,7 +12,6 @@ public class PageInfo {
 	
 	public PageInfo() {}
 
-
 	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
 			int endPage) {
 		super();
@@ -24,8 +23,6 @@ public class PageInfo {
 		this.startPage = startPage;
 		this.endPage = endPage;
 	}
-	
-	
 
 	public PageInfo(int listCount, int boardLimit) {
 		super();

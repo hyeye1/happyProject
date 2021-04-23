@@ -5,7 +5,6 @@
 <%
 		Date nowTime = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
-		
 %>
 <%
 	Ad_Book b = (Ad_Book)request.getAttribute("b");
@@ -48,9 +47,6 @@
     #sub_title{height: 12%;}
     #list{height:1%;}
     #table{height: 82%;}
-
-    
-
 
 
      /* left menubar */
@@ -175,27 +171,7 @@
     #bkDetail tr{height: 20px;}
     #bkBtn{ padding-left: 380px; padding-top: 5px;}
 
-
- 
-
-    /* 도서 상세이미지 팝업창 */
-    .detailImgWrap{
-        position: absolute;
-        top:44%;
-        left: 62%;
-        z-index: 10;
-        box-sizing: border-box;
-        width: 380px; 
-        height: 365px; 
-        margin-top: -75px;
-        margin-left: -150px;
-        display:none;
-        border: 1px solid #3c3c3c;
-        background-color: #ebebeb;
-    }
-    
-
-    .detailText{
+	.detailText{
         border: 1px solid;
         height: 120px;
         width:480px;
@@ -204,8 +180,6 @@
         box-sizing: border-box;
         resize: none;
     }
-    
-    
     /* 관리자모드 종료 팝업창 */
     .adEndWrap{
         position: absolute;
@@ -242,7 +216,6 @@
     .show-popup_End{
         display:block !important;
     }
-
     #bkContent2>*{width: 100%;}
 
 </style>
@@ -262,14 +235,12 @@
             <div id="title_Btn">
                 <ul id="btns">
                     <li><button class="menuBtn" id="bkListBtn" type="button" style="background-color: rgb(249, 219, 122);">도서 조회</button></li>
-                    
                 </ul>
                 <script>
                 const bkListBtn = document.getElementById('bkListBtn');
                 bkListBtn.addEventListener('click', function(){
             		location.href='<%=request.getContextPath()%>/list.bk';
             	});
-                
                 </script>
             </div>
        </div>
@@ -285,21 +256,21 @@
             <div id="list"></div>
             <div id="table">
                 <div id="bktitle"><%=b.getBkName()%></div>
-
                 <div id="bkContent">
                     <div id="bkContent1" align="center">
                         <span>표지이미지</span> <br>
-                        <img src="../resources/admin/booksample.jpg" alt="" width="150" height="200"" align="center">
+                        <img src="<%=b.getBkMainImg() %>" alt="" width="150" height="200"" align="center">
                         <br><br>
                         <span>상세이미지</span><br>
-                        <img src="../resources/admin/booksample.jpg" alt="" width="130" height="180"" align="center">
+                        
+                        <img src="" alt="" width="130" height="180"" align="center">
                         
                         
                         <br><button type="button" id="backBook" class="btn btn-primary" style="margin-top:10px;">이전</button>
                     	<script>
 		                	const backBook = document.getElementById('backBook');
 		                    bkEnrollBtn.addEventListener('click', function(){
-		                		location.href='<%=request.getContextPath()%>/list.bk';
+		                		location.href="PagingList?page=${page}";
 		                	});
 		                </script>
                     </div>
@@ -332,7 +303,6 @@
                                 <tr>
                                     <th style="height: 30px;">책 소개</th>
                                     <td>
-                                        
                                         <textarea class="detailText"><%=b.getBkDescription() %></textarea>
                                     </td>
                                 </tr>
@@ -353,7 +323,8 @@
                         <div id="bkBtn">
                             
                             <button type="button" id="modifyBook" class="btn btn-primary" >도서수정</button> &nbsp;
-                            <button type="button" id="deleteBook" class="btn btn-primary" >도서삭제</button> 
+
+                        	<a href="${pageContext.request.contextPath}/delete.bk?bkno=<%=b.getBkNo()%>" class="btn btn-primary" id="deleteBook">도서삭제</a>
                         </div>
                     </div>
 

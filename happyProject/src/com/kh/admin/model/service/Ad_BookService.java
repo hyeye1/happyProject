@@ -12,6 +12,7 @@ import com.kh.admin.model.vo.Ad_Image;
 import com.kh.common.model.vo.PageInfo;
 
 public class Ad_BookService {
+	
 	public int selectListCount() {
 		Connection conn = getConnection();
 		int listCount = new Ad_BookDao().selectListCount(conn);
