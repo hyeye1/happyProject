@@ -21,9 +21,8 @@
         }
 
         .rightside{
-            border: 1px solid black;
             float: right; 
-            width:620px; 
+            width:650px; 
             height:1100px; 
             margin-left:10px;  
     
@@ -112,7 +111,7 @@
         }
         .recent_list{
             text-align: center;
-            width:560px;
+            width:590px;
             height:300px;
             
         }
@@ -142,7 +141,7 @@
             <div class="infoDetail" >
                 <div class=detail_box>
                     <div id="userIcon"> 
-                        <img src="my_resources/image/user.png" alt="" width="60px" height="40px"><br><br>
+                        <img src="resources/images/my_user.png" alt="" width="60px" height="40px"><br><br>
                     </div>
     
                     <div id="welcome"><strong>김독자 님 반갑습니다!</strong><br></div>
