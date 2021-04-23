@@ -34,8 +34,8 @@
     #memTable{height: 73%;}
 
     #list>div{height: 100%; float: left;}
-    #sort{width: 30%;}
-    #choice_btn{width: 70%; text-align: right;}
+    #sort{width: 35%;}
+    #choice_btn{width: 65%; text-align: right;}
 
     /* left menubar */
 
@@ -215,70 +215,7 @@
     }
 
 
-    /* 적립금 상세정보 팝업창 */
-    .pointwrap{
-        position: absolute;
-        top:39%;
-        left:59%;
-        z-index: 10;
-        box-sizing: border-box;
-        width: 410px; 
-        height: 348px; 
-        margin-top: -75px;
-        margin-left: -150px; 
-        display: none;
-    }
-	.pointwrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
-    #potitle{height: 10%; background-color: rgb(249, 219, 122);}
-    #pocontent{height: 90%; background-color: white;}
-
-    #potitleName{
-        display:inline-block;
-        margin-left:160px;
-        margin-top:6px;
-        font-size: 15px;
-        font-weight: bold;
-        margin-top: 1;
-        color: #3c3c3c;
-    }
-    #pocontent{
-        font-size: smaller;
-        text-align: center;
-    }
-    #pocloseBtn { 
-        float: right; 
-        width: 20px; 
-        line-height: 20px;
-        margin-right: 5px;
-        margin-top: 5px;
-        text-align: center; 
-        cursor: pointer; 
-        border-radius: 5px;
-        background-color: #f3f3f3; 
-    } 
-    #pcloseBtn:hover { 
-        background-color: lightgray; 
-    } 
-    #pointTable{
-        margin: 3px;
-        width: 400px;
-        height: 130px;
-    }
-    #pointTable2{
-        width: 400px;
-        height: 170px;
-        margin: 3px;
-    }
-    #pointTable2>thead{
-        background-color: #f3f3f3;
-    }
-    #modal2{
-        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
-        top: 0; left: 0; z-index: 999; display: none;
-    }
-    .show-popup2{
-        display:block !important;
-    }
+    
 
      /* 보유쿠폰 팝업창 */
     .couponWrap{
@@ -498,10 +435,10 @@
         
         <div id="content">
             <div id="login">
-                <input type="image" id="adLock" src="../resources/admin/adminlock.png" >
-                <img src="../resources/admin/adminlogo.png" id="adLogo">
-                
-
+                <div id="login">
+                    <input type="image" id="adLock" src="${pageContext.request.contextPath}/resources/images/admin/adminlock.png" >
+                    <img src="${pageContext.request.contextPath}/resources/images/admin/adminlogo.png"  id="adLogo">
+                </div>
             </div>
 
             <div id="sub_title">전체 회원 조회</div>
@@ -515,15 +452,13 @@
                         <option value="date" selected>가입일 순</option>
                     </select>
                     &nbsp;
-                    <label for="countMem" style="font-weight: bold;">총 회원</label>
+                    <label for="countMem" style="font-weight: bold;">총 회원</label> <u style="color: #f08080;";">80</u> 명 
 
                 </div>
                 <div id="choice_btn" style="padding: 20px">
-                    
-                    <a href="" id="alterMem" class="btn btn-primary">회원수정</a>
                     <button id="deleteBtn" class="btn btn-primary">선택삭제</button> &nbsp;
                     <button id="sendCouBtn" class="btn btn-primary">쿠폰발송</button>
-                    </div>
+                </div>
                 
                 
             </div>
@@ -535,12 +470,11 @@
                             <th width="20"><input type="checkbox" id="all" name="memcheck"></th>
                             <th width="40">번호</th>
                             <th width="130">아이디</th>
-                            <th width="90">이름</th>
+                            <th width="100">이름</th>
                             <th width="130">휴대폰 번호</th>
-                            <th width="100">가입일</th>
+                            <th width="170">이메일</th>
                             <th width="60">구매 횟수</th>
                             <th width="90">구매 누적액</th>
-                            <th width="80">적립금</th>
                             <th width="40">쿠폰</th>
                         </tr>
                     </thead>
@@ -551,10 +485,9 @@
                             <td class="memId"><u>abc</u></td>
                             <td>홍길동</td>
                             <td>010-1234-5678</td>
-                            <td>2021.04.16</td>
+                            <td>aabbcc@naver.com</td>
                             <td>3</td>
                             <td>80000</td>
-                            <td class="memPoint">1000</td>
                             <td class="memCoupon">2</td>
                         </tr>
                         <tr>
@@ -567,23 +500,9 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -603,23 +522,9 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -639,6 +544,17 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -651,11 +567,20 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td><input type="checkbox"></td>
                             <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -719,16 +644,16 @@
                         <td colspan="3">서울특별시 강남구 역삼동 11-111</td>
                     </tr>
                     <tr>
-                        <th>휴대폰 번호</th>
-                        <td colspan="3">010-1234-5678</td>
-                    </tr>
-                    <tr>
                         <th>가입일</th>
-                        <td colspan="3">2020.04.15</td> 
+                        <td colspan="3">2020.04.15</td>
                     </tr>
                     <tr>
                         <th>최근 방문일</th>
-                        <td colspan="3">2021.04.16</td>
+                        <td colspan="3">2020.04.16</td> 
+                    </tr>
+                    <tr>
+                        <th>가입 경로</th>
+                        <td colspan="3">자사</td>
                     </tr>
                     <tr>
                         <th rowspan="7">구매내역</th>
@@ -743,27 +668,27 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>5</td>
+                                        <td>7</td>
                                         <td>2021.04.16</td>
                                         <td>[105] 해리포터</td>
                                     </tr>
                                     <tr>
-                                        <td>4</td>
+                                        <td>6</td>
                                         <td>2021.03.30</td>
                                         <td>[200] 달러구트</td>
                                     </tr>
                                     <tr>
-                                        <td>3</td>
+                                        <td>5</td>
                                         <td>2021.01.01</td>
                                         <td>[100] 해리포터</td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
+                                        <td>4</td>
                                         <td>2020.11.01</td>
                                         <td>[501] 클린코드</td>
                                     </tr>
                                     <tr>
-                                        <td>1</td>
+                                        <td>3</td>
                                         <td>2020.07.29</td>
                                         <td>[807] 자바 웹을 다루는 기술</td>
                                     </tr>
@@ -787,96 +712,7 @@
         });
     </script>
 
-    <!-- 적립금 상세 팝업 -->
-    <div id="modal2">
-        <div class="pointwrap">
-            <div id="potitle">
-                <h3 id=potitleName>적립금 상세</h3>
-                <div id="pocloseBtn">&times;</div>
-            </div>
-            <div id="pocontent">
-                <table id="pointTable">
-                    <tr>
-                        <th width="30%">회원번호</th>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <th>누적적립금</th>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <th>사용적립금</th>
-                        <td> 22</td>
-                    </tr>
-                    <tr>
-                        <th>사용 가능한 적립금</th>
-                        <td><u><b>1000</b></u></td>
-                    </tr>
-                    <tr>
-                        <th>적립금 이용 내역</th>
-                        <td></td>
-                    </tr>
-                </table>
-                <table id="pointTable2" border="1" >
-                    <thead>
-                        <th width="23%">일자</th>
-                        <th width="40%">도서명</th>
-                        <th width="17%">적립/사용</th>
-                        <th width="20%">금액</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2021.03.28</td>
-                            <td>해리포터</td>
-                            <td>적립</td>
-                            <td>+ 200</td>
-                        </tr>
-                        <tr>
-                            <td>2021.03.01</td>
-                            <td>해리포터</td>
-                            <td>적립</td>
-                            <td> + 100</td>
-                        </tr>
-                        <tr>
-                            <td>2021.01.10</td>
-                            <td>해리포터</td>
-                            <td>적립</td>
-                            <td>+ 100</td>
-                        </tr>
-                        <tr>
-                            <td>2021.01.01</td>
-                            <td>클린코드</td>
-                            <td>사용</td>
-                            <td> - 3000</td>
-                        </tr>
-                        <tr>
-                            <td>2020.08.07</td>
-                            <td>해리포터</td>
-                            <td>적립</td>
-                            <td>+ 1000</td>
-                        </tr>
-                        <tr>
-                            <td>2020.07.10</td>
-                            <td>해리포터</td>
-                            <td>적립</td>
-                            <td>+ 200</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        $(".memPoint").click(function(){
-            $(".pointwrap").css({display:"block"});
-            $("#modal2").addClass('show-popup2');
-        });
-        $("#pocloseBtn").click(function(){
-            $(".pointwrap").css({display:"none"});
-            $("#modal2").removeClass('show-popup2');
-        });
-    </script>
+    
 
     <!-- 쿠폰 상세 팝업 -->
     <div id="modal3">
@@ -979,7 +815,7 @@
         });
     </script>
 
-<!-- 쿠폰발송 팝업 -->
+    <!-- 쿠폰발송 팝업 -->
     <div id="modal5">
         <div class="couSendWrap">
             <div id="couSendTitle">

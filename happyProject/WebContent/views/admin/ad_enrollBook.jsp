@@ -239,7 +239,7 @@
             <div id="sub_title">도서 등록</div>
     
             <div id="bktable">
-            <form  action="<%= request.getContextPath() %>/insert.bk" method="post" id="enrollForm">
+            <form  action="<%= request.getContextPath() %>/insert.bk" method="post" id="enrollForm" enctype="multipart/form-data">
             	<table>
                     <tr>
                         <th width="90"><b>*</b> 카테고리</th>
@@ -249,7 +249,7 @@
                                 <option value="">해외도서</option>
                             </select> 
                             &nbsp;>&nbsp;
-                            <select name="" id="category2" style="width: 120px;" required>
+                            <select name="category2" id="category2" style="width: 120px;" required>
                                 <option value="">문학</option>
                                 <option value="">경제/경영</option>
                             </select> 
@@ -317,7 +317,7 @@
                 </table>
                 <br>
                 <div id="choice_btn">
-                    <button type="button" id="enrollBtn" class="btn btn-primary">등록</button> &nbsp;
+                    <button type="submit" id="enrollBtn" class="btn btn-primary">등록</button> &nbsp;
                     <button type="reset" id="resetBtn" class="btn btn-primary">초기화</button>
                 </div>
                 <br>
