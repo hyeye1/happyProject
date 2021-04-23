@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class withdrawlViewServlet
  */
 @WebServlet("/enrollForm.with")
-public class withdrawlEnrollFormServlet extends HttpServlet {
+public class DeleteEnrollFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public withdrawlEnrollFormServlet() {
+    public DeleteEnrollFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,7 @@ public class withdrawlEnrollFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 응답페이지 => 회원탈퇴
-		request.getRequestDispatcher("views/member/withdrawlEnrollForm.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/deleteEnrollForm.jsp").forward(request, response);
 		
 	}
 

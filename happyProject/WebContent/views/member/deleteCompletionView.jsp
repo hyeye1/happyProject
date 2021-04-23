@@ -47,7 +47,7 @@
 </head>
 <body>
     <div class="outer" align="center">
-        <img src="resources/image/check.png"><br><br>
+        <img src="resources/images/check.png"><br><br>
         <span>회원탈퇴가</span>
         <span id="text">완료되었습니다.</span>
     </div>
