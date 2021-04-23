@@ -38,9 +38,11 @@
 	        text-align: right;
 	    }
 	    .mandatory{
+	    	margin:auto;
 	        width: 450px;
 	        padding: 20px;
 	        background-color:white;
+	         float: right; 
 	    }
 	    .optional{
 	        width: 450px;
@@ -95,13 +97,13 @@
 		String memPhone = loginUser.getMemPhone();
 		String memAddress = loginUser.getMemAddress();
 	%>
-
+ 	
 	<div class="outer">
 		<br>
         <div class="path">홈>마이페이지</div>
          <h1>회원정보관리</h1>
          <hr>
-
+	<section>
 		<div class="mandatory">
 		
             <form action="<%= request.getContextPath() %>/update.info" method="post" id="myPageForm">
@@ -143,15 +145,18 @@
 				</tr>
 			</table>
 
-			<div id="endBtn">
+			<div id="endBtn" style="margin-top:20px;">
 				<button type="submit" class="btn btn-warning btn-m" data-toggle="modal" data-target="#deleteModal" style="width:100px; height:40px; background-color: rgb(249, 219, 122);">수정하기</button>
 				<button type="button" class="btn btn-warning btn-m" data-toggle="modal" data-target="#deleteModal" style="width:125px; height:40px; background-color: rgb(249, 219, 122);">비밀번호변경</button>
 				<button type="button" class="btn btn-warning btn-m" data-toggle="modal" data-target="#deleteModal" style="width:100px; height:40px; background-color: rgb(249, 219, 122);">회원탈퇴</button>
 				</div>
             </form>
         </div>
+        </section>       
+	<aside> 
+	  <%@ include file = "../common/sideBar.jsp" %>
+	</aside>
         
-                
 	</div>		
 
 
