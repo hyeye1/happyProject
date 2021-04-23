@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.notice.model.vo.Question, com.kh.common.model.vo.PageInfo, com.kh.member.model.vo.Member "%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Question> list = (ArrayList<Question>)request.getAttribute("list");
+ 	String contextPath = request.getContextPath(); 
+ 	Member loginUser = (Member)session.getAttribute("loginUser");
+ 	
+ 	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	
+%>   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +22,7 @@
     <style>
         .outer{
             margin-top: 50px;
-            margin-left: 250px;
+            margin: auto;
             margin-bottom: 20px;
             border: 1px solid white;
             width:800px;
@@ -108,9 +120,11 @@
             <span id="text2">고객님의 불편사항</span>이나<br>
             <span id="text2">문의사항</span>을 최대한 빠르고 정확하게 처리하기 위해 노력하고 있습니다.<br><br>
                 <div class="btnouter" align="center">
-                    <button class="btn">1:1 문의하기</button>
-                    <button class="btn">문의 내역 조회</button>
+                    <button type="button" class="btn"  onClick="location.href='<%= contextPath %>/enrollForm.q';">1:1 문의하기</button>
+    
                 </div><hr>
+                
+
             
             <div class="topinfo">
                 <span id="text3">&emsp;1:1문의 안내</span><hr>
@@ -130,7 +144,7 @@
             <input type="date" name="start"> ~ <input type="date" name="end">
             <button id="btn2">조회</button>
         </div><br>
-        <!-- 문의내역 있을 때 보여지는 화면
+     
         <table class="listArea">
             <thead>
                 <tr id="top">
@@ -142,50 +156,53 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>2021-04-15</td>
-                    <td>배송 문의합니다.</td>
-                    <td>배송문의</td>
-                    <td>답변대기</td>
-                    <td>000003</td>
-                </tr>
-
-		         <tr>
-		            <td>2021-04-12</td>
-		            <td>재고 문의합니다.</td>
-		            <td>재고문의</td>
-		            <td>답변완료</td>
-		            <td>000002</td>
-		        </tr>
-                <tr>
-		            <td>2021-04-10</td>
-		            <td>환불 문의 합니다.</td>
-		            <td>환불문의</td>
-		            <td>답변완료</td>
-		            <td>000001</td>
-		        </tr>
+                 <% if(list.isEmpty()){ %>
+             	<tr>
+             		<td colspan="5">존재하는 문의가 없습니다. </td>
+             	</tr>
+            <%} else { %>
+            	<% for(Question q:list) { %>
+	                <tr>
+	                    <td><%= q.getqDate() %></td>
+	                    <td><%= q.getqTitle() %></td>
+	                    <td><%= q.getqField() %></td>
+	                    <td><%= q.getqAnswerYn() %></td>
+	                    <td><%= q.getOrNoFk() %></td>
+	                </tr>
+	            <%} %>
+             <%} %>
             </tbody>
         </table>
-        -->
+        -
 
-        <!-- 문의내역 없을 때 보여지는 화면 -->
+        <!-- 문의내역 없을 때 보여지는 화면
         <div class="noQuestion" align="center"><br><br>
             <img src="resources/image/noquestion.png"><br>
             <span>1:1 문의 내역이 없습니다.</span><br><br><br>
         </div>
         <br>
-        
-        <div class="pageButton" align="center">
-            <!-- 문의내역 없을 때 사용자에게보여지는 버튼 
-            <button id="btn3"><<</button>
-            <button id="btn3">1</button>
-            <button id="btn3">2</button>
-            <button id="btn3">3</button>
-            <button id="btn3">>></button>
-            -->
+         -->
+        <div align="center" class="pagingArea">
 
-            <!-- 문의내역 없을 때 사용자에게보여지는 버튼 -->
-            <button type="submit" id="btn1">1:1 문의하기</button>
+			<% if(currentPage != 1) { %>
+            	<button onclick="location.href='<%=contextPath%>/list.q?currentPage=<%=currentPage-1%>';">이전</button>
+			<% } %>
+			
+			<% for(int p=startPage; p<=endPage; p++) { %>
+				
+				<% if(currentPage == p){ %>
+            		<button disabled><%= p %></button>
+            	<% }else{ %>
+            		<button onclick="location.href='<%=contextPath%>/list.q?currentPage=<%= p %>';"><%= p %></button>
+            	<% } %>
+            	
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button onclick="location.href='<%=contextPath%>/list.q?currentPage=<%=currentPage+1%>';">다음</button>
+			<% } %>
+			
+        </div>
             
         </div><br>
         

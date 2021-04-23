@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq, java.util.ArrayList, com.kh.common.model.vo.PageInfo, com.kh.notice.model.vo.Notice"%>
+    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq, java.util.ArrayList, com.kh.common.model.vo.PageInfo, com.kh.notice.model.vo.Notice, com.kh.member.model.vo.Member"%>
 <% 
+	Member loginUser = (Member)session.getAttribute("loginUser");
    String contextPath = request.getContextPath(); 
    Faq f = (Faq)request.getAttribute("f");
    PageInfo pi = (PageInfo)request.getAttribute("pi");
@@ -67,10 +68,12 @@
             width: 700px;
         }
         .top5List>tbody>tr:hover,
+       /*
         .noticeList>tbody>tr:hover{
             cursor:pointer;
             background: rgb(249, 219, 122);
             color: white;
+            */
         }
         #noticeNew{height: 30px; background-color: rgb(249, 219, 122);}
         .question1{
@@ -106,6 +109,7 @@
             cursor: pointer;
             margin-bottom: 5px;
             margin-left: 460px;
+            text-decoration:none
         }
         #qbtn:hover{background-color: rgb(249, 219, 122); color:white;}
         .notice{
@@ -150,7 +154,16 @@
     </style>
 </head>
 <body>
-
+	<script>
+		var msg = "<%= session.getAttribute("alertMsg") %>"; // 알람창으로 출력할 메세지
+		// var msg = "메세지" / "null";
+		
+		if(msg !="null"){
+			alert(msg);
+			// 알람창 띄워준 후에 session에 담긴 메세지 지워야됨 (안그러면 메뉴바 포함된 매 페이지 열때마다 alert 계속 뜸)
+			<% session.removeAttribute("alertMsg"); %>
+		}
+	</script>
 
 
    
@@ -192,21 +205,22 @@
         </div>
     
                 <div class="question1">
-                    <a href="이동될 페이지 주소"><img src="resources/images/question.png" width="120px" height="50"></a>
-                    <button type="button" id="qbtn">1:1문의하기</button><br>
+                    <a href="<%=contextPath%>/list.q?currentPage=1" ><img src="resources/images/question.png" width="120px" height="50"></a>
+                     <a href="<%=contextPath%>/list.q?currentPage=1" id="qbtn">1:1문의하기</a><br><br>
                     <div class="questionBox">
                         <span id="qtext1">1:1 문의로 빠른 답변 받기</span><br><br>
                         <span id="qtext2">해피북스데이에 대한 모든 궁금증은 1:1 문의하기로 부담없이 확인하세요.</span>
                     </div>
                 </div>
+             
                     <br>
 
             <div class="notice">
                 <a href="<%=contextPath%>/list.no?currentPage=1"><img src="resources/images/notice.png" width="130px" height="50"></a><br>
-                <table class="noticeList">
-                    <thead>
+                <table class="noticeList" ">
+                    <thead style="background-color: rgb(249, 219, 122);">
                         <tr id="noticeNew">
-                        	<th width="100">글번호</th>
+                        	
                             <th width="500">글제목</th>
                             <th width="100">작성일</th>
                         </tr>
@@ -219,7 +233,7 @@
                 <%} else { %>
             	<% for(Notice n:list) { %>
 	                <tr>
-	                    <td><%= n.getNoNo() %></td>
+	                    
 	                    <td><%= n.getNoTitle() %></td>
 	                    <td><%= n.getNoDate() %></td>
 	                </tr>
@@ -227,17 +241,9 @@
              <%} %>
                     </tbody>
                 </table>
+            
+    
             </div>
-             <script>
-             
-		    	$(function(){
-		    		$(".noticeList>tbody>tr").click(function(){
-		    			
-		    			// 쿼리스트링 이용해서 요청할 url 작성
-		    			location.href = "<%=contextPath%>/detail.no?nno=" + $(this).children().eq(0).text();
-		    		})
-		    	})
-    </script>
     <script>
             const items = document.querySelectorAll('.question');
           
