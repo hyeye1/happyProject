@@ -267,56 +267,6 @@
     }
 
 
-    /* 도서수정 팝업창 */
-    .bkModifyWrap{
-        position: absolute;
-        top:39%;
-        left:70%;
-        z-index: 10;
-        box-sizing: border-box;
-        width: 280px; 
-        height: 297px; 
-        margin-top: -75px;
-        margin-left: -150px; 
-        display: none;
-    }
-	.bkModifyWrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
-
-    .bkModifyWrap>*{width: 100%;}
-    #bkModiTitle{height: 37px; background-color: rgb(249, 219, 122);}
-    #bkModiContent{height: 260px; background-color: white;}
-
-    #bkModiTitleName{
-        display:inline-block;
-        margin-left:110px;
-        margin-top:8px;
-        font-size: 15px;
-        font-weight: bold;
-        margin-top: 1;
-        color: #3c3c3c;
-    }
-    #bkModiContent{
-        font-size: smaller;
-        text-align: center;
-    }
-    #bkModiTable{
-        width: 276px;
-        height: 96px;
-        box-sizing: border-box;  
-    }
-    #bkModiTable tr{
-        height: 48px;
-        border-bottom: 1px solid #e0e0e0;
-    }
-    #modal2{
-        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
-        top: 0; left: 0; z-index: 999; display: none;
-    }
-    .show-popup2{
-        display:block !important;
-    }
-
-
     /* 삭제확인 팝업창 */
     .deleteWrap{
         position: absolute;
@@ -442,7 +392,6 @@
                 </div>
                 <div id="choice_btn" style="padding: 20px;">
                 	
-                    <button type="button" id="modifyBook" class="btn btn-primary">도서수정</button> &nbsp;
                     <button type="button" id="deleteBook" class="btn btn-primary">도서삭제</button>
                 </div>
                 
@@ -535,61 +484,7 @@
         
     </div>
 	
-	
-    
 
-    
-
-    
-
-    <!-- 도서수정 팝업 -->
-    <div id="modal2">
-        <div class="bkModifyWrap">
-            <div id="bkModiTitle">
-                <h3 id=bkModiTitleName>도서 수정</h3>    
-            </div>
-        
-            <div id="bkModiContent">
-                <table id="bkModiTable">
-                    <tr>
-                        <th width="80">판매가</th>
-                        <td><input type="text" id="couName" required value="xxxx" style="font-weight: bold; color: red;"></td>
-                    </tr>
-                    
-                    <tr>
-                        <th>재고</th>
-                        <td><input type="number" id="couDiscount" value="12" style="font-weight: bold; color: red;"></td>
-                    </tr>
-                </table>
-                <br>
-                <p style="font-size: 10px;">
-                    * 판매가, 재고수량만 수정 가능합니다. <br>
-                    다른 항목 변경은 도서삭제 후 재등록 해주세요.
-                </p>
-        
-                <div id="bkModify" style="font-size: 18px;">
-                    판매가 : <b>xxxx</b>원 / 재고 : <b>xx</b>권
-                <br>
-                </div>
-                위 내용으로 변경하시겠습니까? 
-                <br>
-                <button type="button" class="btn btn-info btn-sm" style=" margin-top:10px ; width:55px; border: none; background-color: rgb(249, 219, 122);">확인</button>
-                &nbsp;
-                <button button type="button" id="cancleBtn" class="btn btn-info btn-sm" style="margin-top: 10px; width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        $("#modifyBook").click(function(){
-            $(".bkModifyWrap").css({display:"block"});
-            $("#modal2").addClass('show-popup2');
-        });
-        $("#cancleBtn").click(function(){
-            $(".bkModifyWrap").css({display:"none"});
-            $("#modal2").removeClass('show-popup2');
-        });
-    </script>
 
     <!-- 도서 삭제 팝업 -->
     <div id="modal3">
