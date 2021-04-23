@@ -133,7 +133,7 @@
     			
     			<script>
     				function beforeCheckCart(){
-    					alert("로그인 후 서비스이용 가능합니다.")
+    					location.href = "<%= contextPath %>/loginForm.me";
     				}
     				function loginPage(){
     					location.href = "<%= contextPath %>/loginForm.me";

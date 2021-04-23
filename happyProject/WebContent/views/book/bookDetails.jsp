@@ -31,8 +31,9 @@
             width:300px;
             height:400px;
             float:left;
-            margin-left:20px;
-            margin-right:10px;
+            margin-left:10px;
+            margin-right:20px;
+            box-shadow: 0px 0px 10px 10px rgba(199, 199, 199, 0.565);
         }
         .bookDetailOuter .bookInfo{
             width:300px;
@@ -161,7 +162,7 @@
                 <h2><b><%= b.getBkName() %></b></h2>
                 <hr>
         </div>
-
+		<br>
         <div style="margin-left:200px">
             <!-- 책 표지 이미지 -->
             <div class="bookImg">
