@@ -421,42 +421,59 @@
                            
                     	  });
                         
+                        
+                        // 비밀번호확인
 						$(function(){
 							var memPwd1 = document.getElementById("memPwd").value;
 							var memPwd2 = document.getElementById("memPwd2").value;
 							
-							$("#memPwd2:input").off("focus", function(){
+							$("#memPwd:input").focusout(function(){
+								$("#memPwd2:input").focus();	
+							})
+							
+							$("#memPwd2:input").focusout(function(){
 														
 								if( (document.getElementById("memPwd").value) == null || (document.getElementById("memPwd").value) == ""){
-									
 		        					Swal.fire({
 		        						  icon: 'error',
 		        						  title: '',
 		        						  text: '비밀번호를 입력해주세요.',
 		        						  confirmButtonColor: 'rgb(249, 219, 122)'
 		        						})
-			        				$memId.val(null);
-		        					$memId.focus();
+		        					$("#memPwd:input").focus();
 		        					
 								}else{
-									
-									
-									
 									if( (document.getElementById("memPwd").value) === (document.getElementById("memPwd2").value) ){
-										
-										alert("같아요" );
+			        					$("#memName:input").focus();
 										$("#enrollForm :submit").removeAttr("disabled");
-										
 									}else{
-										alert( "다름" );
+										Swal.fire({
+			        						  icon: 'error',
+			        						  title: '비밀번호가 일치하지 않습니다.',
+			        						  text: '비밀번호를 확인해주세요.',
+			        						  confirmButtonColor: 'rgb(249, 219, 122)'
+			        						})
+				        				$("#memPwd2:input").val(null);
+			        					$memPwd2.focus();
 										$("#enrollForm :submit").prop("disabled", true);
-										
 									}
 								}
-								
 							})
 							
-						});
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						}); // function 끝
 	              
 	              
 	              
