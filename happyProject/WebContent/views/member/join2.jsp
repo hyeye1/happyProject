@@ -170,7 +170,7 @@
                 <tr>
                     <th>이름 *</th>
                     <td colspan="2"> 
-                        <input type="text" name="memName" placeholder="이름을 입력해주세요" required>
+                        <input type="text" name="memName" id="memName" placeholder="이름을 입력해주세요" required>
                     </td>
                 </tr>
                 <tr>
@@ -421,7 +421,42 @@
                            
                     	  });
                         
-
+						$(function(){
+							var memPwd1 = document.getElementById("memPwd").value;
+							var memPwd2 = document.getElementById("memPwd2").value;
+							
+							$("#memPwd2:input").off("focus", function(){
+														
+								if( (document.getElementById("memPwd").value) == null || (document.getElementById("memPwd").value) == ""){
+									
+		        					Swal.fire({
+		        						  icon: 'error',
+		        						  title: '',
+		        						  text: '비밀번호를 입력해주세요.',
+		        						  confirmButtonColor: 'rgb(249, 219, 122)'
+		        						})
+			        				$memId.val(null);
+		        					$memId.focus();
+		        					
+								}else{
+									
+									
+									
+									if( (document.getElementById("memPwd").value) === (document.getElementById("memPwd2").value) ){
+										
+										alert("같아요" );
+										$("#enrollForm :submit").removeAttr("disabled");
+										
+									}else{
+										alert( "다름" );
+										$("#enrollForm :submit").prop("disabled", true);
+										
+									}
+								}
+								
+							})
+							
+						});
 	              
 	              
 	              
