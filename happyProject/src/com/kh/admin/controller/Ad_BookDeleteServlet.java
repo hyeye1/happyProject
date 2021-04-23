@@ -1,27 +1,27 @@
 package com.kh.admin.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.admin.model.service.Ad_BookService;
-import com.kh.admin.model.vo.Ad_Book;
-import com.kh.admin.model.vo.Ad_Image;
 
 /**
- * Servlet implementation class Ad_BoookDetailServlet
+ * Servlet implementation class BookDeleteServlet
  */
-@WebServlet("/detail.bk")
-public class Ad_BoookDetailServlet extends HttpServlet {
+@WebServlet("/delete.bk")
+public class Ad_BookDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Ad_BoookDetailServlet() {
+    public Ad_BookDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +30,19 @@ public class Ad_BoookDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		int bkNo = Integer.parseInt(request.getParameter("bkno"));
+		
+		int bkNo = Integer.parseInt(request.getParameter("bkno")); // 삭제요청값 1
+		
+		int result = new Ad_BookService().deleteBook(bkNo);
 		
 		
-			Ad_Book b = new Ad_BookService().selectBook(bkNo);
-			Ad_Image im = new Ad_BookService().selectImage(bkNo);
-		
-
-			request.setAttribute("b", b);
-			request.setAttribute("im", im);
+		if(result > 0) { // 성공하면 /jsp/list.bk 재요청 => 도서리스트페이지
+			//request.getSession().setAttribute("alertMsg", "도서 삭제 완료");
+			response.sendRedirect(request.getContextPath()+"/list.bk");
 			
-			request.getRequestDispatcher("views/admin/ad_detailBook.jsp").forward(request, response);
-			
+		}else { // 실패하면 에러페이지 포워딩
+			//request.setAttribute("errorMsg", "삭제 실패");
+		}
 	}
 
 	/**

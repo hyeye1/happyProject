@@ -5,6 +5,7 @@
 	<entry key="selectListCount">
 		SELECT COUNT(*) LISTCOUNT
 		  FROM TB_BOOK
+		   AND STATUS='Y';
 	</entry>
 	
 	<entry key="selectList">
@@ -24,7 +25,8 @@
                              , BK_ORIGIN_PRICE
                              , BK_PRICE
                              , BK_STOCK
-                          FROM TB_BOOK
+                          FROM TB_BOOK 
+                         WHERE STATUS = 'Y' 
                          ORDER
                             BY BK_NO DESC
 		               ) A
@@ -41,6 +43,7 @@
 		     , BK_MAIN_IMG
 		  FROM TB_BOOK
 		 WHERE BK_NO = ? 
+
 	</entry>
 	
 	
@@ -62,6 +65,7 @@
 		  FROM TB_BOOK
 		  JOIN TB_IMAGE USING (BK_NO)
 		 WHERE BK_NO = ?
+		   AND STATUS = 'Y' 
 	</entry>
 	
 	
@@ -74,7 +78,7 @@
 		  FROM TB_REVIEW
 		  JOIN TB_MEMBER USING(MEM_NO)
 		  JOIN TB_BOOK USING(BK_NO)
-		 WHERE BK_NO = ?
+		 WHERE BK_NO = ? 
 		 ORDER BY RE_DATE DESC
 	</entry>
 	
@@ -135,6 +139,7 @@
 		     , BK_MAIN_IMG
 		  FROM TB_BOOK
 		 WHERE BK_NO = ?
+		   AND STATUS = 'Y' 
 	</entry>
 	
 	<entry key="selectImage">
@@ -144,6 +149,15 @@
 		     , IMG_PATH
 		     , IMG_ENROLL_DATE
 		  FROM TB_IMAGE
-		 WHERE BK_NO = ?;
+		 WHERE BK_NO = ?
+		   AND STATUS = 'Y' 
+	</entry>
+	
+	<entry key="deleteBook">
+		UPDATE
+		       TB_BOOK
+		   SET STATUS = 'N'
+		 WHERE BK_NO = ?
+		   AND STATUS = 'Y' 
 	</entry>
 </properties>
