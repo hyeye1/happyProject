@@ -54,7 +54,8 @@ public class BookDao {
 			
 			while(rset.next()) {
 				
-				list.add(new Book(rset.getString("bk_name"),
+				list.add(new Book(rset.getInt("bk_no"),
+								  rset.getString("bk_name"),
 								  rset.getString("author"),
 								  rset.getString("bk_main_img")));
 			}
@@ -65,6 +66,48 @@ public class BookDao {
 			close(pstmt);
 		}
 		return list;
+	}
+	
+	public Book bookDetail(Connection conn, int bookNo) {
+		
+		// SELECT문 - 한 행 조회
+		
+		Book b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("bookDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bookNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b = new Book(rset.getInt("bk_no"),
+							 rset.getString("bk_name"),
+							 rset.getString("author"),
+							 rset.getString("publisher"),
+							 rset.getString("bk_publish_date"),
+							 rset.getString("bk_division"),
+							 rset.getString("bk_genre"),
+							 rset.getInt("bk_origin_price"),
+							 rset.getInt("bk_price"),
+							 rset.getString("bk_description"),
+							 rset.getString("at_description"),
+							 rset.getString("bk_content_list"),
+							 rset.getString("bk_main_img"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return b;
+		
 	}
 
 	

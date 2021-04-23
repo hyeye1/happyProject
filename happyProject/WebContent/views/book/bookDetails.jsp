@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.book.model.vo.*" %>
-<%
-	Book b = (Book)request.getAttribute("b");
-	// 책 번호, 책 이름, 
-	Image img = (Image)request.getAttribute("img");
-	//Review r = (Review)request.getAttribute("r");
-	// 리뷰번호, 회원번호, 책번호, 리뷰등록날짜, 리뷰내용
+ <%
+ 	Book b = (Book)request.getAttribute("b");
  %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +31,8 @@
             width:300px;
             height:400px;
             float:left;
-            margin-left:30px;
+            margin-left:20px;
+            margin-right:10px;
         }
         .bookDetailOuter .bookInfo{
             width:300px;
@@ -156,28 +153,28 @@
         <div class="category" align="left">
             <a href="" id="home">HOME</a>
             >
-            <a href="" id="localBook">국내도서</a>
+            <a href="" id="localBook"><%= b.getBkDivision() %></a>
         </div>
         <br>
         <!-- 책 제목 -->
         <div class="bookTitle" align="left">
-                <h3>달러구트 꿈 백화점 | 잠들어야만 입장 가능합니다 </h3>
+                <h2><b><%= b.getBkName() %></b></h2>
                 <hr>
         </div>
 
         <div style="margin-left:200px">
             <!-- 책 표지 이미지 -->
             <div class="bookImg">
-                <img src="resources/images/cart/달러구트_표지.png" width="300" height="400">
+                <img src="<%= b.getBkMainImg() %>" width="300" height="400">
             </div>
             <!-- 책 정보 -->
             <div class="bookInfo" align="left">
                 <br>
-                <p><b>이미예</b> 지음</p>
-                <p><b>팩토리나인</b></p>
-                <p>2020년 8월 8일 출간</p><br>
-                <p>정가 : 13,800원</p>
-                <p style="display: inline;">판매가 : <h4 style="color:red; font-weight: bolder;; display:inline;">13,800원</h4></p>
+                <p><b><%= b.getAuthor() %></b> 지음</p>
+                <p><b><%= b.getPublisher() %></b></p>
+                <p><%= b.getBkPubDate() %></p><br>
+                <p>정가 : <%= b.getBkOrgPrice() %></p>
+                <p style="display: inline;">판매가 : <h4 style="color:red; font-weight: bolder;; display:inline;"><%= b.getBkPrice() %>원</h4></p>
                 <p>
                     <small>
                         구매금액의 1% 적립해드립니다. (배송완료 후) <br>
@@ -265,45 +262,21 @@
         <!-- 책소개 -->
         <h5 class="detailTitle" id="infoLink">책소개</h5>
         <div class="link">
-            <p>
-            여기는 잠들어야만 입장할 수 있는 ‘달러구트 꿈 백화점’입니다 잠들어야만 입장할 수 있는 독특한 마을. 
-            그곳에 들어온 잠든 손님들에게 가장 인기 있는 곳은, 온갖 꿈을 한데 모아 판매하는 ‘달러구트의 꿈 백화점’이다. 
-            긴 잠을 자는 사람들은 물론이고, 짧은 낮잠을 자는 사람들과 동물들로 매일매일 대성황을 이룬다. 
-            범상치 않은 혈통의 주인장 ‘달러구트’, 그리고 그의 최측근에서 일하게 된 신참 직원 ‘페니’, 꿈을 만드는 제작자 ‘아가넵 코코’, 그리고 베일에 둘러싸인 비고 마이어스…등이 등장한다. 
-            『달러구트 꿈 백화점』은 ‘무의식에서만 존재하는 꿈을 정말 사고 팔 수 있을까?’라는 기발한 질문에 답을 찾아가며, 꿈을 만드는 사람, 파는 사람, 사는 사람의 비밀스런 에피소드를 담고 있는 판타지 소설이다. 
-            텀블벅 펀딩 1812% 달성, 전자책 출간 즉시 베스트셀러 1위를 3주간 기록하며 수많은 독자들의 요청으로 종이책으로 출간하게 되었다.
-            </p>
+            <p><%= b.getBkDescription() %></p>
         </div>
         
         <!-- 목차 -->
         <h5  class="detailTitle" id="contentLink">목차</h5>
         <div class="link">
 <pre>
-[달러구트 꿈 백화점]
-
-작가의 말
-프롤로그. 3번째 제자의 유서 깊은 가게 
-1. 주문하신 꿈은 매진입니다
-2. 한밤의 연애지침서
-3. 미래를 보여 드립니다.
-4. 환불 요청 대소동
-5. 노 쇼는 사양합니다.
-7. 비틀즈와 벤젠고리
-8. ‘타인의 삶(체험판)’ 출시 
-9. 예약하신 꿈이 도착하였습니다
-에필로그 1. 비고 마이어스의 면접
-에필로그 2. 스피도의 완벽한 하루
+<%= b.getBkContentList() %>
 </pre>
         </div>
 
         <!-- 저자소개 -->
         <h5 class="detailTitle" id="authorLink">저자소개</h5>
         <div class="link">
-            <p>
-            저 : 이미예 
-            부산에서 태어났다. 부산대에서 재료공학을 공부하고 반도체 엔지니어로 일했다. 
-            클라우드 펀딩 프로젝트 「주문하신 꿈은 매진입니다」 (『달러구트 꿈 백화점』)으로 첫 소설을 발표해 10~20대에게 열렬한 지지를 받아 성공적으로 펀딩을 종료하였다.
-            </p>
+            <p><%= b.getAtDescription() %></p>
         </div>
 
         <!-- 리뷰작성하기 -->

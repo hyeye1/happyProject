@@ -30,13 +30,10 @@ public class BookDetailsServlet extends HttpServlet {
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      
-	   //책 하나 조회
-	   //int result = new BookService().selectBook();
-	   
-	   
-	   
-	   // 응답페이지 포워딩
+	   //int boardNo = Integer.parseInt(request.getParameter("bno"));
+	   int bookNo = Integer.parseInt(request.getParameter("bookNo"));
+	   Book b = new BookService().bookDetail(bookNo);
+	   request.setAttribute("b", b);
 	   
 	   request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
 	   response.setContentType("application/json; charset=UTF-8");

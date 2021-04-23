@@ -20,13 +20,13 @@ import com.oreilly.servlet.MultipartRequest;
  * Servlet implementation class MainServlet
  */
 @WebServlet("/mList.bk")
-public class MainServlet extends HttpServlet {
+public class RecomBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainServlet() {
+    public RecomBookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,7 +40,6 @@ public class MainServlet extends HttpServlet {
 		int max = 130;
 		
 		int bookNo = (int)(Math.random()*(max-min+1));
-	
 
 		ArrayList<Book> list = new BookService().selectBookList(bookNo);
 		

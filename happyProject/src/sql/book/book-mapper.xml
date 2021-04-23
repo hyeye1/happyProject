@@ -31,18 +31,20 @@
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<!-- 오늘의추천 -->
 	<entry key="selectBookList">
 		SELECT 
-		       BK_NAME
+			   BK_NO
+		     , BK_NAME
 		     , AUTHOR
 		     , BK_MAIN_IMG
 		  FROM TB_BOOK
 		 WHERE BK_NO = ? 
-		  
 	</entry>
 	
 	
-	<entry key="selectBook">
+	<entry key="bookDetail">
 		SELECT
 		       BK_NO
 		     , BK_NAME

@@ -22,6 +22,17 @@ public class BookService {
 		
 		return list;
 	}
+	
+	public Book bookDetail(int bookNo) {
+		
+		Connection conn = getConnection();
+		Book b = new BookDao().bookDetail(conn, bookNo);
+		
+		close(conn);
+		return b;
+		
+	}
+	
 
 	public ArrayList<Review> selectReviewList(int bookNo){
 		

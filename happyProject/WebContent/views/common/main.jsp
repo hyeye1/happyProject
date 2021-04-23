@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.book.model.vo.Book, java.util.ArrayList"%>
-<%
-	//Book b = (Book)request.getAttribute("b");
-%>
+    pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -175,8 +172,8 @@
                 <h2>오늘의 추천</h2>
                     <ul>
                         <li>
-                            <div id="todayBk1" class="todayBk" >
-                                <a href="<%= contextPath %>/bkDetails.bk">
+                            <div id="todayBk1" class="todayBk">
+                                <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="" >
                                     <span class="bookName"></span>
                                 </a>
@@ -185,8 +182,8 @@
                         </li>
                         <li>
                             <div id="todayBk2" class="todayBk">
-                                <a href="">
-                                    <img class="coverImg" src="resources/books/economy/02_돈의심리학.jpg">
+                                <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
+                                    <img class="coverImg" src="">
                                     <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
@@ -194,8 +191,8 @@
                         </li>
                         <li>
                             <div id="todayBk3" class="todayBk">
-                                <a href="">
-                                    <img class="coverImg" src="resources/books/poem/그런사람또없습니다_표지.jpg">
+								<a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
+                                    <img class="coverImg" src="">
                                     <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
@@ -203,8 +200,8 @@
                         </li>
                         <li>
                             <div id="todayBk4" class="todayBk">
-                                <a href="">
-                                    <img class="coverImg" src="resources/books/novel/아몬드.jpg">
+                                <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
+                                    <img class="coverImg" src="">
                                     <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
@@ -212,26 +209,28 @@
                         </li>
                         <li>
                             <div id="todayBk5" class="todayBk">
-                                <a href="">
-                                    <img class="coverImg" src="resources/books/travel/bk16.jpg">
+                                <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
+                                    <img class="coverImg" src="">
                                     <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
                             </div>
                         </li>
                         <li>
-                            <div id="todayBk6" class="todayBk">
-                                <a href="">
-                                    <img class="coverImg" src="resources/books/science/사피엔스.jpg">
+                            <div id="todayBk6" class="todayBk"">
+                                <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
+                                    <img class="coverImg" src="">
                                     <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
                             </div>
                         </li>
-                    </ul>   
+                    </ul>
+                    
             </div>
           
             <script>
+            // 오늘의 추천
             $(function(){
             	
             	for (var i=1; i<=6; i++) {
@@ -241,20 +240,27 @@
 		            		 url:"<%= contextPath %>/mList.bk",
 		            		 method:"GET",
 		            		 success: function(data) {
-		            			 console.log('list : ' + data[0].author);
-		            			 console.log('list :' + data[0]);
 		            			 var id = '#todayBk' + i;
 		            			 $(id + ' .bookName').text(data[0].bkName);
 		            			 $(id + ' .author').text(data[0].author);
 		            			 $(id + ' .coverImg').attr('src', data[0].bkMainImg);
-		            		 }
+		            			 $(id + ' .detailUrl').attr('href', '<%= contextPath %>/bkDetails.bk?bookNo=' + data[0].bookNo);
+		            			
+ 		            		 }
 		            	 });
+            			
             		})(i);
             	}
-            })
+            });  	
             
-                		
+           <%--  $(function(){
+            	$.ajax({
+            		url:"<%= contextPath %>/bkDetails.bk",
+            		method:"GET"
+            	});
+            }) --%>
             </script>
+            
     	
             <br><br><br>
     
