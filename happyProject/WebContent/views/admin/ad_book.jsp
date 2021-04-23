@@ -10,6 +10,7 @@
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
 %>
+
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%

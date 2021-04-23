@@ -23,13 +23,15 @@ public class Ad_Book {
 	private Date bkEnrollDate;
 	private String bkMainImg;
 	private int bkHits;
+	private String status;
 	
 	public Ad_Book() {}
+
 
 	public Ad_Book(int bkNo, String bkName, String author, String publisher, String bkPublishDate, String bkDivision,
 			String bkGenre, int bkOriginPrice, int bkPrice, String isbn, int bkStock, int bkPageNo,
 			String bkDescription, String atDescription, String bkContentList, String bkKeyword, Date bkEnrollDate,
-			String bkMainImg, int bkHits) {
+			String bkMainImg, int bkHits, String status) {
 		super();
 		this.bkNo = bkNo;
 		this.bkName = bkName;
@@ -50,9 +52,12 @@ public class Ad_Book {
 		this.bkEnrollDate = bkEnrollDate;
 		this.bkMainImg = bkMainImg;
 		this.bkHits = bkHits;
+		this.status = status;
 	}
-	
-	
+
+
+
+
 
 	public Ad_Book(int bkNo, String bkName, String author, String publisher, String bkDivision, String bkGenre,
 			int bkOriginPrice, int bkPrice, int bkStock) {
@@ -262,6 +267,14 @@ public class Ad_Book {
 		this.bkHits = bkHits;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Ad_Book [bkNo=" + bkNo + ", bkName=" + bkName + ", author=" + author + ", publisher=" + publisher
@@ -269,7 +282,7 @@ public class Ad_Book {
 				+ ", bkOriginPrice=" + bkOriginPrice + ", bkPrice=" + bkPrice + ", isbn=" + isbn + ", bkStock="
 				+ bkStock + ", bkPageNo=" + bkPageNo + ", bkDescription=" + bkDescription + ", atDescription="
 				+ atDescription + ", bkContentList=" + bkContentList + ", bkKeyword=" + bkKeyword + ", bkEnrollDate="
-				+ bkEnrollDate + ", bkMainImg=" + bkMainImg + ", bkHits=" + bkHits + "]";
+				+ bkEnrollDate + ", bkMainImg=" + bkMainImg + ", bkHits=" + bkHits + ", status=" + status + "]";
 	}
 	
 	
