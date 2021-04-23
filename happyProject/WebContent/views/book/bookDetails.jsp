@@ -33,7 +33,7 @@
             float:left;
             margin-left:10px;
             margin-right:20px;
-            box-shadow: 0px 0px 10px 10px rgba(199, 199, 199, 0.565);
+            box-shadow: 0px 0px 10px 10px rgba(230, 228, 228, 0.565);
         }
         .bookDetailOuter .bookInfo{
             width:300px;
