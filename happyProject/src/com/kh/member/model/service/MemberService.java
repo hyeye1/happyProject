@@ -50,6 +50,9 @@ public class MemberService {
 		return count;
 		
 	}
+	
+	
+	
 }
 
 

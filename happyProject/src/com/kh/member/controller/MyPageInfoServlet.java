@@ -6,19 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class withdrawlViewServlet
+ * Servlet implementation class MyPageInfoServlet
  */
-@WebServlet("/enrollForm.with")
-public class DeleteEnrollFormServlet extends HttpServlet {
+@WebServlet("/myPage.info")
+public class MyPageInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteEnrollFormServlet() {
+    public MyPageInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +28,18 @@ public class DeleteEnrollFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 응답페이지 => 회원탈퇴
-		request.getRequestDispatcher("views/member/deleteEnrollForm.jsp").forward(request, response);
+		HttpSession session = request.getSession();
 		
+		if(session.getAttribute("loginUser") == null) {
+			
+			response.sendRedirect(request.getContextPath());
+			
+		}else {
+		
+		// 응답페이지 => 나의정보 수정하기 페이지
+			request.getRequestDispatcher("views/member/my_memberInfo.jsp").forward(request, response);
+		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

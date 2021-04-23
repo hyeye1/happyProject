@@ -26,8 +26,8 @@ public class MyPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 응답페이지 => 마이페이지
-			request.getRequestDispatcher("views/member/my_mypageMain.jsp").forward(request, response);
+		// 응답페이지 => 마이페이지메인가기
+		request.getRequestDispatcher("views/member/my_mypageMain.jsp").forward(request, response);
 	}
 
 	/**
