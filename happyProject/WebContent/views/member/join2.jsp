@@ -147,15 +147,13 @@
             <p>회원가입</p>
         </div>
         
-        <form action="/happyProject/join.me" method="post" id="enrollForm">
+        <form action="/happyProject/join.me" method="post" id="enrollForm" onsubmit="return pwcheck(this)">
             <table class="join2Input">
                 <tr>
                     <th>아이디 *</th>
-                    <form action="idCheck();">
                     
                     <td><input type="text" name="memId" placeholder="6자 이상" minlength=6 maxlength=20 required></td>
-                    <td><button type="button " class="join2Check" onclick="idCheck();">중복확인</button></td>
-                    </form>
+                    <td><button type="button" class="join2Check" onclick="idCheck();">중복확인</button></td>
                 </tr>
                 <tr>
                     <th>비밀번호 *</th>
@@ -166,13 +164,13 @@
                 <tr>
                     <th>비밀번호 확인</th>
                     <td colspan="2"> 
-                        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요" required>
+                        <input type="password" name="memPwd2" id="memPwd2" placeholder="비밀번호를 한번 더 입력해주세요" required>
                     </td>
                 </tr>
                 <tr>
                     <th>이름 *</th>
                     <td colspan="2"> 
-                        <input type="text" name="memName" placeholder="이름을 입력해주세요" required>
+                        <input type="text" name="memName" id="memName" placeholder="이름을 입력해주세요" required>
                     </td>
                 </tr>
                 <tr>
@@ -311,7 +309,15 @@
 	        						})
 		        				$memId.val(null);
 	        					$memId.focus();
-
+	        				}else if (result == "620") {
+	        					Swal.fire({
+	        						  icon: 'error',
+	        						  title: '글자수를 확인해주세요.',
+	        						  text: '6자 이상 20자 이하만 가능합니다.',
+	        						  confirmButtonColor: 'rgb(249, 219, 122)'
+	        						})
+	        					$memId.val(null);
+	        			
 	        				}else{ // 사용가능
 	        					
 	        					Swal.fire({
@@ -338,6 +344,9 @@
 	        		});
 	        		
 	        	}
+	        	
+	        	
+	        	
 	        	
 	        
 	        	// 주소검색
@@ -412,7 +421,73 @@
                            
                     	  });
                         
-
+                        
+                        // 비밀번호확인
+						$(function(){
+							var memPwd1 = document.getElementById("memPwd").value;
+							var memPwd2 = document.getElementById("memPwd2").value;
+							
+							$("#memPwd:input").focusout(function(){
+								$("#memPwd2:input").focus();	
+							})
+							
+							$("#memPwd2:input").focusout(function(){
+														
+								if( (document.getElementById("memPwd").value) == null || (document.getElementById("memPwd").value) == ""){
+		        					Swal.fire({
+		        						  icon: 'error',
+		        						  title: '',
+		        						  text: '비밀번호를 입력해주세요.',
+		        						  confirmButtonColor: 'rgb(249, 219, 122)'
+		        						})
+		        					$("#memPwd:input").focus();
+		        					
+								}else{
+									if( (document.getElementById("memPwd").value) === (document.getElementById("memPwd2").value) ){
+			        					$("#memName:input").focus();
+										$("#enrollForm :submit").removeAttr("disabled");
+									}else{
+										Swal.fire({
+			        						  icon: 'error',
+			        						  title: '비밀번호가 일치하지 않습니다.',
+			        						  text: '비밀번호를 확인해주세요.',
+			        						  confirmButtonColor: 'rgb(249, 219, 122)'
+			        						})
+				        				$("#memPwd2:input").val(null);
+			        					$memPwd2.focus();
+										$("#enrollForm :submit").prop("disabled", true);
+									}
+								}
+							})
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						}); // function 끝
+	              
+	              
+	              
+	              
+	              
+	              
+	              
+	              
+	              
+	              
+	              
+	              
+	              
+	              
         </script>
   
 

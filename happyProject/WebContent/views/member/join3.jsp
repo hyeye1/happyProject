@@ -125,7 +125,7 @@
             margin-left: 30px;
         }
         #searchAddInput {border-bottom: 1px solid gray;}
-        #postcodify input{
+        #searchAddContent input{
             width: 420px;
             height: 32px;
             border: 1.5px solid lightgray;
@@ -288,22 +288,6 @@
                             <input type="checkbox"  class="agreeCheck" id="agree3"><label for="agree3"> 이메일 수신 동의</label>
                         </th>
                     </tr>
-                    <tr>
-    <th scope="row"><img src="/resources/client/images/board/bg_vital.png" alt=""> <label for="userPw">비밀번호</label></th>
-    <td class="one">
-        <input type="password" id="userPw" name="userPw" title="비밀번호를 입력하세요." class="half" /> 
-        <span id="userpwdtext" class="td-tip"></span>
-        
-    </td>
-</tr>
-
-<tr>
-    <th scope="row"><img src="/resources/client/images/board/bg_vital.png" alt=""> <label for="userPw_chk">비밀번호 확인</label></th>
-    <td class="one">
-        <input type="password" id="userPw_chk" title="비밀번호를 다시 입력하세요."  class="half"/> 
-        <span id="reuserpwdtext" class="td-tip"></span>
-    </td>
-</tr>
                 </table>
                 
 
@@ -327,7 +311,7 @@
                         검색어(도로명, 건물명, 지번)를 입력해주세요 (지번 + 도로명 통합)
                     </p>
                     
-                    <div name="searchAddress" id="postcodify" placeholder="주소를 입력해주세요">
+                    <div name="searchAddress" " id="postcodify" placeholder="주소를 입력해주세요">
                    </div>
                 </div>
                 <div id="searchAddTip">
@@ -458,53 +442,6 @@
                         }); });
                         
 
-                        $(document).ready(function () {	   	  
-                        	
-                        	$("#userPw").keyup(function () {		
-                        		var f = document.cForm;
-                        		if(f.userPw.value.length < 1){
-                        			$("#userpwdtext").css("color","red").text("비밀번호를 입력해 주세요.");
-                        			return;
-                        		}else{
-                        			var varObj = f.userPw.value;
-                        			var Obj = varObj.split(" ").join("");
-                        			var regPwd = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/;
-                         			//조건1. 6~20 영문 대소문자
-                         			//조건2. 최소 1개의 숫자 혹은 특수 문자를 포함해야 함 	
-                        			if(!regPwd.test(varObj)) {
-                        				$("#userpwdtext").css("color","red").text("비밀번호는 영문/숫자/특수문자(!@#$%^*+=-)조합하여 6~12자 이어야 합니다.");
-                        				return;
-                        			}else{
-                        				$("#userpwdtext").css("color","green").text("안전한 비밀번호입니다. 사용 가능합니다.");
-                        			}
-                        			
-                        			if(f.userPw.value != f.userPw_chk.value){
-                        				$("#reuserpwdtext").css("color","red").text("상위 비밀번호와 일치하지 않습니다.");
-                        				return;
-                        			}else{
-                        				$("#reuserpwdtext").css("color","green").text("상위 비밀번호랑 일치합니다.");
-                        				return;
-                        			}
-                        		}
-                        	});
-                        	
-                        	$("#userPw_chk").keyup(function () {
-                        		var f = document.cForm;
-                        		if(f.userPw_chk.value.length < 1){
-                        			$("#reuserpwdtext").css("color","red").text("비밀번호를 정확히 입력해 주세요.");
-                        			return;
-                        		}
-                        	 	if(f.userPw.value != f.userPw_chk.value){
-                        			$("#reuserpwdtext").css("color","red").text("상위 비밀번호와 일치하지 않습니다.");
-                        			return;
-                        		}else{
-                        			$("#reuserpwdtext").css("color","green").text("상위 비밀번호랑 일치합니다.");
-                        			return;
-                        		}
-                        	});
-                        	
-                        	
-                        });
 
 
 
@@ -514,7 +451,47 @@
                        
                         
                         
-                       
+                        
+                        
+                        
+                        
+            //수업시간에 했던 아이디 중복확인 내용
+            function idCheck(){
+                
+                // 아이디 입력하는 input요소 객체
+                var $userId = $("#enrollForm input[name=userId]");
+                
+                $.ajax({
+                    url:"idCheck.me",
+                    type:"get",
+                    data:{checkId:$userId.val()},
+                    success:function(result){
+                        
+                        //console.log(result);
+                        if(result == 'NNNNN'){ // 사용불가능
+                            alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.");
+                            $userId.focus();
+                        } else{//사용가능
+                            
+                            if(confirm("사용가능한 아이디입니다. 정말로 사용하시겠습니까?")){
+                                //사용하겠다! => 더이상 변경불가, 회원가입버튼 활성화
+                                $userId.attr("readonly", true);
+                                $("#enrollForm :submit").removeAttr("disabled");
+                                
+                            }else{
+                                // 다시입력하겠다! => 
+                                $userId.focus();
+                                
+                            }
+                        
+                        }
+                        
+                    },error:function(){
+                        console.log("아이디 중복체크용 ajax 통신 실패");
+                    }
+                });
+                
+            };
         </script>
   
 

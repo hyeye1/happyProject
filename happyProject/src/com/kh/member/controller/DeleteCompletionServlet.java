@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class withdrawlCompletionServlet
  */
-@WebServlet("/bye.with")
-public class withdrawlCompletionServlet extends HttpServlet {
+@WebServlet("/delete.me")
+public class DeleteCompletionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public withdrawlCompletionServlet() {
+    public DeleteCompletionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,8 @@ public class withdrawlCompletionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// 응답페이지 => 회원탈퇴완료
+		request.getRequestDispatcher("views/member/deleteCompletionView.jsp").forward(request, response);
 	}
 
 	/**
