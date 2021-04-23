@@ -19,14 +19,7 @@
             text-align: right;
             width: 1000px;
         }
-        
-        .leftside{
-            border: 1px solid white;
-            float: left;
-            width: 350px;
-            height: 1100px;
-            margin-top:0;
-        }
+
         .rightside{
             border: 1px solid black;
             float: right; 
