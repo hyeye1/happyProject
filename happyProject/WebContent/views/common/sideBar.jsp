@@ -84,7 +84,7 @@
                                 <table style="margin-top:5px; margin-left:18px;">
 								
 									<tr>
-										<td><a href="" style="color: lightslategrey">쿠폰</a></td>
+										<td><a href="/happyProject/coupon.me" style="color: lightslategrey">쿠폰</a></td>
 										
 									</tr>
 								</table>
@@ -114,7 +114,7 @@
 										<td><a href=""style="color: lightslategrey">비밀번호 변경</a></td>
 									</tr>
 									<tr>
-										<td><a href="" style="color: lightslategrey">회원탈퇴</a></td>
+										<td><a href="/happyProject/enrollForm.with" style="color: lightslategrey">회원탈퇴</a></td>
 									</tr>
 								</table> <br><br><br>
 

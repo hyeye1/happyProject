@@ -43,7 +43,7 @@ public class Ad_BookListServlet extends HttpServlet {
 		int maxPage; 		
 		int startPage;		
 		int endPage;		
-		
+		 
 		if(request.getParameter("currentPage")!=null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}

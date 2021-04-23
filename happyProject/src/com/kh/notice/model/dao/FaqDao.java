@@ -9,9 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-
+import com.kh.common.model.vo.PageInfo;
 import com.kh.notice.model.vo.Faq;
-
+import com.kh.notice.model.vo.Notice;
 
 import static com.kh.common.JDBCTemplate.*;
 
@@ -191,5 +191,66 @@ public class FaqDao {
 		}
 		return result;
 	}
+	
+	public int selectListCount(Connection conn) {
+		// select문 => ResultSet객체(총게시글갯수 == 정수)
+		int listCount =0;
+		
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+	
+	public ArrayList<Faq> selectListPage(Connection conn, PageInfo pi){
+		
+		ArrayList<Faq> list = new ArrayList<>();
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListPage"); 
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 
+			
+			pstmt.setInt(1, (pi.getCurrentPage()-1) * pi.getBoardLimit() +1);
+			pstmt.setInt(2, pi.getCurrentPage() * pi.getBoardLimit());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Faq(rset.getInt("FA_NO"),
+								 rset.getString("FA_TITLE"),
+								 rset.getInt("COUNT")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
 	
 }

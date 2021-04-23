@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>    
 <!DOCTYPE html>
 <form lang="en">
 <head>
@@ -77,24 +80,13 @@
         <div class="topinfo">
             <span id="text4">&emsp;회원탈퇴 안내</span><hr>
             <ul>
-                <li>회원탈퇴 시 개인정보, 적립금, 쿠폰 등 모든 정보가 삭제되어 복원되지 않으니 주의하시기 바랍니다.</li>
+                <li>회원탈퇴 시 개인정보, 쿠폰 등 모든 정보가 삭제되어 복원되지 않으니 주의하시기 바랍니다.</li>
                 <li>회원탈퇴 후 동일한 아이디는 사용하실 수 없으며, 언제든지 재가입이 가능합니다.</li>
             </ul>
         </div>
         <br>
       
-        <div class="middleinfo">
-            <hr>
-           <span id="text4">&nbsp;xxx 회원님의 보유내역</span><br>
-           <span id="text5">&nbsp;회원탈퇴 후 모두 소멸됩니다.</span>
-           <ul>
-               <li>회원번호 : xxxxxxx</li>
-               <li>아이디 : xxxxxx</li>
-               <li>적립금 : xxxx원</li>
-               <li>쿠폰 : xx장</li>
-           </ul>
-           <hr>
-        </div>
+        <hr>
         
         <div class="checklist">
             <span id="title">탈퇴사유</span>
@@ -126,7 +118,7 @@
                  </tr>
                 </table>
                 <div align="center">
-                    <button type="submit" id="btn">회원탈퇴</button>
+                    <button type="submit" id="btn" onClick="location.href='<%= contextPath %>/bye.with'">회원탈퇴</button>
                 </div>
             </form>
     </div>

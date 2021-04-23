@@ -152,16 +152,17 @@
                 <input type="image" id="menubarAdminBtn" src="resources/images/admin.png" onclick="adminPage()">
                 <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png" onclick="logoutPage()">
             </div>
+
             	<script>
-    				const menubarAdminBtn = document.getElementById('menubarAdminBtn');
-    				menubarAdminBtn.addEventListener('click',function(){
-    					window.open("${pageContext.request.contextPath}/views/admin/ad_home.jsp", "관리자 로그인", "left=200, top=200, width=1000, height=700"); 
-    				});
-    				
+					function adminPage(){
+						location.href = "<%= contextPath %>/adminForm.me";
+					}
     				function logoutPage(){
             			location.href="<%= contextPath %>/logout.me";
             		}
     			</script>
+
+
             
     		<% }else { %>
     		

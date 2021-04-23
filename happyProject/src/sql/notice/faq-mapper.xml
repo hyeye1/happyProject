@@ -27,7 +27,7 @@
 		   )
 	</entry>
 	
-	<entry key="increaseCount">
+	<entry key="increaseCount"> 
 		UPDATE
 			   TB_FAQ
 		   SET COUNT = COUNT + 1
@@ -64,6 +64,29 @@
 	</entry>
 	
 	
+	<entry key="selectListCount">
+		SELECT COUNT(*) LISTCOUNT
+		  FROM TB_FAQ
+		 WHERE FA_STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectListPage">
+			SELECT *
+	FROM (
+            SELECT
+		            ROWNUM RNUM
+		          , A.*
+            FROM (
+                    SELECT
+		                   FA_NO
+                         , FA_TITLE
+                         , COUNT
+                      FROM TB_FAQ
+                     WHERE FA_STATUS = 'Y'
+		                ) A
+		        )
+                 WHERE RNUM BETWEEN ? AND ?
+	</entry>
 	
 	
 </properties>
