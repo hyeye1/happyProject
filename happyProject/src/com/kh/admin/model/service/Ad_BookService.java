@@ -61,4 +61,18 @@ public class Ad_BookService {
 		close(conn);
 		return im;
 	}
+	
+	// 도서 삭제 
+	public int deleteBook(int bkNo) {
+		Connection conn = getConnection();
+		int result = new Ad_BookDao().deleteBook(conn, bkNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 }
