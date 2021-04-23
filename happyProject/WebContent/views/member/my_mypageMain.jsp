@@ -132,13 +132,11 @@
 </head>  
 <body>
     <%@ include file = "../common/menubar.jsp" %>
-    <%@ include file = "../common/sideBar.jsp" %>
+   
    <!--전체-->
- <section>
-<div class="outer"> 
+   <div class="outer"> 
     <div class="path">홈>마이페이지</div>
-    <div class="leftside"></div> <!--sidebar-->
-
+<section>
     <div class="rightside">
         <div class="infobox">
             <div class="infoDetail" >
@@ -231,7 +229,15 @@
 
         </div>
     </div>
+ </section>
+
+<aside>
+   
+  <%@ include file = "../common/sideBar.jsp" %>
+</aside>
+  
+
 </div>
-</section>
+
 </body>
 </html>
