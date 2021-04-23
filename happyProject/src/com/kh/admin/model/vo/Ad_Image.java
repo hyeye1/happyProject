@@ -5,19 +5,11 @@ import java.sql.Date;
 public class Ad_Image {
 	
 	private int imgNo;			// 이미지 번호
-	private int bookNo;			// 책 번호
+	private int bkNo;			// 책 번호
 	private String imgPath;		// 이미지 경로
 	private Date imgEnrollDate;	// 이미지 등록일
 	
 	public Ad_Image () {}
-
-	public Ad_Image(int imgNo, int bookNo, String imgPath, Date imgEnrollDate) {
-		super();
-		this.imgNo = imgNo;
-		this.bookNo = bookNo;
-		this.imgPath = imgPath;
-		this.imgEnrollDate = imgEnrollDate;
-	}
 
 	public int getImgNo() {
 		return imgNo;
@@ -27,12 +19,12 @@ public class Ad_Image {
 		this.imgNo = imgNo;
 	}
 
-	public int getBookNo() {
-		return bookNo;
+	public int getBkNo() {
+		return bkNo;
 	}
 
-	public void setBookNo(int bookNo) {
-		this.bookNo = bookNo;
+	public void setBkNo(int bkNo) {
+		this.bkNo = bkNo;
 	}
 
 	public String getImgPath() {
@@ -53,11 +45,10 @@ public class Ad_Image {
 
 	@Override
 	public String toString() {
-		return "Image [imgNo=" + imgNo + ", bookNo=" + bookNo + ", imgPath=" + imgPath + ", imgEnrollDate="
+		return "Ad_Image [imgNo=" + imgNo + ", bkNo=" + bkNo + ", imgPath=" + imgPath + ", imgEnrollDate="
 				+ imgEnrollDate + "]";
 	}
-	
-	
+
 	
 	
 }

@@ -238,11 +238,12 @@
             </div>
             <div id="sub_title">도서 등록</div>
             <div id="bktable">
+
             <form  action="<%= request.getContextPath() %>/insert.bk" name="frm" mothod="post" enctype="multipart/form-data">
             	<table id="tab">
                     <tr>
                         <th width="90"> &nbsp;&nbsp;&nbsp;도서번호</th>
-                        <td width="30"><input type="text" ></td>
+                        <td width="0"><input type="text" ></td>
                         <th width="90"><b>*</b> 카테고리</th>
                         <td width="30">
                             <select name="category1" id="category1" style="width: 100px;" required>

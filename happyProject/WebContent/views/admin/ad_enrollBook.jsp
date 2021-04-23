@@ -123,7 +123,7 @@
         }
 
         input{
-            width: 280px;
+            width: 283px;
         }
 
 
@@ -284,22 +284,22 @@
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;책 소개</th>
                         <td>
-                            <textArea name="bookDescrription" placeholder="책 소개 내용을 입력하세요" cols="43" rows="6" style="resize: none;"></textArea>
+                            <textArea name="bookDescrription" placeholder="책 소개 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
                         </td>
                         <th>&nbsp;&nbsp;&nbsp;저자소개</th>
                         <td>
 
-                            <textArea name="bookDescrription" placeholder="저자 소개 내용을 입력하세요" cols="43" rows="6" style="resize: none;"></textArea>
+                            <textArea name="AuthorDescription" placeholder="저자 소개 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
                         </td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;목차</th>
                         <td>
-                            <textArea name="bookContent" placeholder="목차 내용을 입력하세요" cols="43" rows="6" style="resize: none;"></textArea>
+                            <textArea name="bookContent" placeholder="목차 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
                         </td>
                         <th>&nbsp;&nbsp;&nbsp;키워드</th>
                         <td>
-                            <textArea name="keyword" cols="43" rows="6" style="resize: none;" placeholder="키워드를 입력하세요"></textArea>
+                            <textArea name="keyword" cols="39" rows="6" style="resize: none;" placeholder="키워드를 입력하세요"></textArea>
                         </td>
                     </tr>
                     <tr>

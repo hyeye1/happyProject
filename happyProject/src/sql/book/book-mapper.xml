@@ -150,7 +150,6 @@
 		     , IMG_ENROLL_DATE
 		  FROM TB_IMAGE
 		 WHERE BK_NO = ?
-		   AND STATUS = 'Y' 
 	</entry>
 	
 	<entry key="deleteBook">

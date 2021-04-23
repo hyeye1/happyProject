@@ -145,7 +145,7 @@
 
     #bkContent1{
         display: inline-block;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .detailWrap{
@@ -169,7 +169,7 @@
         margin-left: 6px;
     }
     #bkDetail tr{height: 20px;}
-    #bkBtn{ padding-left: 380px; padding-top: 5px;}
+    #bkBtn{ padding-left: 380px; padding-top: 15px;}
 
 	.detailText{
         border: 1px solid;
@@ -263,10 +263,10 @@
                         <br><br>
                         <span>상세이미지</span><br>
                         
-                        <img src="" alt="" width="130" height="180"" align="center">
+                        <img src="<%=im.getImgPath() %>" alt="" width="130" height="180"" align="center">
                         
                         
-                        <br><button type="button" id="backBook" class="btn btn-primary" style="margin-top:10px;">이전</button>
+                        <br><button type="button" id="backBook" class="btn btn-primary" style="margin-top:20px; margin-left: -110px;">이전</button>
                     	<script>
 		                	const backBook = document.getElementById('backBook');
 		                    bkEnrollBtn.addEventListener('click', function(){

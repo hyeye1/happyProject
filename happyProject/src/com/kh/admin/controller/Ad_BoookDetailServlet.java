@@ -36,7 +36,7 @@ public class Ad_BoookDetailServlet extends HttpServlet {
 		
 			Ad_Book b = new Ad_BookService().selectBook(bkNo);
 			Ad_Image im = new Ad_BookService().selectImage(bkNo);
-		
+			
 
 			request.setAttribute("b", b);
 			request.setAttribute("im", im);
