@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.book.model.service.BookService;
 import com.kh.book.model.vo.Book;
+import com.kh.book.model.vo.Image;
 
 /**
  * Servlet implementation class bookDetailsServlet
@@ -30,10 +31,17 @@ public class BookDetailsServlet extends HttpServlet {
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	   //int boardNo = Integer.parseInt(request.getParameter("bno"));
+	   
 	   int bookNo = Integer.parseInt(request.getParameter("bookNo"));
+	   //System.out.println("bookNo");
+	   //int imgNo = Integer.parseInt(request.getParameter("imgNo"));
+	   //System.out.println(request.getParameter("imgNo"));
+	   
 	   Book b = new BookService().bookDetail(bookNo);
+	   Image i = new BookService().bookInfoImg(bookNo);
+			   
 	   request.setAttribute("b", b);
+	   request.setAttribute("i", i);
 	   
 	   request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
 	   response.setContentType("application/json; charset=UTF-8");

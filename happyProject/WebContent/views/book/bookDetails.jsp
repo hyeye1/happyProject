@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.book.model.vo.*" %>
- <%
+<%
  	Book b = (Book)request.getAttribute("b");
- %>
+ 	Image i = (Image)request.getAttribute("i");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,9 +83,12 @@
             font-size:16px;
             color:dimgray
         }
-        .bookDetailOuter .link p,pre{
+        .bookDetailOuter .link p,pre, .detailImg{
             margin-bottom:200px;
         }
+        .bookDetailOuter .detailImg{
+        	width:100%;
+        } 
 
         /* 리뷰 */
         .bookDetailOuter .inputReview{
@@ -265,6 +269,16 @@
         <div class="link">
             <p><%= b.getBkDescription() %></p>
         </div>
+        
+        <% if(i.getImgPath() != null){ %>
+	        <!-- 책소개 이미지 -->
+	        <h5 class="detailTitle">책소개이미지</h5>
+	        <div class="link">
+	            <img class="detailImg" src="<%= i.getImgPath() %>">
+	        </div>
+        <% }else {%>
+        	<div> </div>
+        <% }%>
         
         <!-- 목차 -->
         <h5  class="detailTitle" id="contentLink">목차</h5>

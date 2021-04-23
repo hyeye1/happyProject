@@ -447,7 +447,6 @@
                 <div id="sort" style="padding: 18px 15px;">
                     <select name="sortlist" id="sortlist" style="width: 100px; height: 40px; font-size: small;">
                         <option value="name">이름 순</option>
-                        <option value="count">구매 횟수 순</option>
                         <option value="sum">구매 누적액 순</option>
                         <option value="date" selected>가입일 순</option>
                     </select>

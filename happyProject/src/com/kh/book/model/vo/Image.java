@@ -18,6 +18,17 @@ public class Image {
 		this.imgPath = imgPath;
 		this.imgEnrollDate = imgEnrollDate;
 	}
+	
+	
+
+	public Image(int imgNo, int bookNo, String imgPath) {
+		super();
+		this.imgNo = imgNo;
+		this.bookNo = bookNo;
+		this.imgPath = imgPath;
+	}
+
+	
 
 	public int getImgNo() {
 		return imgNo;

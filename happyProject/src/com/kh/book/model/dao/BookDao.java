@@ -1,19 +1,18 @@
 package com.kh.book.model.dao;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import com.kh.book.model.vo.Book;
+import com.kh.book.model.vo.Image;
 import com.kh.book.model.vo.Review;
 import com.kh.notice.model.dao.NoticeDao;
 
@@ -108,6 +107,34 @@ public class BookDao {
 		
 		return b;
 		
+	}
+	
+	public Image bookInfoImg(Connection conn, int bookNo) {
+		
+		Image i = null;	// 상세이미지가 없을 수 있으니 null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("bookInfoImg");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bookNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				i = new Image(rset.getInt("img_no"),
+							  rset.getInt("bk_no"),
+							  rset.getString("img_path"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return i;
 	}
 
 	
