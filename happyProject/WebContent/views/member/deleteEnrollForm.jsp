@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import=" com.kh.member.model.vo.Member"%>
 <%
 	String contextPath = request.getContextPath();
+	Member loginUser = (Member)session.getAttribute("loginUser");
 %>    
 	<!DOCTYPE html>
 	<form lang="en">
@@ -112,13 +113,21 @@
                          <span id="pwd2">*</span>
                          <span id="pwd3">비밀번호 입력</span>
                      </th>
+                     
                       <td id="pwd4">&nbsp;
+<<<<<<< Updated upstream
                           <input type="password" name="pwd" size="30" style="height: 25px;">
+                          
+=======
+                          <input type="password" name="memPwd" size="30" style="height: 25px;" required>
+                          <input type="hidden" name="memId" value="">
+>>>>>>> Stashed changes
                      </td>
+                     
                  </tr>
                 </table>
                <div id="endBtn" align="center">
-                    <button type="button" class="btn btn-warning btn-m" data-toggle="modal" data-target="#deleteModal" style="width:100px; height:40px; border: none; background-color: rgb(249, 219, 122);">회원탈퇴</button>
+                    <button type="submit" class="btn btn-warning btn-m" data-toggle="modal" data-target="#deleteModal" style="width:100px; height:40px; border: none; background-color: rgb(249, 219, 122);">회원탈퇴</button>
                 </div>
                 
             </form>
@@ -145,7 +154,6 @@
 		         	
 		         <form action="<%= request.getContextPath() %>/delete.me" method="post">
 		         
-		         	<input type="hidden" name="userId" value="">
 		         	
 		         	<button type="submit" class="btn btn-outline-warning btn-sm">탈퇴하기</button>
 		         	
