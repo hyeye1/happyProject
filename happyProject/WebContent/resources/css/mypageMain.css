@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+		.outer{
+            margin: auto;
+            border: 1px solid white;
+            width: 1000px;
+            height: 1140px;
+        }
+        .path{
+            height:2%;
+            text-align: right;
+            width: 1000px;
+        }
+
+        .rightside{
+            float: right; 
+            width:650px; 
+            height:1100px; 
+            margin-left:10px;  
+    
+        } 
+
+        .infobox{
+            box-sizing:border-box; 
+            position:relative;
+            padding: 5%;
+
+        }
+        .infoDetail{
+         
+            box-sizing:border-box;
+            padding: 10%;
+            background-color: lightgray;;
+        }
+        .detail_box{
+            box-sizing: border-box;
+        }
+        #userIcon{
+            float: left;
+        }
+        #userLevel{
+            padding: 10%;
+            float: right;
+        }
+        #modify_btn{
+           
+            font-size: 13px;
+            width: 100px;
+            height: 40px;
+            border-radius:30px; 
+            padding:5px;
+            border: none;
+            cursor:pointer;
+        }
+    
+        .btn{
+            background-color:  rgb(249, 219, 122);
+            border: none;
+            width: 80px;
+            height: 30px;
+            border-radius:5px; 
+
+            cursor:pointer;
+        }
+        .btn:hover{
+            color: white
+
+        }
+        .btn:focus{
+           color: white;
+        }
+           
+        .user_info_list{
+            box-sizing: border-box;
+            width: 450px;
+            height:100px;
+            text-align: center;
+            background-color: white;
+            margin-top: 20px;
+            font-size: large;
+        }
+
+        .order_status{
+            padding: 20px;
+            box-sizing:border-box;
+        }
+        #tracking{
+            text-align: center;
+            font-size: 15px;
+            box-sizing: border-box;
+            background-color: lightgray;
+            padding: 40px;
+        }
+        .order_box{
+    
+            padding: 10px;
+        }
+        .order_recent{
+            box-sizing: border-box;
+            border: relative;
+            padding-top: 20px;
+            padding-left: 30px;
+        }
+        .recent_list{
+            text-align: center;
+            width:590px;
+            height:300px;
+            
+        }
+        thead{
+            background-color: lightgray;
+        }
+        #welcome{
+            font-size: large;
+       }
+       img{
+           width: 40px;
+           margin-right: 20px;
+       }
+       h2{margin-left: 30px;}
