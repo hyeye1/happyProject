@@ -35,8 +35,10 @@
 		SELECT 
 		       BK_NAME
 		     , AUTHOR
+		     , BK_MAIN_IMG
 		  FROM TB_BOOK
-		 WHERE BK_NO = ?
+		 WHERE BK_NO = ? 
+		  
 	</entry>
 	
 	

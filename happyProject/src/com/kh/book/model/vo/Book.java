@@ -53,13 +53,13 @@ public class Book {
 	}
 	
 
-	public Book(String bkName, String author) {
+	public Book(String bkName, String author, String bkMainImg) {
 		super();
 		this.bkName = bkName;
 		this.author = author;
+		this.bkMainImg = bkMainImg;
 	}
-	
-	
+
 
 	public int getBookNo() {
 		return bookNo;

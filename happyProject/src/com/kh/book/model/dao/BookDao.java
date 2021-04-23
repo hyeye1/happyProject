@@ -4,11 +4,13 @@ import static com.kh.common.JDBCTemplate.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.kh.book.model.vo.Book;
@@ -41,7 +43,11 @@ public class BookDao {
 		String sql = prop.getProperty("selectBookList"); 
 		
 		try {
-			pstmt = conn.prepareStatement(sql);// 완성된 sql
+			pstmt = conn.prepareStatement(sql);
+			
+			//Array bookNoArray = conn.createArrayOf("integer", bookNoList.toArray());
+		
+			//pstmt.setArray(1, bookNoArray);
 			pstmt.setInt(1, bookNo);
 			
 			rset = pstmt.executeQuery();
@@ -49,7 +55,8 @@ public class BookDao {
 			while(rset.next()) {
 				
 				list.add(new Book(rset.getString("bk_name"),
-								  rset.getString("author")));
+								  rset.getString("author"),
+								  rset.getString("bk_main_img")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

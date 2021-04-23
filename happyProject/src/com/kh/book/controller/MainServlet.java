@@ -2,6 +2,7 @@ package com.kh.book.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.kh.book.model.service.BookService;
 import com.kh.book.model.vo.Book;
+import com.kh.common.MyFileRenamePolicy;
+import com.oreilly.servlet.MultipartRequest;
 
 /**
  * Servlet implementation class MainServlet
@@ -33,37 +36,17 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int bookNo = Integer.parseInt(request.getParameter("bkno"));
+		int min = 1;
+		int max = 130;
 		
-		// 메인 책리스트 전체 조회
+		int bookNo = (int)(Math.random()*(max-min+1));
+	
+
 		ArrayList<Book> list = new BookService().selectBookList(bookNo);
-		
-		Book b = new Book();
-		b.setBookNo(bookNo);
-		request.setAttribute("b", b);
-			
-		//request.setAttribute("bookNo", bookNo);
-		//request.setAttribute("list", list);
-		
-		
 		
 		response.setContentType("application/json; charset=UTF-8");
 		Gson gson = new Gson();
 		gson.toJson(list, response.getWriter());
-		
-		
-		
-				
-			
-		
-		
-		
-		
-		
-		
-		
-			
-		
 		
 	}
 
