@@ -134,6 +134,7 @@
     <%@ include file = "../common/menubar.jsp" %>
     <%@ include file = "../common/sideBar.jsp" %>
    <!--전체-->
+ <section>
 <div class="outer"> 
     <div class="path">홈>마이페이지</div>
     <div class="leftside"></div> <!--sidebar-->
@@ -231,6 +232,6 @@
         </div>
     </div>
 </div>
-
+</section>
 </body>
 </html>

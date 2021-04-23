@@ -54,6 +54,7 @@
  
 </head>
 <body>
+<aside>
 	<div class="outer">
 			<div class="sideBar01">
 					<div class="sideBar02">
@@ -129,6 +130,6 @@
 			</div>
 
 		</div>
-	
+	</aside>
 </body>
 </html>
