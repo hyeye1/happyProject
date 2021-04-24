@@ -6,7 +6,7 @@
  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원주문하기</title>
+    <title>주문하기</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -154,11 +154,11 @@
 
         /* 사이드바 */
         .remote{
+       		top:100px;
             border:1px solid black;
             border-top-width:2px;
             width:350px;
             position:fixed;
-            top:90px;
             margin-left:630px;
             font-size:14px;
         }
@@ -231,8 +231,11 @@
     </style>
 </head>
 <body>
+
+	<%@ include file = "../common/menubar.jsp" %>
+	
 	 <div class="orderOuter">
-    <br>
+    <br><br>
         <!-- 주문하기 타이틀, 단계-->
         <div>
             <div class="text">
@@ -418,15 +421,15 @@
                 <td><a href="">휴대폰결제</a></td>
             </tr>
             <tr>
-                <td><a href=""><img src="../화면구현/img/네이버페이.png"></a></td>
-                <td><a href=""><img src="../화면구현/img/카카오페이.png"></a></td>
-                <td><a href=""><img src="../화면구현/img/삼성페이.png"></a></td>
+                <td><a href=""><img src="resources/images/pay_naver.png"></a></td>
+                <td><a href=""><img src="resources/images/pay_kakao.png"></a></td>
+                <td><a href=""><img src="resources/images/pay_samsung.png"></a></td>
             </tr>
         </table>
 
         
         <!-- 사이드바 -->
-        <div class="remote">
+        <form class="remote" action="<%= contextPath %>/orderConf.or" method="post">
             <div class="info">
                 <ul class="list_price">
                     <li>
@@ -461,7 +464,7 @@
             <div class="orderAgree">
                 <div class="confirmBox">
                     <label for="orderConfirm">
-                        <input type="checkbox" class="checkbox" id=orderConfirm>주문내역확인 동의(필수)
+                        <input type="checkbox" class="checkbox" id=orderConfirm required>주문내역확인 동의(필수)
                     </label>
                 </div>
                 <div class="confrimContent">
@@ -477,12 +480,13 @@
             <!-- 결제하기, 장바구니 버튼 -->
             <div style="border-top: 1px solid #ddd; background: #fbfbfb;">
                 <div class="finalBt">
-                    <div><button class="pay btn btn-warning btn-lg" data-toggle="modal" data-target="#pay">결제하기</button></div> <br>
+                    <div><button type="submit" class="pay btn btn-warning btn-lg"">결제하기</button></div> <br>
                     <div><button class="goBackToCart btn btn-warning btn-lg">장바구니 가기</button></div>
                 </div>
             </div>
-        </div>
+        </form>
         <!-- //사이드바 -->
+        
 
 
         <!-- The Modal for 배송지변경 -->
@@ -550,18 +554,18 @@
             </div>
         </div>
         <!-- //Modal -->
-
-        <!-- The Modal for 결제하기 -->
+		<!-- 
+        The Modal for 결제하기
         <div class="modal fade" id="pay">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                 
-                    <!-- Modal body -->
+                    Modal body
                     <div class="modal-body">
                         <img src="../SemiProject_WorkSpace/화면구현/img/결제샷.png" alt="">
                     </div>
                     
-                    <!-- Modal footer -->
+                    Modal footer
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
@@ -569,8 +573,7 @@
                 </div>
             </div>
         </div>
-
-
+ 		-->
 
 
     </div>

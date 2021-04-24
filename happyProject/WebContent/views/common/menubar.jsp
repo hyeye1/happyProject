@@ -22,7 +22,11 @@
          <link rel="stylesheet" href="css/hover-min.css">
         
         <style>
-            .menubarOuter{width: 1000px; height: 236px; margin: auto;}
+            .menubarOuter{
+            	width: 1000px; 
+            	height: 236px; 
+            	margin: auto;
+            }
             
             #menubarLogoImg{
                 float: left; 

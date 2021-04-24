@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +47,11 @@
     </style>
 </head>
 <body>
+	
+	<%@ include file = "../common/menubar.jsp" %>
+
 	<div class="orderCompleteOuter">
-        <br>
+        <br><br>
         <!-- 결제완료 타이틀, 단계-->
         <div>
             <div class="text">
@@ -73,12 +77,16 @@
                 <span>안소은 고객님 감사합니다.</span>
             </div>
             <p>
-                주문 및 배송조회는 <a href="">마이페이지</a> > <a href="">주문/배송조회</a> 에서 확인 가능합니다.
+                주문 및 배송조회는 <a href="views/member/my_mypageMain.jsp">마이페이지</a> > <a href="">주문/배송조회</a> 에서 확인 가능합니다.
             </p>
             <br>
-            <button id="detailButton" class="btn btn-warning btn-lg">주문내역 상세보기</button>
+            <button id="detailButton" class="btn btn-warning btn-lg" onclick="orderDetails();">주문내역 상세보기</button>
         </div>
-
+		<script type="text/javascript">
+			function orderDetails(){
+				location.href = "<%= contextPath %>/orderDet.or";
+			}
+		</script>
         
 
 
