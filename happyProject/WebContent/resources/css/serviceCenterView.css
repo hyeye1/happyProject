@@ -1,0 +1,141 @@
+@charset "UTF-8";
+  .outer{
+           
+            margin:auto;
+            border: 1px solid white;
+            width:800px;
+        }
+        .outer2{
+        	margin:auto;
+        	float:right;
+        	width:650px;
+        }
+        
+        #text1{font-size:x-large; font-weight: bold;}
+        #text2{color:rgb(241, 196, 15); font-weight: bold;}
+        .faq{
+            width: 750px;
+            border: 1px solid gray;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            box-sizing: border-box;
+        }
+        #faqSearch{margin-left: 20px;}
+        #faq1{font-size: large;}
+        #faq2{width:300px; height: 25px;}
+        #faq3{
+            border: 1px solid lightgray;
+            color: black;
+            background-color: rgb(241, 196, 15);
+            border-radius: 3px;
+            padding: 6px;
+            width: 55px;
+        }
+        #faq3:hover{background-color: rgb(249, 219, 122); color:white;}
+        .faqSearchBox{
+            width: 520px;
+            height: 40px;
+            background-color: rgb(255, 233, 161);
+            padding-left: 185px;
+            padding-top: 8px;
+            margin-top: 5px;
+        }
+        .top5{padding-left: 30px; margin-top: 5px; margin-bottom: 10px;}
+        #top5Title{
+            font-size: medium; 
+            font-weight: bold; 
+            padding-left: 25px;
+            line-height: 40px;
+            color: #f3d00c;
+        }
+        .top5List, .noticeList{
+            border: 1px solid black;
+            text-align: center;
+            margin-left: 25px;
+            width: 700px;
+        }
+        .top5List>tbody>tr:hover,
+       /*
+        .noticeList>tbody>tr:hover{
+            cursor:pointer;
+            background: rgb(249, 219, 122);
+            color: white;
+            */
+        }
+        #noticeNew{height: 30px; background-color: rgb(249, 219, 122);}
+        .question1{
+            width: 720px;
+            height: 200px; 
+            border: 1px solid gray;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 25px;
+            padding-left: 30px;
+        }
+        #qtext1{font-size: large; font-weight: bold; padding-left: 150px;}
+        #qtext2{color: gray;}
+        .questionBox{
+            width: 590px;
+            height: 80px;
+            background-color: rgb(255, 233, 161);
+            padding-left: 100px;
+            padding-top: 40px;
+            line-height: 15px;
+        }
+        #qbtn{
+            width: 100px;
+            height: 40px;
+            font-size: medium;
+            font-weight: bold;
+            color: gray;
+            border: 1px solid lightgrey;
+            background-color: rgb(249, 219, 122);
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            margin-left: 460px;
+            text-decoration:none
+        }
+        #qbtn:hover{background-color: rgb(249, 219, 122); color:white;}
+        .notice{
+            width: 750px;
+            height: 170px; 
+            border: 1px solid gray;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            margin-bottom: 100px;
+        }
+        .notice img{margin-left: 20px; margin-bottom: 5px;}
+
+        .answer {
+            width: 690px;
+            display: none;
+            padding: 10px;
+            margin-top: 2px;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            background-color: rgb(250, 248, 248);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .question {
+            font-size: 15px;
+            padding: 5px 0;
+            cursor: pointer;
+            border:1px solid gray;
+            border-radius: 10px;
+            outline: none;
+            background: none;
+            width: 690px;
+            text-align: left;
+        }
+        .question:hover {
+            color: #f3d00c;
+        }
+        [id$="-toggle"] {
+        margin-right: 15px;
+        }
