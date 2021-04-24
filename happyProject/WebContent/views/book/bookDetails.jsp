@@ -37,7 +37,7 @@
             box-shadow: 0px 0px 10px 10px rgba(230, 228, 228, 0.565);
         }
         .bookDetailOuter .bookInfo{
-            width:300px;
+            width:400px;
             height:400px;
             display:table-cell;
         }
@@ -172,79 +172,80 @@
                 <h2><b><%= b.getBkName() %></b></h2>
                 <hr>
         </div>
-		<br>
+		<br><br>
         <div style="margin-left:200px">
             <!-- 책 표지 이미지 -->
             <div class="bookImg">
                 <img src="<%= b.getBkMainImg() %>" width="300" height="400">
             </div>
             <!-- 책 정보 -->
-            <div class="bookInfo" align="left">
+            <form class="bookInfo" align="left">
                 <br>
                 <p><b><%= b.getAuthor() %></b> 지음</p>
                 <p><b><%= b.getPublisher() %></b></p>
-                <p><%= b.getBkPubDate() %></p><br>
-                <p>정가 : <%= b.getBkOrgPrice() %></p>
+                <p><%= b.getBkPubDate() %></p>
+                <p>정가 : <%= b.getBkOrgPrice() %>원</p>
                 <p style="display: inline;">판매가 : <h4 style="color:red; font-weight: bolder;; display:inline;"><%= b.getBkPrice() %>원</h4></p>
                 <p>
                     <small>
                         구매금액의 1% 적립해드립니다. (배송완료 후) <br>
-                        배송비 3,000원 (20,000원 이상 주문시 무료배송) <br><br>
+                        배송비 3,000원 (20,000원 이상 주문시 무료배송) <br>
                     </small>
                 </p>
-                <form name="form" mehod="get" >
-                    <b>주문수량 </b> :
-                    <input type="hidden" name="price" value="<%= b.getBkPrice() %>">
-                    <input type=button value="-" onclick="del();" class="btn btn-primary btn-sm" style="background:lightgray; border:none;">
-                    <input type=number name=amount value="1" min="1" max="10" readonly onchange="change();" style="text-align: center;">
-                    <input type=button value="+" onclick="add();" class="btn btn-primary btn-sm" style="background:lightgray; border:none;"> <br>
-                    <!-- 회원이 선택한 수량만큼의 값 -->
-                    <input type="hidden" name="sum" size="10" readonly> 
+                <form name="form" mehod="get" action="<%= contextPath %>/cList2.or" >
+                	<div style="margin-bottom:10px;">
+	                    주문수량 :
+	                    <input type="hidden" name="price" value="<%= b.getBkPrice() %>">
+	                    <input type=button value="-" onclick="del();" class="btn btn-primary btn-sm" style="background:lightgray; border:none;">
+	                    <input type=number name=amount value="1" min="1" max="10" readonly onchange="change();" style="text-align: center;">
+	                    <input type=button value="+" onclick="add();" class="btn btn-primary btn-sm" style="background:lightgray; border:none;"> <br>
+	                    <!-- 회원이 선택한 수량만큼의 값 -->
+	                    <input type="hidden" name="sum" size="10" readonly> 
+                	</div>
+                	<!-- 주문하기, 보관하기 버튼 -->
+			        <div>
+			            <button class="goToLink btn btn-warning btn-lg">바로구매</button>&nbsp;&nbsp;
+			            <button type="submit" class="goToLink btn btn-warning btn-lg" data-toggle="modal" data-target="#goToCart" onclick="cart();">장바구니</button>&nbsp;&nbsp;
+			            <button class="goToLink btn btn-warning btn-lg">보관함</button>
+			        </div>
                 </form>
                 <script>
-                    var price;
-                    var amount;
-                    function init () {
-                        price = document.form.price.value;
-                        amount = document.form.amount.value;
-                        document.form.sum.value = price;
-                        change();
-                    }
-                    function add () {
-                        hm = document.form.amount;
-                        sum = document.form.sum;
-                        hm.value ++ ;
-                        sum.value = parseInt(hm.value) * price;
-                    }
-                    function del () {
-                        hm = document.form.amount;
-                        sum = document.form.sum;
-                            if (hm.value > 1) {
-                                hm.value -- ;
-                                sum.value = parseInt(hm.value) * price;
-                            }
-                    }
-                    function change () {
-                        hm = document.form.amount;
-                        sum = document.form.sum;
-                    
-                            if (hm.value < 0) {
-                                hm.value = 0;
-                            }
-                        sum.value = parseInt(hm.value) * price;
-                    }  
+	                    var price;
+	                    var amount;
+	                    function init () {
+	                        price = document.form.price.value;
+	                        amount = document.form.amount.value;
+	                        document.form.sum.value = price;
+	                        change();
+	                    }
+	                    function add () {
+	                        hm = document.form.amount;
+	                        sum = document.form.sum;
+	                        hm.value ++ ;
+	                        sum.value = parseInt(hm.value) * price;
+	                    }
+	                    function del () {
+	                        hm = document.form.amount;
+	                        sum = document.form.sum;
+	                            if (hm.value > 1) {
+	                                hm.value -- ;
+	                                sum.value = parseInt(hm.value) * price;
+	                            }
+	                    }
+	                    function change () {
+	                        hm = document.form.amount;
+	                        sum = document.form.sum;
+	                    
+	                            if (hm.value < 0) {
+	                                hm.value = 0;
+	                            }
+	                        sum.value = parseInt(hm.value) * price;
+	                    }  
                     </script>
-            </div>
+            </form>
         </div>
-
-        <br><br>
+        		
         
-        <!-- 주문하기, 보관하기 버튼 -->
-        <div align="center" >
-            <button class="goToLink btn btn-warning btn-lg">바로구매</button>&nbsp;&nbsp;
-            <button class="goToLink btn btn-warning btn-lg" data-toggle="modal" data-target="#goToCart" onclick="cart();">장바구니</button>&nbsp;&nbsp;
-            <button class="goToLink btn btn-warning btn-lg">보관함</button>
-        </div>
         <!-- 로그인 전 -->
         <% if(loginUser == null) { %>
 	        <!-- The Modal for 로그인전 장바구니버튼 클릭 -->
