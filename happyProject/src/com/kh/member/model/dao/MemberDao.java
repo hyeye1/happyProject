@@ -142,6 +142,8 @@ public class MemberDao {
 			pstmt.setString(4, m.getMemAddress());
 			pstmt.setString(5, m.getMemId());
 			
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -151,6 +153,8 @@ public class MemberDao {
 		
 		return result;
 	}
+	
+	
 	
 	public Member selectMember(Connection conn, String memId) {
 		// select문 => ResultSet객체(한행)
@@ -192,8 +196,36 @@ public class MemberDao {
 	}
 	
 	
+	public int deleteMember(Connection conn, String memId, String memPwd) {
+		// update문 => 처리된 행수
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memPwd);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+				
+		return result;
+		
+	}
+		
+		
+		
+		
+	}
 
-}
+
 
 
 

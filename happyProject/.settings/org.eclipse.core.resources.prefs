@@ -2,7 +2,6 @@ eclipse.preferences.version=1
 encoding//WebContent/views/category/tagSearchView.jsp=UTF-8
 encoding//WebContent/views/member/couponDetailView.jsp=UTF-8
 encoding//WebContent/views/member/deleteCompletionView.jsp=UTF-8
-encoding//WebContent/views/member/deleteEnrollForm.jsp=UTF-8
 encoding//WebContent/views/member/reviewDetailView.jsp=UTF-8
 encoding//WebContent/views/member/reviewEnrollForm.jsp=UTF-8
 encoding//WebContent/views/member/reviewListView.jsp=UTF-8
