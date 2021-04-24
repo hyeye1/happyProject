@@ -162,7 +162,7 @@
 
         <!-- 바로가기 카테고리 -->
         <div class="category" align="left">
-            <a href="" id="home">HOME</a>
+            <a href="<%= contextPath %>" id="home">HOME</a>
             >
             <a href="" id="localBook"> <%= b.getBkDivision() %> </a>
         </div>
@@ -361,7 +361,7 @@
                 </div>
             </div>
         <% }else { %>
-            <!-- 로그인 후 리뷰작성하기  -->
+            <!-- 로그인 후 리뷰내용 입력했을 때  -->
             <h5 class="detailTitle" id="reviewLink">리뷰</h5>
             <div action="">
                 <div class="inputReview">

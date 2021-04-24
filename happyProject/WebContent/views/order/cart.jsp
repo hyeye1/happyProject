@@ -14,7 +14,7 @@
     <style>
         .cartOuter{
             width:1000px;
-            height:700px;
+            height:1000px;
             margin:auto;
         }
 
@@ -39,7 +39,7 @@
         /* 카트 창 */
         .cartOuter .cartView{
             width:680px;
-            height:100%;
+            height:600px;
             margin-top: 20px;
             float:left;
         }
@@ -141,7 +141,7 @@
 	
 	 <div class="cartOuter">
 
-        <br><br><br>
+        <br><br>
 
         <!-- 장바구니타이틀, 단계-->
         <div>
@@ -246,8 +246,12 @@
                 </table>
             </div>
         </div>
-        <button id="selectBuy" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#clickButton">선택 구매하기</button>
-       
+        <button id="selectBuy" class="btn btn-warning btn-lg" onclick="cartPage();">선택 구매하기</button>
+       	<script>
+       		function cartPage(){
+       			location.href = "<%= contextPath %>/order.or";
+       		}
+       	</script>
     </div>
     
     <br><br><br><br><br><br><br>

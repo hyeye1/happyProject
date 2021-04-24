@@ -14,7 +14,7 @@
     <style>
         .orderDetailsOuter{
             width:1000px;
-            height:1500px;
+            height:1800px;
             margin:auto;
         }
 
@@ -98,8 +98,11 @@
     </style>
 </head>
 <body>
-<div class="orderDetailsOuter">
-        <br>
+	
+	<%@ include file = "../common/menubar.jsp" %>
+
+	<div class="orderDetailsOuter">
+        <br><br>
         <h2>주문내역 상세보기</h2>
         <hr>
         <div style="line-height:0.5;">
