@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
  	<style>
 			a:link{ text-decoration:none; } 
         	a:active{ text-decoration:none;  color:#F9DB7A; }
@@ -53,6 +54,8 @@
  
 </head>
 <body>
+
+
 <aside>
 	<div class="outer">
 			<div class="sideBar01">

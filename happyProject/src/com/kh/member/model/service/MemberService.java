@@ -88,6 +88,27 @@ public class MemberService {
 		return updateMem;
 	}
 	
+	public Member updatePwdMember(String memId, String memPwd, String updatePwd) {
+		
+		Connection conn = getConnection();
+		int result = new MemberDao().updatePwdMember(conn, memId, memPwd, updatePwd);
+		
+			Member updateMem = null;
+			if(result > 0) { // 성공 => 갱신된 회원객체 다시 조회
+				commit(conn);
+				updateMem = new MemberDao().selectMember(conn, memId);
+			}else {
+				rollback(conn);
+			}
+			
+			close(conn);
+			
+			return updateMem;
+			
+	}
+	
+	
+	
 }
 
 

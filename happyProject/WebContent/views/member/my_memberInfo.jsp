@@ -26,6 +26,17 @@
 
 <meta charset="UTF-8">
 <title>나의 회원정보</title>
+<script>
+ 		var msg = "<%= session.getAttribute("alertMsg") %>"; // 알람창으로 출력할 메세지
+ 		// var msg = "메세지" / "null";
+ 		
+ 		if(msg != "null"){
+ 			alert(msg);
+ 			// 알람창 띄어준 후에 session에 담긴 메세지 지워야됨!!(안 그러면 메뉴바 포함된 매 페이지 열 때마다 alert계속 뜰거임)
+ 			<% session.removeAttribute("alertMsg"); %>
+ 		}
+ </script>
+
 	<style> 
 	    .outer{
 	        margin: auto;
@@ -191,7 +202,58 @@
     
         </div>
         </div>
-    </div>
+    	</div>
+    
+    <!-- 비밀번호변경 버튼 클릭시 뜨는 Modal -->
+		<div class="modal" id="updatePwdModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">비밀번호변경</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		
+		      <!-- Modal body -->
+		      <div class="modal-body" align="center">
+		      
+		      	<form action="<%= request.getContextPath() %>/updatePwd.me" method="post">
+		      		<input type="hidden" name="memId" value="<%= memId %>">
+		      		<table>
+		      			<tr>
+		      				<th>현재 비밀번호</th>
+		      				<td><input type="password" name="memPwd" required></td>
+		      			</tr>
+		      			<tr>
+		      				<th>변경할 비밀번호</th>
+		      				<td><input type="password" name="updatePwd" required></td>
+		      			</tr>
+		      			<tr>
+		      				<th>변경할 비밀번호 재입력</th>
+		      				<td><input type="password" name="checkPwd" required></td>
+		      			</tr>
+		      		</table>
+		      		<br>
+		      		<button type="submit" class="btn btn-outline-warning btn-sm" onclick="return validatePwd();">비밀번호 변경</button>
+		      		<script>
+		      			function validatePwd(){
+		      				if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val()){
+		      					alret("변경할 비밀버호가 일치하지 않습니다.");
+		      					return false;
+		      				}
+		      			}
+		      		</script>
+		      		
+		      	</form>
+		        
+		         	
+		      </div>
+		
+		    </div>
+		  </div>
+		</div>
+    
 
 
 </body>

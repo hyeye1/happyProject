@@ -35,7 +35,6 @@ public class MyPageInfoServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath());
 			
 		}else {
-		
 		// 응답페이지 => 나의정보 수정하기 페이지
 			request.getRequestDispatcher("views/member/my_memberInfo.jsp").forward(request, response);
 		}
@@ -49,3 +48,5 @@ public class MyPageInfoServlet extends HttpServlet {
 	}
 
 }
+
+

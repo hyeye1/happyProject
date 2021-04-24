@@ -62,7 +62,7 @@
 		 WHERE MEM_ID = ?
 	</entry>
 	
-	<!-- 수업시간에 했던 것들 -->
+	
 	
 	<entry key="updateMember">
 		UPDATE
@@ -97,17 +97,17 @@
 	<entry key="deleteMember">
 		UPDATE
 			   TB_MEMBER
-		   SET ADMIN_YN = 'D'
+		   SET ADMIN_YN = 'D' <!-- status 컬럼 추가 후 수정하기 -->
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>
 	
 	<entry key="updatePwdMember">
 		UPDATE
-		       MEMBER
-		   SET USER_PWD = ?
-		 WHERE USER_ID = ?
-		   AND USER_PWD = ?
+		       	TB_MEMBER
+		   SET MEM_PWD = ?
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
 	</entry>
 	
 	
