@@ -66,40 +66,40 @@
 	
 	<entry key="updateMember">
 		UPDATE
-		   	   MEMBER
-		   SET USER_NAME=?
-		     , PHONE=?
-		     , EMAIL=?
-		     , ADDRESS=?
-		     , INTEREST=?
-		     , MODIFY_DATE=SYSDATE
-		 WHERE USER_ID=?  
+		   	   TB_MEMBER
+		   SET MEM_NAME= ?
+		   	 , EMAIL= ?
+		     , MEM_PHONE= ?
+		     , MEM_ADDRESS= ?
+		     , RECENT_LOGIN=SYSDATE
+		 WHERE MEM_ID= ?  
 	</entry>
 	
 	<entry key="selectMember">
 		SELECT 
-			   USER_NO
-			 , USER_ID
-			 , USER_PWD
-			 , USER_NAME
-			 , PHONE
-			 , EMAIL
-			 , ADDRESS
-		 	 , INTEREST
-		     , ENROLL_DATE
-			 , MODIFY_DATE
-			 , STATUS
-		  FROM MEMBER
-		 WHERE STATUS = 'Y'
-		   AND USER_ID = ?
+	            MEM_NO
+	          , MEM_ID
+	          , MEM_PWD
+	          , MEM_NAME
+	          , MEM_ADDRESS
+	          , MEM_PHONE
+	          , EMAIL
+	          , EMAIL_YN
+	          , ENROLL_ROUTE
+	          , ENROLL_DATE
+	          , RECENT_LOGIN
+	          , ADMIN_YN
+		  FROM TB_MEMBER
+		 WHERE ADMIN_YN = 'N'
+		   AND MEM_ID = ?
 	</entry>
 	
 	<entry key="deleteMember">
 		UPDATE
-			   MEMBER
-		   SET STATUS = 'N'
-		 WHERE USER_ID = ?
-		   AND USER_PWD = ?
+			   TB_MEMBER
+		   SET ADMIN_YN = 'D'
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
 	</entry>
 	
 	<entry key="updatePwdMember">
@@ -110,7 +110,7 @@
 		   AND USER_PWD = ?
 	</entry>
 	
-
+	
 	
 
 </properties>

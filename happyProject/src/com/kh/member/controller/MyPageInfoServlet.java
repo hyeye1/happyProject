@@ -1,29 +1,24 @@
-package com.kh.book.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-import com.kh.book.model.service.BookService;
-import com.kh.book.model.vo.Review;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ReviewListServlet
+ * Servlet implementation class MyPageInfoServlet
  */
-@WebServlet("/rList.bk")
-public class ReviewListServlet extends HttpServlet {
+@WebServlet("/myPage.info")
+public class MyPageInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewListServlet() {
+    public MyPageInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,17 +27,19 @@ public class ReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int bookNo = Integer.parseInt(request.getParameter("bookno"));
 		
-		ArrayList<Review> list = new BookService().selectReviewList(bookNo);
+		HttpSession session = request.getSession();
 		
-		response.setContentType("application/json; charset=UTF-8");
-		Gson gson = new Gson();
-		gson.toJson(list, response.getWriter());
+		if(session.getAttribute("loginUser") == null) {
+			
+			response.sendRedirect(request.getContextPath());
+			
+		}else {
 		
+		// 응답페이지 => 나의정보 수정하기 페이지
+			request.getRequestDispatcher("views/member/my_memberInfo.jsp").forward(request, response);
+		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

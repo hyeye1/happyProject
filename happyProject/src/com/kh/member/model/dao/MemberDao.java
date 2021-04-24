@@ -127,8 +127,105 @@ public class MemberDao {
 		return count;
 	}
 	
+	public int updateMember(Connection conn, Member m) {
+		// Update문 => 처리된 행수
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMemName());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getMemPhone());
+			pstmt.setString(4, m.getMemAddress());
+			pstmt.setString(5, m.getMemId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	public Member selectMember(Connection conn, String memId) {
+		// select문 => ResultSet객체(한행)
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(rset.getInt("mem_no"),
+							   rset.getString("mem_id"),
+							   rset.getString("mem_pwd"),
+							   rset.getString("mem_name"),
+							   rset.getString("mem_address"),
+							   rset.getString("mem_phone"),
+							   rset.getString("email"),
+							   rset.getString("email_yn"),
+							   rset.getString("enroll_route"),
+							   rset.getDate("enroll_date"),
+							   rset.getDate("recent_login"),
+							   rset.getString("admin_yn"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+	}
+	
+	
+	public int deleteMember(Connection conn, String memId, String memPwd) {
+		// update문 => 처리된 행수
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memPwd);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+				
+		return result;
+		
+	}
+		
+		
+		
+		
+	}
 
-}
+
 
 
 

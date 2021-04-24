@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member, com.kh.book.model.vo.*"%>
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	String contextPath = request.getContextPath();
@@ -113,9 +113,7 @@
         </style>
     </head>
     <body>
-    	
-    	
-    
+
         <div class="menubarOuter" >
             
             <div class="menubarHeader">
@@ -135,7 +133,7 @@
     			
     			<script>
     				function beforeCheckCart(){
-    					alert("로그인 후 서비스이용 가능합니다.")
+    					location.href = "<%= contextPath %>/loginForm.me";
     				}
     				function loginPage(){
     					location.href = "<%= contextPath %>/loginForm.me";

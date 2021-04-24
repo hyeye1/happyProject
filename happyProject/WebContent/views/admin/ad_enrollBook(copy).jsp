@@ -123,7 +123,7 @@
         }
 
         input{
-            width: 283px;
+            width: 280px;
         }
 
 
@@ -237,11 +237,13 @@
                 <img src="${pageContext.request.contextPath}/resources/images/admin/adminlogo.png"  id="adLogo">
             </div>
             <div id="sub_title">도서 등록</div>
-    
             <div id="bktable">
-            <form  action="<%= request.getContextPath() %>/insert.bk" method="post" id="enrollForm" enctype="multipart/form-data">
-            	<table>
+
+            <form  action="<%= request.getContextPath() %>/insert.bk" name="frm" mothod="post" enctype="multipart/form-data">
+            	<table id="tab">
                     <tr>
+                        <th width="90"> &nbsp;&nbsp;&nbsp;도서번호</th>
+                        <td width="0"><input type="text" ></td>
                         <th width="90"><b>*</b> 카테고리</th>
                         <td width="30">
                             <select name="category1" id="category1" style="width: 100px;" required>
@@ -249,13 +251,11 @@
                                 <option value="">해외도서</option>
                             </select> 
                             &nbsp;>&nbsp;
-                            <select name="category2" id="category2" style="width: 120px;" required>
+                            <select name="" id="category2" style="width: 120px;" required>
                                 <option value="">문학</option>
                                 <option value="">경제/경영</option>
                             </select> 
                         </td>
-                        <th width="90">&nbsp;&nbsp;&nbsp;ISBN</th>
-                        <td width="100"><input type="text" placeholder="숫자 13개 입력"></td>
                     </tr>
                     <tr>
                         <th><b>*</b> 도서명</th>
@@ -272,8 +272,8 @@
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;페이지수</th>
                         <td><input type="text" placeholder="숫자만 입력하세요"></td>
-                        <th></th>
-                        <td></td>
+                        <th width="90">&nbsp;&nbsp;&nbsp;ISBN</th>
+                        <td width="100"><input type="text" placeholder="숫자 13개 입력"></td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;정가</th>
@@ -284,27 +284,27 @@
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;책 소개</th>
                         <td>
-                            <textArea name="bookDescrription" placeholder="책 소개 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
+                            <textArea name="bookDescrription" placeholder="책 소개 내용을 입력하세요" cols="43" rows="6" style="resize: none;"></textArea>
                         </td>
                         <th>&nbsp;&nbsp;&nbsp;저자소개</th>
                         <td>
 
-                            <textArea name="AuthorDescription" placeholder="저자 소개 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
+                            <textArea name="bookDescrription" placeholder="저자 소개 내용을 입력하세요" cols="43" rows="6" style="resize: none;"></textArea>
                         </td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;목차</th>
                         <td>
-                            <textArea name="bookContent" placeholder="목차 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
+                            <textArea name="bookContent" placeholder="목차 내용을 입력하세요" cols="43" rows="6" style="resize: none;"></textArea>
                         </td>
                         <th>&nbsp;&nbsp;&nbsp;키워드</th>
                         <td>
-                            <textArea name="keyword" cols="39" rows="6" style="resize: none;" placeholder="키워드를 입력하세요"></textArea>
+                            <textArea name="keyword" cols="43" rows="6" style="resize: none;" placeholder="키워드를 입력하세요"></textArea>
                         </td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;표지 이미지</th>
-                        <td><input type="file"></td>
+                        <td><input type="file" name="image" accept="image/*" ></td>
                         <th></th>
                         <td></td>
                     </tr>
@@ -317,7 +317,7 @@
                 </table>
                 <br>
                 <div id="choice_btn">
-                    <button type="submit" id="enrollBtn" class="btn btn-primary">등록</button> &nbsp;
+                    <button type="button" id="enrollBtn" class="btn btn-primary">등록</button> &nbsp;
                     <button type="reset" id="resetBtn" class="btn btn-primary">초기화</button>
                 </div>
                 <br>

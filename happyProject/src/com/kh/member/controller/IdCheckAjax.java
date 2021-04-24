@@ -32,6 +32,8 @@ public class IdCheckAjax extends HttpServlet {
 		
 		if(checkId == "" || checkId == null) {
 			response.getWriter().print("");
+		}else if( checkId.length() < 6 || checkId.length() > 20) {
+			response.getWriter().print("620");
 		}else {
 			int count = new MemberService().idCheck(checkId);
 			

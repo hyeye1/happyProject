@@ -1,23 +1,27 @@
-package com.kh.member.controller;
+package com.kh.admin.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.admin.model.service.Ad_BookService;
+
 /**
- * Servlet implementation class withdrawlViewServlet
+ * Servlet implementation class BookDeleteServlet
  */
-@WebServlet("/enrollForm.with")
-public class DeleteEnrollFormServlet extends HttpServlet {
+@WebServlet("/delete.bk")
+public class Ad_BookDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteEnrollFormServlet() {
+    public Ad_BookDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +31,18 @@ public class DeleteEnrollFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 응답페이지 => 회원탈퇴
-		request.getRequestDispatcher("views/member/deleteEnrollForm.jsp").forward(request, response);
+		int bkNo = Integer.parseInt(request.getParameter("bkno")); // 삭제요청값 1
 		
+		int result = new Ad_BookService().deleteBook(bkNo);
+		
+		
+		if(result > 0) { // 성공하면 /jsp/list.bk 재요청 => 도서리스트페이지
+			//request.getSession().setAttribute("alertMsg", "도서 삭제 완료");
+			response.sendRedirect(request.getContextPath()+"/list.bk");
+			
+		}else { // 실패하면 에러페이지 포워딩
+			//request.setAttribute("errorMsg", "삭제 실패");
+		}
 	}
 
 	/**

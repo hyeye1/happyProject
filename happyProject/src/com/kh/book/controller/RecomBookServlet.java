@@ -1,23 +1,32 @@
-package com.kh.member.controller;
+package com.kh.book.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.kh.book.model.service.BookService;
+import com.kh.book.model.vo.Book;
+import com.kh.common.MyFileRenamePolicy;
+import com.oreilly.servlet.MultipartRequest;
+
 /**
- * Servlet implementation class withdrawlCompletionServlet
+ * Servlet implementation class MainServlet
  */
-@WebServlet("/delete.me")
-public class DeleteCompletionServlet extends HttpServlet {
+@WebServlet("/mList.bk")
+public class RecomBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteCompletionServlet() {
+    public RecomBookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +35,18 @@ public class DeleteCompletionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 응답페이지 => 회원탈퇴완료
-		request.getRequestDispatcher("views/member/deleteCompletionView.jsp").forward(request, response);
+		
+		int min = 1;
+		int max = 130;
+		
+		int bookNo = (int)(Math.random()*(max-min+1));
+
+		ArrayList<Book> list = new BookService().selectBookList(bookNo);
+		
+		response.setContentType("application/json; charset=UTF-8");
+		Gson gson = new Gson();
+		gson.toJson(list, response.getWriter());
+		
 	}
 
 	/**

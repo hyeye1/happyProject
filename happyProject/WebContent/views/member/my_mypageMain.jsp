@@ -7,158 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지 메인</title>
-    <style>
-		.outer{
-            margin: auto;
-            border: 1px solid white;
-            width: 1000px;
-            height: 1140px;
-        }
-        .path{
-            height:2%;
-            text-align: right;
-            width: 1000px;
-        }
-        
-        .leftside{
-            border: 1px solid white;
-            float: left;
-            width: 350px;
-            height: 1100px;
-            margin-top:0;
-        }
-        .rightside{
-            border: 1px solid black;
-            float: right; 
-            width:620px; 
-            height:1100px; 
-            margin-left:10px;  
-    
-        } 
-
-        .infobox{
-            box-sizing:border-box; 
-            position:relative;
-            padding: 5%;
-
-        }
-        .infoDetail{
-         
-            box-sizing:border-box;
-            padding: 10%;
-            background-color: lightgray;;
-        }
-        .detail_box{
-            box-sizing: border-box;
-        }
-        #userIcon{
-            float: left;
-        }
-        #userLevel{
-            padding: 10%;
-            float: right;
-        }
-        #modify_btn{
-           
-            font-size: 13px;
-            width: 100px;
-            height: 40px;
-            border-radius:30px; 
-            padding:5px;
-            border: none;
-            cursor:pointer;
-        }
-    
-        .btn{
-            background-color:  rgb(249, 219, 122);
-            border: none;
-            width: 80px;
-            height: 30px;
-            border-radius:5px; 
-
-            cursor:pointer;
-        }
-        .btn:hover{
-            color: white
-
-        }
-        .btn:focus{
-           color: white;
-        }
-           
-        .user_info_list{
-            box-sizing: border-box;
-            width: 450px;
-            height:100px;
-            text-align: center;
-            background-color: white;
-            margin-top: 20px;
-            font-size: large;
-        }
-
-        .order_status{
-            padding: 20px;
-            box-sizing:border-box;
-        }
-        #tracking{
-            text-align: center;
-            font-size: 15px;
-            box-sizing: border-box;
-            background-color: lightgray;
-            padding: 40px;
-        }
-        .order_box{
-    
-            padding: 10px;
-        }
-        .order_recent{
-            box-sizing: border-box;
-            border: relative;
-            padding-top: 20px;
-            padding-left: 30px;
-        }
-        .recent_list{
-            text-align: center;
-            width:560px;
-            height:300px;
-            
-        }
-        thead{
-            background-color: lightgray;
-        }
-        #welcome{
-            font-size: large;
-       }
-       img{
-           width: 40px;
-           margin-right: 20px;
-       }
-       h2{margin-left: 30px;}
+    <link rel="stylesheet" href="resources/css/mypageMain.css">
       
-    </style>
 </head>  
 <body>
     <%@ include file = "../common/menubar.jsp" %>
-    <%@ include file = "../common/sideBar.jsp" %>
-   <!--전체-->
-<div class="outer"> 
-    <div class="path">홈>마이페이지</div>
-    <div class="leftside"></div> <!--sidebar-->
 
+   
+   <!--전체-->
+   <div class="outer"> 
+    <div class="path">홈>마이페이지</div>
+<section>
     <div class="rightside">
         <div class="infobox">
             <div class="infoDetail" >
                 <div class=detail_box>
                     <div id="userIcon"> 
-                        <img src="my_resources/image/user.png" alt="" width="60px" height="40px"><br><br>
+                        <img src="resources/images/my_user.png" alt="" width="60px" height="40px"><br><br>
                     </div>
     
-                    <div id="welcome"><strong>김독자 님 반갑습니다!</strong><br></div>
+                    <div id="welcome"><b>김독자님</b><strong> 반갑습니다!</strong><br></div>
                     <div id="level">등급: 일반</div>
                 </div><br><br>
                 <div class="detail_box2">
-                    <button class="btn" id="modify_btn">회원정보수정</button>
+                    <button class="btn" id="modify_btn" onclick="location.href='<%=contextPath%>/myPage.info'">회원정보수정</button>
                 </div>
+   
                 <div id="detail_box3">
                     <table class="user_info_list" summary="쿠폰, 통합포인트, 예치금, 교보캐시, 교보e캐시, e-교환권 이 포함되어있는 표입니다.">
                         <colgroup>
@@ -237,6 +111,14 @@
 
         </div>
     </div>
+ </section>
+
+<aside>
+   
+  <%@ include file = "../common/sideBar.jsp" %>
+</aside>
+  
+
 </div>
 
 </body>
