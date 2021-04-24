@@ -12,8 +12,12 @@
 </head>  
 <body>
     <%@ include file = "../common/menubar.jsp" %>
-
    
+   <%
+		
+		String memName = loginUser.getMemName();
+	
+	%>
    <!--전체-->
    <div class="outer"> 
     <div class="path">홈>마이페이지</div>
@@ -26,7 +30,7 @@
                         <img src="resources/images/my_user.png" alt="" width="60px" height="40px"><br><br>
                     </div>
     
-                    <div id="welcome"><b>김독자님</b><strong> 반갑습니다!</strong><br></div>
+                    <div id="welcome"><b><%= loginUser.getMemName() %>님</b><strong> 반갑습니다!</strong><br></div>
                     <div id="level">등급: 일반</div>
                 </div><br><br>
                 <div class="detail_box2">
@@ -108,7 +112,7 @@
 
                 </tr>
             </table>
-
+			
         </div>
     </div>
  </section>
