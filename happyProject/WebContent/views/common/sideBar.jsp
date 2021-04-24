@@ -119,9 +119,7 @@
 						<tr>
 							<td><a href="http://localhost:8880/happyProject/myPage.info" style="color: lightslategrey">회원정보 수정</a></td>
 						</tr>
-						<tr>
-							<td><a href=""style="color: lightslategrey">비밀번호 변경</a></td>
-						</tr>
+						
 						
 					</table>
 
