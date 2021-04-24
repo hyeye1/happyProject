@@ -55,4 +55,8 @@ public class Ad_CouponDao {
 			}
 			return list;
 		}
+		
+
+			
+		
 }

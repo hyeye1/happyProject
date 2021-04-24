@@ -35,6 +35,9 @@ public class Ad_CouponListServlet extends HttpServlet {
 		ArrayList<Ad_Coupon> list = new Ad_CouponService().selectCouponList();
 		
 		request.setAttribute("list", list);
+		
+		
+		
 		request.getRequestDispatcher("views/admin/ad_coupon.jsp").forward(request, response);
 	
 	}
