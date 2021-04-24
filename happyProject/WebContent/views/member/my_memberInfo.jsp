@@ -152,10 +152,12 @@
 
 				<tr>
 					<td style="background-color: #F9DB7A;" align="center"><b>주소</b></td>
-					<td><input type="text" style="width: 100%;" name="memAddress" placeholder="주소를 입력하세요" value="<%= memAddress %>">
+					<td><input type="text" style="width: 300px;" name="memAddress" placeholder="주소를 입력하세요" value="<%= memAddress %>">
                     </td>
 				
 				</tr>
+			
+                
 			</table>
 
 
@@ -240,6 +242,8 @@
 		      		</table>
 		      		<br>
 		      		<button type="submit" class="btn btn-outline-warning btn-sm" onclick="return validatePwd();">비밀번호 변경</button>
+		      		
+		      		
 		      		<script>
 		      			function validatePwd(){
 		      				if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val()){
@@ -247,6 +251,30 @@
 		      					return false;
 		      				}
 		      			}
+		      			
+		      			// 주소검색
+			            $(function() { $("#postcodify").postcodify({
+			                insertPostcode5 : "#postcode",
+			                insertAddress : "#address",
+			                insertDetails : "#details",
+			                insertExtraInfo : "#extra_info",
+			                hideOldAddresses : false
+			            }); });
+			        	
+			        	$(function() { $("#postcodify_search_button").postcodifyPopUp(); });
+			
+			            $(function(){    
+			                $("#postcodify_search_button").on("click",function(){
+				                var Y = $(".postcodify_address").is(":text");
+					                            
+				                if(Y){
+				                	$(".addressInput").show();
+				                }else{
+					                $(".addressInput").hide();
+					            }
+			            	});
+			             });
+		      			
 		      		</script>
 		      	</form>
 		        

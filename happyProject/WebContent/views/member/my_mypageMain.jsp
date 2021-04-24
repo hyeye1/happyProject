@@ -13,6 +13,11 @@
 <body>
     <%@ include file = "../common/menubar.jsp" %>
    
+   <%
+		
+		String memName = loginUser.getMemName();
+	
+	%>
    <!--전체-->
    <div class="outer"> 
     <div class="path">홈>마이페이지</div>
@@ -107,7 +112,7 @@
 
                 </tr>
             </table>
-
+			
         </div>
     </div>
  </section>
