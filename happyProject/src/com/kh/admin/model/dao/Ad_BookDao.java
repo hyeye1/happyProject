@@ -20,8 +20,8 @@ public class Ad_BookDao {
 private Properties prop = new Properties();
 	
 	public Ad_BookDao() {
-		
-		String fileName = Ad_BookDao.class.getResource("/sql/book/book-mapper.xml").getPath(); 
+
+		String fileName = Ad_BookDao.class.getResource("/sql/ad_book/ad_book-mapper.xml").getPath(); 
 		
 		try {
 			prop.loadFromXML(new FileInputStream(fileName)); 
@@ -32,7 +32,7 @@ private Properties prop = new Properties();
 	
 	
 	
-	public int selectListCount(Connection conn) {
+	public int selectListCount(Connection conn, String serachType,String search) {
 		// 총게시글 수
 		int listCount = 0;
 		
@@ -41,8 +41,31 @@ private Properties prop = new Properties();
 		
 		String sql = prop.getProperty("selectListCount");
 		
+		if(serachType != null && search != null){
+			
+			if(serachType.equals("bk_name")){
+
+				sql += "AND bk_name LIKE '%'||?||'%'";
+			}else if(serachType.equals("author")){
+				
+				sql += "AND author LIKE '%'||?||'%'";
+			}else if(serachType.equals("publisher")){
+				
+				sql += "AND publisher LIKE '%'||?||'%'";
+			}
+			
+		}
+		
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+
+			if(serachType != null && search != null){
+				
+				pstmt.setString(1, search);
+			}
+			
+			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -59,19 +82,67 @@ private Properties prop = new Properties();
 		return listCount; // 총 게시글 개수
 	}
 	
-	public ArrayList<Ad_Book> selectList(Connection conn, PageInfo pi){
+	public ArrayList<Ad_Book> selectList(Connection conn, PageInfo pi,String serachType,String search){
 		
 		ArrayList<Ad_Book> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectList");
-		
+		String sql = "";// prop.getProperty("selectList");
+
+		sql+= "SELECT *";
+		sql+= " FROM (";
+		sql+= "       SELECT";
+		sql+= "              ROWNUM RNUM";
+		sql+= "            , A.*";
+		sql+= "         FROM (";
+		sql+= "               SELECT";
+        sql+= "                    BK_NO";
+        sql+= "                  , BK_NAME";
+        sql+= "                  , AUTHOR";
+        sql+= "                  , PUBLISHER";
+        sql+= "                  , BK_DIVISION";
+        sql+= "                  , BK_GENRE";
+        sql+= "                  , BK_ORIGIN_PRICE";
+        sql+= "                  , BK_PRICE";
+        sql+= "                  , BK_STOCK";
+        sql+= "               FROM TB_BOOK ";
+        sql+= "              WHERE STATUS = 'Y'"; 
+        if(serachType != null && search != null){
+	        if(serachType.equals("bk_name")){
+	
+				sql += "AND bk_name LIKE '%'||?||'%'";
+			}else if(serachType.equals("author")){
+				
+				sql += "AND author LIKE '%'||?||'%'";
+			}else if(serachType.equals("publisher")){
+				
+				sql += "AND publisher LIKE '%'||?||'%'";
+			}
+        }
+		sql+= "              ORDER";
+        sql+= "                 BY BK_NO DESC";
+		sql+= "              ) A";
+		sql+= "      )";
+		sql+= "WHERE RNUM BETWEEN ? AND ?";
+				 
+				 
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1);
-			pstmt.setInt(2, pi.getCurrentPage() * pi.getBoardLimit());
+			
+			if(serachType != null && search != null){
+				
+				pstmt.setString(1, search);
+				pstmt.setInt(2, (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1);
+				pstmt.setInt(3, pi.getCurrentPage() * pi.getBoardLimit());
+				
+			}else{
+				
+				pstmt.setInt(1, (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1);
+				pstmt.setInt(2, pi.getCurrentPage() * pi.getBoardLimit());
+			}
 			
 			rset = pstmt.executeQuery();
 			
@@ -157,7 +228,8 @@ private Properties prop = new Properties();
 						rset.getString("bk_description"),
 						rset.getString("at_description"),
 						rset.getString("bk_content_list"),
-						rset.getString("bk_main_img"));
+						rset.getString("bk_main_img"),
+						rset.getString("bk_publish_date"));
 			}
 		} catch (SQLException e) {
 

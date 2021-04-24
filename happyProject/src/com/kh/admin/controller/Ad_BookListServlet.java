@@ -48,7 +48,11 @@ public class Ad_BookListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		listCount = new Ad_BookService().selectListCount();
+		// 검색 조건 가져오기
+		String serachType = (String)request.getParameter("searchType");
+		String search = (String)request.getParameter("search");
+		
+		listCount = new Ad_BookService().selectListCount(serachType,search);
 		
 		pageLimit = 5;
 		boardLimit = 10;
@@ -64,23 +68,17 @@ public class Ad_BookListServlet extends HttpServlet {
 		// 페이징정보 담기 
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		System.out.println(pi);
+		// System.out.println(pi);
 		
 		// 현재 요청한 페이지에 보여질 도서 리스트 조회해오기
-		ArrayList<Ad_Book> list = new Ad_BookService().selectList(pi);
+		ArrayList<Ad_Book> list = new Ad_BookService().selectList(pi,serachType,search);
 		
-//			for(Ad_Book b : list){
-//				  System.out.println(b);
-//				}
-//			System.out.println("===========");
+		request.setAttribute("serachType", serachType);
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		request.setAttribute("search", search);
 		
-		
-			request.setAttribute("pi", pi);
-			request.setAttribute("list", list);
-			
-			request.getRequestDispatcher("views/admin/ad_book.jsp").forward(request, response);
-			
-		
+		request.getRequestDispatcher("views/admin/ad_book.jsp").forward(request, response);
 	}
 
 	/**
