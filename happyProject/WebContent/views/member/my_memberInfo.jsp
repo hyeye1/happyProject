@@ -148,7 +148,6 @@
 				<tr>
 					<td style="background-color: lightgray;" align="center"><b>주소</b></td>
 					<td><input type="text" name="memAddress" placeholder="주소를 입력하세요" value="<%= memAddress %>">
-                        <button id="yellowBtn" name="search2">검색</button>
                     </td>
 				
 				</tr>

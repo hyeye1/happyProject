@@ -49,12 +49,13 @@ public class MemberUpdateServlet extends HttpServlet {
 	
 	// 4. 돌려받은 결과를 가지고 사용자가 보게될 화면 지정해주기
 	if(updateMem == null) { // 실패시 에러페이지 보이기
-		
+		session.setAttribute("alertMsg", "정보변경이 실패되었습니다.");
+		response.sendRedirect(request.getContextPath() + "/myPage.info");
 	}else { // 성공 => 회원수정페이지 다시 보여지게하기
 		
 		// session에 담겨있는 loginUser갱신
 		session.setAttribute("loginUser", updateMem); // 수정된 내용으로 보이게하기
-		session.setAttribute("alertMsg", "변경이 성공되었습니다.");
+		session.setAttribute("alertMsg", "정보변경이 성공되었습니다!^ㅂ^");
 		response.sendRedirect(request.getContextPath() + "/myPage.info");
 		
 		
