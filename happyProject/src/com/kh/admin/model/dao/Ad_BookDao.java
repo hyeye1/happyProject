@@ -231,6 +231,7 @@ private Properties prop = new Properties();
 						rset.getString("bk_main_img"),
 						rset.getString("bk_publish_date"));
 			}
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();

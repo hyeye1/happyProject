@@ -479,8 +479,7 @@
         		<script>
         			function fnSearch(){
         				var searchType = $("select[name=serachType]").val();
-        				 
-        				location.href='/list.bk?searchType='+searchType+'&search='+$("#searchText").val();
+        				location.href='<%=request.getContextPath()%>/list.bk?'+'searchType='+searchType+'&search='+$("#searchText").val();
         			}
         		</script>
                 

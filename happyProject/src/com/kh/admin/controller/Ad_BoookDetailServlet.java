@@ -41,7 +41,10 @@ public class Ad_BoookDetailServlet extends HttpServlet {
 			request.setAttribute("b", b);
 			request.setAttribute("im", im);
 			
+			
 			request.getRequestDispatcher("views/admin/ad_detailBook.jsp").forward(request, response);
+			
+			System.out.println(im);
 			
 	}
 
