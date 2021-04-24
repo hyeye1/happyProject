@@ -83,7 +83,7 @@
             font-size:16px;
             color:dimgray
         }
-        .bookDetailOuter .link p,pre, .detailImg{
+        .bookDetailOuter .link, pre, .detailImg{
             margin-bottom:200px;
         }
         .bookDetailOuter .detailImg{
@@ -158,7 +158,7 @@
         <div class="category" align="left">
             <a href="" id="home">HOME</a>
             >
-            <a href="" id="localBook"><%= b.getBkDivision() %></a>
+            <a href="" id="localBook"><%-- <%= b.getBkDivision() %> --%></a>
         </div>
         <br>
         <!-- 책 제목 -->
@@ -268,18 +268,10 @@
         <h5 class="detailTitle" id="infoLink">책소개</h5>
         <div class="link">
             <p><%= b.getBkDescription() %></p>
+            <img class="detailImg" src="<%= contextPath %>/<%= i.getImgPath() %>" onerror="this.style.display='none'" >
         </div>
-        
-        <% if(i.getImgPath() != null){ %>
-	        <!-- 책소개 이미지 -->
-	        <h5 class="detailTitle">책소개이미지</h5>
-	        <div class="link">
-	            <img class="detailImg" src="<%= i.getImgPath() %>">
-	        </div>
-        <% }else {%>
-        	<div> </div>
-        <% }%>
-        
+	   
+       
         <!-- 목차 -->
         <h5  class="detailTitle" id="contentLink">목차</h5>
         <div class="link">

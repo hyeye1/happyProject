@@ -6,18 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class ReviewWriteListServlet
+ * Servlet implementation class DeleteMemberServlet
  */
-@WebServlet("/reviewWrite.me")
-public class ReviewWriteListServlet extends HttpServlet {
+@WebServlet("/delete.me")
+public class DeleteMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewWriteListServlet() {
+    public DeleteMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +29,32 @@ public class ReviewWriteListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 응답페이지 => 리뷰작성 리스트 페이지
-		request.getRequestDispatcher("views/member/reviewWriteListView.jsp").forward(request, response);
+		
+		String memId = request.getParameter("memId");
+		String memPwd = request.getParameter("memPwd");
+		
+		int result = new MemberService().deleteMember(memId, memPwd);
+		HttpSession session = request.getSession();
+		
+		if(result > 0) { //탈퇴성공
+			session.removeAttribute("loginUser");
+			// 응답페이지 => 탈퇴완료 페이지
+			
+			request.getRequestDispatcher("views/member/deleteCompletionView.jsp").forward(request, response);
+			
+			
+		}else { //탈퇴실패
+			
+		
+		}
+		
+
 	}
+	
+	
+
+
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

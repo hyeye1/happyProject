@@ -4,6 +4,8 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Ad_Book> list = (ArrayList<Ad_Book>)request.getAttribute("list");
+	String search = (String)request.getAttribute("search") == null ? "" : (String)request.getAttribute("search");
+	String serachType = (String)request.getAttribute("serachType") == null ? "" : (String)request.getAttribute("serachType");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -16,7 +18,6 @@
 <%
 		Date nowTime = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
-		
 %>
 
 <!DOCTYPE html>
@@ -451,7 +452,7 @@
                 <br>
                 <div align="center" class="pagingArea">
                     <% if(currentPage != 1) { %>        
-                        <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%=currentPage-1%>';"> < </button>
+                        <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%=currentPage-1%>&serachType=<%=serachType%>&search=<%=search%>';"> < </button>
 					<% } %>
 			
 					<% for(int p=startPage; p<=endPage; p++) { %>
@@ -459,23 +460,29 @@
 						<% if(currentPage == p){ %>
                             <button class="btn btn-outline-warning btn-sm" disabled><%= p %></button>
                         <% }else{ %>
-                            <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%= p %>';"><%= p %></button>
+                            <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%= p %>&serachType=<%=serachType%>&search=<%=search%>';"><%= p %></button>
                         <% } %>
 					<% } %>
 			
 					<% if(currentPage != maxPage){ %> 
-                        <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%=currentPage+1%>';"> > </button>
+                        <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%=currentPage+1%>&serachType=<%=serachType%>&search=<%=search%>';"> > </button>
 					<% } %>
                 </div>
                 <br>
-                <select name="searchList" id="searchList" style="margin-left: 25%; width: 60px;">
-                            <option value="" selected>도서명</option>
-                            <option value="">저자</option>
-                            <option value="">출판사</option>
+                 <select name="serachType" id="searchList" style="margin-left: 25%; width: 60px;">
+                            <option value="bk_name" selected>도서명</option>
+                            <option value="author">저자</option>
+                            <option value="publisher">출판사</option>
                 </select>
-                <input type="text" id="searchText" style="width: 270px;" placeholder="입력해주세요" > 
-                <input type="submit" class="search" id="searchBtn" value="검색" style="font-weight: bold; background-color: rgb(249, 219, 122); border: none; width: 55px;">
-        
+                <input type="text" id="searchText" style="width: 270px;" value="<%=search%>"placeholder="입력해주세요" > 
+                <input type="submit" class="search" id="searchBtn" onclick="fnSearch()" value="검색" style="font-weight: bold; background-color: rgb(249, 219, 122); border: none; width: 55px;">
+        		<script>
+        			function fnSearch(){
+        				var searchType = $("select[name=serachType]").val();
+        				 
+        				location.href='/list.bk?searchType='+searchType+'&search='+$("#searchText").val();
+        			}
+        		</script>
                 
             </div>
             

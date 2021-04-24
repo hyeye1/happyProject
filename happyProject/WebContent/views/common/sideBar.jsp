@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
  	<style>
 			a:link{ text-decoration:none; } 
         	a:active{ text-decoration:none;  color:#F9DB7A; }
@@ -53,6 +54,8 @@
  
 </head>
 <body>
+
+
 <aside>
 	<div class="outer">
 			<div class="sideBar01">
@@ -119,9 +122,7 @@
 						<tr>
 							<td><a href=""style="color: lightslategrey">비밀번호 변경</a></td>
 						</tr>
-						<tr>
-							<td><a href="http://localhost:8880/happyProject/enrollForm.with" style="color: lightslategrey">회원탈퇴</a></td>
-						</tr>
+						
 					</table>
 
 				</div>

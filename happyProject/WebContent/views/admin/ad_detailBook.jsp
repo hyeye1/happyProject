@@ -255,7 +255,7 @@
 
             <div id="list"></div>
             <div id="table">
-                <div id="bktitle"><%=b.getBkName()%></div>
+                <div id="bktitle">[<%=b.getBkNo() %>] <%=b.getBkName()%></div>
                 <div id="bkContent">
                     <div id="bkContent1" align="center">
                         <span>표지이미지</span> <br>
@@ -278,18 +278,15 @@
                         <div id="bkList">
                             <table id="bkDetail">
                                 <tr>
-                                    <th width="70px">도서등록일</th>
-                                    <td><%=b.getBkEnrollDate() %></td>
+                                	<th>ISBN</th>
+                                    <td><%=b.getIsbn() %></td>
+                                    
                                 </tr>
                                 <tr>
-                                    <th width="70px">도서번호</th>
-                                    <td><%=b.getBkNo() %></td>
+                                    <th width="70px">출간일로!!</th>
+                                    <td><%=b.getBkPublishDate() %></td>
                                 </tr>
                                 
-                                <tr>
-                                    <th>ISBN</th>
-                                    <td><%=b.getIsbn() %></td>
-                                </tr>
                                 <tr>
                                     <th>페이지수</th>
                                     <td><%=b.getBkPageNo() %></td>
@@ -299,6 +296,10 @@
                                     <td>
                                         <%=b.getBkKeyword() %>                     
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th width="70px">도서등록일</th>
+                                    <td><%=b.getBkEnrollDate() %></td>
                                 </tr>
                                 <tr>
                                     <th style="height: 30px;">책 소개</th>

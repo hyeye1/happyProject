@@ -33,9 +33,6 @@ public class BookDetailsServlet extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   
 	   int bookNo = Integer.parseInt(request.getParameter("bookNo"));
-	   //System.out.println("bookNo");
-	   //int imgNo = Integer.parseInt(request.getParameter("imgNo"));
-	   //System.out.println(request.getParameter("imgNo"));
 	   
 	   Book b = new BookService().bookDetail(bookNo);
 	   Image i = new BookService().bookInfoImg(bookNo);

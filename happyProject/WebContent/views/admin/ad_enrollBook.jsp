@@ -245,13 +245,18 @@
                         <th width="90"><b>*</b> 카테고리</th>
                         <td width="30">
                             <select name="category1" id="category1" style="width: 100px;" required>
-                                <option value="">국내도서</option>
-                                <option value="">해외도서</option>
+                            	<option selected>1차 카테고리</option>
+                                <option value="in">국내도서</option>
+                                <option value="out">해외도서</option>
                             </select> 
                             &nbsp;>&nbsp;
                             <select name="category2" id="category2" style="width: 120px;" required>
-                                <option value="">문학</option>
-                                <option value="">경제/경영</option>
+                            	<option selected>2차 카테고리</option>
+                                <option value="novel">문학</option>
+                                <option value="economy">경제/경영</option>
+                                <option value="poem">시</option>
+                                <option value="science">과학</option>
+                                <option value="travel">여행</option>
                             </select> 
                         </td>
                         <th width="90">&nbsp;&nbsp;&nbsp;ISBN</th>
@@ -304,17 +309,18 @@
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;표지 이미지</th>
-                        <td><input type="file"></td>
+                        <td><input type="file" name="titleImg"></td>
                         <th></th>
                         <td></td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;상세이미지</th>
-                        <td><input type="file"></td>
+                        <td><input type="file" name="detailImg"></td>
                         <th><b>*</b> 수량</th>
                         <td><input type="number" placeholder="입고 수량" style="width: 100px; color: red;" required></td>
                     </tr>
                 </table>
+                
                 <br>
                 <div id="choice_btn">
                     <button type="submit" id="enrollBtn" class="btn btn-primary">등록</button> &nbsp;
