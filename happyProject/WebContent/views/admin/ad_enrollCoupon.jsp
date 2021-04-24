@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.admin.model.vo.Ad_Coupon"%>
-<%
-	ArrayList<Ad_Coupon> list = (ArrayList<Ad_Coupon>) request.getAttribute("list");
-%>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +16,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
-    .wrap{width:1000px; height:700px; margin: auto; margin-top:15px; outline: auto;}
+    .wrap{width:1000px; height:700px; margin: auto; margin-top:15px; outline: auto; }
     .wrap>div{height: 100%; float: left;}
     #menubar{width: 20%;}
     #content{width: 80%;}
@@ -33,12 +29,7 @@
     #content>div{width: 100%; float: left;}
     #login{height: 5%;}
     #sub_title{height: 12%;}
-    #list{height:10%;}
-    #table{height: 73%;}
-
-    #list>div{height: 100%; float: left;}
-    #sort{width: 30%;}
-    #choice_btn{width: 70%; text-align: right;}
+    #table{height: 83%;}
 
     /* left-menubar */
     #menubar{
@@ -98,22 +89,8 @@
         background-color:#f3f3f3;
         border: none;
     }
-    #table{
-        text-align: center;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: smaller;
-    }
-    #table>table>thead>tr>th{
-        background-color: rgb(224,224,224);
-        border: 1px solid gray;
-        font-size: small;
-        height: 31px;
-    }
-    #table>table>tbody>tr>td{
-        border: 1px solid gray;
-        height: 30px;
-    }
+ 
+    
     .btn{
         background-color: #f3f3f3;
         border: none;
@@ -137,8 +114,35 @@
         margin-top: 2px;
     }
 
-   
-   
+    #couTable{
+        width: 700px;
+        height: 200px;
+        margin : 50px;
+       
+        text-align: center;
+        border: 1px solid;
+    }
+    #couTable th{
+        background-color: rgb(249, 219, 122);
+        border-right: 1px dotted rgb(180, 178, 178);
+
+
+    }
+    #couTable tr{
+        border-bottom: 1px dotted rgb(180, 178, 178);;
+    }
+    #choice_btn button{
+        width: 100px;
+        height: 40px;
+    }
+    #choice_btn{
+        margin-left: 300px;
+    }
+    input{
+        border: none;
+    }
+
+    
     /* 관리자모드 종료 팝업창 */
     .adEndWrap{
         position: absolute;
@@ -175,6 +179,9 @@
     .show-popup_End{
         display:block !important;
     }
+    input::placeholder{
+        font-size: 13px;
+    }
 
 </style>
 </head>
@@ -183,10 +190,10 @@
     <div class="wrap">
         <div id="menubar">
             <div id="home">
-                <a href="${pageContext.request.contextPath}/views/admin/ad_home.jsp" id="homelogo">HOME</a>
+                <a href="" id="homelogo">HOME</a>
             </div>
             <div id="title_name">
-                쿠폰
+                회원
             </div>
             <div id="title_Btn">
                 <ul id="btns">
@@ -197,64 +204,49 @@
         </div>
         <div id="content">
             <div id="login">
-                <input type="image" id="adLock" src="${pageContext.request.contextPath}/resources/images/admin/adminlock.png" >
-                <img src="${pageContext.request.contextPath}/resources/images/admin/adminlogo.png"  id="adLogo">
+                <input type="image" id="adLock" src="../resources/admin/adminlock.png" >
+                <img src="../resources/admin/adminlogo.png" id="adLogo">
             </div>
-            <div id="sub_title">쿠폰 관리</div>
-            <div id="list">
-                <div id="sort" style="padding: 18px 15px;">
-                    <select name="sortlist" id="sortlist" style="width: 50px; height:40px; font-size: small;">
-                        <option value="all">전체</option>
-                        <option value="start">진행</option>
-                        <option value="end">만료</option>
-                    </select>
+            <div id="sub_title">쿠폰 등록 </div>
+                <div id="table">
+                    <form id="enrollForm" action="" method="POST">
+
+                        <table id="couTable">
+                            <tr>
+                                <th width="30%">쿠폰명</th>
+                                <td><input type="text" id="couName" size="58" maxlength="25" required placeholder="20자 이내로 입력"></td>
+                            </tr>
+                            <tr>
+                                <th>할인액</th>
+                                <td><input type="text" id="couDiscount" size="58"required></td>
+                            </tr>
+                            <tr>
+                                <th width="30%">시작일</th>
+                                <td><input type="text" id="couDiscount" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="30%">종료일</th>
+                                <td><input type="text" id="couDiscount" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>구매최소금액</th>
+                                <td><input type="text" id="couMinPrice" size="58"required> </td>
+                            </tr>
+                        </table>
+                        <div id="choice_btn">
+                            <button type="submit" id="enrollCou" class="btn btn-primary ">등록</button> &nbsp;
+                            <button type="reset" id="deleteCou" class="btn btn-primary ">초기화</button>
+                        </div>
+                    </form>
+                    
                 </div>
-                <div id="choice_btn" style="padding: 20px;">
-                    <button type="button" id="enrollCou" class="btn btn-primary ">쿠폰등록</button> &nbsp;
-                    <button type="button" id="deleteCou" class="btn btn-primary ">선택삭제</button>
-                </div>
-            </div>
-            
-            <div id="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th width="40">번호</th>
-                            <th width="243">쿠폰이름</th>
-                            <th width="80">할인액</th>
-                            <th width="115">시작일</th>
-                            <th width="115">종료일</th>
-                            <th width="130">사용조건(최소금액)</th>
-                            <th width="45">삭제</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<!-- 조회된 결과가 없을 경우 -->
-		                <% if(list.isEmpty()) { %>
-			                <tr>
-			                    <td colspan="7">조회된 리스트가 없습니다.</td>
-			                </tr>
-		                <% }else { %>
-			                <!-- 조회된 결과가 있을 경우 -->
-			                <% for(Ad_Coupon c : list) { %>
-		                       <tr>
-		                        	<td style="font-size: small;"><%= c.getCouNo() %></td>
-		                            <td><%= c.getCouName() %></td>
-		                            <td><%= c.getDiscount() %></td>
-		                            <td><%= c.getCouStart() %></td>
-		                            <td><%= c.getCouEnd() %></td>
-		                            <td><%= c.getCouCondition() %></td>
-		                            <td><a href="" class="btn btn-primary btn-sm">삭제</a></td>
-	                           </tr>
-  							<% } %>
-                		<% } %>
-                    </tbody>                    
-                </table>
             </div>
         </div>
     </div>
 
-   
+
     <!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
         <div class="adEndWrap">
@@ -274,7 +266,9 @@
                     &nbsp;&nbsp;
                     <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
                 </div>    
+                
             </div>    
+            
         </div>
     </div>
 

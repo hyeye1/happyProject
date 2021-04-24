@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key = "selectCouponList">
+		SELECT
+		       COU_NO
+		     , COU_NAME
+		     , DISCOUNT
+		     , COU_START
+		     , COU_END
+		     , COU_CONDITION
+		  FROM TB_COUPON
+		 WHERE STATUS = 'Y'
+		 ORDER 
+		    BY CREATE_NO DESC
+	</entry>
+	
+
+</properties>
