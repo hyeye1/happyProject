@@ -164,7 +164,7 @@
         <div class="category" align="left">
             <a href="" id="home">HOME</a>
             >
-            <a href="" id="localBook"><%-- <%= b.getBkDivision() %> --%></a>
+            <a href="" id="localBook"> <%= b.getBkDivision() %> </a>
         </div>
         <br>
         <!-- 책 제목 -->
@@ -196,7 +196,7 @@
                     <b>주문수량 </b> :
                     <input type="hidden" name="price" value="<%= b.getBkPrice() %>">
                     <input type=button value="-" onclick="del();" class="btn btn-primary btn-sm" style="background:lightgray; border:none;">
-                    <input type=number name=amount value="1" min="1" max="10" readonly onchange="change();">
+                    <input type=number name=amount value="1" min="1" max="10" readonly onchange="change();" style="text-align: center;">
                     <input type=button value="+" onclick="add();" class="btn btn-primary btn-sm" style="background:lightgray; border:none;"> <br>
                     <!-- 회원이 선택한 수량만큼의 값 -->
                     <input type="hidden" name="sum" size="10" readonly> 
@@ -214,7 +214,6 @@
                         hm = document.form.amount;
                         sum = document.form.sum;
                         hm.value ++ ;
-                    
                         sum.value = parseInt(hm.value) * price;
                     }
                     function del () {
