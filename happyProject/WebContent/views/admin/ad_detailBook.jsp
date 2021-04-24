@@ -261,9 +261,13 @@
                         <span>표지이미지</span> <br>
                         <img src="<%=b.getBkMainImg() %>" alt="" width="150" height="200"" align="center">
                         <br><br>
-                        <span>상세이미지</span><br>
                         
-                        <img src="<%=im.getImgPath() %>" alt="" width="130" height="180"" align="center">
+                        <% if(im != null) {%>
+                            <span>상세이미지</span><br>
+                        	<img src="<%=im.getImgPath() %>" alt="" width="130" height="180"" align="center">
+                        <% } else {%>
+                        	상세이미지가 없습니다.
+                        <%} %>
                         
                         
                         <br><button type="button" id="backBook" class="btn btn-primary" style="margin-top:20px; margin-left: -110px;">이전</button>
@@ -326,6 +330,8 @@
                             <button type="button" id="modifyBook" class="btn btn-primary" >도서수정</button> &nbsp;
 
                         	<a href="${pageContext.request.contextPath}/delete.bk?bkno=<%=b.getBkNo()%>" class="btn btn-primary" id="deleteBook">도서삭제</a>
+                       	
+                       
                         </div>
                     </div>
 
