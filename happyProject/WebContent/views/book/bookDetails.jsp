@@ -179,7 +179,7 @@
                 <img src="<%= b.getBkMainImg() %>" width="300" height="400">
             </div>
             <!-- 책 정보 -->
-            <form class="bookInfo" align="left">
+            <div class="bookInfo" align="left">
                 <br>
                 <p><b><%= b.getAuthor() %></b> 지음</p>
                 <p><b><%= b.getPublisher() %></b></p>
@@ -192,7 +192,7 @@
                         배송비 3,000원 (20,000원 이상 주문시 무료배송) <br>
                     </small>
                 </p>
-                <form name="form" mehod="get" action="<%= contextPath %>/cList2.or" >
+                <form name="form" mehod="get" action="<%= contextPath %>/cList2.or">
                 	<div style="margin-bottom:10px;">
 	                    주문수량 :
 	                    <input type="hidden" name="price" value="<%= b.getBkPrice() %>">
@@ -242,7 +242,7 @@
 	                        sum.value = parseInt(hm.value) * price;
 	                    }  
                     </script>
-            </form>
+            </div>
         </div>
         		
         
