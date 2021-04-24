@@ -77,8 +77,12 @@ public class Ad_BookListServlet extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.setAttribute("search", search);
-		
+
+
 		request.getRequestDispatcher("views/admin/ad_book.jsp").forward(request, response);
+		
+		
+	
 	}
 
 	/**

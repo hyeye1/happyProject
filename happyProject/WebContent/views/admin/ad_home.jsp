@@ -144,8 +144,9 @@
                 <table id="first">
                     <tr>
                         <td>
-                            <button class="homeBtn" id="adm_member" type="button" onclick="adMember">회원관리</button>
-                            <button class="homeBtn" id="adm_book" type="button" onclick="adBook">도서관리</button>
+                            <button class="homeBtn" id="adm_member" type="button" >회원관리</button>
+                            <button class="homeBtn" id="adm_coupon" type="button" >쿠폰관리</button>
+                            <button class="homeBtn" id="adm_book" type="button" >도서관리</button>
                             
                         </td>
                     </tr>
@@ -155,11 +156,14 @@
                 	adm_member.addEventListener('click', function(){
                 		location.href='<%=request.getContextPath()%>/list.mem';
                 	});
+                    const adm_coupon = document.getElementById("adm_coupon");
+                	adm_coupon.addEventListener('click', function(){
+                		location.href='<%=request.getContextPath()%>/list.cou';
+                	});
                 	const adm_book = document.getElementById("adm_book");
                 	adm_book.addEventListener('click', function(){
                 		location.href='<%=request.getContextPath()%>/list.bk';
                 	})
-                	
                 </script>
                 
                 
@@ -172,13 +176,7 @@
                         </td>
                     </tr>
                 </table>
-                <script>
-	                const adm_pay = document.getElementById("adm_pay");
-	            	adm_pay.addEventListener('click', function(){
-	            		location.href='<%=request.getContextPath()%>/';
-	            	});
-
-                </script>
+                
             </div>
         </div>
         

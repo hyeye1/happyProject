@@ -1,6 +1,8 @@
 package com.kh.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.admin.model.service.Ad_BookService;
 import com.kh.admin.model.service.Ad_MemberService;
+import com.kh.admin.model.vo.Ad_Book;
+import com.kh.admin.model.vo.Ad_Member;
 import com.kh.common.model.vo.PageInfo;
 
 /**
@@ -45,7 +49,7 @@ public class Ad_MemberListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		listCount = new Ad_BookService().selectListCount();
+		listCount = new Ad_MemberService().selectListCount();
 		
 		pageLimit = 5;
 		boardLimit = 10;
@@ -61,6 +65,13 @@ public class Ad_MemberListServlet extends HttpServlet {
 		// 페이징정보들을 어딘가의 한 공간에 담자!!
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		System.out.println(pi);
+		
+		ArrayList<Ad_Member> list = new Ad_MemberService().selectList(pi);
+	
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("views/admin/ad_book.jsp").forward(request, response);
 	}
 
 	/**

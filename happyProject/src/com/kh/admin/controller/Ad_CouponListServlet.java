@@ -1,27 +1,28 @@
 package com.kh.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.admin.model.service.Ad_BookService;
-import com.kh.admin.model.vo.Ad_Book;
-import com.kh.admin.model.vo.Ad_Image;
+import com.kh.admin.model.service.Ad_CouponService;
+import com.kh.admin.model.vo.Ad_Coupon;
 
 /**
- * Servlet implementation class Ad_BoookDetailServlet
+ * Servlet implementation class Ad_CouponListServlet
  */
-@WebServlet("/detail.bk")
-public class Ad_BoookDetailServlet extends HttpServlet {
+@WebServlet("/list.cou")
+public class Ad_CouponListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Ad_BoookDetailServlet() {
+    public Ad_CouponListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +31,12 @@ public class Ad_BoookDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ArrayList<Ad_Coupon> list = new Ad_CouponService().selectCouponList();
+		
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/admin/ad_coupon.jsp").forward(request, response);
 	
-		int bkNo = Integer.parseInt(request.getParameter("bkno"));
-		
-		
-			Ad_Book b = new Ad_BookService().selectBook(bkNo);
-			Ad_Image im = new Ad_BookService().selectImage(bkNo);
-			
-
-			request.setAttribute("b", b);
-			request.setAttribute("im", im);
-			
-			
-			request.getRequestDispatcher("views/admin/ad_detailBook.jsp").forward(request, response);
-			
-			System.out.println(im);
-			
 	}
 
 	/**
