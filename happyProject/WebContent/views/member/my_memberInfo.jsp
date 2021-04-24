@@ -62,6 +62,7 @@
 	        width: 550px;
 	        height: 320px;
 	        border-collapse: collapse;
+			margin-top: 10px;
 	    }
 	    #table2{
 	        border-style: solid;
@@ -71,7 +72,7 @@
 	
 	    }
 	    
-	    table th {padding: 15px; border:1px black;} 
+	    table th {padding: 10px; border:1px black;} 
 	    table td {padding: 10px; border-color:lightslategray;} 
 	
 	  
@@ -92,6 +93,8 @@
 	    }
 	    h2{margin-left: 15px;}
 		#modiBtn1{margin-left: 100px;}
+
+
     </style> 
 </head>
 <body>
@@ -114,25 +117,27 @@
          <h1>회원정보관리</h1>
          <hr>
 	<section>
-		<div class="mandatory">
 		
+		<div class="mandatory">
+			
             <form action="<%= request.getContextPath() %>/update.me" method="post" id="myPageForm">
+			<h3>나의 정보</h3>	
 			<table id="table1" border="1" frame="hsides" bordercolor=lightgray >
 				<tr>
-					<td style="background-color: lightgray;" align="center"><b>아이디</b></td>
+					<td style="background-color: #F9DB7A;" align="center"><b>아이디</b></td>
 					<td><input type="text" name="memId" maxlength="12" required readonly value="<%= memId %>">
 					</td> 
 					
 				</tr>
 
 				<tr>
-					<td style="background-color: lightgray;" align="center"><b>이름</b></td>
+					<td style="background-color: #F9DB7A;" align="center"><b>이름</b></td>
 					<td><input type="text" name="memName" maxlength="5" required value="<%= memName %>"></td>
 				
 				</tr>
                
 				<tr>
-					<td style="background-color: lightgray;" align="center"><b>이메일</b></td>
+					<td style="background-color: #F9DB7A;" align="center"><b>이메일</b></td>
 					<td><input type="email" name="Email" value="<%= Email %>">
                     </td>
 				
@@ -140,20 +145,21 @@
 
 
 				<tr>
-					<td style="background-color: lightgray;" align="center"><b>연락처</b></td>
+					<td style="background-color: #F9DB7A;" align="center"><b>연락처</b></td>
 					<td><input type="text" name="memPhone" placeholder="(-포함해서 입력)" value="<%= memPhone %>"></td> 
 					
 				</tr>
 
 				<tr>
-					<td style="background-color: lightgray;" align="center"><b>주소</b></td>
-					<td><input type="text" name="memAddress" placeholder="주소를 입력하세요" value="<%= memAddress %>">
+					<td style="background-color: #F9DB7A;" align="center"><b>주소</b></td>
+					<td><input type="text" style="width: 100%;" name="memAddress" placeholder="주소를 입력하세요" value="<%= memAddress %>">
                     </td>
 				
 				</tr>
 			</table>
 
-			<div id="endBtn" style="margin-top:20px;">
+
+			<div id="endBtn" align="center" style="margin-top:20px;">
 				<button type="submit" class="btn btn-warning btn-m" style="width:100px; height:40px; background-color: rgb(249, 219, 122);">수정하기</button>
 				<button type="button" class="btn btn-warning btn-m" data-toggle="modal" data-target="#updatePwdModal" style="width:125px; height:40px; background-color: rgb(249, 219, 122);">비밀번호변경</button>
 				<button type="button" class="btn btn-warning btn-m" data-toggle="modal" data-target="#deleteModal" style="width:100px; height:40px; background-color: rgb(249, 219, 122);">회원탈퇴</button>
@@ -242,7 +248,6 @@
 		      				}
 		      			}
 		      		</script>
-		      		
 		      	</form>
 		        
 		         	
