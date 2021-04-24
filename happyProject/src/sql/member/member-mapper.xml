@@ -97,7 +97,7 @@
 	<entry key="deleteMember">
 		UPDATE
 			   TB_MEMBER
-		   SET ADMIN_YN = 'D' <!-- status 컬럼 추가 후 수정하기 -->
+		   SET STATUS = 'N' 
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>
