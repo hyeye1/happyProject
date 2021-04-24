@@ -90,15 +90,16 @@
 	          , RECENT_LOGIN
 	          , ADMIN_YN
 		  FROM TB_MEMBER
-		 WHERE MEM_ID = ?
+		 WHERE ADMIN_YN = 'N'
+		   AND MEM_ID = ?
 	</entry>
 	
 	<entry key="deleteMember">
 		UPDATE
-			   MEMBER
-		   SET STATUS = 'N'
-		 WHERE USER_ID = ?
-		   AND USER_PWD = ?
+			   TB_MEMBER
+		   SET ADMIN_YN = 'D'
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
 	</entry>
 	
 	<entry key="updatePwdMember">
@@ -109,14 +110,7 @@
 		   AND USER_PWD = ?
 	</entry>
 	
-	<entry key="deleteMem">
-	UPDATE
-            TB_MEMBER
-        SET MEM_STATUS = 'N'
-  	  WHERE 
-            MEM_ID =  ?
-        AND MEM_PWD = ?
-	</entry>
+	
 	
 
 </properties>
