@@ -269,7 +269,7 @@
         <div class="link">
             <p><%= b.getBkDescription() %></p>
         </div>
-       <%--  
+       
         <% if(i.getImgPath() != null){ %>
 	        <!-- 책소개 이미지 -->
 	        <h5 class="detailTitle">책소개이미지</h5>
@@ -277,7 +277,7 @@
 	            <img class="detailImg" src="<%= i.getImgPath() %>">
 	        </div>
         <% } %>
-         --%>
+         
         <!-- 목차 -->
         <h5  class="detailTitle" id="contentLink">목차</h5>
         <div class="link">
