@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.notice.model.vo.Faq, java.util.ArrayList, com.kh.common.model.vo.PageInfo, com.kh.notice.model.vo.Notice, com.kh.member.model.vo.Member"%>
 <% 
-	Member loginUser = (Member)session.getAttribute("loginUser");
-   String contextPath = request.getContextPath(); 
    Faq f = (Faq)request.getAttribute("f");
    PageInfo pi = (PageInfo)request.getAttribute("pi");
    ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
@@ -14,146 +12,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert title here</title>
-    
-    <style>
-        .outer{
-           
-            margin:auto;
-            border: 1px solid white;
-            width:800px;
-        }
-        #text1{font-size:x-large; font-weight: bold;}
-        #text2{color:rgb(241, 196, 15); font-weight: bold;}
-        .faq{
-            width: 750px;
-            border: 1px solid gray;
-            text-align: left;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            box-sizing: border-box;
-        }
-        #faqSearch{margin-left: 20px;}
-        #faq1{font-size: large;}
-        #faq2{width:300px; height: 25px;}
-        #faq3{
-            border: 1px solid lightgray;
-            color: black;
-            background-color: rgb(241, 196, 15);
-            border-radius: 3px;
-            padding: 6px;
-            width: 55px;
-        }
-        #faq3:hover{background-color: rgb(249, 219, 122); color:white;}
-        .faqSearchBox{
-            width: 520px;
-            height: 40px;
-            background-color: rgb(255, 233, 161);
-            padding-left: 185px;
-            padding-top: 8px;
-            margin-top: 5px;
-        }
-        .top5{padding-left: 30px; margin-top: 5px; margin-bottom: 10px;}
-        #top5Title{
-            font-size: medium; 
-            font-weight: bold; 
-            padding-left: 25px;
-            line-height: 40px;
-            color: #f3d00c;
-        }
-        .top5List, .noticeList{
-            border: 1px solid black;
-            text-align: center;
-            margin-left: 25px;
-            width: 700px;
-        }
-        .top5List>tbody>tr:hover,
-       /*
-        .noticeList>tbody>tr:hover{
-            cursor:pointer;
-            background: rgb(249, 219, 122);
-            color: white;
-            */
-        }
-        #noticeNew{height: 30px; background-color: rgb(249, 219, 122);}
-        .question1{
-            width: 720px;
-            height: 200px; 
-            border: 1px solid gray;
-            text-align: left;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin-top: 25px;
-            padding-left: 30px;
-        }
-        #qtext1{font-size: large; font-weight: bold; padding-left: 150px;}
-        #qtext2{color: gray;}
-        .questionBox{
-            width: 590px;
-            height: 80px;
-            background-color: rgb(255, 233, 161);
-            padding-left: 100px;
-            padding-top: 40px;
-            line-height: 15px;
-        }
-        #qbtn{
-            width: 100px;
-            height: 40px;
-            font-size: medium;
-            font-weight: bold;
-            color: gray;
-            border: 1px solid lightgrey;
-            background-color: rgb(249, 219, 122);
-            border-radius: 4px;
-            padding: 5px;
-            cursor: pointer;
-            margin-bottom: 5px;
-            margin-left: 460px;
-            text-decoration:none
-        }
-        #qbtn:hover{background-color: rgb(249, 219, 122); color:white;}
-        .notice{
-            width: 750px;
-            height: 170px; 
-            border: 1px solid gray;
-            text-align: left;
-            padding-top: 10px;
-            padding-bottom: 20px;
-            margin-bottom: 100px;
-        }
-        .notice img{margin-left: 20px; margin-bottom: 5px;}
+    <title>고객센터</title>
+     <link rel="stylesheet" href="resources/css/serviceCenterView.css">
 
-        .answer {
-            width: 690px;
-            display: none;
-            padding: 10px;
-            margin-top: 2px;
-            margin-bottom: 10px;
-            padding-bottom: 15px;
-            background-color: rgb(250, 248, 248);
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .question {
-            font-size: 15px;
-            padding: 5px 0;
-            cursor: pointer;
-            border:1px solid gray;
-            border-radius: 10px;
-            outline: none;
-            background: none;
-            width: 690px;
-            text-align: left;
-        }
-        .question:hover {
-            color: #f3d00c;
-        }
-        [id$="-toggle"] {
-        margin-right: 15px;
-        }
-    </style>
 </head>
 <body>
+	<!-- 상단메뉴바 -->
+	
+	<%@ include file = "../common/menubar.jsp" %>
+ 
 	<script>
 		var msg = "<%= session.getAttribute("alertMsg") %>"; // 알람창으로 출력할 메세지
 		// var msg = "메세지" / "null";
@@ -170,10 +37,12 @@
    
 
     <div class="outer">
+	<section>
+	<div class="outer2">
         <span id="text1">고객센터</span><hr>
         <span>&nbsp;해피북스데이</span>
         <span id="text2">온라인 고객센터</span> 입니다.<br><br>
-    
+
         <div class="faq">
             <form action="" id="faqSearch" method="GET">
                 <a href="<%=contextPath%>/list.faq?currentPage=1"><img src="resources/images/faq.png" width="100px" height="40"></a>
@@ -259,13 +128,15 @@
               }
             }
           
-            items.forEach(item => item.addEventListener('click', openCloseAnswer));
+            items.forEach(item = item.addEventListener('click', openCloseAnswer));
           </script>
-            
-        
-         
+         </div>
+    </section>  
+    <aside>
+	<%@ include file = "../common/sideBar.jsp" %>
+	</aside>      
     </div>
-    
+
          
 </body>
 </html>

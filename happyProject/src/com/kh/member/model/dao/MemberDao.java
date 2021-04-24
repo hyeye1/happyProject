@@ -137,9 +137,9 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemName());
-			pstmt.setString(2, m.getEmail());
+			pstmt.setString(2, m.getMemAddress());
 			pstmt.setString(3, m.getMemPhone());
-			pstmt.setString(4, m.getMemAddress());
+			pstmt.setString(4, m.getEmail());
 			pstmt.setString(5, m.getMemId());
 			
 			result = pstmt.executeUpdate();

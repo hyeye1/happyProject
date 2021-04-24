@@ -45,7 +45,8 @@ public class DeleteMemberServlet extends HttpServlet {
 			
 		}else { //탈퇴실패
 			
-		
+			session.setAttribute("alertMsg", "탈퇴가 실패되었습니다..");
+			request.getRequestDispatcher("views/member/my_memberInfo.jsp").forward(request, response);
 		}
 		
 

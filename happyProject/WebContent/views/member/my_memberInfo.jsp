@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
-<%
-	Member loginUser = (Member)session.getAttribute("loginUser");
-	String contextPath = request.getContextPath();
-%>    
+   
 
 <!DOCTYPE html>
 <html>
@@ -98,7 +95,7 @@
     </style> 
 </head>
 <body>
-
+   <%@ include file = "../common/menubar.jsp" %>
 	<%
 		String memId = loginUser.getMemId();
 		String memPwd = loginUser.getMemPwd();
@@ -107,8 +104,11 @@
 		String memPhone = loginUser.getMemPhone();
 		String memAddress = loginUser.getMemAddress();
 	%>
- 	
+	
+
+
 	<div class="outer">
+
 		<br>
         <div class="path">홈>마이페이지</div>
          <h1>회원정보관리</h1>
@@ -148,7 +148,6 @@
 				<tr>
 					<td style="background-color: lightgray;" align="center"><b>주소</b></td>
 					<td><input type="text" name="memAddress" placeholder="주소를 입력하세요" value="<%= memAddress %>">
-                        <button id="yellowBtn" name="search2">검색</button>
                     </td>
 				
 				</tr>
