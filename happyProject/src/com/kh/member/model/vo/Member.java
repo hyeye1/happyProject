@@ -39,6 +39,13 @@ public class Member {
 	
 	
 
+	public Member(String memId, String memName, String email) {
+		super();
+		this.memId = memId;
+		this.memName = memName;
+		this.email = email;
+	}
+
 	public Member(String memId, String memPwd, String memName, String memAddress, String memPhone, String email, String emailYN) {
 		super();
 		this.memId = memId;

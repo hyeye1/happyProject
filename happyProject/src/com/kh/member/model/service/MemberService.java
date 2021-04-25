@@ -107,6 +107,28 @@ public class MemberService {
 			
 	}
 	
+	public Member findIdMember(String memName, String email) {
+		
+		Connection conn = getConnection();
+		
+		Member findId = new MemberDao().findIdMember(conn, memName, email);
+		
+		close(conn);
+		
+		return findId;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

@@ -175,8 +175,7 @@
                 </tr>
                 <tr>
                     <th>이메일 *</th>
-                    <td><input type="email" name="email" placeholder="abc@happybook.com" required></td>
-                    <td><button type="button" class="join2Check">중복확인</button></td>
+                    <td colspan="2"><input type="email" name="email" placeholder="abc@happybook.com" required></td>
                 </tr>
                 <tr>
                     <th>휴대폰 *</th>
@@ -204,7 +203,6 @@
 						<input type="text" name="address" class="postcodify_address" placeholder="주소" required value="" /><br />
 						<input type="text" name="extra" class="postcodify_extra_info" placeholder="동" required value="" /><br />
 						<input type="text" name="details" class="postcodify_details" placeholder="상세주소를 입력헤주세요." required value="" /><br />
-	                    <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" required value="" />
            			</td>
                 </tr>
         

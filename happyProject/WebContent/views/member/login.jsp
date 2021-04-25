@@ -73,6 +73,7 @@
             font-size: 12.5px;
             font-weight: 600;
         }
+        .loginOuter button, #loginHoldYN input, label{cursor: pointer;}
         
     </style>
 </head>
@@ -88,7 +89,7 @@
         </div>
         <div class="loginMid">
             <button type="submit" id="loginBtn">로그인</button> <br>
-            <span id="loginHoldYN"><input type="checkbox"> 로그인 상태 유지</span>
+            <span id="loginHoldYN"><input type="checkbox" id="loginOn"><label for = "loginOn">로그인 상태 유지</label></span>
             <span id="joinNow"><a href="<%= request.getContextPath() %>/joinForm1.me">회원가입</a></span>
         </div>
         <div class="loginSns" align="center">
@@ -99,9 +100,9 @@
             <input type="image" src="resources/images/facebooklogin.png" id="facebookLogin">
         </div>
         <div class="loginFind">
-            <span id="loginFindId"><a href="">아이디 찾기</a></span>
+            <span id="loginFindId"><a href="<%= request.getContextPath() %>/findIdForm.me">아이디 찾기</a></span>
             <span style="color: darkgrey;">|</span>
-            <span id="loginFindPwd"><a href="">비밀번호 찾기</a></span>
+            <span id="loginFindPwd"><a href="<%= request.getContextPath() %>/findPwdForm.me">비밀번호 찾기</a></span>
         </div>
 
 

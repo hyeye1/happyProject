@@ -55,13 +55,12 @@
 		         )
 	</entry>
 	
-		<entry key="idCheck">
+	<entry key="idCheck">
 		SELECT
 		       COUNT(*) "COUNT"
 		  FROM TB_MEMBER
 		 WHERE MEM_ID = ?
 	</entry>
-	
 	
 	
 	<entry key="updateMember">
@@ -110,6 +109,17 @@
 		   AND MEM_PWD = ?
 	</entry>
 	
+	<entry key="findIdMember">
+		SELECT 
+		       MEM_ID,
+		       MEM_NAME,
+		       EMAIL
+		  FROM
+		       TB_MEMBER
+		 WHERE 
+		       MEM_NAME = ?
+		   AND EMAIL = ?
+	</entry>
 	
 	
 
