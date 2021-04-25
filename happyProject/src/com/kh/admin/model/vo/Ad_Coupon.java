@@ -78,10 +78,4 @@ public class Ad_Coupon {
 	}
 	
 	
-
-
-
-
-	
-	
 }

@@ -16,17 +16,6 @@
 		    BY COU_NO DESC
 	</entry>
 	
-	<entry key = "ongoingCouCount">
-		SELECT COUNT(*) GOCOUNT
-		  FROM TB_COUPON
-		 WHERE STATUS = 'Y'
-	</entry>
-	
-	<entry key = "stopCouCount">
-		SELECT COUNT(*) STOPCOUNT
-		  FROM TB_COUPON
-		 WHERE STATUS = 'N'
-	</entry>
-	
+
 
 </properties>

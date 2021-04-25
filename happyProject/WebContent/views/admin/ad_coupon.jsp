@@ -12,16 +12,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CouponList</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified CSS -->
+<meta charset="UTF-8">
+<title>CouponList</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
@@ -140,8 +136,6 @@
         margin-top: 2px;
     }
 
-   
-   
     /* 관리자모드 종료 팝업창 */
     .adEndWrap{
         position: absolute;
@@ -222,7 +216,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    	<!-- 조회된 결과가 없을 경우 -->
+                        <!-- 조회된 결과가 없을 경우 -->
 		                <% if(list.isEmpty()) { %>
 			                <tr>
 			                    <td colspan="7">조회된 리스트가 없습니다.</td>
@@ -237,14 +231,12 @@
 		                            <td><%= c.getCouStart() %></td>
 		                            <td><%= c.getCouEnd() %></td>
 		                            <td><%= c.getCouCondition() %></td>
-		                            <td><a href="" class="btn btn-primary btn-sm">삭제</a></td>
+		                            <td><a href="${pageContext.request.contextPath}/delete.cou?cno=<%=c.getCouNo()%>" class="btn btn-primary btn-sm">삭제</a></td>
 	                           </tr>
   							<% } %>
                 		<% } %>
                     </tbody>                    
                 </table>
-
-                
             </div>
         </div>
     </div>
@@ -256,7 +248,6 @@
             <div id="adEndTitle">
                 <h3 id=adEndTitleName align="center">CONFIRM</h3>        
             </div>
-
             <div id="adEndContent">
                 <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
                     관리메뉴를 종료하시겠습니까?
