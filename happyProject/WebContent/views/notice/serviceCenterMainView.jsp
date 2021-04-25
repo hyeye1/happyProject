@@ -128,7 +128,7 @@
               }
             }
           
-            items.forEach(item = item.addEventListener('click', openCloseAnswer));
+            items.forEach(item => item.addEventListener('click', openCloseAnswer));
           </script>
          </div>
     </section>  
