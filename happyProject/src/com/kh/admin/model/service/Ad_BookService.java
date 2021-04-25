@@ -13,18 +13,18 @@ import com.kh.common.model.vo.PageInfo;
 
 public class Ad_BookService {
 	
-	public int selectListCount(String serachType,String search) {
+	public int selectListCount(String searchType,String search) {
 		Connection conn = getConnection();
-		int listCount = new Ad_BookDao().selectListCount(conn,serachType,search);
+		int listCount = new Ad_BookDao().selectListCount(conn,searchType,search);
 		
 		close(conn);
 		
 		return listCount;
 	}
 	
-	public ArrayList<Ad_Book> selectList(PageInfo pi,String serachType,String search){
+	public ArrayList<Ad_Book> selectList(PageInfo pi,String searchType,String search){
 		Connection conn = getConnection();
-		ArrayList<Ad_Book> list = new Ad_BookDao().selectList(conn,pi,serachType,search);
+		ArrayList<Ad_Book> list = new Ad_BookDao().selectList(conn,pi,searchType,search);
 		close(conn);
 		return list;
 	}
@@ -75,5 +75,42 @@ public class Ad_BookService {
 		}
 		close(conn);
 		return result;
+	}
+	
+	public int insertBookAdmin(Ad_Book b) {
+		Connection conn = getConnection();
+		int result = new Ad_BookDao().insertBookAdmin(conn, b);
+		
+		if(result >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int selectSeqBook() {
+		Connection conn = getConnection();
+		int seqBook = new Ad_BookDao().selectSeqBook(conn);
+		
+		close(conn);
+		
+		return seqBook;
+	}
+
+	public void insertImageAdmin(Ad_Image image) {
+		Connection conn = getConnection();
+		
+		int result = new Ad_BookDao().insertImageAdmin(conn, image);
+		
+		if(result >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
 	}
 }

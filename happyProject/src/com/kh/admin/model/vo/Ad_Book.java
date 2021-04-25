@@ -13,17 +13,18 @@ public class Ad_Book {
 	private String bkGenre;
 	private int bkOriginPrice;
 	private int bkPrice;
-	private String isbn;
 	private int bkStock;
 	private int bkPageNo;
+	private int bkHits;
+	private String isbn;
 	private String bkDescription;
 	private String atDescription;
 	private String bkContentList;
 	private String bkKeyword;
 	private Date bkEnrollDate;
 	private String bkMainImg;
-	private int bkHits;
 	private String status;
+	private String bookContent;
 	
 	public Ad_Book() {}
 
@@ -101,7 +102,7 @@ public class Ad_Book {
 
 	public Ad_Book(Date bkEnrollDate, int bkNo, String bkName, String isbn, int bkPageNo, 
 			String bkKeyword, String bkDescription, String atDescription,
-			String bkContentList, String bkMainImg, String bkPublishDate) {
+			String bkContentList, String bkMainImg) {
 		super();
 		this.bkEnrollDate = bkEnrollDate;
 		this.bkNo = bkNo;
@@ -113,7 +114,6 @@ public class Ad_Book {
 		this.atDescription = atDescription;
 		this.bkContentList = bkContentList;
 		this.bkMainImg = bkMainImg;
-		this.bkPublishDate = bkPublishDate;
 	}
 
 	public int getBkNo() {
@@ -275,6 +275,16 @@ public class Ad_Book {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public String getBookContent() {
+		return bookContent;
+	}
+
+
+	public void setBookContent(String bookContent) {
+		this.bookContent = bookContent;
+	}
+
 
 	@Override
 	public String toString() {

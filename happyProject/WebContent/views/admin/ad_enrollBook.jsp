@@ -244,13 +244,13 @@
                     <tr>
                         <th width="90"><b>*</b> 카테고리</th>
                         <td width="30">
-                            <select name="category1" id="category1" style="width: 100px;" required>
+                            <select name="bkDivision" id="category1" style="width: 100px;" required>
                             	<option selected>1차 카테고리</option>
                                 <option value="in">국내도서</option>
                                 <option value="out">해외도서</option>
                             </select> 
                             &nbsp;>&nbsp;
-                            <select name="category2" id="category2" style="width: 120px;" required>
+                            <select name="bkGenre" id="category2" style="width: 120px;" required>
                             	<option selected>2차 카테고리</option>
                                 <option value="novel">문학</option>
                                 <option value="economy">경제/경영</option>
@@ -260,64 +260,64 @@
                             </select> 
                         </td>
                         <th width="90">&nbsp;&nbsp;&nbsp;ISBN</th>
-                        <td width="100"><input type="text" placeholder="숫자 13개 입력"></td>
+                        <td width="100"><input type="text" placeholder="숫자 13개 입력" name="isbn"></td>
                     </tr>
                     <tr>
                         <th><b>*</b> 도서명</th>
-                        <td><input type="text" placeholder="도서명을 입력하세요" required></td>
+                        <td><input type="text" name="bkName" placeholder="도서명을 입력하세요" required></td>
                         <th>&nbsp;&nbsp;&nbsp;저자</th>
-                        <td><input type="text" placeholder="저자명을 입력하세요"></td>
+                        <td><input type="text" name="author"placeholder="저자명을 입력하세요"></td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;출판사</th>
-                        <td><input type="text" placeholder="출판사를 입력하세요"></td>
+                        <td><input type="text" name="publisher" placeholder="출판사를 입력하세요"></td>
                         <th>&nbsp;&nbsp;&nbsp;출간일</th>
-                        <td><input type="date"> </td>
+                        <td><input type="date" name="bkPublishDate"> </td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;페이지수</th>
-                        <td><input type="text" placeholder="숫자만 입력하세요"></td>
+                        <td><input type="text" name="bkPageNo" placeholder="숫자만 입력하세요"></td>
                         <th></th>
                         <td></td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;정가</th>
-                        <td><input type="text" placeholder="정가를 입력하세요"></td>
+                        <td><input type="text" name="bkOriginPrice" placeholder="정가를 입력하세요"></td>
                         <th><b>*</b> 판매가</th>
-                        <td><input type="text" placeholder="실제 판매 가격을 입력하세요" required></td>
+                        <td><input type="text" name="bkPrice" placeholder="실제 판매 가격을 입력하세요" required></td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;책 소개</th>
                         <td>
-                            <textArea name="bookDescrription" placeholder="책 소개 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
+                            <textArea name="bookDescrription" name="bkDescription" placeholder="책 소개 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
                         </td>
                         <th>&nbsp;&nbsp;&nbsp;저자소개</th>
                         <td>
 
-                            <textArea name="AuthorDescription" placeholder="저자 소개 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
+                            <textArea name="authorDescription" name="atDescription" placeholder="저자 소개 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
                         </td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;목차</th>
                         <td>
-                            <textArea name="bookContent" placeholder="목차 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
+                            <textArea name="bookContent" name="bkContentList" placeholder="목차 내용을 입력하세요" cols="39" rows="6" style="resize: none;"></textArea>
                         </td>
                         <th>&nbsp;&nbsp;&nbsp;키워드</th>
                         <td>
-                            <textArea name="keyword" cols="39" rows="6" style="resize: none;" placeholder="키워드를 입력하세요"></textArea>
+                            <textArea name="keyword" name="bkKeyword" cols="39" rows="6" style="resize: none;" placeholder="키워드를 입력하세요"></textArea>
                         </td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;표지 이미지</th>
-                        <td><input type="file" name="titleImg"></td>
+                        <td><input type="file" name="bkMainImg"></td>
                         <th></th>
                         <td></td>
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;상세이미지</th>
-                        <td><input type="file" name="detailImg"></td>
+                        <td><input type="file" name="bkDetailImg"></td>
                         <th><b>*</b> 수량</th>
-                        <td><input type="number" placeholder="입고 수량" style="width: 100px; color: red;" required></td>
+                        <td><input type="number" name="bkStock" placeholder="입고 수량" style="width: 100px; color: red;" required></td>
                     </tr>
                 </table>
                 
