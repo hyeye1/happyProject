@@ -1,6 +1,7 @@
 package com.kh.admin.controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,8 +38,16 @@ public class Ad_BookEnrollFormServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		Enumeration e = request.getParameterNames();
+		while ( e.hasMoreElements() ){
+			String name = (String) e.nextElement();
+			String[] values = request.getParameterValues(name);		
+			for (String value : values) {
+				System.out.println("name=" + name + ",value=" + value);
+			}   
+		}
+		//doGet(request, response);
 	}
 
 }
