@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.admin.model.vo.Ad_Coupon"%>
 <%
 	ArrayList<Ad_Coupon> list = (ArrayList<Ad_Coupon>) request.getAttribute("list");
+	
 %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -231,7 +232,8 @@
 		                            <td><%= c.getCouStart() %></td>
 		                            <td><%= c.getCouEnd() %></td>
 		                            <td><%= c.getCouCondition() %></td>
-		                            <td><a href="${pageContext.request.contextPath}/delete.cou?cno=<%=c.getCouNo()%>" class="btn btn-primary btn-sm">삭제</a></td>
+		                            <td><a href="${pageContext.request.contextPath}/delete.cou?cno=<%=c.getCouNo()%>" class="btn btn-primary btn-sm" id="deleteBook">삭제</a></td>
+		                     
 	                           </tr>
   							<% } %>
                 		<% } %>
@@ -241,6 +243,7 @@
         </div>
     </div>
 
+    
    
     <!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
