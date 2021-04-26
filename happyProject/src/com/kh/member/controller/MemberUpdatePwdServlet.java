@@ -41,10 +41,10 @@ public class MemberUpdatePwdServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(updateMem == null) { // 비밀번호 변경실패 => alert 비밀번호 변경 실패했습니다.
-			session.setAttribute("alertMsg", "비밀번호 변경 실패했습니다.");
+			session.setAttribute("alertMsg", "비밀번호 변경이 실패되었습니다.");
 			
 		}else { // 성공 => alert 성공적으로 비밀번호 변경됐습니다.
-			session.setAttribute("alertMsg", "성공적으로 비밀번호 변경됐습니다.");
+			session.setAttribute("alertMsg", "성공적으로 비밀번호가 변경되었습니다.");
 			session.setAttribute("loginUser", updateMem);
 		}
 		

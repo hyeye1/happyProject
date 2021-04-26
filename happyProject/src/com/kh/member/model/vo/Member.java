@@ -78,6 +78,8 @@ public class Member {
 		this.email = email;
 	}
 
+	
+	
 	public int getMemNo() {
 		return memNo;
 	}
