@@ -87,10 +87,11 @@
             </div>
         </div>
         <div class="box" align="center"><br>
-        <!-- 리뷰 작성 없을 때
-            <img src="resources/image/nowrite.png" width="60"><br><br>
-             <span id="text">리뷰 작성이 가능한 도서가 없습니다.</span>
-        -->
+        <!-- 리뷰 작성 없을 때 --> 
+        	<br><br>
+            <img src="resources/images/nowrite.png" width="60"><br><br>
+             <span id="text">리뷰 작성이 가능한 도서가 없습니다.</span><br><br><br><br>
+       <!--
         <table class="review" width="800">
             <tr>
                 <td rowspan="5">
@@ -109,10 +110,11 @@
                 </td>
             </tr>
         </table>
+        -->
         <hr>
         <br>
         <div class="btnouter2" align="center">
-            <button type="button" id="btn2">주문내역가기</button>
+            <button type="button" id="btn2" onClick="location.href='<%= contextPath %>/myTracking.me'">주문내역가기</button>
         </div>
 
     </div>

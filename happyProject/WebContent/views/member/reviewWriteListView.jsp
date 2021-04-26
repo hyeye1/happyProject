@@ -87,9 +87,11 @@
         </div>
         <div class="box" align="center"><br>
         <!-- 작성할 리뷰 아예 없을 때
-            <img src="resources/image/nowrite.png" width="60"><br><br>
-             <span id="text">작성할 리뷰 도서가 없습니다.</span>
+        	<br><br>
+            <img src="resources/images/nowrite.png" width="60"><br><br>
+             <span id="text">작성한 리뷰 도서가 없습니다.</span><br><br><br><br>
         -->
+       
         <table class="review" width="800">
             <tr>
                 <td rowspan="5">
@@ -99,15 +101,16 @@
             <tr>
                 <td rowspan="5" align="left">
                     주문날짜 : 2021-04-12<br>
-                    책 제목 : 아몬드<br>
+                    책 제목 : 떠나지 않고도 행복할 수 있다면<br>
                     저자 : 손원평<br>
                     출판 : 창비출판<br>
                 </td>
-                <td rowspan="5" width="450">
+                <td rowspan="5" width="300">
                     <button type="button" id="btn3" onClick="location.href='<%= contextPath %>/reviewDetail.me'">리뷰 상세보기</button>
                 </td>
             </tr>
         </table> 
+       
         <hr>
     </div>
 </body>
