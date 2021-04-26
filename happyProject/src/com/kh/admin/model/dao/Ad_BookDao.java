@@ -224,6 +224,7 @@ private Properties prop = new Properties();
 						rset.getInt("bk_no"),
 						rset.getString("bk_name"),
 						rset.getString("isbn"),
+						rset.getString("bk_publish_date"),
 						rset.getInt("bk_page_no"),
 						rset.getString("bk_keyword"),
 						rset.getString("bk_description"),

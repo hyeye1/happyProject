@@ -116,6 +116,7 @@
 		     , BK_NO
 		     , BK_NAME
 		     , ISBN
+		     , BK_PUBLISH_DATE
 		     , BK_PAGE_NO
 		     , BK_KEYWORD
 		     , BK_DESCRIPTION
@@ -134,7 +135,7 @@
 		     , IMG_PATH
 		     , IMG_ENROLL_DATE
 		  FROM TB_IMAGE
-		 WHERE BK_NO = ?
+		 WHERE BK_NO_IMG = ?
 	</entry>
 	
 	<entry key="deleteBook">
