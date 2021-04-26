@@ -71,7 +71,7 @@
 <body>
 <form  action="<%= request.getContextPath() %>/findId.me"  method="post" >
     <div class="findIdOuter" align="center" >
-        <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <a href="<%=request.getContextPath()%>"> <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;"> </a>
 
         
         <div class="findIdTitle" align="center">

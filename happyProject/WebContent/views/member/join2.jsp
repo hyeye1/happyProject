@@ -142,7 +142,7 @@
 </head>
 <body>
     <div class="join2Outer" align="center">
-        <img src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <a href="<%=request.getContextPath()%>"> <img src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;"> </a>
         <div class="join2Title" align="center">
             <br>
             <p>회원가입</p>

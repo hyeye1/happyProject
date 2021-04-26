@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String contextPath = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +68,7 @@
 </head>
 <body>
     <div class="join1Outer" align="center">
-        <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <a href="<%=request.getContextPath()%>"> <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;"> </a>
         
         <div class="join1Title" align="center">
             <br>
