@@ -2,36 +2,6 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="selectListCount">
-		SELECT COUNT(*) LISTCOUNT
-		  FROM TB_BOOK
-	</entry>
-	
-	<entry key="selectList">
-		SELECT *
-		  FROM (
-		        SELECT
-		               ROWNUM RNUM
-		             , A.*
-		          FROM (
-		                SELECT
-                               BK_NO
-                             , BK_NAME
-                             , AUTHOR
-                             , PUBLISHER
-                             , BK_DIVISION
-                             , BK_GENRE
-                             , BK_ORIGIN_PRICE
-                             , BK_PRICE
-                             , BK_STOCK
-                          FROM TB_BOOK
-                         ORDER
-                            BY BK_NO DESC
-		               ) A
-		       )
-		 WHERE RNUM BETWEEN ? AND ?
-	</entry>
-	
 	<!-- 오늘의추천 -->
 	<entry key="selectBookList">
 		SELECT 
@@ -60,33 +30,20 @@
 		     , BK_CONTENT_LIST
 		     , BK_MAIN_IMG
 		  FROM TB_BOOK
-		  JOIN TB_IMAGE USING (BK_NO)
+		  JOIN TB_IMAGE ON(BK_NO = BK_NO_IMG)
 		 WHERE BK_NO = ?
 	</entry>
 	
 	<entry key="bookInfoImg">
 		SELECT
 			   IMG_NO
-			 , BK_NO 
+			 , BK_NO_IMG
 		     , IMG_PATH
 		  FROM TB_IMAGE
-		 WHERE BK_NO = ?
+		 WHERE BK_NO_IMG = ?
 	</entry>
-	
-	
-	<entry key="selectReviewList">
-		SELECT
-		       RE_NO
-		     , RE_CONTENT
-		     , MEM_NO
-		     , RE_DATE
-		  FROM TB_REVIEW
-		  JOIN TB_MEMBER USING(MEM_NO)
-		  JOIN TB_BOOK USING(BK_NO)
-		 WHERE BK_NO = ?
-		 ORDER BY RE_DATE DESC
-	</entry>
-	
+
+<!-- 	
 	<entry key="insertBook">
 		INSERT
   		  INTO TB_BOOK
@@ -155,5 +112,5 @@
 		     , IMG_ENROLL_DATE
 		  FROM TB_IMAGE
 		 WHERE BK_NO = ?;
-	</entry>
+	</entry> -->
 </properties>

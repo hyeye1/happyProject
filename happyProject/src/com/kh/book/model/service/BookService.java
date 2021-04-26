@@ -9,7 +9,6 @@ import java.util.List;
 import com.kh.book.model.dao.BookDao;
 import com.kh.book.model.vo.Book;
 import com.kh.book.model.vo.Image;
-import com.kh.book.model.vo.Review;
 
 public class BookService {
 	
@@ -43,18 +42,7 @@ public class BookService {
 		return i;
 		
 	}
-	
 
-	public ArrayList<Review> selectReviewList(int bookNo){
-		
-		Connection conn = getConnection();
-		ArrayList<Review> list = new BookDao().selectReviewList(conn, bookNo);
-		
-		close(conn);
-		return list;
-	}
-	
-	
 	
 	
 }

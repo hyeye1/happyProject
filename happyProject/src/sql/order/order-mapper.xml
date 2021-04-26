@@ -2,8 +2,34 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="">
-		
+	<entry key="insertCart">
+		INSERT
+		  INTO TB_CART
+		  (
+		    CA_NO
+		  , BK_NO
+		  , MEM_NO
+		  , AMOUNT
+		  , TOTAL_PRICE
+		  , BK_TITLE
+		  , AUTHOR
+		  , ORIGIN_PRICE
+		  , PRICE
+		  , MAIN_IMG
+		  )
+		  VALUES
+		  (
+		     SEQ_CNO
+		   , SEQ_BNO
+		   , SEQ_MNO
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   )
 	</entry>
 	
 

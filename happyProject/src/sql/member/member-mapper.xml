@@ -62,8 +62,6 @@
 		 WHERE MEM_ID = ?
 	</entry>
 	
-	
-	
 	<entry key="updateMember">
 		UPDATE
 		   	   TB_MEMBER

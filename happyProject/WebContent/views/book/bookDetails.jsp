@@ -173,7 +173,8 @@
                 <hr>
         </div>
 		<br><br>
-        <div style="margin-left:200px">
+		<!-- 장바구니에 넘길 값의 폼 -->
+        <form style="margin-left:200px" name="form" mehod="get" action="<%= contextPath %>/insertCart.or">
             <!-- 책 표지 이미지 -->
             <div class="bookImg">
                 <img src="<%= b.getBkMainImg() %>" width="300" height="400">
@@ -192,7 +193,7 @@
                         배송비 3,000원 (20,000원 이상 주문시 무료배송) <br>
                     </small>
                 </p>
-                <form name="form" mehod="get" action="<%= contextPath %>/cList2.or">
+                <div>
                 	<div style="margin-bottom:10px;">
 	                    주문수량 :
 	                    <input type="hidden" name="price" value="<%= b.getBkPrice() %>">
@@ -200,15 +201,15 @@
 	                    <input type=number name=amount value="1" min="1" max="10" readonly onchange="change();" style="text-align: center;">
 	                    <input type=button value="+" onclick="add();" class="btn btn-primary btn-sm" style="background:lightgray; border:none;"> <br>
 	                    <!-- 회원이 선택한 수량만큼의 값 -->
-	                    <input type="hidden" name="sum" size="10" readonly> 
+	                    <input type="number" name="sum" size="10" readonly> 
                 	</div>
                 	<!-- 주문하기, 보관하기 버튼 -->
 			        <div>
-			            <button class="goToLink btn btn-warning btn-lg">바로구매</button>&nbsp;&nbsp;
-			            <button type="submit" class="goToLink btn btn-warning btn-lg" data-toggle="modal" data-target="#goToCart" onclick="cart();">장바구니</button>&nbsp;&nbsp;
-			            <button class="goToLink btn btn-warning btn-lg">보관함</button>
+			            <button type="button" class="goToLink btn btn-warning btn-lg">바로구매</button>&nbsp;&nbsp;
+			            <button type="button" class="goToLink btn btn-warning btn-lg" data-toggle="modal" data-target="#goToCart" onclick="cart();">장바구니</button>&nbsp;&nbsp;
+			            <button type="button" class="goToLink btn btn-warning btn-lg">보관함</button>
 			        </div>
-                </form>
+                </div>
                 <script>
 	                    var price;
 	                    var amount;
@@ -243,7 +244,7 @@
 	                    }  
                     </script>
             </div>
-        </div>
+        </form>
         		
         
         <!-- 로그인 전 -->
@@ -277,7 +278,7 @@
 	                <div class="modal-body" align="center">
 	                    <h5 class="modal-title" style="text-align: center;"><br><br> 
 	                        장바구니에 담겼습니다.  <br>
-	                        <a href="<%= contextPath %>/cList2.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
+	                        <a href="<%= contextPath %>/insertCart.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
 	                    </h5>
 	                </div>
 	                

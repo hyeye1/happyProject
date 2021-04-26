@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
+	Book c = (Cart)request.getAttribute("c");
 %>
 <!DOCTYPE html>
 <html>
@@ -71,22 +71,6 @@
             border-radius: 5px;
             padding:5px 10px 5px 10px;
         }
-
-        /* 체크박스 */
-        /*
-        input[id="selectAll"]+label{
-            width:15px;
-            height:15px;
-            border:1px solid black;
-            cursor: pointer;
-        }
-        input[id="selectAll"]:checked + label{
-            background: rgb(249, 219, 122);
-        }
-        input[id="selectAll"]{
-            display:none;
-        }
-        */
         input[type=checkbox]{
             zoom:1.5;
         }
@@ -173,8 +157,8 @@
                     <td style="height:100px;"><input type="checkbox" checked></td>
                     <td align="center"><img src="resources/images/도서이미지(수정)/소설/달러구트.jpg" style="width:80px; height:100px;"></td>
                     <td>
-                        <p>달러구트 꿈 백화점 | 잠들어야만 입장 가능합니다</p>
-                        <small>이미예</small> <br><br>
+                        <p></p>
+                        <small><%= b.getAuthor() %></small> <br><br>
                         <button class="button" onclick="minus();">-</button>
                         <input type="number" value="1" min="1" max="9">
                         <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>
@@ -227,7 +211,7 @@
                     <tr>
                         <td colspan="2">
                             <img src="resources/images/cart/checked2.png" style="width:20px;"> 
-                            <label for="">3권을 선택하셨습니다.</label> 
+                            <label for="">0권을 선택하셨습니다.</label> 
                         </td>
                     </tr>
                     <tr>
