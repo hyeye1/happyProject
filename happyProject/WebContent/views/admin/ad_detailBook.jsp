@@ -270,13 +270,8 @@
                         <%} %>
                         
                         
-                        <br><button type="button" id="backBook" class="btn btn-primary" style="margin-top:20px; margin-left: -110px;">이전</button>
-                    	<script>
-		                	const backBook = document.getElementById('backBook');
-		                    bkEnrollBtn.addEventListener('click', function(){
-		                		location.href="PagingList?page=${page}";
-		                	});
-		                </script>
+                        <br><button type="button" id="backBook" onclick="history.back();" class="btn btn-primary" style="margin-top:20px; margin-left: -110px;">이전</button>
+                    	
                     </div>
                     <div id="bkContent2">
                         <div id="bkList">
@@ -360,14 +355,14 @@
                     <%= sf.format(nowTime)%>
                 </div>
                 <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
+                <a href="#" onClick="self.close();" class="btn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</a>
+                &nbsp;&nbsp;
+                <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+            </div>      
             </div>    
         </div>
     </div>
-
+					
     <script>
         $(function(){
             $("#adLock").click(function(){
@@ -380,6 +375,7 @@
             });
         });
     </script>
+ 
     
  
 </body>
