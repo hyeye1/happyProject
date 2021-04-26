@@ -15,7 +15,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/hover-min.css">
 
     <style>
         .findPwdOuter{
@@ -115,8 +114,9 @@
     </style>
 </head>
 <body>
+<form action="<%= request.getContextPath() %>/findPwd.me" method="post">
     <div class="findPwdOuter" align="center">
-        <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+       <a href="<%=request.getContextPath()%>">  <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;"> </a>
 
         
         <div class="findPwdTitle" align="center">
@@ -125,39 +125,21 @@
         </div>
 
         <div class="findPwdInput">
-            <input type="text" id="findPwdId" placeholder="  아이디" required><br>
-            <input type="email" id="findPwdEmail" placeholder="  이메일 주소" required>
+            <input type="text" name="memId" id="findPwdId" placeholder="  아이디" required><br>
+            <input type="email" name="email" id="findPwdEmail" placeholder="  이메일 주소" required>
             <p>※ 해피북스데이 가입시 사용하신 이메일을 입력해주세요<br>
                 해당 이메일로 임시 비밀번호를 보내드립니다. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
         </div>
 
-        <form action="<%= request.getContextPath() %>/findPwd.me" class="findPwdBtn">
+        <div class="findPwdBtn">
             <button type="submit" id="findPwdSubmit">링크 받기</button> <br>
             <button type="button" id="findPwdRedirectLogin" onclick="location.href= '<%= request.getContextPath() %>/loginForm.me';">로그인하기</button>
             <a href="<%= request.getContextPath() %>/findIdForm.me">아이디 찾기 ></a>
-        </form>
-     
-        <div class="linkWrap">
-            <div id="linkTitle">
-                <h3 id="linkTitleName">알림</h3>
-            </div>
-            <div id="linkContent">
-                <br>
-                <p>링크가 발송되었습니다!</p>
-                <br>
-                <button type="button" id="okBtn">확인</button>
-            </div>
         </div>
-
-        <script>                     
-                    $("#findPwdSubmit").click(function() {
-                        $(".linkWrap").show();
-                    });
-                    $("#okBtn").click(function() {
-                        $(".linkWrap").hide();
-                    });
-        </script>   
+     
+       
 
     </div>
+</form>
 </body>
 </html>

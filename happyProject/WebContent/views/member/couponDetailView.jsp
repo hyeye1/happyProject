@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.member.model.vo.Coupon"%>
+<%
+	String contextPath = request.getContextPath();
+	ArrayList<Coupon> list = (ArrayList<Coupon>)request.getAttribute("list");
+	ArrayList<Coupon> list1 = (ArrayList<Coupon>)request.getAttribute("list1");
+%>    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +31,14 @@
         }
         .couponList{
             width: 800px;
-            height: 150px;
             text-align: center;
+            margin-top: 10px;
+        }
+        .couponList1{
+        	width: 800px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 50px;
         }
         #text1{font-size:x-large; font-weight: bold;}
         #text2{font-size:large; font-weight: bold;}
@@ -40,7 +52,7 @@
             cursor: pointer;
         }
         #btn:hover{background-color: rgb(249, 219, 122); color:white;}
-        #back{background-color: rgba(249, 219, 122, 0.86)}
+        #back{background-color: rgba(249, 219, 122, 0.86); height: 40px;}
         .checkbox{zoom: 1.5; cursor: pointer;}
     </style>
 </head>
@@ -57,61 +69,67 @@
         </div>
         <br><br>
         <span id="text2">사용 가능한 쿠폰</span>
-        <div class="deleteButton" align="right">
-            <button id="btn" type="button">선택삭제</button>
-        </div>
         <table class="couponList">
+      
             <tr id="back">
-                <th>선택</th>
+                <th>번호</th>
                 <th>쿠폰명</th>
                 <th>할인액</th>
                 <th>발급일</th>
                 <th>유효기간</th>
             </tr>
-            <tr>
-                <td><input type="checkbox" class="checkbox"></td>
-                <td>4월 전고객 쿠폰</td>
-                <td>1000원</td>
-                <td>2021-04-01</td>
-                <td>2021-04-30</td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" class="checkbox"></th>
-                <td>신규회원가입 쿠폰</td>
-                <td>2000원</td>
-                <td>2021-03-29</td>
-                <td>2021-05-29</td>
-            </tr>
+       
+         
+            <% if(list.isEmpty()) { %>
+            		<tr>
+            			<td colspan="5">존재하는 쿠폰이 없습니다.</td>
+            		</tr>
+            	<% }else{ %>
+            	
+            	<% for(Coupon c:list){ %>
+		            <tr>
+		                <td><%= c.getCouNo() %></td>
+		                <td><%= c.getCouName() %></td>
+		                <td><%= c.getDiscount() %></td>
+		                <td><%= c.getCouStart() %></td>
+		                <td><%= c.getCouEnd() %></td>
+		            </tr>
+            	<% } %>
+            	
+            <% } %>
+          
         </table>
 
         <br><br><br>
         <span id="text2">사용 만료 쿠폰</span>
-        <div class="deleteButton" align="right">
-            <button id="btn" type="button">선택삭제</button>
-        </div>
+        
 
-        <table class="couponList">
+        <table class="couponList1">
             <tr id="back">
-                <th>선택</th>
+                <th>번호</th>
                 <th>쿠폰명</th>
                 <th>할인액</th>
                 <th>발급일</th>
                 <th>유효기간</th>
             </tr>
-            <tr>
-                <td><input type="checkbox" class="checkbox"></td>
-                <td>3월 전고객 쿠폰</td>
-                <td>1000원</td>
-                <td>2021-03-01</td>
-                <td>2021-03-30</td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" class="checkbox"></th>
-                <td>생일 쿠폰</td>
-                <td>2000원</td>
-                <td>2021-03-25</td>
-                <td>2021-05-25</td>
-            </tr>
+            
+            <% if(list1.isEmpty()) { %>
+            		<tr>
+            			<td colspan="5">존재하는 쿠폰이 없습니다.</td>
+            		</tr>
+            	<% }else{ %>
+            	
+            	<% for(Coupon c:list1){ %>
+		            <tr>
+		                <td><%= c.getCouNo() %></td>
+		                <td><%= c.getCouName() %></td>
+		                <td><%= c.getDiscount() %></td>
+		                <td><%= c.getCouStart() %></td>
+		                <td><%= c.getCouEnd() %></td>
+		            </tr>
+            	<% } %>
+            	
+            <% } %>
         </table>
     </div>
 </body>

@@ -108,7 +108,7 @@ private Properties prop = new Properties();
         sql+= "                  , BK_PRICE";
         sql+= "                  , BK_STOCK";
         sql+= "               FROM TB_BOOK ";
-        sql+= "              WHERE STATUS = 'Y'"; 
+        sql+= "              WHERE BK_STATUS = 'Y'"; 
         if(searchType != null && search != null){
 	        if(searchType.equals("bk_name")){
 	
@@ -224,6 +224,7 @@ private Properties prop = new Properties();
 						rset.getInt("bk_no"),
 						rset.getString("bk_name"),
 						rset.getString("isbn"),
+						rset.getString("bk_publish_date"),
 						rset.getInt("bk_page_no"),
 						rset.getString("bk_keyword"),
 						rset.getString("bk_description"),
@@ -259,7 +260,7 @@ private Properties prop = new Properties();
 			if(rset.next()) {
 				im = new Ad_Image();
 				im.setImgNo(rset.getInt("img_no"));
-				im.setBkNo(rset.getInt("bk_no"));
+				im.setBkNoImg(rset.getInt("bk_no_img"));
 				im.setImgPath(rset.getString("img_path"));
 				im.setImgEnrollDate(rset.getDate("img_enroll_date"));
 				
@@ -382,7 +383,7 @@ private Properties prop = new Properties();
 		try {
 			
 			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
-			pstmt.setInt(1, image.getBkNo());
+			pstmt.setInt(1, image.getBkNoImg());
 			pstmt.setString(2, image.getImgPath());
 			result = pstmt.executeUpdate();
 			

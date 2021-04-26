@@ -189,10 +189,12 @@
     
             <!-- Modal body -->
             <div class="modal-body" align="center">
-             <b>
-		         	탈퇴 후 복구가 불가능 합니다. <br>
-		         	정말로 탈퇴 하시겠습니까? 
-		         </b>
+            
+             		<img src="resources/images/cry.png" width="80px" height="60"><br>
+		         	탈퇴 후 복구가 
+		         	<span style= color:red;>불가능</span>합니다. <br>
+		         	탈퇴를 원하시면 비밀번호를 입력해주세요.
+		      
 		         <br><br>	
 		         	
 		         <form action="<%= request.getContextPath() %>/delete.me" method="post">
@@ -226,6 +228,7 @@
 		      
 		      	<form action="<%= request.getContextPath() %>/updatePwd.me" method="post">
 		      		<input type="hidden" name="memId" value="<%= memId %>">
+		      		<img src="resources/images/pwd.png" width="80px" height="60"><br>
 		      		<table>
 		      			<tr>
 		      				<th>현재 비밀번호</th>

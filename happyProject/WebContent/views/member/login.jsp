@@ -81,7 +81,7 @@
 
 <form action="<%= request.getContextPath() %>/login.me" method="post" id="loginForm">
     <div class="loginOuter" align="center">
-        <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+       <a href="<%=request.getContextPath()%>"> <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;"></a>
         <br> <br>
         <div class="loginInput">
             <input type="text" id="memId" name="memId" placeholder="  아이디" required><br>

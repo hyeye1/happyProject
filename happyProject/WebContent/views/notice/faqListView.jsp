@@ -170,7 +170,7 @@
         <br>
         <div class="bottom">
             <span>찾으시는 질문이 없으신가요? 1:1로 문의해주세요.</span>&emsp;
-            <button id="btn3">1:1 상담요청하기</button>
+            <button id="btn3" onClick="location.href='<%= contextPath %>/list.q?currentPage=1'">1:1 상담요청하기</button>
         </div>
 
     </div>

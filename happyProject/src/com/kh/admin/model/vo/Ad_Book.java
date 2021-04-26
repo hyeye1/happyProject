@@ -100,7 +100,7 @@ public class Ad_Book {
 	
 	
 
-	public Ad_Book(Date bkEnrollDate, int bkNo, String bkName, String isbn, int bkPageNo, 
+	public Ad_Book(Date bkEnrollDate, int bkNo, String bkName, String isbn, String bkPublishDate, int bkPageNo, 
 			String bkKeyword, String bkDescription, String atDescription,
 			String bkContentList, String bkMainImg) {
 		super();
@@ -108,6 +108,7 @@ public class Ad_Book {
 		this.bkNo = bkNo;
 		this.bkName = bkName;
 		this.isbn = isbn;
+		this.bkPublishDate = bkPublishDate;
 		this.bkPageNo = bkPageNo;
 		this.bkKeyword = bkKeyword;
 		this.bkDescription = bkDescription;

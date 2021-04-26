@@ -43,7 +43,7 @@ public class BookService {
 		return i;
 		
 	}
-	
+
 	public Member loginMem(int memNo) {
 		
 		// 장바구니에 책을 담는 로그인한회원의 번호넘기기
@@ -53,6 +53,13 @@ public class BookService {
 		close(conn);
 		return m;
 		
+
+	public ArrayList<Book> bestBookList(int rNum){
+		Connection conn = getConnection();
+		ArrayList<Book> list = new BookDao().bestBookList(conn, rNum);
+		close(conn);
+		return list;
+
 	}
 
 	

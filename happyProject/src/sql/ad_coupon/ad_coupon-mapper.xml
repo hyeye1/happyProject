@@ -11,11 +11,17 @@
 		     , COU_END
 		     , COU_CONDITION
 		  FROM TB_COUPON
-		 WHERE STATUS = 'Y'
+		 WHERE COU_STATUS = 'Y'
 		 ORDER 
 		    BY COU_NO DESC
 	</entry>
 	
+	<entry key = "deleteCoupon">
+		UPDATE
+		       TB_COUPON
+		   SET COU_STATUS = 'N'
+		 WHERE COU_NO = ?
+	</entry>
 
 
 </properties>

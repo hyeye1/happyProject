@@ -20,6 +20,19 @@ public class Ad_CouponService {
 		return list;
 	}
 	
+	public int deleteCoupon(int couNo) {
+		Connection conn = getConnection();
+		int result = new Ad_CouponDao().deleteCoupon(conn, couNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
 
 
 }

@@ -287,7 +287,7 @@
                                     
                                 </tr>
                                 <tr>
-                                    <th width="70px">출간일로!!</th>
+                                    <th width="70px">출간일</th>
                                     <td><%=b.getBkPublishDate() %></td>
                                 </tr>
                                 

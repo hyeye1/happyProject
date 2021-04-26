@@ -34,6 +34,7 @@ public class FindIdServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		String memName = request.getParameter("memName");
 		String email = request.getParameter("email");
@@ -42,11 +43,17 @@ public class FindIdServlet extends HttpServlet {
 		
 		if(m == null) {
 			// 아이디찾기실패
+			response.getWriter().println("<script>alert('아이디찾기에 실패하였습니다. 입력한 성명 또는 이메일을 확인해주세요.');</script>");
+			
+		}else if(m.getMemStatus().equals("N")) { // 탈퇴한 회원 로그인
+			response.getWriter().println("<script>alert('탈퇴한 회원입니다. 회원가입을 다시 진행해주세요.');"+"history.back();</script>");
+			
 		}else { // 아이디찾기 성공
 			HttpSession session = request.getSession();
 			session.setAttribute("findId", m);
 			
-			response.sendRedirect(request.getContextPath()+"/findId.me");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/findIdSuccess.jsp");
+			view.forward(request, response);
 		}
 	
 	}

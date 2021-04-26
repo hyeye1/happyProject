@@ -89,6 +89,7 @@
 	          , ENROLL_DATE
 	          , RECENT_LOGIN
 	          , ADMIN_YN
+	          , MEM_STATUS
 		  FROM TB_MEMBER
 		 WHERE ADMIN_YN = 'N'
 		   AND MEM_ID = ?
@@ -97,7 +98,7 @@
 	<entry key="deleteMember">
 		UPDATE
 			   TB_MEMBER
-		   SET STATUS = 'N' 
+		   SET MEM_STATUS = 'N' 
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>
@@ -112,15 +113,35 @@
 	
 	<entry key="findIdMember">
 		SELECT 
-		       MEM_ID,
+			   MEM_NO,
+		       RPAD(SUBSTR(MEM_ID, 1, 4), LENGTHB(MEM_ID), '*') MEM_ID,
+		       MEM_PWD,
 		       MEM_NAME,
-		       EMAIL
+		       EMAIL,
+		       MEM_STATUS
 		  FROM
 		       TB_MEMBER
 		 WHERE 
 		       MEM_NAME = ?
 		   AND EMAIL = ?
 	</entry>
+	
+		<entry key="findPwdMember">
+		SELECT 
+			   MEM_NO,
+			   MEM_ID,
+		       RPAD(SUBSTR(MEM_PWD, 1, 1), LENGTHB(MEM_PWD), '*') MEM_PWD,
+		       MEM_NAME,
+		       EMAIL,
+		       MEM_STATUS
+		  FROM
+		       TB_MEMBER
+		 WHERE 
+		       MEM_ID = ?
+		   AND EMAIL = ?
+	</entry>
+	
+	
 	
 	
 
