@@ -128,7 +128,7 @@
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
                 <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
                 <input type="text" id="menubarSearchInput" > 
-                
+                <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색" onclick="bookSearch();">
     			
     			
     			
@@ -137,7 +137,7 @@
                 <!-- 로그인전 div -->
                
 	                <div id="loginBefore"  >
-	               		<input type="button" class="menubarSearch" id="menubarSearchButton" value="검색" onclick="bookSearch();">
+	               		
  
 	                    <input type="image" id="menubarCartBtn" src="resources/images/cart.png" onclick="beforeCheckCart();">
 	                    <input type="image" id="menubarJoinBtn" src="resources/images/join.png" onclick="joinPage();">
@@ -145,9 +145,7 @@
 	                </div>
     			
     			<script>
-	    			function bookSearch(){
-						location.href = "<%= contextPath %>/bkSearch.bk";
-					}
+	  
     				function beforeCheckCart(){
     					location.href = "<%= contextPath %>/loginForm.me";
     				}
