@@ -89,6 +89,7 @@
 	          , ENROLL_DATE
 	          , RECENT_LOGIN
 	          , ADMIN_YN
+	          , MEM_STATUS
 		  FROM TB_MEMBER
 		 WHERE ADMIN_YN = 'N'
 		   AND MEM_ID = ?
@@ -97,7 +98,7 @@
 	<entry key="deleteMember">
 		UPDATE
 			   TB_MEMBER
-		   SET STATUS = 'N' 
+		   SET MEM_STATUS = 'N' 
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>

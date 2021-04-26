@@ -185,7 +185,7 @@ public class MemberDao {
 							   rset.getDate("recent_login"),
 							   rset.getString("admin_yn"),
 							   rset.getString("mem_status"));
-			}
+		}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
