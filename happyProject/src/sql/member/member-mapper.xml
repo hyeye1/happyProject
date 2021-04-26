@@ -16,6 +16,7 @@
           , ENROLL_DATE
           , RECENT_LOGIN
           , ADMIN_YN
+          , MEM_STATUS
         FROM 
              TB_MEMBER
        WHERE 
