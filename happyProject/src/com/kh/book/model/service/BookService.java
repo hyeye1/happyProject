@@ -1,14 +1,15 @@
 package com.kh.book.model.service;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.kh.book.model.dao.BookDao;
 import com.kh.book.model.vo.Book;
 import com.kh.book.model.vo.Image;
+import com.kh.member.model.vo.Member;
 
 public class BookService {
 	
@@ -40,6 +41,17 @@ public class BookService {
 		
 		close(conn);
 		return i;
+		
+	}
+	
+	public Member loginMem(int memNo) {
+		
+		// 장바구니에 책을 담는 로그인한회원의 번호넘기기
+		Connection conn = getConnection();
+		Member m = new BookDao().loginMem(conn, memNo);
+		
+		close(conn);
+		return m;
 		
 	}
 

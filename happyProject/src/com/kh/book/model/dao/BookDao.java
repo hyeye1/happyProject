@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.kh.book.model.vo.Book;
 import com.kh.book.model.vo.Image;
+import com.kh.member.model.vo.Member;
 import com.kh.notice.model.dao.NoticeDao;
 
 public class BookDao {
@@ -135,8 +136,29 @@ public class BookDao {
 		}
 		return i;
 	}
-
 	
+	public Member loginMem(Connection conn, int memNo) {
+		
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("loginMem");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			
+			rset = pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+
+	}
 	
 
 }

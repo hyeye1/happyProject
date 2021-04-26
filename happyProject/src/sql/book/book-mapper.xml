@@ -42,6 +42,13 @@
 		  FROM TB_IMAGE
 		 WHERE BK_NO_IMG = ?
 	</entry>
+	
+	<entry key="loginMem">
+		SELECT
+		       MEM_NO
+		  FROM TB_MEMBER
+		 WHERE MEM_NO = ?
+	</entry>
 
 
 <!-- 	

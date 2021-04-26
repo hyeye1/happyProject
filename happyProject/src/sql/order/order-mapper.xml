@@ -7,8 +7,8 @@
 		  INTO TB_CART
 		  (
 		    CA_NO
-		  , BK_NO
-		  , MEM_NO
+		  , BK_NO_OR
+		  , MEM_NO_OR
 		  , AMOUNT
 		  , TOTAL_PRICE
 		  , BK_TITLE
@@ -20,8 +20,8 @@
 		  VALUES
 		  (
 		     SEQ_CNO
-		   , SEQ_BNO
-		   , SEQ_MNO
+		   , ?
+		   , ?
 		   , ?
 		   , ?
 		   , ?
