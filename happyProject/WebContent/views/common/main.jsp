@@ -21,6 +21,7 @@
                 height: 350px;
                 
             }
+            .mainOuter h2{ margin: 10px;}
             .mainOuter li{display: table-cell;}
             .mainOuter .coverImg{
                 width: 120px;
@@ -47,7 +48,7 @@
                 font-weight:bold;
             }
             .todayPick li p{color: gray; font-size: 10px; }
-            .todayBk{margin-right: 30px; margin-left: -10px; }
+            .todayBk{margin-right: 40px; margin-left: -9px; }
     		.bookName{width: 130px;}
     
     
@@ -173,6 +174,7 @@
                 <!-- 오늘의추천 -->
                 <br>
                 <h2>실시간 추천</h2>
+                <br>
                     <ul>
                         <li>
                             <div id="todayBk1" class="todayBk">
