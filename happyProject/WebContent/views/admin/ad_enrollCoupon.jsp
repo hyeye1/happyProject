@@ -32,15 +32,9 @@
     #table{height: 83%;}
 
     /* left-menubar */
-    #menubar{
-        background-color: rgb(224, 224, 224);
-    }
-    #content{
-        border-left: 5px double rgb(249, 219, 122);
-    }
-    #sub_title{
-        border-bottom: 3px solid rgb(249, 219, 122);
-    }
+    #menubar{background-color: rgb(224, 224, 224);}
+    #content{border-left: 5px double rgb(249, 219, 122);}
+    #sub_title{border-bottom: 3px solid rgb(249, 219, 122);}
 
     #homelogo{
     color: #505050;
@@ -89,8 +83,6 @@
         background-color:#f3f3f3;
         border: none;
     }
- 
-    
     .btn{
         background-color: #f3f3f3;
         border: none;
@@ -113,20 +105,16 @@
         margin-right: 17px;
         margin-top: 2px;
     }
-
     #couTable{
         width: 700px;
         height: 200px;
         margin : 50px;
-       
         text-align: center;
         border: 1px solid;
     }
     #couTable th{
         background-color: rgb(249, 219, 122);
         border-right: 1px dotted rgb(180, 178, 178);
-
-
     }
     #couTable tr{
         border-bottom: 1px dotted rgb(180, 178, 178);;
@@ -190,58 +178,57 @@
     <div class="wrap">
         <div id="menubar">
             <div id="home">
-                <a href="" id="homelogo">HOME</a>
+                <a href="${pageContext.request.contextPath}/views/admin/ad_home.jsp" id="homelogo">HOME</a>
             </div>
             <div id="title_name">
                 회원
             </div>
             <div id="title_Btn">
                 <ul id="btns">
-                    <li><button class="menuBtn" id="memberBtn" type="button" ">회원조회</button></li>
-                    <li><button class="menuBtn" id="couponBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 관리</button></li>
+                    <li><button class="menuBtn" id="memberBtn" type="button" ">쿠폰 조회</button></li>
+                    <li><button class="menuBtn" id="couponBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 등록</button></li>
                 </ul>
             </div>
         </div>
         <div id="content">
             <div id="login">
-                <input type="image" id="adLock" src="../resources/admin/adminlock.png" >
-                <img src="../resources/admin/adminlogo.png" id="adLogo">
+                <input type="image" id="adLock" src="${pageContext.request.contextPath}/resources/images/admin/adminlock.png" >
+                <img src="${pageContext.request.contextPath}/resources/images/admin/adminlogo.png"  id="adLogo">
             </div>
             <div id="sub_title">쿠폰 등록 </div>
-                <div id="table">
-                    <form id="enrollForm" action="" method="POST">
+            <div id="table">
+                <form id="enrollForm" action="" method="POST">
 
-                        <table id="couTable">
-                            <tr>
-                                <th width="30%">쿠폰명</th>
-                                <td><input type="text" id="couName" size="58" maxlength="25" required placeholder="20자 이내로 입력"></td>
-                            </tr>
-                            <tr>
-                                <th>할인액</th>
-                                <td><input type="text" id="couDiscount" size="58"required></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">시작일</th>
-                                <td><input type="text" id="couDiscount" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="30%">종료일</th>
-                                <td><input type="text" id="couDiscount" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>구매최소금액</th>
-                                <td><input type="text" id="couMinPrice" size="58"required> </td>
-                            </tr>
-                        </table>
-                        <div id="choice_btn">
-                            <button type="submit" id="enrollCou" class="btn btn-primary ">등록</button> &nbsp;
-                            <button type="reset" id="deleteCou" class="btn btn-primary ">초기화</button>
-                        </div>
-                    </form>
-                    
-                </div>
+                    <table id="couTable">
+                        <tr>
+                            <th width="30%">쿠폰명</th>
+                            <td><input type="text" id="couName" size="58" maxlength="25" required placeholder="20자 이내로 입력"></td>
+                        </tr>
+                        <tr>
+                            <th>할인액</th>
+                            <td><input type="text" id="couDiscount" size="58"required></td>
+                        </tr>
+                        <tr>
+                            <th width="30%">시작일</th>
+                            <td><input type="text" id="couDiscount" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="30%">종료일</th>
+                            <td><input type="text" id="couDiscount" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>구매최소금액</th>
+                            <td><input type="text" id="couMinPrice" size="58"required> </td>
+                        </tr>
+                    </table>
+
+                    <div id="choice_btn">
+                        <button type="submit" id="enrollCou" class="btn btn-primary ">등록</button> &nbsp;
+                        <button type="reset" id="deleteCou" class="btn btn-primary ">초기화</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

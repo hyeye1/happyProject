@@ -13,8 +13,9 @@
 		  FROM TB_COUPON
 		 WHERE STATUS = 'Y'
 		 ORDER 
-		    BY CREATE_NO DESC
+		    BY COU_NO DESC
 	</entry>
 	
+
 
 </properties>

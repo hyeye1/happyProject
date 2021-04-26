@@ -1,15 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -79,8 +69,9 @@
     </style>
 </head>
 <body>
-    <div class="findIdOuter" align="center">
-        <img  src="../../resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+<form  action="<%= request.getContextPath() %>/findId.me"  method="post" >
+    <div class="findIdOuter" align="center" >
+        <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
 
         
         <div class="findIdTitle" align="center">
@@ -89,18 +80,19 @@
         </div>
 
         <div class="findIdInput">
-            <input type="text" id="findIdName" placeholder="  성명" required><br>
-            <input type="email" id="findIdEmail" placeholder="  이메일 주소" required>
+            <input type="text" id="findIdName" name="memName" placeholder="  성명" required><br>
+            <input type="email" id="findIdEmail" name="email" placeholder="  이메일 주소" required>
             <p>※ 해피북스데이 가입시 사용하신 이메일을 입력해주세요</p>
         </div>
 
         <div class="findIdBtn">
-            <button type="submit" id="findIdSubmit">아이디 찾기</button> <br>
-            <button type="button" id="findIdRedirectLogin">로그인하기</button>
-            <a href="">비밀번호 찾기 ></a>
+            <button type="submit" id="findIdSubmit" >아이디 찾기</button> <br>
+            <button type="button" id="findIdRedirectLogin"  onclick="location.href= '<%= request.getContextPath() %>/loginForm.me';">로그인하기</button>
+            <a href="<%= request.getContextPath() %>/findPwdForm.me">비밀번호 찾기 ></a>
         </div>
         
 
     </div>
+</form>
 </body>
 </html>

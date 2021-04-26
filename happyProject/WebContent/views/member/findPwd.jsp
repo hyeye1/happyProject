@@ -116,7 +116,7 @@
 </head>
 <body>
     <div class="findPwdOuter" align="center">
-        <img  src="../../resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
+        <img  src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;">
 
         
         <div class="findPwdTitle" align="center">
@@ -131,11 +131,11 @@
                 해당 이메일로 임시 비밀번호를 보내드립니다. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
         </div>
 
-        <div class="findPwdBtn">
+        <form action="<%= request.getContextPath() %>/findPwd.me" class="findPwdBtn">
             <button type="submit" id="findPwdSubmit">링크 받기</button> <br>
-            <button type="button" id="findPwdRedirectLogin">로그인하기</button>
-            <a href="">아이디 찾기 ></a>
-        </div>
+            <button type="button" id="findPwdRedirectLogin" onclick="location.href= '<%= request.getContextPath() %>/loginForm.me';">로그인하기</button>
+            <a href="<%= request.getContextPath() %>/findIdForm.me">아이디 찾기 ></a>
+        </form>
      
         <div class="linkWrap">
             <div id="linkTitle">

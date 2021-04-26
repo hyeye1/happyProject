@@ -19,5 +19,7 @@ public class Ad_CouponService {
 		
 		return list;
 	}
+	
+
 
 }

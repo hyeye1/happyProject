@@ -65,6 +65,7 @@
             font-weight: 700;
             color: rgb(94, 94, 94);
         }
+        .join1Outer input, button, label {cursor: pointer;}
         
     </style>
 </head>
@@ -79,7 +80,7 @@
 		
 	<form action="<%= request.getContextPath() %>/joinForm2.me">
         <div class="join1Mid">
-            <span id="join1YN"><input type="checkbox" required> 만 14세 이상입니다.</span>
+            <span id="join1YN"><input type="checkbox" id="join1YNCheckbox" required><label for="join1YNCheckbox"> 만 14세 이상입니다.</label></span>
             <button type="submit" id="join1Btn" >회원가입</button> <br>
         </div>
 	</form>

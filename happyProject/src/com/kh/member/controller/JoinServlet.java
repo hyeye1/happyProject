@@ -36,7 +36,7 @@ public class JoinServlet extends HttpServlet {
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
 		String memName = request.getParameter("memName");
-		String memAddress = request.getParameter("address") + " " + request.getParameter("extra") + " " + request.getParameter("details") + ", 우편번호 : " + request.getParameter("postcode");
+		String memAddress = request.getParameter("address") + " " + request.getParameter("extra") + " " + request.getParameter("details");
 		String memPhone = request.getParameter("memPhone");
 		String email = request.getParameter("email");
 		String emailYN = request.getParameter("emailYN");

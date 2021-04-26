@@ -32,7 +32,7 @@ private Properties prop = new Properties();
 	
 	
 	
-	public int selectListCount(Connection conn, String serachType,String search) {
+	public int selectListCount(Connection conn, String searchType,String search) {
 		// 총게시글 수
 		int listCount = 0;
 		
@@ -41,15 +41,15 @@ private Properties prop = new Properties();
 		
 		String sql = prop.getProperty("selectListCount");
 		
-		if(serachType != null && search != null){
+		if(searchType != null && search != null){
 			
-			if(serachType.equals("bk_name")){
+			if(searchType.equals("bk_name")){
 
 				sql += "AND bk_name LIKE '%'||?||'%'";
-			}else if(serachType.equals("author")){
+			}else if(searchType.equals("author")){
 				
 				sql += "AND author LIKE '%'||?||'%'";
-			}else if(serachType.equals("publisher")){
+			}else if(searchType.equals("publisher")){
 				
 				sql += "AND publisher LIKE '%'||?||'%'";
 			}
@@ -60,7 +60,7 @@ private Properties prop = new Properties();
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			if(serachType != null && search != null){
+			if(searchType != null && search != null){
 				
 				pstmt.setString(1, search);
 			}
@@ -82,14 +82,15 @@ private Properties prop = new Properties();
 		return listCount; // 총 게시글 개수
 	}
 	
-	public ArrayList<Ad_Book> selectList(Connection conn, PageInfo pi,String serachType,String search){
+	public ArrayList<Ad_Book> selectList(Connection conn, PageInfo pi,String searchType,String search){
 		
 		ArrayList<Ad_Book> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		String sql = "";// prop.getProperty("selectList");
-
+		
+		
 		sql+= "SELECT *";
 		sql+= " FROM (";
 		sql+= "       SELECT";
@@ -108,14 +109,14 @@ private Properties prop = new Properties();
         sql+= "                  , BK_STOCK";
         sql+= "               FROM TB_BOOK ";
         sql+= "              WHERE STATUS = 'Y'"; 
-        if(serachType != null && search != null){
-	        if(serachType.equals("bk_name")){
+        if(searchType != null && search != null){
+	        if(searchType.equals("bk_name")){
 	
 				sql += "AND bk_name LIKE '%'||?||'%'";
-			}else if(serachType.equals("author")){
+			}else if(searchType.equals("author")){
 				
 				sql += "AND author LIKE '%'||?||'%'";
-			}else if(serachType.equals("publisher")){
+			}else if(searchType.equals("publisher")){
 				
 				sql += "AND publisher LIKE '%'||?||'%'";
 			}
@@ -132,7 +133,7 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			
 			
-			if(serachType != null && search != null){
+			if(searchType != null && search != null){
 				
 				pstmt.setString(1, search);
 				pstmt.setInt(2, (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1);
@@ -228,10 +229,8 @@ private Properties prop = new Properties();
 						rset.getString("bk_description"),
 						rset.getString("at_description"),
 						rset.getString("bk_content_list"),
-						rset.getString("bk_main_img"),
-						rset.getString("bk_publish_date"));
+						rset.getString("bk_main_img"));
 			}
-			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -298,7 +297,104 @@ private Properties prop = new Properties();
 		return result;
 		
 	}
-	
-	
+
+
+
+	public int insertBookAdmin(Connection conn, Ad_Book b) {
+		int result = 1;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertBookAdmin");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			pstmt.setInt(1, b.getBkPrice());
+			pstmt.setInt(2, b.getBkNo());
+			pstmt.setInt(3, b.getBkPageNo());
+			pstmt.setInt(4, b.getBkStock());
+			pstmt.setInt(5, b.getBkOriginPrice());
+			pstmt.setString(6, b.getAuthor());
+			pstmt.setString(7, b.getBkName());
+			pstmt.setString(8, b.getBkMainImg());
+			pstmt.setString(9, b.getBkPublishDate());
+			pstmt.setString(10, b.getBkGenre());
+			pstmt.setString(11, b.getBkDivision());
+			pstmt.setString(12, b.getIsbn());
+			pstmt.setString(13, b.getPublisher());
+			pstmt.setString(14, b.getAtDescription());
+			pstmt.setString(15, b.getBkDescription());
+			pstmt.setString(16, b.getBookContent());
+			pstmt.setString(17, b.getBkKeyword());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			result = 0;
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
+	public int selectSeqBook(Connection conn) {
+		// 총게시글 수
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectSeqBook");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("seq");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount; // 총 게시글 개수
+	}
+
+
+
+	public int insertImageAdmin(Connection conn, Ad_Image image) {
+		int result = 1;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertImageAdmin");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			pstmt.setInt(1, image.getBkNo());
+			pstmt.setString(2, image.getImgPath());
+			result = pstmt.executeUpdate();
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			result = 0;
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 }

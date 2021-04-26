@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member, com.kh.book.model.vo.*"%>
+<%
+	Member findId = (Member)session.getAttribute("findId");
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,7 +92,7 @@
         <div class="findIdSInput">
             <p>아이디 찾기가 완료되었습니다. <br> 개인정보 보호를 위해 아이디 일부를 별표*로 표시하였습니다.</p>
             <!-- 사용자 아이디 찾아 넣기 -->
-            <input type="text" id="findIdSName" placeholder="happ*******" disabled><br>
+            <input type="text" id="findIdSName" placeholder="<%= findId.getMemId() %>" disabled><br>
             <button type="submit" id="findIdSSubmit">로그인하기</button> <br>
         </div>
 

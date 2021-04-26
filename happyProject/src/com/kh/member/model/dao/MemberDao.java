@@ -56,7 +56,8 @@ public class MemberDao {
 							   rset.getString("enroll_route"),
 							   rset.getDate("enroll_date"),
 							   rset.getDate("recent_login"),
-							   rset.getString("admin_yn"));
+							   rset.getString("admin_yn"),
+							   rset.getString("mem_status"));
 			}
 			
 		} catch (SQLException e) {
@@ -244,8 +245,56 @@ public class MemberDao {
 		return result;
 	}
 		
+	public Member findIdMember(Connection conn, String memName, String email) {
+		// select문 => ResultSet객체 (한행) => Member객체
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findIdMember"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			pstmt.setString(1, memName);
+			pstmt.setString(2, email);
+			
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(rset.getString("mem_id"),
+							   rset.getString("mem_name"),
+							   rset.getString("email"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+	}
 		
 		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 
 

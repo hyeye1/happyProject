@@ -16,12 +16,13 @@ public class Member {
 	private Date enrollDate;
 	private Date recentLogin;
 	private String adminYN;
+	private String memStatus;
 	
 	public Member() {}
 
 	public Member(int memNo, String memId, String memPwd, String memName, String memAddress, String memPhone,
 			String email, String emailYN, String enrollRoute, Date enrollDate, Date recentLogin,
-			String adminYN) {
+			String adminYN, String memStatus) {
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -35,9 +36,17 @@ public class Member {
 		this.enrollDate = enrollDate;
 		this.recentLogin = recentLogin;
 		this.adminYN = adminYN;
+		this.memStatus = memStatus;
 	}
 	
 	
+
+	public Member(String memId, String memName, String email) {
+		super();
+		this.memId = memId;
+		this.memName = memName;
+		this.email = email;
+	}
 
 	public Member(String memId, String memPwd, String memName, String memAddress, String memPhone, String email, String emailYN) {
 		super();
@@ -165,15 +174,25 @@ public class Member {
 	public void setAdminYN(String adminYN) {
 		this.adminYN = adminYN;
 	}
+	
 
-	@Override
-	public String toString() {
-		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", memName=" + memName
-				+ ", memAddress=" + memAddress + ", memPhone=" + memPhone + ", email="
-				+ email + ", emailYN=" + emailYN + ", enrollRoute=" + enrollRoute + ", enrollDate=" + enrollDate
-				+ ", recentLogin=" + recentLogin + ", adminYN=" + adminYN + "]";
+	public String getMemStatus() {
+		return memStatus;
 	}
 
+	public void setMemStatus(String memStatus) {
+		this.memStatus = memStatus;
+	}
+
+	@Override 
+	public String toString() {
+		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", memName=" + memName
+				+ ", memAddress=" + memAddress + ", memPhone=" + memPhone + ", email=" + email + ", emailYN=" + emailYN
+				+ ", enrollRoute=" + enrollRoute + ", enrollDate=" + enrollDate + ", recentLogin=" + recentLogin
+				+ ", adminYN=" + adminYN + ", memStatus=" + memStatus + "]";
+	}
+
+	
 	
 
 	

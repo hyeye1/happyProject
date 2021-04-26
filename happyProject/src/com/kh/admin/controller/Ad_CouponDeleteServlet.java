@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminEnrollServlet
+ * Servlet implementation class Ad_CouponDeleteServlet
  */
-@WebServlet("/adminForm.me")
-public class AdminEnrollServlet extends HttpServlet {
+@WebServlet("/delete.cou")
+public class Ad_CouponDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminEnrollServlet() {
+    public Ad_CouponDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,15 +27,16 @@ public class AdminEnrollServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/ad_home.jsp").forward(request, response);
-		
+		int couponNo = Integer.parseInt(request.getParameter("cno"));
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request,response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

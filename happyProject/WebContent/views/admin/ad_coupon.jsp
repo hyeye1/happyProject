@@ -3,20 +3,21 @@
 <%
 	ArrayList<Ad_Coupon> list = (ArrayList<Ad_Coupon>) request.getAttribute("list");
 %>
-
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+		Date nowTime = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CouponList</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified CSS -->
+<meta charset="UTF-8">
+<title>CouponList</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
@@ -35,10 +36,6 @@
     #sub_title{height: 12%;}
     #list{height:10%;}
     #table{height: 73%;}
-
-    #list>div{height: 100%; float: left;}
-    #sort{width: 30%;}
-    #choice_btn{width: 70%; text-align: right;}
 
     /* left-menubar */
     #menubar{
@@ -105,10 +102,12 @@
         font-size: smaller;
     }
     #table>table>thead>tr>th{
-        background-color: rgb(224,224,224);
+        background-color: rgb(230, 230, 230);
         border: 1px solid gray;
         font-size: small;
         height: 31px;
+        border-bottom: 4px double;
+        
     }
     #table>table>tbody>tr>td{
         border: 1px solid gray;
@@ -137,8 +136,6 @@
         margin-top: 2px;
     }
 
-   
-   
     /* 관리자모드 종료 팝업창 */
     .adEndWrap{
         position: absolute;
@@ -190,8 +187,8 @@
             </div>
             <div id="title_Btn">
                 <ul id="btns">
-                    <li><button class="menuBtn" id="memberBtn" type="button" ">회원조회</button></li>
-                    <li><button class="menuBtn" id="couponBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 관리</button></li>
+                    <li><button class="menuBtn" id="memberBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 조회</button></li>
+                    <li><button class="menuBtn" id="couponBtn" type="button" >쿠폰 등록</button></li>
                 </ul>
             </div>
         </div>
@@ -201,18 +198,8 @@
                 <img src="${pageContext.request.contextPath}/resources/images/admin/adminlogo.png"  id="adLogo">
             </div>
             <div id="sub_title">쿠폰 관리</div>
-            <div id="list">
-                <div id="sort" style="padding: 18px 15px;">
-                    <select name="sortlist" id="sortlist" style="width: 50px; height:40px; font-size: small;">
-                        <option value="all">전체</option>
-                        <option value="start">진행</option>
-                        <option value="end">만료</option>
-                    </select>
-                </div>
-                <div id="choice_btn" style="padding: 20px;">
-                    <button type="button" id="enrollCou" class="btn btn-primary ">쿠폰등록</button> &nbsp;
-                    <button type="button" id="deleteCou" class="btn btn-primary ">선택삭제</button>
-                </div>
+            <div id="list"style="padding: 20px 20px; " align="right" >
+                    진행 : <b style="color: red;">2</b>  &nbsp;&nbsp; 종료 : <b>1</b> 
             </div>
             
             <div id="table">
@@ -229,7 +216,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    	<!-- 조회된 결과가 없을 경우 -->
+                        <!-- 조회된 결과가 없을 경우 -->
 		                <% if(list.isEmpty()) { %>
 			                <tr>
 			                    <td colspan="7">조회된 리스트가 없습니다.</td>
@@ -244,7 +231,7 @@
 		                            <td><%= c.getCouStart() %></td>
 		                            <td><%= c.getCouEnd() %></td>
 		                            <td><%= c.getCouCondition() %></td>
-		                            <td><a href="" class="btn btn-primary btn-sm">삭제</a></td>
+		                            <td><a href="${pageContext.request.contextPath}/delete.cou?cno=<%=c.getCouNo()%>" class="btn btn-primary btn-sm">삭제</a></td>
 	                           </tr>
   							<% } %>
                 		<% } %>
@@ -261,13 +248,12 @@
             <div id="adEndTitle">
                 <h3 id=adEndTitleName align="center">CONFIRM</h3>        
             </div>
-
             <div id="adEndContent">
                 <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
                     관리메뉴를 종료하시겠습니까?
                 </div>    
                 <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    2021.04.18 15:01:33
+                    <%= sf.format(nowTime)%>
                 </div>
                 <div id="adEndBtn" style="margin-left: 26%;">
                     <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>

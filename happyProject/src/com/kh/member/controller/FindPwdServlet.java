@@ -1,4 +1,4 @@
-package com.kh.admin.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminEnrollServlet
+ * Servlet implementation class FindPwdServlet
  */
-@WebServlet("/adminForm.me")
-public class AdminEnrollServlet extends HttpServlet {
+@WebServlet("/findPwd.me")
+public class FindPwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminEnrollServlet() {
+    public FindPwdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,16 +26,18 @@ public class AdminEnrollServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("views/admin/ad_home.jsp").forward(request, response);
-		
+
+		request.setCharacterEncoding("utf-8");
+	
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request,response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

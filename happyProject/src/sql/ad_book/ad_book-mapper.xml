@@ -34,7 +34,17 @@
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	
+	<!-- 오늘의추천 -->
+	<entry key="selectBookList">
+		SELECT 
+			   BK_NO
+		     , BK_NAME
+		     , AUTHOR
+		     , BK_MAIN_IMG
+		  FROM TB_BOOK
+		 WHERE BK_NO = ? 
+
+	</entry>
 	
 	<!-- 책 상세보기 -->
 	<entry key="bookDetail">
@@ -58,7 +68,29 @@
 		   AND STATUS = 'Y' 
 	</entry>
 	
-
+	<entry key="bookInfoImg">
+		SELECT
+			   IMG_NO
+			 , BK_NO 
+		     , IMG_PATH
+		  FROM TB_IMAGE
+		 WHERE BK_NO = ?
+	</entry>
+	
+	
+	<entry key="selectReviewList">
+		SELECT
+		       RE_NO
+		     , RE_CONTENT
+		     , MEM_NO
+		     , RE_DATE
+		  FROM TB_REVIEW
+		  JOIN TB_MEMBER USING(MEM_NO)
+		  JOIN TB_BOOK USING(BK_NO)
+		 WHERE BK_NO = ? 
+		 ORDER BY RE_DATE DESC
+	</entry>
+	
 	<entry key="insertBook">
 		INSERT
   		  INTO TB_BOOK
@@ -114,7 +146,6 @@
 		     , AT_DESCRIPTION
 		     , BK_CONTENT_LIST
 		     , BK_MAIN_IMG
-		     , BK_PUBLISH_DATE
 		  FROM TB_BOOK
 		 WHERE BK_NO = ?
 		   AND STATUS = 'Y' 
@@ -137,4 +168,109 @@
 		 WHERE BK_NO = ?
 		   AND STATUS = 'Y' 
 	</entry>
+	<entry key="insertBookAdmin">
+		INSERT INTO TB_BOOK 
+		(
+			STATUS
+			,BK_ENROLL_DATE
+			,BK_PRICE
+			,BK_NO
+			,BK_HITS
+			,BK_PAGE_NO
+			,BK_STOCK
+			,BK_ORIGIN_PRICE
+			,AUTHOR
+			,BK_NAME
+			,BK_MAIN_IMG
+			,BK_PUBLISH_DATE
+			,BK_GENRE
+			,BK_DIVISION
+			,ISBN
+			,PUBLISHER
+			,AT_DESCRIPTION
+			,BK_DESCRIPTION
+			,BK_CONTENT_LIST
+			,BK_KEYWORD
+		)
+			VALUES 
+		(
+			'Y'
+			,SYSDATE
+			,?
+			,?
+			,'0'
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+		)
+	</entry>
+	<entry key="insertImageAdmin">
+		INSERT INTO TB_BOOK 
+		(
+			STATUS
+			,BK_ENROLL_DATE
+			,BK_PRICE
+			,BK_NO
+			,BK_HITS
+			,BK_PAGE_NO
+			,BK_STOCK
+			,BK_ORIGIN_PRICE
+			,AUTHOR
+			,BK_NAME
+			,BK_MAIN_IMG
+			,BK_PUBLISH_DATE
+			,BK_GENRE
+			,BK_DIVISION
+			,ISBN
+			,PUBLISHER
+			,AT_DESCRIPTION
+			,BK_DESCRIPTION
+			,BK_CONTENT_LIST
+			,BK_KEYWORD
+		)
+			VALUES 
+		(
+			'Y'
+			,SYSDATE
+			,?
+			,?
+			,'0'
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+			,?
+		)
+	</entry>
+	
+	<entry key="selectSeqBook">
+		 SELECT SEQ_BNO.NEXTVAL AS "seq" FROM DUAL
+	</entry>
+	
+	<entry key="insertImageAdmin">
+		 INSERT INTO TB_IMAGE VALUES ( seq_img.nextval, ?, ?, SYSDATE )
+	</entry>
+	
 </properties>

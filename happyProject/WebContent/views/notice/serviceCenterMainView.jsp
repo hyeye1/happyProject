@@ -4,6 +4,7 @@
    Faq f = (Faq)request.getAttribute("f");
    PageInfo pi = (PageInfo)request.getAttribute("pi");
    ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+   
 %>    
 
 <!DOCTYPE html>
@@ -128,7 +129,7 @@
               }
             }
           
-            items.forEach(item = item.addEventListener('click', openCloseAnswer));
+            items.forEach(item => item.addEventListener('click', openCloseAnswer));
           </script>
          </div>
     </section>  

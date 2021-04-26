@@ -43,6 +43,7 @@
 		 WHERE BK_NO_IMG = ?
 	</entry>
 
+
 <!-- 	
 	<entry key="insertBook">
 		INSERT
@@ -86,6 +87,7 @@
 	       , ?
 	       )     
 	</entry>
+
 	
 	<entry key="selectBook">
 		SELECT 

@@ -1,6 +1,8 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +14,16 @@ import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberUpdatePwdServlet
+ * Servlet implementation class FindIdFormServlet
  */
-@WebServlet("/updatePwd.me")
-public class MemberUpdatePwdServlet extends HttpServlet {
+@WebServlet("/findIdForm.me")
+public class FindIdFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberUpdatePwdServlet() {
+    public FindIdFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,29 +32,26 @@ public class MemberUpdatePwdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher view = request.getRequestDispatcher("views/member/findId.jsp");
+		view.forward(request, response);
 		
-		String memId = request.getParameter("memId");
-		String memPwd = request.getParameter("memPwd");
+		request.setCharacterEncoding("utf-8");
 		
-		String updatePwd = request.getParameter("updatePwd");
+		String memName = request.getParameter("memName");
+		String email = request.getParameter("email");
 		
-		Member updateMem = new MemberService().updatePwdMember(memId, memPwd, updatePwd);
+		Member m = new MemberService().findIdMember(memName, email);
 		
-		HttpSession session = request.getSession();
-		
-		if(updateMem == null) { // 비밀번호 변경실패 => alert 비밀번호 변경 실패했습니다.
-			session.setAttribute("alertMsg", "비밀번호 변경 실패했습니다.");
+		if(m == null) {
+			// 아이디찾기실패
 			
-		}else { // 성공 => alert 성공적으로 비밀번호 변경됐습니다.
-			session.setAttribute("alertMsg", "성공적으로 비밀번호 변경됐습니다.");
-			session.setAttribute("loginUser", updateMem);
+		}else { // 아이디찾기 성공
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("findId", m);
+			
+			response.sendRedirect(request.getContextPath()+"/findId.me");
 		}
-		
-		// 성공했든 실패했든 결국 마이페이지 볼꺼임
-		response.sendRedirect(request.getContextPath() + "/myPage.info");
-		
-		
-		
 	}
 
 	/**

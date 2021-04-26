@@ -44,7 +44,7 @@ public class Ad_BoookDetailServlet extends HttpServlet {
 			
 			request.getRequestDispatcher("views/admin/ad_detailBook.jsp").forward(request, response);
 			
-			System.out.println(im);
+			//System.out.println(im);
 			
 	}
 
