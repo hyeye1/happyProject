@@ -69,7 +69,7 @@
 							<td id="myTitle02"style="padding-top: 30px;">주문내역</td>
 						</tr>
 						<tr>
-							<td><a href="" style="color: lightslategrey">주문/ 배송조회</a></td>										
+							<td><a href="<%=contextPath%>/myTracking.me" style="color: lightslategrey">주문/ 배송조회</a></td>										
 						</tr>
 						<tr>
 							<td><a href ="<%=contextPath%>/cancelrefund.me" style="color: lightslategrey">취소/반품조회</a></td>
@@ -83,10 +83,10 @@
 							<td id="myTitle02">나의 책갈피</td>
 						</tr>
 						<tr>
-							<td><a href="" style="color: lightslategrey">오늘 본 상품</a></td>
+							<td><a href="<%=contextPath%>/todaylsit.me" style="color: lightslategrey">오늘 본 상품</a></td>
 						</tr>
 						<tr>
-							<td><a href="" style="color: lightslategrey">보관함</a></td>
+							<td><a href="<%=contextPath%>/like.me" style="color: lightslategrey">보관함</a></td>
 						</tr>
 						<tr>
 							<td><a href="http://localhost:8880/happyProject/reviewWrite.me" style="color: lightslategrey">나의 리뷰</a></td>
