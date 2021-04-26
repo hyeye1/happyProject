@@ -18,7 +18,8 @@
         
             .todayPick{
                 background-color: rgb(224, 224, 224);
-                height: 340px;
+                height: 350px;
+                
             }
             .mainOuter li{display: table-cell;}
             .mainOuter .coverImg{
@@ -45,8 +46,10 @@
                 font-size:12px;
                 font-weight:bold;
             }
-            .todayPick li p{color: gray; font-size: 10px;}
-            .todayBk{margin: 17px;}
+            .todayPick li p{color: gray; font-size: 10px; }
+            .todayBk{margin-right: 30px; margin-left: -10px; }
+    		.bookName{width: 130px;}
+    
     
             .hash{height: 300px;}
             .hashNow p{
@@ -140,7 +143,7 @@
                 margin-top: 25px;
                 }
             .weeklyTops .title{font-size: 11px;}
-            .author{
+            .weeklyBest .author{
                 font-weight: 500; 
                 font-size: 10px; 
                 float: left;
@@ -174,8 +177,8 @@
                         <li>
                             <div id="todayBk1" class="todayBk">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
-                                    <img class="coverImg" src="" >
-                                    <span class="bookName"></span>
+                                    <img class="coverImg" src="">
+                                    <div class="bookName"></div>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -184,7 +187,7 @@
                             <div id="todayBk2" class="todayBk">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <span class="bookName"></span>
+                                    <div class="bookName"></div>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -193,7 +196,7 @@
                             <div id="todayBk3" class="todayBk">
 								<a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <span class="bookName"></span>
+                                    <div class="bookName"></div>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -202,7 +205,7 @@
                             <div id="todayBk4" class="todayBk">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <span class="bookName"></span>
+                                    <div class="bookName"></div>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -211,7 +214,7 @@
                             <div id="todayBk5" class="todayBk">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <span class="bookName"></span>
+                                    <div class="bookName"></div>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -220,7 +223,7 @@
                             <div id="todayBk6" class="todayBk"">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <span class="bookName"></span>
+                                    <div class="bookName"></div>
                                 </a>
                                 <p class="author"></p>
                             </div>
