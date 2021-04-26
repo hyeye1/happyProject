@@ -129,8 +129,11 @@
                 <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
                 <input type="text" id="menubarSearchInput" > 
                 <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색" onclick="bookSearch();">
-    			
-    			
+    			<script>
+    			function bookSearch(){
+					location.href ="<%= contextPath %>/bkSearch.bk";
+    			}
+    			</script>
     			
     		<% if(loginUser == null) { %>
     		
@@ -145,7 +148,8 @@
 	                </div>
     			
     			<script>
-	  
+    			
+	 
     				function beforeCheckCart(){
     					location.href = "<%= contextPath %>/loginForm.me";
     				}
