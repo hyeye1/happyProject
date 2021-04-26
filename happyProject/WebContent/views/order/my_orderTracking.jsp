@@ -34,14 +34,14 @@
             font-size: large;
             padding-top: 15px;
             padding-left: 10px;
-            width: 450px; background-color: lightgray;
+            width: 460px; background-color: lightgray;
             height:40px;
             }
         .check{
             padding:20px;
             padding-left:0;
-            width: 460px;
-            height: 250px;
+            width: 470px;
+            height: 150px;
                 
         }
         #inputSearch{
