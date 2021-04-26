@@ -60,8 +60,8 @@
 		               (SELECT
 		                       BK_NO
 		                     , BK_HITS
-		                     , BK_NAME
-		                     , AUTHOR
+		                     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
+		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
 		                     , BK_DIVISION
 		                     , BK_GENRE
 		                     , BK_PRICE

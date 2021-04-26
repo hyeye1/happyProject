@@ -52,7 +52,7 @@
         .bkPrice{
             color: rgb(52, 152, 219);
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 600;
             vertical-align: bottom;
         }
         .coverImg{
@@ -117,7 +117,7 @@
             <a href="" class="bestCat">스테디셀러</a>
         </div>
 
-        <br><br>
+        <br>
 
         <div>
             <table class="bestBody">
@@ -125,25 +125,27 @@
                 <tr>
             		<%for(int i = 0; i<5; i++) {%>
 	                    <td>
-	                    <div>
-	                        <h1><%= (i+1)*(j) %></h1>
-	                        <input class="coverImg" type="image" src="<%= list.get(i).getBkMainImg() %>">
-	                        <p>
-	                            <a href="">
-	                            <span class="bkName"><%= list.get(i).getBkName() %></span><br>
-	                            <span class="bkAuthor"><%= list.get(i).getAuthor() %></span><br>
-	                            <span class="bkPrice"><%= list.get(i).getBkPrice() + "원" %></span>
+	                    <div class="bkD">
+	                        <h1><%= (i+1)+j*5 %></h1>
+	                            <a href="<%= request.getContextPath()%>/bkDetails.bk?bookNo=<%= list.get(i+(j*5)).getBookNo() %>">
+			                        <input class="coverImg" type="image" src="<%= list.get(i+(j*5)).getBkMainImg() %>">
+			                        <p>
+			                            <span class="bkName"><%= list.get(i+(j*5)).getBkName() %></span><br>
+			                            <span class="bkAuthor"><%= list.get(i+(j*5)).getAuthor() %></span><br>
+			                            <span class="bkPrice"><%= list.get(i+(j*5)).getBkPrice() + "원" %></span>
+			                        </p>
 	                            </a>
-	                        </p>
 	                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="" >
 	                    </div>
 	                    </td>
+	                    
                 	<% } %>
                 </tr>
                 
                 <% } %>
                 
             </table>
+
 
             <div class="addCartWrap">
                 <div id="addCartTitle">
