@@ -183,7 +183,8 @@ public class MemberDao {
 							   rset.getString("enroll_route"),
 							   rset.getDate("enroll_date"),
 							   rset.getDate("recent_login"),
-							   rset.getString("admin_yn"));
+							   rset.getString("admin_yn"),
+							   rset.getString("mem_status"));
 			}
 			
 		} catch (SQLException e) {
