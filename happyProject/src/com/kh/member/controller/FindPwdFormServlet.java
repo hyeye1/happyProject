@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class FindPwdFormServlet
@@ -30,6 +34,24 @@ public class FindPwdFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher("views/member/findPwd.jsp");
 		view.forward(request, response);
+		
+		request.setCharacterEncoding("utf-8");
+		
+		String memId = request.getParameter("memId");
+		String email = request.getParameter("email");
+		
+		Member m = new MemberService().findPwdMember(memId, email);
+		
+		if(m == null) {
+			// 비번찾기실패
+			
+		}else { // 비번찾기 성공
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("findPwd", m);
+			
+			response.sendRedirect(request.getContextPath()+"/findPwd.me");
+		}
 	}
 
 	/**

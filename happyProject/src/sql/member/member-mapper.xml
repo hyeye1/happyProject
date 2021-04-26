@@ -113,7 +113,8 @@
 	
 	<entry key="findIdMember">
 		SELECT 
-		       MEM_ID,
+		       RPAD(SUBSTR(MEM_ID, 1, 4), LENGTHB(MEM_ID), '*') MEM_ID,
+		       MEM_PWD,
 		       MEM_NAME,
 		       EMAIL
 		  FROM
@@ -122,6 +123,21 @@
 		       MEM_NAME = ?
 		   AND EMAIL = ?
 	</entry>
+	
+		<entry key="findPwdMember">
+		SELECT 
+			   MEM_ID,
+		       RPAD(SUBSTR(MEM_PWD, 1, 1), LENGTHB(MEM_PWD), '*') MEM_PWD,
+		       MEM_NAME,
+		       EMAIL
+		  FROM
+		       TB_MEMBER
+		 WHERE 
+		       MEM_ID = ?
+		   AND EMAIL = ?
+	</entry>
+	
+	
 	
 	
 

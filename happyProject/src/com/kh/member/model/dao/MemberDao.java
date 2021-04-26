@@ -264,6 +264,40 @@ public class MemberDao {
 			
 			if(rset.next()) {
 				m = new Member(rset.getString("mem_id"),
+							   rset.getString("mem_pwd"),
+							   rset.getString("mem_name"),
+							   rset.getString("email"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+	}
+	
+	public Member findPwdMember(Connection conn, String memId, String email) {
+		// select문 => ResultSet객체 (한행) => Member객체
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findPwdMember"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			pstmt.setString(1, memId);
+			pstmt.setString(2, email);
+			
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(rset.getString("mem_id"),
+							   rset.getString("mem_pwd"),
 							   rset.getString("mem_name"),
 							   rset.getString("email"));
 			}

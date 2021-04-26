@@ -34,14 +34,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
 		
 		Member m = new MemberService().loginMember(memId, memPwd);
 		
-		if(m == null) {
-			// 로그인실패
+		if(m == null) { //로그인실패
+			response.getWriter().println("<script>alert('로그인에 실패하였습니다. 아이디 또는 비밀번호를 확인해주세요.');</script>");
 		}else { // 로그인성공
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", m);
