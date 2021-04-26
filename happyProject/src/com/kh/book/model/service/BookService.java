@@ -42,6 +42,13 @@ public class BookService {
 		return i;
 		
 	}
+	
+	public ArrayList<Book> bestBookList(int rNum){
+		Connection conn = getConnection();
+		ArrayList<Book> list = new BookDao().bestBookList(conn, rNum);
+		close(conn);
+		return list;
+	}
 
 	
 	

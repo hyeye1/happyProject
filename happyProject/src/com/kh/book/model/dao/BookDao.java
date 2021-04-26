@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.kh.book.model.vo.Book;
 import com.kh.book.model.vo.Image;
+import com.kh.member.model.vo.Member;
 import com.kh.notice.model.dao.NoticeDao;
 
 public class BookDao {
@@ -134,6 +135,43 @@ public class BookDao {
 			close(pstmt);
 		}
 		return i;
+	}
+	
+	public ArrayList<Book> bestBookList(Connection conn, int rNum) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("loginMember"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			pstmt.setInt(1, rNum);
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+							      rset.getString("bk_name"),
+							      rset.getString("author"),
+							      rset.getString("bk_division"),
+							      rset.getString("bk_genre"),
+							      rset.getInt("bk_price"),
+							      rset.getString("bk_main_img"),
+							      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 
 	

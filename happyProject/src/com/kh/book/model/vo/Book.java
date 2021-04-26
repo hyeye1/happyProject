@@ -63,6 +63,19 @@ public class Book {
 	
 	
 
+	public Book(int bookNo, String bkName, String author, String bkDivision, String bkGenre, int bkPrice,
+			String bkMainImg, int bkHits) {
+		super();
+		this.bookNo = bookNo;
+		this.bkName = bkName;
+		this.author = author;
+		this.bkDivision = bkDivision;
+		this.bkGenre = bkGenre;
+		this.bkPrice = bkPrice;
+		this.bkMainImg = bkMainImg;
+		this.bkHits = bkHits;
+	}
+
 	public Book(int bookNo, String bkName, String author, String publisher, String bkPubDate, String bkDivision,
 			String bkGenre, int bkOrgPrice, int bkPrice, String bkDescription, String atDescription,
 			String bkContentList, String bkMainImg) {
