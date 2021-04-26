@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,13 +57,13 @@
                 <tr>
                     <th>내용</th>
                     <td>
-                        <p>리뷰 상세보기 내용</p>
+                        <p>너무너무 재미있어요~~~~!!~!~!~!</p>
                     </td>
                 </tr>
             </table>
             <br>
             <div class="button">
-                <button id="btn" type="button">목록가기</button>
+                <button id="btn" type="button" onClick="location.href='<%= contextPath %>/reviewWrite.me'">목록가기</button>
                 <button id="btn" type="submit">수정하기</button>
                 <button id="btn" type="reset">삭제하기</button>
             </div>

@@ -101,7 +101,7 @@
         </table>
 
         <br><br><br>
-        <span id="text2">사용 만료 쿠폰</span>
+        <span id="text2">사용 완료 및 만료 쿠폰</span>
         
 
         <table class="couponList1">
