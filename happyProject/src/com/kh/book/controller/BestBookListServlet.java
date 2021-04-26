@@ -33,10 +33,11 @@ public class BestBookListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int rNum = Integer.parseInt(request.getParameter("rNum"));
 		
 		// 필요한 리스트 조회
-		ArrayList<Book> list = new BookService().bestBookList(rNum);
+		ArrayList<Book> list = new BookService().bestBookList();
+		//System.out.println(list);
+		
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/book/bestBk.jsp").forward(request, response);
