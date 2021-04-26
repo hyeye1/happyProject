@@ -18,7 +18,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/hover-min.css">
    
    <style>
         .bestOuter{
@@ -122,214 +121,28 @@
 
         <div>
             <table class="bestBody">
+           		 <% for(int j=0; j<4; j++) {%>
                 <tr>
-                    <td>
-                    <div>
-                        <h1 name="rNum">1</h1>
-                        <input class="coverImg" type="image" src="<%= list.get(1).getBkMainImg() %>">
-                        <p>
-                            <a href=""><span class="bkName">돈의 심리학</span><br><span class="bkAuthor">모건 하우절</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="" >
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>2</h1>
-                        <input class="coverImg" type="image" src="resources/images/도서이미지(수정)/소설/달러구트.jpg">
-                        <p>
-                            <a href=""><span class="bkName">달러구트 꿈 백화점</span><br><span class="bkAuthor">이미예</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>3</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg">
-                        <p>
-                            <a href=""><span class="bkName">그런 사람 또 없습니다</span><br><span class="bkAuthor">원태연</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>4</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/모순.jpg">
-                        <p>
-                            <a href=""><span class="bkName">모순</span><br><span class="bkAuthor">양귀자</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>5</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/소년이온다.jpg">
-                        <p>
-                            <a href=""><span class="bkName">소년이 온다</span><br><span class="bkAuthor">한강</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
+            		<%for(int i = 0; i<5; i++) {%>
+	                    <td>
+	                    <div>
+	                        <h1><%= (i+1)*(j) %></h1>
+	                        <input class="coverImg" type="image" src="<%= list.get(i).getBkMainImg() %>">
+	                        <p>
+	                            <a href="">
+	                            <span class="bkName"><%= list.get(i).getBkName() %></span><br>
+	                            <span class="bkAuthor"><%= list.get(i).getAuthor() %></span><br>
+	                            <span class="bkPrice"><%= list.get(i).getBkPrice() + "원" %></span>
+	                            </a>
+	                        </p>
+	                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="" >
+	                    </div>
+	                    </td>
+                	<% } %>
                 </tr>
-                <tr>
-                    <td>
-                    <div>
-                        <h1>6</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/멋진신세계.jpg">
-                        <p>
-                            <a href=""><span class="bkName">멋진 신세계</span><br><span class="bkAuthor">올더스 헉슬리</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>7</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/보건교사안은영.jpg">
-                        <p>
-                            <a href=""><span class="bkName">보건교사 안은영</span><br><span class="bkAuthor">정세랑</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>8</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/분신.jpg">
-                        <p>
-                            <a href=""><span class="bkName">분신</span><br><span class="bkAuthor">히가시노게이고</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>9</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/아몬드.jpg">
-                        <p>
-                            <a href=""><span class="bkName">아몬드</span><br><span class="bkAuthor">손원평</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>10</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/프리즘.jpg">
-                        <p>
-                            <a href=""><span class="bkName">프리즘</span><br><span class="bkAuthor">손원평</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    <div>
-                        <h1>11</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/경제경영/02_돈의심리학.jpg">
-                        <p>
-                            <a href=""><span class="bkName">돈의 심리학</span><br><span class="bkAuthor">모건 하우절</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-					<div>
-                        <h1>12</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/달러구트.jpg">
-                        <p>
-                            <a href=""><span class="bkName">달러구트 꿈 백화점</span><br><span class="bkAuthor">이미예</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>13</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/시/그런사람또없습니다_표지.jpg">
-                        <p>
-                            <a href=""><span class="bkName">그런 사람 또 없습니다</span><br><span class="bkAuthor">원태연</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>14</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/모순.jpg">
-                        <p>
-                            <a href=""><span class="bkName">모순</span><br><span class="bkAuthor">양귀자</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>15</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/소년이온다.jpg">
-                        <p>
-                            <a href=""><span class="bkName">소년이 온다</span><br><span class="bkAuthor">한강</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    <div>
-                        <h1>16</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/멋진신세계.jpg">
-                        <p>
-                            <a href=""><span class="bkName">멋진 신세계</span><br><span class="bkAuthor">올더스 헉슬리</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>17</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/보건교사안은영.jpg">
-                        <p>
-                            <a href=""><span class="bkName">보건교사 안은영</span><br><span class="bkAuthor">정세랑</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>18</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/분신.jpg">
-                        <p>
-                            <a href=""><span class="bkName">분신</span><br><span class="bkAuthor">히가시노게이고</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>19</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/아몬드.jpg">
-                        <p>
-                            <a href=""><span class="bkName">아몬드</span><br><span class="bkAuthor">손원평</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <h1>20</h1>
-                        <input class="coverImg" type="image" src="../../resources/images/도서이미지(수정)/소설/프리즘.jpg">
-                        <p>
-                            <a href=""><span class="bkName">프리즘</span><br><span class="bkAuthor">손원평</span><br><span class="bkPrice">9,800 원</span></a>
-                        </p>
-                        <input class="addCartImage" type="image"  src="resources/images/addCart.png" alt="">
-                    </div>
-                    </td>
-                </tr>
+                
+                <% } %>
+                
             </table>
 
             <div class="addCartWrap">

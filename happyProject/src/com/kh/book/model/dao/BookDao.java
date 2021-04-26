@@ -137,17 +137,16 @@ public class BookDao {
 		return i;
 	}
 	
-	public ArrayList<Book> bestBookList(Connection conn, int rNum) {
+	public ArrayList<Book> bestBookList(Connection conn) {
 		// select문 => ResultSet객체 (한행) => book객체
 		ArrayList<Book> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("loginMember"); // 미완성된 sql문
+		String sql = prop.getProperty("bestBookList"); // 미완성된 sql문
 		
 		try {
 			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
-			pstmt.setInt(1, rNum);
 			// 실행
 			rset = pstmt.executeQuery();
 			
