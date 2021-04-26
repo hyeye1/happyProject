@@ -184,7 +184,7 @@ public class Member {
 		this.memStatus = memStatus;
 	}
 
-	@Override
+	@Override 
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", memName=" + memName
 				+ ", memAddress=" + memAddress + ", memPhone=" + memPhone + ", email=" + email + ", emailYN=" + emailYN
