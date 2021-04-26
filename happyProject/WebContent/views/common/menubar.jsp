@@ -52,7 +52,12 @@
                 border-left: 1px solid darkgray;
                 border-radius: 2px;
                 margin-left: -58px;
+                cursor: pointer;
             }
+            #menubarSearchButton:hover{
+            	color:white;
+            }
+            
             #menubarLoginBtn{
                 width: 28.8px;
                 float: right;
@@ -122,19 +127,27 @@
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
                 <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
-                <input type="text" id="menubarSearchInput" > <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색">
+                <input type="text" id="menubarSearchInput" > 
+                
+    			
+    			
     			
     		<% if(loginUser == null) { %>
     		
                 <!-- 로그인전 div -->
                
 	                <div id="loginBefore"  >
+	               		<input type="button" class="menubarSearch" id="menubarSearchButton" value="검색" onclick="bookSearch();">
+ 
 	                    <input type="image" id="menubarCartBtn" src="resources/images/cart.png" onclick="beforeCheckCart();">
 	                    <input type="image" id="menubarJoinBtn" src="resources/images/join.png" onclick="joinPage();">
 	                    <input type="image" id="menubarLoginBtn" src="resources/images/login.png" onclick="loginPage();">
 	                </div>
     			
     			<script>
+	    			function bookSearch(){
+						location.href = "<%= contextPath %>/bkSearch.bk";
+					}
     				function beforeCheckCart(){
     					location.href = "<%= contextPath %>/loginForm.me";
     				}
