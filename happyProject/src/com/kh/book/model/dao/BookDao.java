@@ -137,43 +137,6 @@ public class BookDao {
 		return i;
 	}
 	
-	public ArrayList<Book> bestBookList(Connection conn) {
-		// select문 => ResultSet객체 (한행) => book객체
-		ArrayList<Book> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("bestBookList"); // 미완성된 sql문
-		
-		try {
-			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
-			// 실행
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				
-				list.add(new Book(rset.getInt("bk_no"),
-							      rset.getString("bk_name"),
-							      rset.getString("author"),
-							      rset.getString("bk_division"),
-							      rset.getString("bk_genre"),
-							      rset.getInt("bk_price"),
-							      rset.getString("bk_main_img"),
-							      rset.getInt("bk_hits")));
-							 
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return list;
-	}
-
-	
 	public Member loginMem(Connection conn, int memNo) {
 		
 		Member m = null;
@@ -194,8 +157,271 @@ public class BookDao {
 			close(pstmt);
 		}
 		return m;
-
+		
 	}
+	
+	public ArrayList<Book> bestBookList(Connection conn) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("bestBookList"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+					      rset.getString("bk_name"),
+					      rset.getString("author"),
+					      rset.getString("bk_division"),
+					      rset.getString("bk_genre"),
+					      rset.getInt("bk_price"),
+					      rset.getDate("bk_enroll_date"),
+					      rset.getString("bk_main_img"),
+					      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<Book> newBookList(Connection conn) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("newBookList"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+							      rset.getString("bk_name"),
+							      rset.getString("author"),
+							      rset.getString("bk_division"),
+							      rset.getString("bk_genre"),
+							      rset.getInt("bk_price"),
+							      rset.getDate("bk_enroll_date"),
+							      rset.getString("bk_main_img"),
+							      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<Book> bestKrBookList(Connection conn) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("bestKrBookList"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+							      rset.getString("bk_name"),
+							      rset.getString("author"),
+							      rset.getString("bk_division"),
+							      rset.getString("bk_genre"),
+							      rset.getInt("bk_price"),
+							      rset.getDate("bk_enroll_date"),
+							      rset.getString("bk_main_img"),
+							      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<Book> newKrBookList(Connection conn) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("newKrBookList"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+							      rset.getString("bk_name"),
+							      rset.getString("author"),
+							      rset.getString("bk_division"),
+							      rset.getString("bk_genre"),
+							      rset.getInt("bk_price"),
+							      rset.getDate("bk_enroll_date"),
+							      rset.getString("bk_main_img"),
+							      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	
+	public ArrayList<Book> bestFoBookList(Connection conn) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("bestFoBookList"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+							      rset.getString("bk_name"),
+							      rset.getString("author"),
+							      rset.getString("bk_division"),
+							      rset.getString("bk_genre"),
+							      rset.getInt("bk_price"),
+							      rset.getDate("bk_enroll_date"),
+							      rset.getString("bk_main_img"),
+							      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<Book> newFoBookList(Connection conn) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("newFoBookList"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			// 실행
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+							      rset.getString("bk_name"),
+							      rset.getString("author"),
+							      rset.getString("bk_division"),
+							      rset.getString("bk_genre"),
+							      rset.getInt("bk_price"),
+							      rset.getDate("bk_enroll_date"),
+							      rset.getString("bk_main_img"),
+							      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<Book> hashSearchList(Connection conn, String hashkey) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("hashSearchList"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			// 실행
+			rset = pstmt.executeQuery();
+			//pstmt.setString(1, hashkey);
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+							      rset.getString("bk_name"),
+							      rset.getString("author"),
+							      rset.getString("bk_division"),
+							      rset.getString("bk_genre"),
+							      rset.getInt("bk_price"),
+							      rset.getDate("bk_enroll_date"),
+							      rset.getString("bk_main_img"),
+							      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+
 	
 
 }
