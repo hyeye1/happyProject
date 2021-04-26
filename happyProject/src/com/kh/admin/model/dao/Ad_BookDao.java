@@ -108,7 +108,7 @@ private Properties prop = new Properties();
         sql+= "                  , BK_PRICE";
         sql+= "                  , BK_STOCK";
         sql+= "               FROM TB_BOOK ";
-        sql+= "              WHERE STATUS = 'Y'"; 
+        sql+= "              WHERE BK_STATUS = 'Y'"; 
         if(searchType != null && search != null){
 	        if(searchType.equals("bk_name")){
 	
@@ -224,6 +224,7 @@ private Properties prop = new Properties();
 						rset.getInt("bk_no"),
 						rset.getString("bk_name"),
 						rset.getString("isbn"),
+						rset.getString("bk_publish_date"),
 						rset.getInt("bk_page_no"),
 						rset.getString("bk_keyword"),
 						rset.getString("bk_description"),
