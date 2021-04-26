@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CouponListViewServlet
+ * Servlet implementation class ReviewListFormServlet
  */
-@WebServlet("/coupon.me")
-public class CouponListViewServlet extends HttpServlet {
+@WebServlet("/reviewList.me")
+public class ReviewListFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CouponListViewServlet() {
+    public ReviewListFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,11 +26,8 @@ public class CouponListViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// 응답페이지 => 쿠폰조회 페이지
-		request.getRequestDispatcher("views/member/couponDetailView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/reviewListView.jsp").forward(request, response);
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -73,7 +73,7 @@
                 <td>4월 전고객 쿠폰</td>
                 <td>1000원</td>
                 <td>2021-04-01</td>
-                <td>2021-04-30</td>
+                <td>2021-05-31</td>
             </tr>
             <tr>
                 <th><input type="checkbox" class="checkbox"></th>
@@ -110,7 +110,7 @@
                 <td>생일 쿠폰</td>
                 <td>2000원</td>
                 <td>2021-03-25</td>
-                <td>2021-05-25</td>
+                <td>2021-04-25</td>
             </tr>
         </table>
     </div>

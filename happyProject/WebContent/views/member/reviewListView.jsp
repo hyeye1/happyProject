@@ -82,7 +82,7 @@
         <div class="top">
             <span id="text1">나의 리뷰</span><hr>
             <div class="btnouter">
-                <button class="btn3" onClick="location.href='<%= contextPath %>/review.me'">작성 가능 리뷰(0 or 1)</button>
+                <button class="btn3" onClick="location.href='<%= contextPath %>/reviewList.me'">작성 가능 리뷰(0 or 1)</button>
                 <button class="btn4" onClick="location.href='<%= contextPath %>/reviewWrite.me'">작성한 리뷰(1)</button>
             </div>
         </div>

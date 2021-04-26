@@ -190,6 +190,7 @@
             <!-- Modal body -->
             <div class="modal-body" align="center">
              <b>
+             		<img src="resources/images/cry.png" width="80px" height="60"><br>
 		         	탈퇴 후 복구가 불가능 합니다. <br>
 		         	정말로 탈퇴 하시겠습니까? 
 		         </b>

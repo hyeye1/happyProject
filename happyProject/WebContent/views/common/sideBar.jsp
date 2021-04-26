@@ -88,7 +88,7 @@
 							<td><a href="" style="color: lightslategrey">보관함</a></td>
 						</tr>
 						<tr>
-							<td><a href="" style="color: lightslategrey">나의 리뷰</a></td>
+							<td><a href="http://localhost:8880/happyProject/reviewWrite.me" style="color: lightslategrey">나의 리뷰</a></td>
 						</tr>
 					</table>
 					<table id="sideBar05"style="margin-top: 70px;">
@@ -96,7 +96,7 @@
 							<td id="myTitle02">나의혜택</td>
 						</tr>
 						<tr>
-							<td><a href="" style="color: lightslategrey">쿠폰</a></td>
+							<td><a href="http://localhost:8880/happyProject/coupon.me" style="color: lightslategrey">쿠폰</a></td>
 						</tr>
 					
 					</table>
@@ -105,10 +105,10 @@
 							<td id="myTitle02">나의 상담</td>
 						</tr>
 						<tr>
-							<td><a href="" style="color: lightslategrey">1:1 상담</a></td>
+							<td><a href="http://localhost:8880/happyProject/enrollForm.q" style="color: lightslategrey">1:1 상담하기</a></td>
 						</tr>
 						<tr>
-							<td><a href="" style="color: lightslategrey">나의 문의내역</a></td>
+							<td><a href="http://localhost:8880/happyProject/list.q?currentPage=1" style="color: lightslategrey">나의 문의내역</a></td>
 						</tr>
 					
 					</table>
