@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file = "../common/menubar.jsp" %>
+ <%
+		
+		String memName = loginUser.getMemName();
+	
+	%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +18,12 @@
             width: 1000px;
             height: 1140px;
         }
+        .outer2{
+        float:right;
+        margin:auto;
+        width:650px;
+        margin-top:30px;
+        } 
         .path{
             height:2%;
             width: 1000px;
@@ -37,6 +50,7 @@
         .order_status{
             width: 470px;
             padding-bottom: 200px;
+          
         }
         #table2{
             text-align: center;
@@ -87,9 +101,10 @@
 	 <div class="outer">
 		<br>
         <div class="path">홈>마이페이지</div>
-         <h1>주문/배송 조회</h1>
-         <hr>
-        <div class="normal"><b>김독자 님(일반)</b></div><br>
+        <section>
+         <h1>주문/배송 조회</h1> <hr>
+       <div class=outer2>       
+        <div class="normal"><b><%= loginUser.getMemName() %> 님(일반)</b></div><br>
         <div class="check">
             <form action method="get" id="orderCheckForm">
 			<table id="table1" border="1"  bordercolor= gray >
@@ -145,7 +160,13 @@
                    
                 </table>
         
+       		 </div>
        	 </div>
+       	 </section>
+       	 <aside>
+       	 	  <%@ include file = "../common/sideBar.jsp" %>
+       	 </aside>
+       	 
 	</div>
 
 

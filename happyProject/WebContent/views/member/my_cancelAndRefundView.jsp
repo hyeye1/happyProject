@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   
+<%@ include file = "../common/menubar.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +20,9 @@
 	        text-align: right;
 	    }
 	    .cancel_refund{
-	            width: 480px;
+	            width: 650px;
 	            height: 300px;
+	            float:right;
 	        }
 	    hr{margin-top: 1px;}
 	
@@ -47,7 +51,7 @@
 	    #refund:hover{color: white;}
 	    #table{
 	        text-align: center;
-	        width: 480px;
+	        width: 630px;
 	        height: 30px;
 	        border-collapse: collapse;
 	    }
@@ -64,6 +68,7 @@
 <div class="outer">
         <br>
         <div class="path">홈>마이페이지</div>
+        <seciton>
         <h1>취소/반품 조회</h1><hr>
         <br><br><br>
         <div class="cancel_refund">
@@ -84,6 +89,11 @@
                 <span>내역이 없습니다.</span>
             </div>
 	  	</div>
+	  	</seciton>
+	  	<aside>
+	  		 <%@ include file = "../common/sideBar.jsp" %>
+	  	
+	  	</aside>
  </div>
     
     

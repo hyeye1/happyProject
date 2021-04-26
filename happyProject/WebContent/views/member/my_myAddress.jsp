@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ include file = "../common/menubar.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +19,9 @@
             text-align: right;
         }
         .myAddress{
-            width: 500px;
+            width: 650px;
             height: 800px;
+            float:right;
         }
         #adBtn{
             background-color: #F9DB7A;
@@ -70,10 +72,11 @@
 </head>
 <body>
     <div class="outer">
-        <div class="path">
-            홈>마이페이지>나의 배송지 관리</div>     
+        <div class="path"> 홈>마이페이지>나의 배송지 관리</div>     
+        <section>
+        <h2>나의배송지</h2><hr>
         <div class="myAddress">
-            <h2>나의배송지</h2><hr>
+            
             <button id="adBtn">+ 배송지 추가 </button>
             <table id="myaddress_table" border="1" style="border-collapse: collapse;">
                 <tr style="background-color: lightgray;">
@@ -102,6 +105,10 @@
                 </tr>
             </table>
         </div>
+        </section>
+        <aside>
+        	 <%@ include file = "../common/sideBar.jsp" %>
+        </aside>
     </div>
     
 
