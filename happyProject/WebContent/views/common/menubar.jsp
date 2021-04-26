@@ -52,6 +52,8 @@
                 border-left: 1px solid darkgray;
                 border-radius: 2px;
                 margin-left: -58px;
+                cursor: pointer;
+                
             }
             #menubarLoginBtn{
                 width: 28.8px;
@@ -118,12 +120,13 @@
     <body>
 
         <div class="menubarOuter" >
-            
+            <form action="<%= request.getContextPath() %>/search.bo">
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
                 <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
-                <input type="text" id="menubarSearchInput" > <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색">
+                <input type="text" id="menubarSearchInput" > <button type="submit" class="menubarSearch" id="menubarSearchButton" >검색</button>
     			
+            </form>
     		<% if(loginUser == null) { %>
     		
                 <!-- 로그인전 div -->
@@ -182,8 +185,8 @@
                 		}
                 		
                 	</script>
-            </div>
             <% } %>
+            </div>
             
             
             <br clear="both">
@@ -191,9 +194,9 @@
             <div class="menubarCatWrap" align="center">
                 <!-- 카테고리 -->
                 <div class="menubarMenu"><a href="<%=contextPath%>/best.li">베스트도서</a></div>
-                <div class="menubarMenu"><a href="">신간도서</a></div>
-                <div class="menubarMenu"><a href="">국내도서</a></div>
-                <div class="menubarMenu"><a href="">외국도서</a></div>
+                <div class="menubarMenu"><a href="<%=contextPath%>/new.li">신간도서</a></div>
+                <div class="menubarMenu"><a href="<%=contextPath%>/kr.li">국내도서</a></div>
+                <div class="menubarMenu"><a href="<%=contextPath%>/fo.li">외국도서</a></div>
                 <div class="menubarMenu"><a href="<%=contextPath%>/Service.me">고객센터</a></div>
             </div>
             

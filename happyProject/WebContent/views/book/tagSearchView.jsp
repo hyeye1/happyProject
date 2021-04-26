@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"  import="java.util.ArrayList, com.kh.book.model.vo.*"%>
+<%
+	ArrayList<Book> list = (ArrayList<Book>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,6 @@
     <style>
         .outer{
             margin: auto;
-            margin-top: 50px;
             margin-bottom: 20px;
             border: 1px solid white;
             width:1000px;
@@ -98,8 +100,15 @@
     </style>
 </head>
 <body>
+	
+	
+	<%@ include file="../common/menubar.jsp" %>
+
+	
+	 
     <div class="outer">
-        <img src="resources/image/tag.png" width="1000" height="250">
+	<p align="left" style="color: gray; font-size:11px; font-weight: bolder;">HOME > 해쉬태그 검색</p>
+        <img src="resources/images/tag.png" width="1000" height="250">
         <br><br><br>
         <form class="tagSearch" action="" method="GET" align="center">
             <span>#</span>
@@ -122,9 +131,9 @@
         </div>
         <br><br>
        <div class="searchBook" align="center">
-            <span id="tagpoint">'# 해쉬태그'</span> 
+            <span id="tagpoint">'#<%= request.getParameter("hashkey") %>'</span> 
             <span>검색어로 총</span>
-            <span id="tagpoint">8</span>
+            <span id="tagpoint"><%= list.size() %></span>
             <span>가지의 관련 도서를 찾았습니다!</span>
             <br><hr>
 
