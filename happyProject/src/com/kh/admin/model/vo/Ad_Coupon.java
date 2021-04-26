@@ -11,7 +11,7 @@ public class Ad_Coupon {
 	private Date couEnd; // 유효기간 만료일
 	private int couCondition; // 사용조건금액
 	
-	private Ad_Coupon() {}
+	public Ad_Coupon() {}
 
 	public Ad_Coupon(int couNo, String couName, int discount, Date couStart, Date couEnd, int couCondition) {
 		super();

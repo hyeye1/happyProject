@@ -29,9 +29,9 @@ public class Ad_BookEnrollFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 응답페이지 => 회원가입페이지 
-				RequestDispatcher view = request.getRequestDispatcher("views/admin/ad_enrollBook.jsp");
-				view.forward(request, response);
+
+			RequestDispatcher view = request.getRequestDispatcher("views/admin/ad_enrollBook.jsp");
+			view.forward(request, response);
 	}
 
 	/**
