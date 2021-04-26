@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	Book c = (Cart)request.getAttribute("c");
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,6 +121,7 @@
     </style>
 </head>
 <body>
+	
 
 	<%@ include file = "../common/menubar.jsp" %>
 	
@@ -158,7 +157,7 @@
                     <td align="center"><img src="resources/images/도서이미지(수정)/소설/달러구트.jpg" style="width:80px; height:100px;"></td>
                     <td>
                         <p></p>
-                        <small><%= b.getAuthor() %></small> <br><br>
+                        <small></small> <br><br>
                         <button class="button" onclick="minus();">-</button>
                         <input type="number" value="1" min="1" max="9">
                         <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>

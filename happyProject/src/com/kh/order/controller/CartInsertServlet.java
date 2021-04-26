@@ -34,6 +34,14 @@ public class CartInsertServlet extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		
+		/*
+		   Book b = CartDao.selectedBook(bookNo);
+		   
+		   Cart c = new Cart(); 
+		   c.setBookDetail(b); 
+			
+		   CartDao.insert(c);
+		*/
 		
 		// 요청된값들 뽑아서 Cart에 넣기
 		// Cart에 Insert할 주문정보
@@ -42,7 +50,7 @@ public class CartInsertServlet extends HttpServlet {
 		int memNo = Integer.parseInt(request.getParameter("memNo")); 
 		int amount = Integer.parseInt(request.getParameter("amount")); 
 		int total = Integer.parseInt(request.getParameter("ttprice")); 
-		String status = request.getParameter("status"); 
+		//String status = request.getParameter("status"); 
 		String title = request.getParameter("title");
 		String author = request.getParameter("author");
 		int orgPrice = Integer.parseInt(request.getParameter("orgPrice"));
@@ -55,7 +63,7 @@ public class CartInsertServlet extends HttpServlet {
 		c.setMemNo(memNo);
 		c.setAmount(amount);
 		c.setTtPrice(total);
-		c.setStatus(status);
+		//c.setStatus(status);
 		c.setTitle(title);
 		c.setAuthor(author);
 		c.setOrgPrice(orgPrice);
@@ -64,12 +72,9 @@ public class CartInsertServlet extends HttpServlet {
 		
 		int result = new CartService().insertCart(c);
 		
-//		if(result > 0) { // 장바구니담기성공
-//			request.getSession().setAttribute("c", "성공적으로 장바구니에 담겼습니다.");
-//			response.sendRedirect(request.getContextPath() + "/bkDetails.bk"); 
-//		}else {
-//			
-//		}
+		request.getSession().setAttribute("c", "성공적으로 장바구니에 담겼습니다.");
+		response.sendRedirect(request.getContextPath() + "/bkDetails.bk"); 
+
 	
 	}
 
