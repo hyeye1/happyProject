@@ -16,6 +16,12 @@
 		    BY COU_NO DESC
 	</entry>
 	
+	<entry key = "deleteCoupon">
+		UPDATE
+		       TB_COUPON
+		   SET COU_STATUS = 'N'
+		 WHERE COU_NO = ?
+	</entry>
 
 
 </properties>
