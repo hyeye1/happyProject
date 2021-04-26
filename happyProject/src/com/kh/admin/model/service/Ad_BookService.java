@@ -77,6 +77,7 @@ public class Ad_BookService {
 		return result;
 	}
 	
+	// 관리자 도서등록 
 	public int insertBookAdmin(Ad_Book b) {
 		Connection conn = getConnection();
 		int result = new Ad_BookDao().insertBookAdmin(conn, b);
@@ -99,7 +100,9 @@ public class Ad_BookService {
 		
 		return seqBook;
 	}
-
+	
+	
+	// 상세 이미지 삽입 
 	public void insertImageAdmin(Ad_Image image) {
 		Connection conn = getConnection();
 		

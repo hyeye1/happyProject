@@ -11,7 +11,7 @@
 		     , COU_END
 		     , COU_CONDITION
 		  FROM TB_COUPON
-		 WHERE STATUS = 'Y'
+		 WHERE COU_STATUS = 'Y'
 		 ORDER 
 		    BY COU_NO DESC
 	</entry>

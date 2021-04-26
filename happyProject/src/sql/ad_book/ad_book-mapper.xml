@@ -5,7 +5,7 @@
 	<entry key="selectListCount">
 		SELECT COUNT(*) LISTCOUNT
 		  FROM TB_BOOK
-		 WHERE STATUS='Y'
+		 WHERE BK_STATUS='Y'
 	</entry>
 	
 	<entry key="selectList">
@@ -26,24 +26,12 @@
                              , BK_PRICE
                              , BK_STOCK
                           FROM TB_BOOK 
-                         WHERE STATUS = 'Y' 
+                         WHERE BK_STATUS = 'Y' 
                          ORDER
                             BY BK_NO DESC
 		               ) A
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
-	</entry>
-	
-	<!-- 오늘의추천 -->
-	<entry key="selectBookList">
-		SELECT 
-			   BK_NO
-		     , BK_NAME
-		     , AUTHOR
-		     , BK_MAIN_IMG
-		  FROM TB_BOOK
-		 WHERE BK_NO = ? 
-
 	</entry>
 	
 	<!-- 책 상세보기 -->
@@ -63,7 +51,7 @@
 		     , BK_CONTENT_LIST
 		     , BK_MAIN_IMG
 		  FROM TB_BOOK
-		  JOIN TB_IMAGE USING (BK_NO)
+		  JOIN TB_IMAGE ON (BK_NO = BK_NO_IMG)
 		 WHERE BK_NO = ?
 		   AND STATUS = 'Y' 
 	</entry>
@@ -78,18 +66,6 @@
 	</entry>
 	
 	
-	<entry key="selectReviewList">
-		SELECT
-		       RE_NO
-		     , RE_CONTENT
-		     , MEM_NO
-		     , RE_DATE
-		  FROM TB_REVIEW
-		  JOIN TB_MEMBER USING(MEM_NO)
-		  JOIN TB_BOOK USING(BK_NO)
-		 WHERE BK_NO = ? 
-		 ORDER BY RE_DATE DESC
-	</entry>
 	
 	<entry key="insertBook">
 		INSERT
@@ -148,13 +124,13 @@
 		     , BK_MAIN_IMG
 		  FROM TB_BOOK
 		 WHERE BK_NO = ?
-		   AND STATUS = 'Y' 
+		   AND BK_STATUS = 'Y' 
 	</entry>
 	
 	<entry key="selectImage">
 		SELECT
 		       IMG_NO
-		     , BK_NO
+		     , BK_NO_IMG
 		     , IMG_PATH
 		     , IMG_ENROLL_DATE
 		  FROM TB_IMAGE
@@ -164,14 +140,14 @@
 	<entry key="deleteBook">
 		UPDATE
 		       TB_BOOK
-		   SET STATUS = 'N'
+		   SET BK_STATUS = 'N'
 		 WHERE BK_NO = ?
-		   AND STATUS = 'Y' 
+		   AND BK_STATUS = 'Y' 
 	</entry>
 	<entry key="insertBookAdmin">
 		INSERT INTO TB_BOOK 
 		(
-			STATUS
+			BK_STATUS
 			,BK_ENROLL_DATE
 			,BK_PRICE
 			,BK_NO
@@ -219,7 +195,7 @@
 	<entry key="insertImageAdmin">
 		INSERT INTO TB_BOOK 
 		(
-			STATUS
+			BK_STATUS
 			,BK_ENROLL_DATE
 			,BK_PRICE
 			,BK_NO

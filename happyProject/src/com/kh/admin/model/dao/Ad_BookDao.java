@@ -108,7 +108,7 @@ private Properties prop = new Properties();
         sql+= "                  , BK_PRICE";
         sql+= "                  , BK_STOCK";
         sql+= "               FROM TB_BOOK ";
-        sql+= "              WHERE STATUS = 'Y'"; 
+        sql+= "              WHERE BK_STATUS = 'Y'"; 
         if(searchType != null && search != null){
 	        if(searchType.equals("bk_name")){
 	
