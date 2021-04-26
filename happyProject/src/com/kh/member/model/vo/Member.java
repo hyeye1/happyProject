@@ -41,12 +41,14 @@ public class Member {
 	
 	
 
-	public Member(String memId, String memPwd, String memName, String email) {
+	public Member(int memNo, String memId, String memPwd, String memName, String email, String memStatus) {
 		super();
+		this.memNo = memNo;
 		this.memId = memId;
 		this.memPwd = memPwd;
 		this.memName = memName;
 		this.email = email;
+		this.memStatus = memStatus;
 	}
 
 

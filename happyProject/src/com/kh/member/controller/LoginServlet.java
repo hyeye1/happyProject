@@ -42,7 +42,11 @@ public class LoginServlet extends HttpServlet {
 		Member m = new MemberService().loginMember(memId, memPwd);
 		
 		if(m == null) { //로그인실패
-			response.getWriter().println("<script>alert('로그인에 실패하였습니다. 아이디 또는 비밀번호를 확인해주세요.');</script>");
+			response.getWriter().println("<script>alert('로그인에 실패하였습니다. 아이디 또는 비밀번호를 확인해주세요.');"+"history.back();</script>");
+			
+		}else if(m.getMemStatus().equals("N")) { // 탈퇴한 회원 로그인
+			response.getWriter().println("<script>alert('탈퇴한 회원입니다. 회원가입을 다시 진행해주세요.');"+"history.back();</script>");
+			
 		}else { // 로그인성공
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", m);

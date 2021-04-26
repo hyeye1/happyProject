@@ -19,7 +19,6 @@
          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
          <!-- Latest compiled JavaScript -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-         <link rel="stylesheet" href="css/hover-min.css">
         
         <style>
             .menubarOuter{
@@ -191,7 +190,7 @@
             <br> <br>
             <div class="menubarCatWrap" align="center">
                 <!-- 카테고리 -->
-                <div class="menubarMenu"><a href="">베스트도서</a></div>
+                <div class="menubarMenu"><a href="<%=contextPath%>/best.li">베스트도서</a></div>
                 <div class="menubarMenu"><a href="">신간도서</a></div>
                 <div class="menubarMenu"><a href="">국내도서</a></div>
                 <div class="menubarMenu"><a href="">외국도서</a></div>

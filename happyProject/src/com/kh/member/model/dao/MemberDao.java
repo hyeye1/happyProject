@@ -263,10 +263,12 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				m = new Member(rset.getString("mem_id"),
+				m = new Member(rset.getInt("mem_no"),
+							   rset.getString("mem_id"),
 							   rset.getString("mem_pwd"),
 							   rset.getString("mem_name"),
-							   rset.getString("email"));
+							   rset.getString("email"),
+							   rset.getString("mem_status"));
 			}
 			
 		} catch (SQLException e) {
@@ -296,10 +298,12 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				m = new Member(rset.getString("mem_id"),
+				m = new Member(rset.getInt("mem_no"),
+							   rset.getString("mem_id"),
 							   rset.getString("mem_pwd"),
 							   rset.getString("mem_name"),
-							   rset.getString("email"));
+							   rset.getString("email"),
+							   rset.getString("mem_status"));
 			}
 			
 		} catch (SQLException e) {
