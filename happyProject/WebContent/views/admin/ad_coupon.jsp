@@ -188,9 +188,20 @@
             </div>
             <div id="title_Btn">
                 <ul id="btns">
-                    <li><button class="menuBtn" id="memberBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 조회</button></li>
-                    <li><button class="menuBtn" id="couponBtn" type="button" >쿠폰 등록</button></li>
+                    <li><button class="menuBtn" id="couListBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 조회</button></li>
+                    <li><button class="menuBtn" id="couEnrollBtn" type="button"  >쿠폰 등록</button></li>
+                    
                 </ul>
+                <script>
+                const couListBtn = document.getElementById('couListBtn');
+                couListBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/list.cou';
+            	});
+                const couEnrollBtn = document.getElementById('couEnrollBtn');
+                couEnrollBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/enrollForm.cou';
+            	});
+                </script>
             </div>
         </div>
         <div id="content">
@@ -245,33 +256,35 @@
 
     
    
-    <!-- 관리자모드 종료 팝업 -->
+ <!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
         <div class="adEndWrap">
             <div id="adEndTitle">
                 <h3 id=adEndTitleName align="center">CONFIRM</h3>        
             </div>
-            <div id="adEndContent">
-                <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
-                    관리메뉴를 종료하시겠습니까?
-                </div>    
-                <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    <%= sf.format(nowTime)%>
-                </div>
-                <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
+    
+        <div id="adEndContent">
+            <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
+                관리메뉴를 종료하시겠습니까?
             </div>    
-        </div>
+            <div id="adEndIntro" style="text-align: center; font-size:small;">
+                <%= sf.format(nowTime)%>
+            </div>
+            <div id="adEndBtn" style="margin-left: 26%;">
+                <a href="#" onClick="self.close();" class="btn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</a>
+                &nbsp;&nbsp;
+                <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+            </div>    
+        </div>    
     </div>
+    
 
     <script>
         $(function(){
             $("#adLock").click(function(){
                 $(".adEndWrap").show();
                 $("#modal_End").addClass('show-popup_End');
+
             });
             $("#cancleEndBtn").click(function(){
                 $(".adEndWrap").hide();

@@ -82,6 +82,7 @@ private Properties prop = new Properties();
 		return listCount; // 총 게시글 개수
 	}
 	
+	
 	public ArrayList<Ad_Book> selectList(Connection conn, PageInfo pi,String searchType,String search){
 		
 		ArrayList<Ad_Book> list = new ArrayList<>();
@@ -168,44 +169,7 @@ private Properties prop = new Properties();
 		return list;
 	}
 	
-	public int insertBook(Connection conn, Ad_Book b) {
-		// insert문 => 처리된행수
-	
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String sql = prop.getProperty("insertBook");
-		
-		try {
-			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
-			pstmt.setString(1, b.getBkName());
-			pstmt.setString(2, b.getAuthor());
-			pstmt.setString(3, b.getAuthor());
-			pstmt.setString(4, b.getPublisher());
-			pstmt.setString(5, b.getBkPublishDate());
-			pstmt.setString(6, b.getBkDivision());
-			pstmt.setString(7, b.getBkGenre());
-			pstmt.setInt(8, b.getBkOriginPrice());
-			pstmt.setInt(9, b.getBkPrice());
-			pstmt.setString(10, b.getIsbn());
-			pstmt.setInt(11, b.getBkStock());
-			pstmt.setInt(12, b.getBkPageNo());
-			pstmt.setString(13, b.getBkDescription());
-			pstmt.setString(14, b.getAtDescription());
-			pstmt.setString(15, b.getBkContentList());
-			pstmt.setInt(16, b.getBkStock());
-			
-			result = pstmt.executeUpdate();
-			
-			
-		}catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-		
-	}
+
 	public Ad_Book selectBook(Connection conn, int bkNo) {
 		// select문 => ResultSet객체(한행) 
 		Ad_Book b = null;
@@ -325,7 +289,7 @@ private Properties prop = new Properties();
 			pstmt.setString(13, b.getPublisher());
 			pstmt.setString(14, b.getAtDescription());
 			pstmt.setString(15, b.getBkDescription());
-			pstmt.setString(16, b.getBookContent());
+			pstmt.setString(16, b.getBkContentList());
 			pstmt.setString(17, b.getBkKeyword());
 			
 			result = pstmt.executeUpdate();
@@ -354,7 +318,6 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-
 			
 			rset = pstmt.executeQuery();
 			

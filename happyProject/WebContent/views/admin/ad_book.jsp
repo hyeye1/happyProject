@@ -18,7 +18,6 @@
 <%
 		Date nowTime = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
-		
 %>
 
 <!DOCTYPE html>
@@ -448,9 +447,7 @@
                     </tbody>                    
                 </table>
 	
-				
-
-                <br>
+				<br>
                 <div align="center" class="pagingArea">
                     <% if(currentPage != 1) { %>        
                         <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.bk?currentPage=<%=currentPage-1%>&searchType=<%=searchType%>&search=<%=search%>';"> < </button>
@@ -494,72 +491,37 @@
 	
 
 
-    <!-- 도서 삭제 팝업 -->
-    <div id="modal3">
-        <div class="deleteWrap">
-            <div id="delTitle">
-                <h3 id=delTitleName align="center">CONFIRM</h3>        
-            </div>
-        
-            <div id="delContent">
-                <div id="delText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
-                    선택 항목을 삭제 하시겠습니까? 
-                </div>    
-                <div id="delIntro" style="text-align: center; font-size:small;">
-                    삭제 후 복구 불가
-                </div>
-                <div id="delAns" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">확인</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleDelBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
-            </div>    
-        </div>
-    </div>
 
-    <script>
-        $(function(){
-            $("#deleteBook").click(function(){
-                $(".deleteWrap").show();
-                $("#modal3").addClass('show-popup3');
 
-            });
-            $("#cancleDelBtn").click(function(){
-                $(".deleteWrap").hide();
-                $("#modal3").removeClass('show-popup3');
-            });
-        });
-    </script>
-
-        <!-- 관리자모드 종료 팝업 -->
+<!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
         <div class="adEndWrap">
             <div id="adEndTitle">
                 <h3 id=adEndTitleName align="center">CONFIRM</h3>        
             </div>
-
-            <div id="adEndContent">
-                <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
-                    관리메뉴를 종료하시겠습니까?
-                </div>    
-                <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    <%= sf.format(nowTime)%>
-
-                </div>
-                <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
+    
+        <div id="adEndContent">
+            <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
+                관리메뉴를 종료하시겠습니까?
             </div>    
-        </div>
+            <div id="adEndIntro" style="text-align: center; font-size:small;">
+                <%= sf.format(nowTime)%>
+            </div>
+            <div id="adEndBtn" style="margin-left: 26%;">
+                <a href="#" onClick="self.close();" class="btn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</a>
+                &nbsp;&nbsp;
+                <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+            </div>    
+        </div>    
     </div>
+    
 
     <script>
         $(function(){
             $("#adLock").click(function(){
                 $(".adEndWrap").show();
                 $("#modal_End").addClass('show-popup_End');
+
             });
             $("#cancleEndBtn").click(function(){
                 $(".adEndWrap").hide();

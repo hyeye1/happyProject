@@ -23,7 +23,7 @@ public class Ad_Book {
 	private String bkKeyword;
 	private Date bkEnrollDate;
 	private String bkMainImg;
-	private String status;
+	private String bkStatus;
 	private String bookContent;
 	
 	public Ad_Book() {}
@@ -32,7 +32,7 @@ public class Ad_Book {
 	public Ad_Book(int bkNo, String bkName, String author, String publisher, String bkPublishDate, String bkDivision,
 			String bkGenre, int bkOriginPrice, int bkPrice, String isbn, int bkStock, int bkPageNo,
 			String bkDescription, String atDescription, String bkContentList, String bkKeyword, Date bkEnrollDate,
-			String bkMainImg, int bkHits, String status) {
+			String bkMainImg, int bkHits, String bkStatus) {
 		super();
 		this.bkNo = bkNo;
 		this.bkName = bkName;
@@ -53,7 +53,7 @@ public class Ad_Book {
 		this.bkEnrollDate = bkEnrollDate;
 		this.bkMainImg = bkMainImg;
 		this.bkHits = bkHits;
-		this.status = status;
+		this.bkStatus = bkStatus;
 	}
 
 
@@ -269,12 +269,12 @@ public class Ad_Book {
 		this.bkHits = bkHits;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getBkStatus() {
+		return bkStatus;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setBkStatus(String bkStatus) {
+		this.bkStatus = bkStatus;
 	}
 
 	public String getBookContent() {
@@ -294,7 +294,7 @@ public class Ad_Book {
 				+ ", bkOriginPrice=" + bkOriginPrice + ", bkPrice=" + bkPrice + ", isbn=" + isbn + ", bkStock="
 				+ bkStock + ", bkPageNo=" + bkPageNo + ", bkDescription=" + bkDescription + ", atDescription="
 				+ atDescription + ", bkContentList=" + bkContentList + ", bkKeyword=" + bkKeyword + ", bkEnrollDate="
-				+ bkEnrollDate + ", bkMainImg=" + bkMainImg + ", bkHits=" + bkHits + ", status=" + status + "]";
+				+ bkEnrollDate + ", bkMainImg=" + bkMainImg + ", bkHits=" + bkHits + ", bkStatus=" + bkStatus + "]";
 	}
 	
 	
