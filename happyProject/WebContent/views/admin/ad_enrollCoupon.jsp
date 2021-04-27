@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+		Date nowTime = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+%>
+
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,9 +193,19 @@
             </div>
             <div id="title_Btn">
                 <ul id="btns">
-                    <li><button class="menuBtn" id="memberBtn" type="button" ">쿠폰 조회</button></li>
-                    <li><button class="menuBtn" id="couponBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 등록</button></li>
+                    <li><button class="menuBtn" id="couListBtn" type="button" ">쿠폰 조회</button></li>
+                    <li><button class="menuBtn" id="couEnrollBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 등록</button></li>
                 </ul>
+                <script>
+                const couListBtn = document.getElementById('couListBtn');
+                couListBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/list.cou';
+            	});
+                const couEnrollBtn = document.getElementById('couEnrollBtn');
+                couEnrollBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/enrollForm.cou';
+            	});
+                </script>
             </div>
         </div>
         <div id="content">
@@ -197,36 +215,36 @@
             </div>
             <div id="sub_title">쿠폰 등록 </div>
             <div id="table">
-                <form id="enrollForm" action="" method="POST">
+                <form id="enrollForm" action="<%= request.getContextPath() %>/insert.cou" method="POST">
 
                     <table id="couTable">
                         <tr>
                             <th width="30%">쿠폰명</th>
-                            <td><input type="text" id="couName" size="58" maxlength="25" required placeholder="20자 이내로 입력"></td>
+                            <td><input type="text" name="cName" size="58" maxlength="25" required placeholder="20자 이내로 입력"></td>
                         </tr>
                         <tr>
                             <th>할인액</th>
-                            <td><input type="text" id="couDiscount" size="58"required></td>
+                            <td><input type="text" name="cDiscount" size="58"required></td>
                         </tr>
                         <tr>
                             <th width="30%">시작일</th>
-                            <td><input type="text" id="couDiscount" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
+                            <td><input type="text" name="cStart" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
                             </td>
                         </tr>
                         <tr>
                             <th width="30%">종료일</th>
-                            <td><input type="text" id="couDiscount" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
+                            <td><input type="text" name="cEnd" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
                             </td>
                         </tr>
                         <tr>
                             <th>구매최소금액</th>
-                            <td><input type="text" id="couMinPrice" size="58"required> </td>
+                            <td><input type="text" name="cCondition" size="58"required> </td>
                         </tr>
                     </table>
 
                     <div id="choice_btn">
                         <button type="submit" id="enrollCou" class="btn btn-primary ">등록</button> &nbsp;
-                        <button type="reset" id="deleteCou" class="btn btn-primary ">초기화</button>
+                        <button type="reset" id="resetCou" class="btn btn-primary ">초기화</button>
                     </div>
                 </form>
             </div>
@@ -234,29 +252,26 @@
     </div>
 
 
-    <!-- 관리자모드 종료 팝업 -->
+   <!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
         <div class="adEndWrap">
             <div id="adEndTitle">
                 <h3 id=adEndTitleName align="center">CONFIRM</h3>        
             </div>
-
-            <div id="adEndContent">
-                <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
-                    관리메뉴를 종료하시겠습니까?
-                </div>    
-                <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    2021.04.18 15:01:33
-                </div>
-                <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
-                
+    
+        <div id="adEndContent">
+            <div id="adEndText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
+                관리메뉴를 종료하시겠습니까?
             </div>    
-            
-        </div>
+            <div id="adEndIntro" style="text-align: center; font-size:small;">
+                <%= sf.format(nowTime)%>
+            </div>
+            <div id="adEndBtn" style="margin-left: 26%;">
+                <a href="#" onClick="self.close();" class="btn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</a>
+                &nbsp;&nbsp;
+                <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+            </div>    
+        </div>    
     </div>
 
     <script>
