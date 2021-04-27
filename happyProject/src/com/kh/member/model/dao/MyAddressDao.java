@@ -44,9 +44,11 @@ public MyAddressDao() {
 				
 				while(rset.next()) {
 					
-					list.add(new MyAddress(
-								
-							));
+					list.add(new MyAddress( rset.getInt("ad_no"),
+											rset.getString("ad_post"),
+											rset.getString("ad_road"),
+											rset.getString("ad_detail")));
+					
 				}
 				
 			} catch (SQLException e) {
