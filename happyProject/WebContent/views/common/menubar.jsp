@@ -53,10 +53,7 @@
                 border-radius: 2px;
                 margin-left: -58px;
                 cursor: pointer;
-<<<<<<< HEAD
-=======
-                
->>>>>>> d6b2032166c1172d6584d5b18e14c22161712e1a
+
             }
             #menubarSearchButton:hover{
             	color:white;
@@ -131,14 +128,10 @@
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
                 <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
-<<<<<<< HEAD
-                <input type="text" id="menubarSearchInput" > 
-                
-    			
-    			
-=======
+
+
                 <input type="text" id="menubarSearchInput" > <button type="submit" class="menubarSearch" id="menubarSearchButton" >검색</button>
->>>>>>> d6b2032166c1172d6584d5b18e14c22161712e1a
+
     			
             </form>
     		<% if(loginUser == null) { %>
@@ -172,19 +165,24 @@
             <% }else if(loginUser.getAdminYN().equals("Y")) { %>
             <!-- 관리자 div -->
             <div id="loginAdmin">
-                <input type="image" id="menubarAdminBtn" src="resources/images/admin.png" onclick="adminPage()">
+                <input type="image" id="menubarAdminBtn" src="resources/images/admin.png" >
                 <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png" onclick="logoutPage()">
             </div>
 
             	<script>
-					function adminPage(){
+            	const menubarAdminBtn = document.getElementById('menubarAdminBtn');
+				menubarAdminBtn.addEventListener('click',function(){
+					window.open("${pageContext.request.contextPath}/views/admin/ad_home.jsp", "관리자 로그인", "top=50, left=200, width=1000, height=700"); 
+				});
+					<%-- function adminPage(){
 						location.href = "<%= contextPath %>/adminForm.me";
-					}
+					} --%>
     				function logoutPage(){
             			location.href="<%= contextPath %>/logout.me";
-            		}
+   		}
     			</script>
-
+				
+				
 
             
     		<% }else { %>

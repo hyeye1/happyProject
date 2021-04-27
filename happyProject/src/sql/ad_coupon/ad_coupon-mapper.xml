@@ -22,6 +22,28 @@
 		   SET COU_STATUS = 'N'
 		 WHERE COU_NO = ?
 	</entry>
+	
+	<entry key = "insertCoupon">
+		INSERT
+		  INTO TB_COUPON
+		  (
+		    COU_NO
+		  , COU_NAME
+		  , DISCOUNT
+		  , COU_START
+		  , COU_END
+		  , COU_CONDITION
+		  )
+		  VALUES
+		  (
+		    SEQ_CNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
 
 
 </properties>
