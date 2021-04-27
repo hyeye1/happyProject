@@ -394,8 +394,8 @@ public class BookDao {
 		try {
 			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
 			// 실행
+			pstmt.setString(1, hashkey);
 			rset = pstmt.executeQuery();
-			//pstmt.setString(1, hashkey);
 			
 			while(rset.next()) {
 				

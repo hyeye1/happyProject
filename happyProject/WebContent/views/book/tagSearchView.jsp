@@ -54,10 +54,12 @@
         }
         .bestTagBox{
             width: 800px;
-            height: 150px;
+            height: 160px;
             border: 1px solid white;
             background-color: rgb(255, 233, 161);
             margin-bottom: 30px;
+            border-radius: 80px;
+            margin-top: 20px;
         }
         #tag{
             width: 85px;
@@ -72,31 +74,69 @@
             border-radius: 20px;
             cursor: pointer;
         }
-        #tag:hover{background-color: rgb(249, 219, 122); color:white;}
+        #tag:hover{
+        	background-color: rgb(255, 233, 161);
+            font-size: 20px;
+            font-weight: 900;
+            width:85px;
+            color: white;
+            margin-top:0px;
+                }
         .searchBook{
             width: 1000px;
-            height: 420px;
             background-color: rgb(245, 245, 245);
             border: 1px solid rgb(173, 172, 172);
             border-left: 0;
             border-right: 0;
             border-bottom: 0;
             padding-top: 10px;
+            
         }
         .searchBook span{
             font-size: large;
             font-weight: bold;
             color: gray;
+            
         }
         #tagpoint{color: rgb(241, 196, 15);}
         #book{
             font-size: small;
             text-align: left;
-            width: 90px;
-            height: 185px;
+            width: 120px;
+            height: 180px;
+            margin: 30px;
+            margin-left: 15px;
+            margin-top: 70px;
         }
-        .bookList{padding-left: 50px;}
-        .bookList th{cursor: pointer;}
+        .bookList{padding-left: 70px;}
+        .bookList th{cursor: pointer; float:left; }
+        .bookList tr{float:right; margin-top:50px;}
+        #bookImg{ 
+            width: 130px;
+            height: 180px;
+            border-radius: 3px;
+            box-shadow: 2px 0px 20px -2px gray;
+            border: 1px solid darkgray;
+        }
+        #no{
+        	font-size:13px;
+        }
+        #bkName{
+            color: black;
+            font-size: 14px;
+            font-weight: 600;
+            vertical-align: top;
+        	}
+        #author{
+        	font-size:13px;
+        	font-weight: 500;
+        	}
+        #price{
+            color: rgb(52, 152, 219);
+            font-size: 14px;
+            font-weight: 700;
+            vertical-align: bottom;
+        	}
     </style>
 </head>
 <body>
@@ -116,6 +156,7 @@
             <button id="searchBtn">검색</button>
         </form>
         <div class="bestTag" align="center">
+        	<br>
             <span>놓칠 수 없는 인기 태그</span>
             <div class="bestTagBox">
                 <button id="tag">#꿈</button>
@@ -126,7 +167,7 @@
                 <button id="tag">#마음</button>
                 <button id="tag">#위로</button>
                 <button id="tag">#감정</button>
-                <button id="tag">#재테크</button>
+                <button id="tag" style="width: 90px;">#재테크</button>
             </div>
         </div>
         <br><br>
@@ -139,86 +180,24 @@
 
             <table class="bookList">
                 <tr>
+                <%for(int i = 0; i<list.size(); i++) {%>
                     <th>
-                        <img src="resources/image/book.png" width="120px" height="150px">
+                        <img src="<%= list.get(i).getBkMainImg() %>" id="bookImg">
                     </th>
                     <th id="book">
-                        <img src="resources/image/bestbook.png" width="80"><br>
-                        1.<br>
-                        아몬드<br>
-                        손원평<br>
-                        창비출판
+                     <!--  <img src="resources/images/bestbook.png" width="80"><br> -->
+                        <span id="no"> <%= (i+1) %>.<br> </span><br>
+                        <span id="bkName"> <%= list.get(i).getBkName() %><br> </span>
+                        <span id="author"> <%= list.get(i).getAuthor() %><br> </span>
+                        <span id="price"> <%= list.get(i).getBkPrice() + "원" %> </span>
                     </th>
-                    <th>
-                        <img src="resources/image/book.png" width="120px" height="150px">
-                    </th>
-                    <th id="book">
-                        2.<br>
-                        아몬드<br>
-                        손원평<br>
-                        창비출판
-                    </th>
-                    <th>
-                        <img src="resources/image/book.png" width="120px" height="150px">
-                    </th>
-                    <th id="book">
-                        3.<br>
-                        아몬드<br>
-                        손원평<br>
-                        창비출판
-                    </th>
-                    <th>
-                        <img src="resources/image/book.png" width="120px" height="150px">
-                    </th>
-                    <th id="book">
-                        4.<br>
-                        아몬드<br>
-                        손원평<br>
-                        창비출판
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        <img src="resources/image/book.png" width="120px" height="150px">
-                    </th>
-                    <th id="book">
-                        5.<br>
-                        아몬드<br>
-                        손원평<br>
-                        창비출판
-                    </th>
-                    <th>
-                        <img src="resources/image/book.png" width="120px" height="150px">
-                    </th>
-                    <th id="book">
-                        6.<br>
-                        아몬드<br>
-                        손원평<br>
-                        창비출판
-                    </th>
-                    <th>
-                        <img src="resources/image/book.png" width="120px" height="150px">
-                    </th>
-                    <th id="book">
-                        7.<br>
-                        아몬드<br>
-                        손원평<br>
-                        창비출판
-                    </th>
-                    <th>
-                        <img src="resources/image/book.png" width="120px" height="150px">
-                    </th>
-                    <th id="book">
-                        8.<br>
-                        아몬드<br>
-                        손원평<br>
-                        창비출판
-                    </th>
+
+                    <% } %>
                 </tr>
             </table>
        </div>
 
+    <%@ include file="../common/footer.jsp" %>
     </div>
-    
 </body>
 </html>
