@@ -3,17 +3,18 @@
 <properties>
 
 	<entry key = "selectCouponList">
-		SELECT
+			SELECT
 		       COU_NO
 		     , COU_NAME
 		     , DISCOUNT
-		     , COU_START
-		     , COU_END
+		     , TO_CHAR(COU_START,'YYYY-MM-DD') COU_START
+		     , TO_CHAR(COU_END,'YYYY-MM-DD') COU_END
 		     , COU_CONDITION
 		  FROM TB_COUPON
 		 WHERE COU_STATUS = 'Y'
 		 ORDER 
 		    BY COU_NO DESC
+		
 	</entry>
 	
 	<entry key = "deleteCoupon">
