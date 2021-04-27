@@ -421,6 +421,49 @@ public class BookDao {
 		return list;
 	}
 
+	public ArrayList<Book> searchBookList(Connection conn, String hashkey) {
+		// select문 => ResultSet객체 (한행) => book객체
+		ArrayList<Book> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("searchBookList"); // 미완성된 sql문
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
+			// 실행
+			pstmt.setString(1, hashkey);
+			pstmt.setString(2, hashkey);
+			pstmt.setString(3, hashkey);
+			pstmt.setString(4, hashkey);
+			pstmt.setString(5, hashkey);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Book(rset.getInt("bk_no"),
+							      rset.getString("bk_name"),
+							      rset.getString("author"),
+							      rset.getString("bk_division"),
+							      rset.getString("bk_genre"),
+							      rset.getInt("bk_price"),
+							      rset.getDate("bk_enroll_date"),
+							      rset.getString("bk_main_img"),
+							      rset.getInt("bk_hits")));
+							 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
 
 	
 
