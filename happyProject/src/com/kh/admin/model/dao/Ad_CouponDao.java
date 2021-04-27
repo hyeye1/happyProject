@@ -43,8 +43,8 @@ public class Ad_CouponDao {
 					list.add(new Ad_Coupon(rset.getInt("cou_no"),
 							rset.getString("cou_name"),
 							rset.getInt("discount"),
-							rset.getDate("cou_start"),
-							rset.getDate("cou_end"),
+							rset.getString("cou_start"),
+							rset.getString("cou_end"),
 							rset.getInt("cou_condition")));
 				}
 			} catch (SQLException e) {
@@ -76,7 +76,29 @@ public class Ad_CouponDao {
 			
 			return result;
 	}
-		
+		public int insertCoupon(Connection conn, Ad_Coupon c) {
+			 int result = 0;
+			 PreparedStatement pstmt = null;
+			 
+			 String sql = prop.getProperty("insertCoupon");
+			 
+			 try {
+				pstmt = conn.prepareStatement(sql);//미완성된 sql
+				pstmt.setString(1, c.getCouName());
+				pstmt.setInt(2, c.getDiscount());
+				pstmt.setString(3, c.getCouStart());
+				pstmt.setString(4, c.getCouEnd());
+				pstmt.setInt(5, c.getCouCondition());
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			 return result;
+		}
 
 			
 		

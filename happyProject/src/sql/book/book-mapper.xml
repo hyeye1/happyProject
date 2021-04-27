@@ -59,19 +59,133 @@
                   FROM 
 		               (SELECT
 		                       BK_NO
-		                     , BK_HITS
 		                     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
 		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
 		                     , BK_DIVISION
 		                     , BK_GENRE
 		                     , BK_PRICE
 		                     , BK_MAIN_IMG
+		                     , BK_HITS
+		                     , BK_ENROLL_DATE
 		                  FROM TB_BOOK
 		                 ORDER 
 		                    BY BK_HITS DESC)
 		         WHERE ROWNUM between 1 and 20 
 	</entry>
+	
+	<entry key="newBookList">
+                SELECT *
+                  FROM 
+		               (SELECT
+		                       BK_NO
+		                     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
+		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
+		                     , BK_DIVISION
+		                     , BK_GENRE
+		                     , BK_PRICE
+		                     , BK_MAIN_IMG
+		                     , BK_HITS
+		                     , BK_ENROLL_DATE
+		                  FROM TB_BOOK
+		                 ORDER 
+		                    BY BK_ENROLL_DATE DESC)
+		         WHERE ROWNUM between 1 and 20 
+	</entry>
 
+	<entry key="bestKrBookList">
+                SELECT *
+                  FROM 
+		               (SELECT
+		                       BK_NO		                     
+		                     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
+		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
+		                     , BK_DIVISION
+		                     , BK_GENRE
+		                     , BK_PRICE
+		                     , BK_MAIN_IMG
+                             , BK_HITS
+                             , BK_ENROLL_DATE   
+		                  FROM TB_BOOK
+		                 ORDER 
+		                    BY BK_HITS DESC)
+                         WHERE BK_DIVISION = '국내도서'
+                           AND ROWNUM between 1 and 10
+	</entry>
+	
+	<entry key="newKrBookList">
+                SELECT *
+                  FROM 
+		               (SELECT
+		                       BK_NO		                     
+		                     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
+		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
+		                     , BK_DIVISION
+		                     , BK_GENRE
+		                     , BK_PRICE
+		                     , BK_MAIN_IMG
+                             , BK_HITS
+                             , BK_ENROLL_DATE   
+		                  FROM TB_BOOK
+		                 ORDER 
+		                    BY BK_ENROLL_DATE DESC)
+                         WHERE BK_DIVISION = '국내도서'
+                           AND ROWNUM between 1 and 10
+	</entry>
+	
+		<entry key="bestFoBookList">
+                SELECT *
+                  FROM 
+		               (SELECT
+		                       BK_NO		                     
+		                     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
+		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
+		                     , BK_DIVISION
+		                     , BK_GENRE
+		                     , BK_PRICE
+		                     , BK_MAIN_IMG
+                             , BK_HITS
+                             , BK_ENROLL_DATE   
+		                  FROM TB_BOOK
+		                 ORDER 
+		                    BY BK_HITS DESC)
+                         WHERE BK_DIVISION = '외국도서'
+                           AND ROWNUM between 1 and 10
+	</entry>
+	
+	<entry key="newFoBookList">
+                SELECT *
+                  FROM 
+		               (SELECT
+		                       BK_NO		                     
+		                     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
+		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
+		                     , BK_DIVISION
+		                     , BK_GENRE
+		                     , BK_PRICE
+		                     , BK_MAIN_IMG
+                             , BK_HITS
+                             , BK_ENROLL_DATE   
+		                  FROM TB_BOOK
+		                 ORDER 
+		                    BY BK_ENROLL_DATE DESC)
+                         WHERE BK_DIVISION = '외국도서'
+                           AND ROWNUM between 1 and 10
+	</entry>
+	
+	<entry key="hashSearchList">
+			SELECT
+			       BK_NO		                     
+			     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
+			     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
+			     , BK_DIVISION
+			     , BK_GENRE
+			     , BK_PRICE
+			     , BK_MAIN_IMG
+			     , BK_HITS
+			     , BK_ENROLL_DATE  
+			  FROM TB_BOOK
+			 WHERE BK_KEYWORD LIKE '%' || ? || '%'
+	</entry>
 
 
 </properties>

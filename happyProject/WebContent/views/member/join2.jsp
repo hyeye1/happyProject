@@ -148,7 +148,7 @@
             <p>회원가입</p>
         </div>
         
-        <form action="/happyProject/join.me" method="post" id="enrollForm" >
+        <form action="<%=request.getContextPath()%>/join.me" method="post" id="enrollForm" >
             <table class="join2Input">
                 <tr>
                     <th>아이디 *</th>

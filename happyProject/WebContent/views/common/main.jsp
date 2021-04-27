@@ -75,6 +75,17 @@
             .mainOuter input::placeholder {
                 color:rgb(241, 196, 15); 
             }
+            #hashSearchBtn{
+                float: left;
+                margin-left: -208px;
+                margin-top: 148px;
+                height: 30px;
+                background-color: rgb(255, 226, 132); 
+                border: 1px solid darkgray;
+                border-radius: 3px;
+                color: gray; 
+                cursor: pointer;
+            }
             #hashBack{
                 width: 300px;
                 height: 300px;
@@ -265,40 +276,42 @@
                     <p style="margin-left: 90px;">[ </p>
                     <p id="hashNowText" style="font-size: 35px; font-weight: 600;">지금,&nbsp; 여기</p>
                     <p> ]</p>
-                    <!-- 돋보기넣기 -->
-                    <input type="search"id="hashSearch" placeholder=" #">
+                    <form action="hashtag.li"  method="GET" >
+	                    <input type="search"id="hashSearch" placeholder=" #" name="hashkey">
+	                    <button id="hashSearchBtn">검색</button>
+                    </form>
                 </div>
                 
                 <div id="hashBack">
                     <!-- hover입히기 -->
                     <li class="hashBackLi">
                         <div class="hashClick" id="fam">
-                            <a href="">#가족</a>
+                            <a href="hashtag.li?hashkey=가족">#가족</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="death">
-                            <a href="">#죽음</a>
+                            <a href="hashtag.li?hashkey=죽음">#죽음</a>
                         </div>
                     </li>                    
                     <li class="hashBackLi">
                         <div class="hashClick" id="heal">
-                            <a href="">#위로</a>
+                            <a href="hashtag.li?hashkey=위로">#위로</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="happy">
-                            <a href="">#행복</a>
+                            <a href="hashtag.li?hashkey=행복">#행복</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="relation">
-                            <a href="">#관계</a>
+                            <a href="hashtag.li?hashkey=관계">#관계</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="travel">
-                            <a href="">#여행</a>
+                            <a href="hashtag.li?hashkey=여행">#여행</a>
                         </div>
                     </li>
                 </div>     
