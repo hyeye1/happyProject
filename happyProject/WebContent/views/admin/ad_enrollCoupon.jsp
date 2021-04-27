@@ -228,12 +228,12 @@
                         </tr>
                         <tr>
                             <th width="30%">시작일</th>
-                            <td><input type="text" name="cStart" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
+                            <td><input type="text" name="cStart" size="58"required placeholder="2021-01-01 형식으로 입력"></td>
                             </td>
                         </tr>
                         <tr>
                             <th width="30%">종료일</th>
-                            <td><input type="text" name="cEnd" size="58"required placeholder="2021.00.00 형식으로 입력"></td>
+                            <td><input type="text" name="cEnd" size="58"required placeholder="2021-01-01 형식으로 입력"></td>
                             </td>
                         </tr>
                         <tr>

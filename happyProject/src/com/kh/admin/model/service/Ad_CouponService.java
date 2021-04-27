@@ -33,6 +33,21 @@ public class Ad_CouponService {
 		return result;
 	}
 	
+	public int insertCoupon(Ad_Coupon c) {
+		Connection conn = getConnection();
+		int result = new Ad_CouponDao().insertCoupon(conn, c);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+	
+	
 
 
 }

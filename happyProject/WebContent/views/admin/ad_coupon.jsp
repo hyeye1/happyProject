@@ -188,9 +188,19 @@
             </div>
             <div id="title_Btn">
                 <ul id="btns">
-                    <li><button class="menuBtn" id="memberBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 조회</button></li>
-                    <li><button class="menuBtn" id="couponBtn" type="button" >쿠폰 등록</button></li>
+                    <li><button class="menuBtn" id="couListBtn" type="button" style="background-color: rgb(249, 219, 122);">쿠폰 조회</button></li>
+                    <li><button class="menuBtn" id="couEnrollBtn" type="button" >쿠폰 등록</button></li>
                 </ul>
+                <script>
+                const couListBtn = document.getElementById('couListBtn');
+                couListBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/list.cou';
+            	});
+                const couEnrollBtn = document.getElementById('couEnrollBtn');
+                couEnrollBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/enrollForm.cou';
+            	});
+                </script>
             </div>
         </div>
         <div id="content">
