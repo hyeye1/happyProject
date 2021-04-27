@@ -132,7 +132,7 @@
 
                 <input type="text" id="menubarSearchInput" > <button type="submit" class="menubarSearch" id="menubarSearchButton" >검색</button>
 
-    			
+    		</div>
             </form>
     		<% if(loginUser == null) { %>
     		
