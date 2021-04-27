@@ -111,10 +111,7 @@
             <p align="left" style="color: gray; font-size:11px; font-weight: bolder;">HOME > 베스트도서</p>
             <br>
             <h2>베스트도서</h2>
-            <!-- ajax로 처리하기 -->
-            <a href="" class="bestCat">주간베스트</a>|
-            <a href="" class="bestCat">월간베스트</a>|
-            <a href="" class="bestCat">스테디셀러</a>
+
         </div>
 
         <br>

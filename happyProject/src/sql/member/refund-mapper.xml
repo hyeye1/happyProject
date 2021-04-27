@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="refundList">
+		
+		SELECT 
+				RF_NO
+			,	OR_NO_RF
+			,	RF_CONTENT
+			,	RF_AP_DATE
+			,	RF_PRICE
+			,	RF_DATE
+		FROM 
+			TB_REFUND
+		 WHERE 
+             RF_NO =  ?
+ 
+	</entry>
+	<entry key="refundDate">
+		SELECT 
+				RF_NO
+			,	OR_NO_RF
+			,	RF_AP_DATE
+			,	RF_DATE
+		FROM 
+			TB_REFUND
+		 WHERE 
+             RF_DATE = SYSDATE
+	
+	</entry>
+	<entry key="refundResult">
+		SELECT 
+				RF_NO
+			,	OR_NO_RF
+			,	RF_AP_DATE
+			,	RF_RESULT
+			,	RF_PRICE
+			,	RF_DATE
+		FROM 
+			TB_REFUND
+		 WHERE 
+             RF_RESULT =  ?
+	</entry>
+
+</properties>

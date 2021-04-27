@@ -23,7 +23,7 @@
         <style>
             .menubarOuter{
             	width: 1000px; 
-            	height: 236px; 
+            	height: 230px; 
             	margin: auto;
             }
             
@@ -98,6 +98,8 @@
             .menubarCatWrap{
                 border-top: 2px solid lightgray;
                 border-bottom: 1.4px solid lightgray;
+                width: 1000px;
+                margin: auto;
                 }
             .menubarMenu {
                 display: table-cell;
@@ -124,6 +126,7 @@
     <body>
 
         <div class="menubarOuter" >
+        <br>
             <form action="<%= request.getContextPath() %>/search.bo">
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
@@ -204,10 +207,7 @@
                 	</script>
             <% } %>
             </div>
-            
-            
-            <br clear="both">
-            <br> <br>
+
             <div class="menubarCatWrap" align="center">
                 <!-- 카테고리 -->
                 <div class="menubarMenu"><a href="<%=contextPath%>/best.li">베스트도서</a></div>

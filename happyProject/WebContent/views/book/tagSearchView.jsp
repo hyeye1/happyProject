@@ -121,7 +121,7 @@
             color: gray;
             
         }
-        #tagpoint{color: rgb(241, 196, 15);}
+        #tagPoint{color: rgb(241, 196, 15);}
         #book{
             font-size: small;
             text-align: left;
@@ -195,9 +195,9 @@
         </div>
         <br><br>
        <div class="searchBook" align="center">
-            <span id="tagpoint">'#<%= request.getParameter("hashkey") %>'</span> 
+            <span id="tagPoint">'#<%= request.getParameter("hashkey") %>'</span> 
             <span>검색어로 총</span>
-            <span id="tagpoint"><%= list.size() %></span>
+            <span id="tagPoint"><%= list.size() %></span>
             <span>가지의 관련 도서를 찾았습니다!</span>
             <br><hr>
 

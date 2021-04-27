@@ -94,16 +94,8 @@ Member loginUser = (Member)session.getAttribute("loginUser");
                             <textarea name="content" rows="10" cols="70" style="resize: none;" placeholder="문의 내용을 입력하세요" required> </textarea> &nbsp;
                         </td>
                     </tr>
-                    <tr height="100">
-                        <th>파일첨부</th>
-                        <td>
-                            <input type="file" id="qfile" name="qfile"><hr>
-                            <ul id="text">
-                                <li>첨부가능 용량은 파일당 5MB 미만이며, 한개만 첨부 가능합니다.</li>
-                                <li>첨부가능 파일 확장자 : jpg, gif, bmp, png, hwp, doc, ppt, xls, zip, pdf, txt</li>
-                            </ul>
-                        </td>
-                    </tr>
+                    
+                 
                     <tr height="100">
                         <th>답변알림</th>
                         <td id="checkbox">
@@ -112,7 +104,7 @@ Member loginUser = (Member)session.getAttribute("loginUser");
                             <input type="checkbox" id="emailYn" name="emailYn">이메일로 답변받기<br><br>
                             &emsp;&nbsp;
                             <input type="text" name="phone" id="phone" placeholder="010-1111-2222" >
-                            <input type="checkbox" id="smsYn" name="emailYn">답변시 SMS로 알림 받기<br>
+                            <input type="checkbox" id="smsYn" name="smsYn">답변시 SMS로 알림 받기<br>
                         </td>
                     </tr>
                 </table>

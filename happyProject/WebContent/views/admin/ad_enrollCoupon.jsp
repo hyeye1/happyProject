@@ -227,15 +227,13 @@
                             <td><input type="text" name="cDiscount" size="58"required></td>
                         </tr>
                         <tr>
-                            <th width="30%">시작일</th>
-                            <td><input type="text" name="cStart" size="58"required placeholder="2021-01-01 형식으로 입력"></td>
+                            <th width="30%">유효기간</th>
+                            <td>
+                            <input type="date" name="cStart" size="80" required >&nbsp; ~ &nbsp; <input type="date" name="cEnd" size="80" required >
                             </td>
+                           
                         </tr>
-                        <tr>
-                            <th width="30%">종료일</th>
-                            <td><input type="text" name="cEnd" size="58"required placeholder="2021-01-01 형식으로 입력"></td>
-                            </td>
-                        </tr>
+                        
                         <tr>
                             <th>구매최소금액</th>
                             <td><input type="text" name="cCondition" size="58"required> </td>

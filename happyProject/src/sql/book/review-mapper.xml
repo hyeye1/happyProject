@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="selectReviewList">
+SELECT
+			   RE_NO
+			  , RE_DATE
+			  , RE_CONTENT
+			  , MEM_NO_RE
+			  , BK_NO_RE
+	       FROM TB_REVIEW R
+	       JOIN TB_MEMBER ON (MEM_NO_RE = MEM_NO)
+           JOIN TB_BOOK ON (BK_NO_RE = BK_NO)
+	      WHERE RE_NO = ?
+	        AND RE_STATUS = 'Y'
+</entry>
+	
+	
+	
+	
+	
+</properties>
