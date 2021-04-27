@@ -63,8 +63,10 @@ public class Book {
 	
 	
 
+
+
 	public Book(int bookNo, String bkName, String author, String bkDivision, String bkGenre, int bkPrice,
-			String bkMainImg, int bkHits) {
+			Date bkEnrollDate, String bkMainImg, int bkHits) {
 		super();
 		this.bookNo = bookNo;
 		this.bkName = bkName;
@@ -72,6 +74,7 @@ public class Book {
 		this.bkDivision = bkDivision;
 		this.bkGenre = bkGenre;
 		this.bkPrice = bkPrice;
+		this.bkEnrollDate = bkEnrollDate;
 		this.bkMainImg = bkMainImg;
 		this.bkHits = bkHits;
 	}
