@@ -1,6 +1,7 @@
 package com.kh.book.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.book.model.service.BookService;
+import com.kh.book.model.vo.Book;
 
 /**
  * Servlet implementation class BookSearchServlet
@@ -28,9 +32,16 @@ public class BookSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 응답페이지 => 도서 일반 검색
-		RequestDispatcher view = request.getRequestDispatcher("views/category/bookSearchView.jsp");
-		view.forward(request, response);
+		request.setCharacterEncoding("utf-8");
+		
+		String hashkey = request.getParameter("hashkey");
+		
+		ArrayList<Book> list = new BookService().hashSearchList(hashkey);
+		//System.out.println(hashkey);
+		//System.out.println(list);
+		
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/book/tagSearchView2.jsp").forward(request, response);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

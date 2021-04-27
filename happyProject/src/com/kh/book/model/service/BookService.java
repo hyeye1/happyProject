@@ -106,6 +106,13 @@ public class BookService {
 	   }
    
    
+   public ArrayList<Book> searchBookList(String hashkey){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().hashSearchList(conn, hashkey);
+	      close(conn);
+	      return list;
+	   }
+      
 
 
 

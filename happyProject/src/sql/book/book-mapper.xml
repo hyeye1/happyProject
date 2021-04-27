@@ -186,6 +186,25 @@
 			  FROM TB_BOOK
 			 WHERE BK_KEYWORD LIKE '%' || ? || '%'
 	</entry>
+	
+	<entry key="SearchBookList">
+			SELECT
+			       BK_NO		                     
+			     , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
+			     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
+			     , BK_DIVISION
+			     , BK_GENRE
+			     , BK_PRICE
+			     , BK_MAIN_IMG
+			     , BK_HITS
+			     , BK_ENROLL_DATE  
+			  FROM TB_BOOK
+			 WHERE BK_NAME LIKE '%' || ? || '%'
+			    OR AUTHOR LIKE '%' || ? || '%'
+			    OR BK_DIVISION LIKE '%' || ? || '%'
+			    OR BK_GENRE LIKE '%' || ? || '%'
+			    OR BK_KEYWORD LIKE '%' || ? || '%'
+	</entry>
 
 
 </properties>

@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
+<%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	// > 로그인 전 menubar.jsp 로딩시 : null
+	// > 로그인 성공 후 menubar.jsp 로딩시 : 로그인한 회원의 정보들이 담겨있는 객체
+	
+	String contextPath = request.getContextPath(); // "/jsp"
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -232,7 +240,17 @@
 </head>
 <body>
 
-	<%@ include file = "../common/menubar.jsp" %>
+<%		
+		String userId = loginUser.getMemId();	   // 필수입력사항이라 무조건 값이 존재함
+		String userName = loginUser.getMemName(); // 필수입력사항이라 무조건 값이 존재함
+		String phone = (loginUser.getMemPhone() == null) ? "" : loginUser.getMemPhone();	// "010-1111-2222" / null
+		String email = (loginUser.getEmail() == null) ? "" : loginUser.getEmail();
+		String address = (loginUser.getMemAddress() == null) ? "" : loginUser.getMemAddress();
+		
+						
+	%>
+
+
 	
 	 <div class="orderOuter">
     <br><br>
@@ -259,41 +277,32 @@
                 <table>
                     <tr>
                         <th width="100">이름*</th>
-                        <td><input type="text" name="name" value="안소은" style="width:400px" required> 
+                        <td><input type="text" name="name" value="<%= userName %>" style="width:400px" required> 
                             <a class="dvButton btn btn-warning btn-sm" data-toggle="modal" data-target="#shipping">배송지 변경</a>
                         </td>
                     </tr>
                     <tr>
-                        <th>휴대폰*</th>
+                        <th>휴대폰  *</th>
                         <td>
-                            <select name="phone" id="phone"required>
-                                <option value="p010">010</option>
-                                <option value="p011">011</option>
-                                <option value="p016">016</option>
-                                <option value="p017">017</option>
-                                <option value="p018">018</option>
-                                <option value="p019">019</option>
-                            </select>
-                            <input type="number" value="1234" min="0" max="9999" style="width:60px;">
-                            <input type="number" value="9876" min="0" max="9999" style="width:60px;">
+                            <input type="text" name="phone" placeholder=" (-포함해서 입력)" value="<%= phone %>">
                         </td>
                     </tr>
                     <tr>
                         <th>이메일*</th>
-                        <td><input type="text" name="mail" value="order@gmail.com" style="width:400px" required></td>
+                        <td><input type="text" name="mail" value="<%= email %>" style="width:400px" required></td>
                     </tr>
                     <tr>
                         <th>주소*</th>
                         <td>
-                            <input type="text" name="address" value="01234" style="width:150px;"> 
+                            <input type="text" name="" value="01234" style="width:150px;"> 
                             <a class="dvButton btn btn-warning btn-sm"  data-toggle="modal" data-target="#post">우편번호</a> <br>
-                            <input type="text" name="address1" value="서울시 용산구 녹사평대로 132" style="width:500px; margin-bottom: 4px;"> <br>
-                            <input type="text" name="address2" value="1102호"  style="width:500px;">
+                            <input type="text" name="address" value="<%= address %>" style="width:500px; margin-bottom: 4px;"> <br>
+                            <input type="text" name="" value=""  style="width:500px;">
                         </td>
                     </tr>
                     <tr>
                         <th>배송시 요청사항</th>
-                        <td><textarea name="" id="" rows="4" style="width:500px; resize:none;"></textarea></td>
+                        <td><textarea name="dvDemand" id="" rows="4" style="width:500px; resize:none;"></textarea></td>
                     </tr>
                     <tr>
                         <th>
@@ -387,17 +396,19 @@
         <br>
         <table class="coupon">
             <tr>
-                <td><div class="discount" style="width:90px; height:45px; line-height: 1.3;">할인쿠폰</div></td>
-                <td align="left">사용가능한 쿠폰이 없습니다.</td>
-            </tr>
-            <tr style="height:50%;">
-                <td style="border:none;"><div class="discount" style="width:90px;  height:45px; line-height: 1.3;">적립금</div></td>
-                <td style="border:none;"  align="left">2,650원
-                    <span>
-                        <input type="number" value="0" style="color:red; text-align: right;">
-                    </span>원 
-                    <button class="useAll btn btn-warning btn-sm">모두사용</button>
-                </td>
+                <td><div class="discount" style="width:100px; height:45px; line-height: 1.3;">할인쿠폰</div></td>
+                 <td width="500" align="left">사용가능한 쿠폰이 없습니다.
+                        <select name="category">
+                            <option value="10">공통</option>
+                            <option value="20">운동</option>
+                            <option value="30">등산</option>
+                            <option value="40">게임</option>
+                            <option value="50">낚시</option>
+                            <option value="60">요리</option>
+                            <option value="70">기타</option>
+                        </select>
+                    </td>
+          
             </tr>
         </table>
         
