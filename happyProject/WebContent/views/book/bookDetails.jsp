@@ -209,7 +209,7 @@
                 	<!-- 주문하기, 보관하기 버튼 -->
 			        <div>
 			            <button type="button" class="goToLink btn btn-warning btn-lg">바로구매</button>&nbsp;&nbsp;
-			            <button onclick="cart();" type="button" id="inputCart" class="goToLink btn btn-warning btn-lg" >장바구니</button>&nbsp;&nbsp;
+			            <button onclick="cart();" id="goCart" type="button" class="goToLink btn btn-warning btn-lg" data-toggle="modal" data-target="#goToCart">장바구니</button>&nbsp;&nbsp;
 			            <button type="button" class="goToLink btn btn-warning btn-lg">보관함</button>
 			        </div>
                 </div>
@@ -249,36 +249,8 @@
                     </script>
             </div>
             <input type="hidden" id="bkNo" value="<%= b.getBookNo() %>">
-        </form>         
-        <script>
-        	//$("#inputCart").click(function(){
-        		function cart() {
-        		var bkNo = $("#bkNo").val();
-        		var amount = $('input[name=amount]').val();
-        		var sum = $('input[name=sum]').val();
-        		
-        		
-        		$.ajax({
-        			url:"<%= contextPath %>/insertCart.or",
-        			type:"get",
-        			data: {
-        				bookNo: bkNo,
-        				amount: amount,
-        				totalPrice: sum
-        			},
-        			success:function(data){
-        				alert("카트담기성공제발@@@");
-        				
-        			},error:function(){
-        				alert("실패를했단다^^~");
-        			}
-        		});
-        		}
-        	//});
-        </script>
-        		
-        <!-- 폼태그와 모달...함께할수없을까..? -->
-        <!-- 로그인 전 -->
+        </form>
+                <!-- 로그인 전 -->
         <% if(loginUser == null) { %>
 	        <!-- The Modal for 로그인전 장바구니버튼 클릭 -->
 	        <div class="modal" id="goToCart">
@@ -309,7 +281,7 @@
 	                <div class="modal-body" align="center">
 	                    <h5 class="modal-title" style="text-align: center;"><br><br> 
 	                        장바구니에 담겼습니다.  <br>
-	                        <a href="<%= contextPath %>/insertCart.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
+	                        <a href="<%= contextPath %>/cList.or?bookNo=<%= b.getBookNo() %>" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
 	                    </h5>
 	                </div>
 	                
@@ -325,7 +297,32 @@
 	        </div>
 	        <!-- //Modal -->
 		<% } %>
-		
+		         
+        <script>
+        	//$("#inputCart").click(function(){
+        		function cart() {
+	        		var bkNo = $("#bkNo").val();
+	        		var amount = $('input[name=amount]').val();
+	        		var sum = $('input[name=sum]').val();
+	        		$.ajax({
+	        			url:"<%= contextPath %>/insertCart.or",
+	        			type:"get",
+	        			data: {
+	        				bookNo: bkNo,
+	        				amount: amount,
+	        				totalPrice: sum
+	        			},
+	        			success:function(data){
+	        				
+	        			},error:function(){
+	        				alert("로그인 후 이용 가능합니다.");
+	        			}
+	        		});
+        		}
+        	//});
+        </script>
+        		
+
 		
 		
 		

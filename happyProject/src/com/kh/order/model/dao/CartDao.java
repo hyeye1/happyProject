@@ -12,9 +12,6 @@ import java.util.Properties;
 import com.kh.notice.model.dao.NoticeDao;
 import com.kh.order.model.vo.Cart;
 
-
-
-
 public class CartDao {
 	
 	private Properties prop = new Properties();
