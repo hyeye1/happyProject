@@ -184,7 +184,7 @@
 			     , BK_HITS
 			     , BK_ENROLL_DATE  
 			  FROM TB_BOOK
-			 WHERE BK_KEYWORD like '%?%'
+			 WHERE BK_KEYWORD LIKE '%' || ? || '%'
 	</entry>
 
 

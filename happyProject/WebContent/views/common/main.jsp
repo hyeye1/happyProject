@@ -284,32 +284,32 @@
                     <!-- hover입히기 -->
                     <li class="hashBackLi">
                         <div class="hashClick" id="fam">
-                            <a href="">#가족</a>
+                            <a href="hashtag.li?hashkey=가족">#가족</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="death">
-                            <a href="">#죽음</a>
+                            <a href="hashtag.li?hashkey=죽음">#죽음</a>
                         </div>
                     </li>                    
                     <li class="hashBackLi">
                         <div class="hashClick" id="heal">
-                            <a href="">#위로</a>
+                            <a href="hashtag.li?hashkey=위로">#위로</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="happy">
-                            <a href="">#행복</a>
+                            <a href="hashtag.li?hashkey=행복">#행복</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="relation">
-                            <a href="">#관계</a>
+                            <a href="hashtag.li?hashkey=관계">#관계</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="travel">
-                            <a href="">#여행</a>
+                            <a href="hashtag.li?hashkey=여행">#여행</a>
                         </div>
                     </li>
                 </div>     
