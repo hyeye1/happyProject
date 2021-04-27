@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.book.model.vo.*, com.kh.member.model.vo.Member" %>
+    pageEncoding="UTF-8" import="com.kh.book.model.vo.*, com.kh.member.model.vo.Member, com.kh.order.model.vo.Cart" %>
 <%
  	Book b = (Book)request.getAttribute("b");
  	Image i = (Image)request.getAttribute("i");
  	Member m = (Member)request.getAttribute("m");
+ 	//Cart c = (Cart)request.getAttribute("c");
+ 	//Member loginUser = (Member)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -302,6 +304,7 @@
         	//$("#inputCart").click(function(){
         		function cart() {
 	        		var bkNo = $("#bkNo").val();
+	        		//var memNo = $("#memNo").val();
 	        		var amount = $('input[name=amount]').val();
 	        		var sum = $('input[name=sum]').val();
 	        		$.ajax({

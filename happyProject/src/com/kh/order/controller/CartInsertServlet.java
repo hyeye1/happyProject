@@ -60,6 +60,7 @@ public class CartInsertServlet extends HttpServlet {
 		
 		int result = new CartService().insertCart(c);
 		
+		
 		if(result > 0) { // 장바구니 담기 성공!
 			request.getRequestDispatcher("views/order/cart.jsp");
 		} else {		// 장바구니 담기 실패 -> 상세페이지로 돌아가기

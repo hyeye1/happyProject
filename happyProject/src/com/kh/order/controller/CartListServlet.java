@@ -33,8 +33,8 @@ public class CartListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// 카트 리스트페이지에 필요한 카트정보 가져오기
-		ArrayList<Cart> list = new CartService().CartList();
-		request.setAttribute("cart", cart);
+		//ArrayList<Cart> list = new CartService().selectCartList();
+		//request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
 	}
