@@ -71,13 +71,26 @@
     </style>
 </head>
 <body>
-    <div class="outer">
+	<% String myAddress = %> 
+	<script>
+	 		var msg = "<%= session.getAttribute("alertMsg") %>"; // 알람창으로 출력할 메세지
+	 		// var msg = "메세지" / "null";
+	 		
+	 		if(msg != "null"){
+	 			alert(msg);
+	 			// 알람창 띄어준 후에 session에 담긴 메세지 지워야됨!!(안 그러면 메뉴바 포함된 매 페이지 열 때마다 alert계속 뜰거임)
+	 			<% session.removeAttribute("alertMsg"); %>
+	 		}
+	 </script>
+	    <div class="outer">
         <div class="path"> 홈>마이페이지>나의 배송지 관리</div>     
         <section>
         <h2>나의배송지</h2><hr>
         <div class="myAddress">
             
             <button id="adBtn">+ 배송지 추가 </button>
+            
+            <form>
             <table id="myaddress_table" border="1" style="border-collapse: collapse;">
                 <tr style="background-color: lightgray;">
                     <th><input type="checkbox"></th>
@@ -104,6 +117,7 @@
                     </td>
                 </tr>
             </table>
+            </form>
         </div>
         </section>
         <aside>
