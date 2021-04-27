@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="refundbook">
+		
+		SELECT 
+				RF_NO
+			,	OR_NO_RF
+			,	RF_CONTENT
+			,	RF_AP_DATE
+			,	RF_RESULT
+			,	RF_PRICE
+			,	RF_DATE
+		FROM 
+			TB_REFUND		
+	
+	
+	</entry>
+
+
+</properties>
