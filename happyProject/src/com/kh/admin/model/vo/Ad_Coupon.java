@@ -7,13 +7,13 @@ public class Ad_Coupon {
 	private int couNo; // 쿠폰 번호
 	private String couName; // 쿠폰명
 	private int discount; // 할인액
-	private Date couStart; // 유효기간 시작일
-	private Date couEnd; // 유효기간 만료일
+	private String couStart; // 유효기간 시작일
+	private String couEnd; // 유효기간 만료일
 	private int couCondition; // 사용조건금액
 	
-	private Ad_Coupon() {}
+	public Ad_Coupon() {}
 
-	public Ad_Coupon(int couNo, String couName, int discount, Date couStart, Date couEnd, int couCondition) {
+	public Ad_Coupon(int couNo, String couName, int discount, String couStart, String couEnd, int couCondition) {
 		super();
 		this.couNo = couNo;
 		this.couName = couName;
@@ -47,19 +47,19 @@ public class Ad_Coupon {
 		this.discount = discount;
 	}
 
-	public Date getCouStart() {
+	public String getCouStart() {
 		return couStart;
 	}
 
-	public void setCouStart(Date couStart) {
+	public void setCouStart(String couStart) {
 		this.couStart = couStart;
 	}
 
-	public Date getCouEnd() {
+	public String getCouEnd() {
 		return couEnd;
 	}
 
-	public void setCouEnd(Date couEnd) {
+	public void setCouEnd(String couEnd) {
 		this.couEnd = couEnd;
 	}
 

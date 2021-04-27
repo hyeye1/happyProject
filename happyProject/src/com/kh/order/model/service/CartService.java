@@ -1,8 +1,12 @@
 package com.kh.order.model.service;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.commit;
+import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.kh.order.model.dao.CartDao;
 import com.kh.order.model.vo.Cart;
@@ -15,7 +19,7 @@ public class CartService {
 		
 		int result = new CartDao().insertCart(conn, c);
 		
-		if(result == 1) {
+		if(result > 0){
 			commit(conn);
 		}else {
 			rollback(conn);
@@ -26,5 +30,12 @@ public class CartService {
 		return result;
 		
 	}
-
+	
+	public ArrayList<Cart> selectCartList() {
+		
+		Connection conn = getConnection();
+		ArrayList<Cart> list = new CartDao().selectCartList(conn);
+		
+		
+	}
 }

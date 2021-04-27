@@ -19,7 +19,7 @@
 		  )
 		  VALUES
 		  (
-		     SEQ_CNO
+		     SEQ_CNO.NEXTVAL
 		   , ?
 		   , ?
 		   , ?
@@ -30,6 +30,24 @@
 		   , ?
 		   , ?
 		   )
+	</entry>
+	
+	<entry key="selectCartList">
+		SELECT
+		       CA_NO
+		     , BK_NO_OR
+		     , MEM_NO_OR
+		     , AMOUNT
+		     , TOTAL_PRICE
+		     , STATUS
+		     , BK_TITLE
+		     , AUTHOR
+		     , ORIGIN_PRICE
+		     , PRICE
+		     , MAIN_IMG
+		  FROM TB_CART C
+		  JOIN TB_MEMBER M ON (C.MEM_NO_OR = M.MEM_NO)
+		 WHERE MEM_NO = ?
 	</entry>
 	
 

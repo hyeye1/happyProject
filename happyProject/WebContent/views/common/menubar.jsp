@@ -53,6 +53,7 @@
                 border-radius: 2px;
                 margin-left: -58px;
                 cursor: pointer;
+
             }
             #menubarSearchButton:hover{
             	color:white;
@@ -123,24 +124,22 @@
     <body>
 
         <div class="menubarOuter" >
-            
+            <form action="<%= request.getContextPath() %>/search.bo">
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
                 <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
-                <input type="text" id="menubarSearchInput" > 
-                <input type="button" class="menubarSearch" id="menubarSearchButton" value="검색" onclick="bookSearch();">
-    			<script>
-    			function bookSearch(){
-					location.href ="<%= contextPath %>/bkSearch.bk";
-    			}
-    			</script>
-    			
+
+
+                <input type="text" id="menubarSearchInput" > <button type="submit" class="menubarSearch" id="menubarSearchButton" >검색</button>
+
+    		</div>
+            </form>
     		<% if(loginUser == null) { %>
     		
                 <!-- 로그인전 div -->
                
 	                <div id="loginBefore"  >
-	               		
+	               		<input type="button" class="menubarSearch" id="menubarSearchButton" value="검색" onclick="bookSearch();">
  
 	                    <input type="image" id="menubarCartBtn" src="resources/images/cart.png" onclick="beforeCheckCart();">
 	                    <input type="image" id="menubarJoinBtn" src="resources/images/join.png" onclick="joinPage();">
@@ -148,8 +147,9 @@
 	                </div>
     			
     			<script>
-    			
-	 
+	    			function bookSearch(){
+						location.href = "<%= contextPath %>/bkSearch.bk";
+					}
     				function beforeCheckCart(){
     					location.href = "<%= contextPath %>/loginForm.me";
     				}
@@ -165,19 +165,24 @@
             <% }else if(loginUser.getAdminYN().equals("Y")) { %>
             <!-- 관리자 div -->
             <div id="loginAdmin">
-                <input type="image" id="menubarAdminBtn" src="resources/images/admin.png" onclick="adminPage()">
+                <input type="image" id="menubarAdminBtn" src="resources/images/admin.png" >
                 <input type="image" id="menubarLogoutBtn" src="resources/images/logout.png" onclick="logoutPage()">
             </div>
 
             	<script>
-					function adminPage(){
+            	const menubarAdminBtn = document.getElementById('menubarAdminBtn');
+				menubarAdminBtn.addEventListener('click',function(){
+					window.open("${pageContext.request.contextPath}/views/admin/ad_home.jsp", "관리자 로그인", "top=50, left=200, width=1000, height=700"); 
+				});
+					<%-- function adminPage(){
 						location.href = "<%= contextPath %>/adminForm.me";
-					}
+					} --%>
     				function logoutPage(){
             			location.href="<%= contextPath %>/logout.me";
-            		}
+   		}
     			</script>
-
+				
+				
 
             
     		<% }else { %>
@@ -197,8 +202,8 @@
                 		}
                 		
                 	</script>
-            </div>
             <% } %>
+            </div>
             
             
             <br clear="both">
@@ -206,9 +211,9 @@
             <div class="menubarCatWrap" align="center">
                 <!-- 카테고리 -->
                 <div class="menubarMenu"><a href="<%=contextPath%>/best.li">베스트도서</a></div>
-                <div class="menubarMenu"><a href="">신간도서</a></div>
-                <div class="menubarMenu"><a href="">국내도서</a></div>
-                <div class="menubarMenu"><a href="">외국도서</a></div>
+                <div class="menubarMenu"><a href="<%=contextPath%>/new.li">신간도서</a></div>
+                <div class="menubarMenu"><a href="<%=contextPath%>/kr.li">국내도서</a></div>
+                <div class="menubarMenu"><a href="<%=contextPath%>/fo.li">외국도서</a></div>
                 <div class="menubarMenu"><a href="<%=contextPath%>/Service.me">고객센터</a></div>
             </div>
             

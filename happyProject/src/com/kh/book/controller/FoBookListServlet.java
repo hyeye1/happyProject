@@ -1,4 +1,4 @@
-package com.kh.order.controller;
+package com.kh.book.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.order.model.service.CartService;
-import com.kh.order.model.vo.Cart;
+import com.kh.book.model.service.BookService;
+import com.kh.book.model.vo.Book;
 
 /**
- * Servlet implementation class cartListServlet
+ * Servlet implementation class FoBookListServlet
  */
-@WebServlet("/cList.or")
-public class CartListServlet extends HttpServlet {
+@WebServlet("/fo.li")
+public class FoBookListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartListServlet() {
+    public FoBookListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +31,15 @@ public class CartListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// 카트 리스트페이지에 필요한 카트정보 가져오기
-		//ArrayList<Cart> list = new CartService().selectCartList();
-		//request.setAttribute("list", list);
+		// 필요한 리스트 조회
+		ArrayList<Book> bestList = new BookService().bestFoBookList();
+		ArrayList<Book> newList = new BookService().newFoBookList();
+		//System.out.println(list);
 		
-		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
+		request.setAttribute("bestList", bestList);
+		request.setAttribute("newList", newList);
+		
+		request.getRequestDispatcher("views/book/foBk.jsp").forward(request, response);
 	}
 
 	/**

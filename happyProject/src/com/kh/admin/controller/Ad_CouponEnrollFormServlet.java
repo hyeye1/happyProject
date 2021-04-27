@@ -1,28 +1,25 @@
-package com.kh.order.controller;
+package com.kh.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.order.model.service.CartService;
-import com.kh.order.model.vo.Cart;
-
 /**
- * Servlet implementation class cartListServlet
+ * Servlet implementation class Ad_CouponEnrollFormServlet
  */
-@WebServlet("/cList.or")
-public class CartListServlet extends HttpServlet {
+@WebServlet("/enrollForm.cou")
+public class Ad_CouponEnrollFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartListServlet() {
+    public Ad_CouponEnrollFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +28,9 @@ public class CartListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// 카트 리스트페이지에 필요한 카트정보 가져오기
-		//ArrayList<Cart> list = new CartService().selectCartList();
-		//request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
+	
+		RequestDispatcher view = request.getRequestDispatcher("views/admin/ad_enrollCoupon.jsp");
+		view.forward(request, response);
 	}
 
 	/**

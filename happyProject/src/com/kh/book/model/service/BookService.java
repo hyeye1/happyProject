@@ -44,15 +44,7 @@ public class BookService {
       
    }
    
-   public ArrayList<Book> bestBookList(){
-      Connection conn = getConnection();
-      ArrayList<Book> list = new BookDao().bestBookList(conn);
-      close(conn);
-      return list;
-   }
-   
    public Member loginMem(int memNo) {
-	
 
 	   // 상세페이지에서 장바구니 이용하는 회원 번호
 	   Connection conn = getConnection();
@@ -62,6 +54,56 @@ public class BookService {
 	   return m;
 	   
    }
+   
+   
+   public ArrayList<Book> bestBookList(){
+      Connection conn = getConnection();
+      ArrayList<Book> list = new BookDao().bestBookList(conn);
+      close(conn);
+      return list;
+   }
+   
+   public ArrayList<Book> newBookList(){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().newBookList(conn);
+	      close(conn);
+	      return list;
+	   }
+   
+   public ArrayList<Book> bestKrBookList(){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().bestKrBookList(conn);
+	      close(conn);
+	      return list;
+	   }
+   
+   public ArrayList<Book> newKrBookList(){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().newKrBookList(conn);
+	      close(conn);
+	      return list;
+	   }
+
+   public ArrayList<Book> bestFoBookList(){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().bestFoBookList(conn);
+	      close(conn);
+	      return list;
+	   }
+   
+   public ArrayList<Book> newFoBookList(){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().newFoBookList(conn);
+	      close(conn);
+	      return list;
+	   }
+   
+   public ArrayList<Book> hashSearchList(String hashkey){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().hashSearchList(conn, hashkey);
+	      close(conn);
+	      return list;
+	   }
    
    
 

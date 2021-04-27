@@ -18,10 +18,8 @@
         
             .todayPick{
                 background-color: rgb(224, 224, 224);
-                height: 350px;
-                
+                height: 340px;
             }
-            .mainOuter h2{ margin: 10px;}
             .mainOuter li{display: table-cell;}
             .mainOuter .coverImg{
                 width: 120px;
@@ -47,10 +45,8 @@
                 font-size:12px;
                 font-weight:bold;
             }
-            .todayPick li p{color: gray; font-size: 10px; }
-            .todayBk{margin-right: 40px; margin-left: -9px; }
-    		.bookName{width: 130px;}
-    
+            .todayPick li p{color: gray; font-size: 10px;}
+            .todayBk{margin: 17px;}
     
             .hash{height: 300px;}
             .hashNow p{
@@ -78,6 +74,17 @@
             }
             .mainOuter input::placeholder {
                 color:rgb(241, 196, 15); 
+            }
+            #hashSearchBtn{
+                float: left;
+                margin-left: -208px;
+                margin-top: 148px;
+                height: 30px;
+                background-color: rgb(255, 226, 132); 
+                border: 1px solid darkgray;
+                border-radius: 3px;
+                color: gray; 
+                cursor: pointer;
             }
             #hashBack{
                 width: 300px;
@@ -144,7 +151,7 @@
                 margin-top: 25px;
                 }
             .weeklyTops .title{font-size: 11px;}
-            .weeklyBest .author{
+            .author{
                 font-weight: 500; 
                 font-size: 10px; 
                 float: left;
@@ -174,13 +181,12 @@
                 <!-- 오늘의추천 -->
                 <br>
                 <h2>실시간 추천</h2>
-                <br>
                     <ul>
                         <li>
                             <div id="todayBk1" class="todayBk">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
-                                    <img class="coverImg" src="">
-                                    <div class="bookName"></div>
+                                    <img class="coverImg" src="" >
+                                    <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -189,7 +195,7 @@
                             <div id="todayBk2" class="todayBk">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <div class="bookName"></div>
+                                    <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -198,7 +204,7 @@
                             <div id="todayBk3" class="todayBk">
 								<a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <div class="bookName"></div>
+                                    <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -207,7 +213,7 @@
                             <div id="todayBk4" class="todayBk">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <div class="bookName"></div>
+                                    <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -216,7 +222,7 @@
                             <div id="todayBk5" class="todayBk">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <div class="bookName"></div>
+                                    <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -225,7 +231,7 @@
                             <div id="todayBk6" class="todayBk"">
                                 <a class="detailUrl" href="<%= contextPath %>/bkDetails.bk">
                                     <img class="coverImg" src="">
-                                    <div class="bookName"></div>
+                                    <span class="bookName"></span>
                                 </a>
                                 <p class="author"></p>
                             </div>
@@ -258,12 +264,6 @@
             	}
             });  	
             
-           <%--  $(function(){
-            	$.ajax({
-            		url:"<%= contextPath %>/bkDetails.bk",
-            		method:"GET"
-            	});
-            }) --%>
             </script>
             
     	
@@ -276,40 +276,42 @@
                     <p style="margin-left: 90px;">[ </p>
                     <p id="hashNowText" style="font-size: 35px; font-weight: 600;">지금,&nbsp; 여기</p>
                     <p> ]</p>
-                    <!-- 돋보기넣기 -->
-                    <input type="search"id="hashSearch" placeholder=" #">
+                    <form action="hashtag.li"  method="GET" >
+	                    <input type="search"id="hashSearch" placeholder=" #" name="hashkey">
+	                    <button id="hashSearchBtn">검색</button>
+                    </form>
                 </div>
                 
                 <div id="hashBack">
                     <!-- hover입히기 -->
                     <li class="hashBackLi">
                         <div class="hashClick" id="fam">
-                            <a href="">#가족</a>
+                            <a href="hashtag.li?hashkey=가족">#가족</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="death">
-                            <a href="">#죽음</a>
+                            <a href="hashtag.li?hashkey=죽음">#죽음</a>
                         </div>
                     </li>                    
                     <li class="hashBackLi">
                         <div class="hashClick" id="heal">
-                            <a href="">#위로</a>
+                            <a href="hashtag.li?hashkey=위로">#위로</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="happy">
-                            <a href="">#행복</a>
+                            <a href="hashtag.li?hashkey=행복">#행복</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="relation">
-                            <a href="">#관계</a>
+                            <a href="hashtag.li?hashkey=관계">#관계</a>
                         </div>
                     </li>
                     <li class="hashBackLi">
                         <div class="hashClick" id="travel">
-                            <a href="">#여행</a>
+                            <a href="hashtag.li?hashkey=여행">#여행</a>
                         </div>
                     </li>
                 </div>     
