@@ -61,7 +61,20 @@
             border-radius: 80px;
             margin-top: 20px;
         }
-        #tag{
+        .tag a{
+        	text-decoration: none;
+            height: 36px;
+            width: 87px;
+            line-height: 2.7; 
+            display: block; 
+            text-align: center;
+            float:left;
+            margin-left:-10px;
+            margin-top:-8px;
+        	color: grey;
+        	border-radius: 80px;
+        }
+        .tag{
             width: 85px;
             height: 40px;
             padding:8px;
@@ -74,14 +87,22 @@
             border-radius: 20px;
             cursor: pointer;
         }
-        #tag:hover{
+        
+        .tag:hover{
         	background-color: rgb(255, 233, 161);
+            width:85px;
+            margin-top:0px;
+            font-color: white;
             font-size: 20px;
             font-weight: 900;
-            width:85px;
-            color: white;
-            margin-top:0px;
                 }
+       .tag a:hover{
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            line-height: 200%;			
+            }
+
         .searchBook{
             width: 1000px;
             background-color: rgb(245, 245, 245);
@@ -159,15 +180,15 @@
         	<br>
             <span>놓칠 수 없는 인기 태그</span>
             <div class="bestTagBox">
-                <button id="tag">#꿈</button>
-                <button id="tag">#희망</button>
-                <button id="tag">#여행</button>
-                <button id="tag">#가족</button>
-                <button id="tag">#친구</button><br>
-                <button id="tag">#마음</button>
-                <button id="tag">#위로</button>
-                <button id="tag">#감정</button>
-                <button id="tag" style="width: 90px;">#재테크</button>
+                <button class="tag"><a  href="hashtag.li?hashkey=꿈">#꿈</a></button>
+                <button class="tag"><a  href="hashtag.li?hashkey=희망">#희망</a></button>
+                <button class="tag"><a  href="hashtag.li?hashkey=여행">#여행</a></button>
+                <button class="tag"><a  href="hashtag.li?hashkey=가족">#가족</a></button>
+                <button class="tag"><a  href="hashtag.li?hashkey=친구">#친구</a></button><br>
+                <button class="tag"><a  href="hashtag.li?hashkey=마음">#마음</a></button>
+                <button class="tag"><a  href="hashtag.li?hashkey=위로">#위로</a></button>
+                <button class="tag"><a  href="hashtag.li?hashkey=감정">#감정</a></button>
+                <button class="tag" style="width: 90px;"><a  href="hashtag.li?hashkey=재테크">#재테크</a></button>
             </div>
         </div>
         <br><br>
