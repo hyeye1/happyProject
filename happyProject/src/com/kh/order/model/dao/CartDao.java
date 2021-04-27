@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -59,11 +60,45 @@ public class CartDao {
 		return result;
 	}
 	
-	public ArrayList<Cart> selectCartList(Connection conn){
+	public ArrayList<Cart> selectCartList(Connection conn, int memNo){
 		
+		// SELECT문 -> resultSet객체로 (여러행)
+		ArrayList<Cart> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
+		String sql = prop.getProperty("selectCartList");
 		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Cart c = new Cart();
+				c.setCartNo(rset.getInt("ca_no"));
+				c.setBookNo(rset.getInt("bk_no_or"));
+				c.setMemNo(rset.getInt("mem_no_or"));
+				c.setAmount(rset.getInt("amount"));
+				c.setTtPrice(rset.getInt("total_price"));
+				c.setStatus(rset.getString("author"));
+				c.setTitle(rset.getString("bk_title"));
+				c.setAuthor(rset.getString("author"));
+				c.setOrgPrice(rset.getInt("origin_price"));
+				c.setPrice(rset.getInt("price"));
+				c.setMainImg(rset.getString("main_img"));
+				
+				list.add(c);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 	
 

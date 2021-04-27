@@ -31,11 +31,13 @@ public class CartService {
 		
 	}
 	
-	public ArrayList<Cart> selectCartList() {
+	public ArrayList<Cart> selectCartList(int memNo) {
 		
 		Connection conn = getConnection();
-		ArrayList<Cart> list = new CartDao().selectCartList(conn);
+		ArrayList<Cart> list = new CartDao().selectCartList(conn, memNo);
 		
+		close(conn);
+		return list;
 		
 	}
 }

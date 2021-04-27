@@ -256,14 +256,12 @@
 		            			 $(id + ' .author').text(data[0].author);
 		            			 $(id + ' .coverImg').attr('src', data[0].bkMainImg);
 		            			 $(id + ' .detailUrl').attr('href', '<%= contextPath %>/bkDetails.bk?bookNo=' + data[0].bookNo);
-		            			
  		            		 }
 		            	 });
             			
             		})(i);
             	}
             });  	
-            
             </script>
             
     	

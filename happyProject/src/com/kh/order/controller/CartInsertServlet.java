@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.kh.book.model.service.BookService;
 import com.kh.book.model.vo.Book;
 import com.kh.member.model.vo.Member;
@@ -57,21 +58,13 @@ public class CartInsertServlet extends HttpServlet {
 		c.setPrice(b.getBkPrice());
 		c.setMainImg(b.getBkMainImg());
 		c.setMemNo(memNo);
-		
+	
 		int result = new CartService().insertCart(c);
 		
-		
-		if(result > 0) { // 장바구니 담기 성공!
-			request.getRequestDispatcher("views/order/cart.jsp");
-		} else {		// 장바구니 담기 실패 -> 상세페이지로 돌아가기
-			response.sendRedirect(request.getContextPath() + "/bkDetails.bk"); 
-		}
-		
-		
-		
-		
+		response.setContentType("application/json; charset=UTF-8");
+		Gson gson = new Gson();
+		gson.toJson(result, response.getWriter());
 
-	
 	}
 
 	/**
