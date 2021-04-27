@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import util.SHA256;
+import java.io.PrintWriter;
 
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
@@ -52,6 +54,7 @@ public class JoinServlet extends HttpServlet {
 		//System.out.println(m);
 		
 		int result = new MemberService().insertMember(m);
+		Member mem = new MemberService().selectMember(memId);
 		
 		if(result > 0) {
 			HttpSession session = request.getSession();

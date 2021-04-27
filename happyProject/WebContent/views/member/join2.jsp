@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.*, util.SHA256, java.io.PrintWriter, javax.mail.*, util.Gmail, java.util.Properties" %>
+<%@ page import = "javax.mail.Transport" %>
+<%@ page import = "javax.mail.Message" %>
+<%@ page import = "javax.mail.Address" %>
+<%@ page import = "javax.mail.internet.InternetAddress" %>
+<%@ page import = "javax.mail.internet.MimeMessage" %>
+<%@ page import = "javax.mail.Session" %>
+<%@ page import = "javax.mail.Authenticator" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,10 +77,6 @@
             float: right;
             font-size: 12px;
         }
-        #postcodify_search_button{ 
-            width: 100%; 
-            font-size: 12px;
-        }
         #join2Submit{
             width: 300px;
             font-size: 13.5px;
@@ -117,6 +121,7 @@
         #phoneCheckNumTitle, #phoneCheckYTitle{
             height: 40px;
             border-bottom: none;
+            background-color: rgb(249, 219, 122);
         }
         #phoneCheckNumContent, #phoneCheckYContent{
             background-color: white;
@@ -136,11 +141,13 @@
         .addressInput input {
         	font-size: 12px;
         	color: gray;
+        	
         }
-        #addInput{width:274px;}
+        #addInput{width:275px;}
     </style>
 </head>
 <body>
+	
     <div class="join2Outer" align="center">
         <a href="<%=request.getContextPath()%>"> <img src="resources/images/logo.png" width="180px" style="margin-right: 2px; margin-top: 70px;"> </a>
         <div class="join2Title" align="center">
@@ -163,7 +170,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>비밀번호 확인</th>
+                    <th>비밀번호확인</th>
                     <td colspan="2"> 
                         <input type="password" name="memPwd2" id="memPwd2" placeholder="비밀번호를 한번 더 입력해주세요" required>
                     </td>
@@ -175,12 +182,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>이메일 *</th>
-                    <td colspan="2"><input type="email" name="email" placeholder="abc@happybook.com" required></td>
+                    <th>휴대폰 *</th>
+                    <td colspan="2"><input type="text" id="memPhone" name="memPhone" placeholder="010-xxxx-xxxx"  required></td>
                 </tr>
                 <tr>
-                    <th>휴대폰 *</th>
-                    <td><input type="text" id="memPhone" name="memPhone" placeholder="010-xxxx-xxxx"  required></td>
+                    <th>이메일 *</th>
+                    <td><input type="email"  name="email" placeholder="abc@happybook.com" required></td>
                     <td><button type="button" id="phoneCheck" class="join2Check">인증번호받기</button></td>
                 </tr>
                 <tr class="phoneCheckInput">
@@ -200,7 +207,7 @@
                 </tr>
                 <tr class="addressInput">
                     <th></th>
-                    <td colspan="2"> 
+                    <td colspan="2" width="274px";	> 
 						<input type="text" name="address" class="adList" id="sample6_address" placeholder="주소" required><br>
 						<input type="text" name="extra" class="adList"  id="sample6_extraAddress" placeholder="참고항목">      
 						<input type="text" name="details" class="adList"  id="sample6_detailAddress" placeholder="상세주소" required>
@@ -344,8 +351,7 @@
 	        		});
 	        		
 	        	}
-	        	
-	        	
+
 	        	
 	        	
 	        
@@ -413,6 +419,44 @@
                         
                   // 휴대폰인증
                         $("#phoneCheck").click(function(){
+            	        	
+                	        function emailCheck(){
+                	    		
+                	    		
+                	    		String host = "http://localhost:8880/happyProject/"; 
+                	    		String from = "happybookreader123@gmail.com";
+                	    		String to = request.getParameter("email");
+                	    		String subject = "회원가입 인증 이메일 입니다."; 
+                	    		String content = "다음 인증번호를 인증번호확인란에 입력해주세요." + new SHA256().getSHA256(to) ;
+                	    		Properties p = new Properties();
+                	    		p.put("mail.smtp.user", from);
+                	    		p.put("mail.smtp.host", "smtp.googleemail.com");
+                	    		p.put("mail.smtp.port", "456");
+                	    		p.put("mail.smtp.starttls.enable", "true");
+                	    		p.put("mail.smtp.auth", "true");
+                	    		p.put("mail.smtp.debug", "true");
+                	    		p.put("mail.smtp.socketFactory.port","456");
+                	    		p.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+                	    		p.put("mail.smtp.socketFactory.fallback","false");
+                	    		
+                	    		try {
+                	    			Authenticator auth = new Gmail();
+                	    			Session ses = Session.getInstance(p, auth);
+                	    			ses.setDebug(true);
+                	    			MimeMessage msg = new MimeMessage(ses);
+                	    			msg.setSubject(subject);
+                	    			Address fromAddr = new InternetAddress(from);
+                	    			msg.setFrom(fromAddr);
+                	    			Address toAddr = new InternetAddress(to);
+                	    			msg.addRecipient(Message.RecipientType.TO, toAddr);
+                	    			msg.setContent(content, "text/html;charset=UTF8");
+                	    			Transport.send(msg);
+                	    			
+                	    		} catch (Exception e){
+                	    			e.printStackTrace();
+                	    		}
+                	    		
+                	        }
                             $("#memPhone").attr("readonly", true);
                             $("#phoneCheck").attr("disabled", true);
                             $(".phoneCheckNumWrap").show();

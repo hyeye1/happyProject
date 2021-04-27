@@ -66,6 +66,16 @@ public class MemberService {
 		
 		return result;
 	}
+	
+	public Member selectMember(String memId) {
+		Connection conn = getConnection();
+		
+		Member selectMember = new MemberDao().selectMember(conn, memId);
+		
+		close(conn);
+		
+		return selectMember;
+	}
 		
 	
 	public Member updateMember(Member m) {
