@@ -137,11 +137,11 @@
         <br>
         
         <div class="dateSearch">&nbsp;
-            <button id="btn2">최근 일주일</button>
+
             <button id="btn2">1 개월</button>
             <button id="btn2">3 개월</button>
             <button id="btn2">6 개월</button>&emsp;&emsp;
-            <input type="date" name="start"> ~ <input type="date" name="end">
+            
             <button id="btn2">조회</button>
         </div><br>
      
@@ -167,7 +167,7 @@
 	                    <td><%= q.getqTitle() %></td>
 	                    <td><%= q.getqField() %></td>
 	                    <td><%= q.getqAnswerYn() %></td>
-	                    <td><%= q.getOrNoFk() %></td>
+	                    <td><%= q.getoR_NO_Q() %></td>
 	                </tr>
 	            <%} %>
              <%} %>

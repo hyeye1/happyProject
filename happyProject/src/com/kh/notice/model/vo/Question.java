@@ -5,8 +5,8 @@ import java.sql.Date;
 public class Question {
 	
 	private int qNo;
-	private int memNoFk;
-	private int orNoFk;
+	private int mEM_NO_Q;
+	private int oR_NO_Q;
 	private String qTitle;
 	private String qContent;
 	private Date qDate;
@@ -21,13 +21,13 @@ public class Question {
 	
 	public Question() {}
 
-	public Question(int qNo, int memNoFk, int orNoFk, String qTitle, String qContent, Date qDate, String qField,
+	public Question(int qNo, int mEM_NO_Q, int oR_NO_Q, String qTitle, String qContent, Date qDate, String qField,
 			String qAnswerYn, String qEmailYn, String qSmsYn, String qDelYn, String aContent, Date aDate,
 			String qAttachment) {
 		super();
 		this.qNo = qNo;
-		this.memNoFk = memNoFk;
-		this.orNoFk = orNoFk;
+		this.mEM_NO_Q = mEM_NO_Q;
+		this.oR_NO_Q = oR_NO_Q;
 		this.qTitle = qTitle;
 		this.qContent = qContent;
 		this.qDate = qDate;
@@ -42,15 +42,14 @@ public class Question {
 	}
 	
 	
-	
 
-	public Question(Date qDate, String qTitle, String qField, String qAnswerYn, int orNoFk) {
+	public Question(Date qDate, String qTitle,  String qField, String qAnswerYn, int oR_NO_Q) {
 		super();
-		this.qDate = qDate;
+		this.oR_NO_Q = oR_NO_Q;
 		this.qTitle = qTitle;
+		this.qDate = qDate;
 		this.qField = qField;
 		this.qAnswerYn = qAnswerYn;
-		this.orNoFk = orNoFk;
 	}
 
 	public int getqNo() {
@@ -61,20 +60,20 @@ public class Question {
 		this.qNo = qNo;
 	}
 
-	public int getMemNoFk() {
-		return memNoFk;
+	public int getmEM_NO_Q() {
+		return mEM_NO_Q;
 	}
 
-	public void setMemNoFk(int memNoFk) {
-		this.memNoFk = memNoFk;
+	public void setmEM_NO_Q(int mEM_NO_Q) {
+		this.mEM_NO_Q = mEM_NO_Q;
 	}
 
-	public int getOrNoFk() {
-		return orNoFk;
+	public int getoR_NO_Q() {
+		return oR_NO_Q;
 	}
 
-	public void setOrNoFk(int orNoFk) {
-		this.orNoFk = orNoFk;
+	public void setoR_NO_Q(int oR_NO_Q) {
+		this.oR_NO_Q = oR_NO_Q;
 	}
 
 	public String getqTitle() {
@@ -167,11 +166,19 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [qNo=" + qNo + ", memNoFk=" + memNoFk + ", orNoFk=" + orNoFk + ", qTitle=" + qTitle
+		return "Question [qNo=" + qNo + ", mEM_NO_Q=" + mEM_NO_Q + ", oR_NO_Q=" + oR_NO_Q + ", qTitle=" + qTitle
 				+ ", qContent=" + qContent + ", qDate=" + qDate + ", qField=" + qField + ", qAnswerYn=" + qAnswerYn
 				+ ", qEmailYn=" + qEmailYn + ", qSmsYn=" + qSmsYn + ", qDelYn=" + qDelYn + ", aContent=" + aContent
 				+ ", aDate=" + aDate + ", qAttachment=" + qAttachment + "]";
 	}
+
+	
+	
+	
+	
+	
+
+	
 	
 	
 
