@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.admin.model.service.Ad_CouponService;
 import com.kh.admin.model.vo.Ad_Coupon;
@@ -32,6 +31,7 @@ public class Ad_CouponInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("utf-8");
 		
 		String couName = request.getParameter("cName");
@@ -39,8 +39,6 @@ public class Ad_CouponInsertServlet extends HttpServlet {
 		String couStart = request.getParameter("cStart"); 
 		String couEnd = request.getParameter("cEnd");
 		int couCondition = Integer.parseInt(request.getParameter("cCondition"));
-		
-		HttpSession session = request.getSession();
 		
 		Ad_Coupon c = new Ad_Coupon();
 		c.setCouName(couName);
@@ -52,7 +50,7 @@ public class Ad_CouponInsertServlet extends HttpServlet {
 		int result = new Ad_CouponService().insertCoupon(c);
 		
 		if(result > 0) {
-			session.setAttribute("alertMsg", "성공적으로 쿠폰이 등록되었습니다.");
+			request.getSession().setAttribute("alertMsg", "쿠폰이 등록되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/list.cou?currentPage=1");
 		}else {
 			
