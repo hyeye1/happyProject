@@ -45,9 +45,9 @@
 		     , ORIGIN_PRICE
 		     , PRICE
 		     , MAIN_IMG
-		  FROM TB_CART C
-		  JOIN TB_MEMBER M ON (C.MEM_NO_OR = M.MEM_NO)
-		 WHERE MEM_NO = ?
+		  FROM TB_CART
+		  JOIN TB_MEMBER ON (MEM_NO_OR = MEM_NO)
+		 WHERE MEM_NO_OR = ?
 	</entry>
 	
 

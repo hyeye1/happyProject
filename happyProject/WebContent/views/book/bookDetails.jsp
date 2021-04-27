@@ -3,9 +3,7 @@
 <%
  	Book b = (Book)request.getAttribute("b");
  	Image i = (Image)request.getAttribute("i");
- 	Member m = (Member)request.getAttribute("m");
- 	//Cart c = (Cart)request.getAttribute("c");
- 	//Member loginUser = (Member)session.getAttribute("loginUser");
+ 	Cart c = (Cart)request.getAttribute("c");
 %>
 <!DOCTYPE html>
 <html>
@@ -278,12 +276,12 @@
 	        <div class="modal" id="goToCart">
 	            <div class="modal-dialog">
 	                <div class="modal-content">
-	            
+	            	<input type="hidden" value="${loginUser}" name="loginUser">
 	                <!-- Modal Header -->
 	                <div class="modal-body" align="center">
-	                    <h5 class="modal-title" style="text-align: center;"><br><br> 
-	                        장바구니에 담겼습니다.  <br>
-	                        <a href="<%= contextPath %>/cList.or?bookNo=<%= b.getBookNo() %>" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
+	                    <h5 class="modal-title" style="text-align: center;"><br><br>                     
+	                        <span id="result"></span>  <br>
+	                        <a href="<%= contextPath %>/cList.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
 	                    </h5>
 	                </div>
 	                
@@ -315,10 +313,15 @@
 	        				amount: amount,
 	        				totalPrice: sum
 	        			},
-	        			success:function(data){
-	        				
+	        			success:function(result){
+	        				if (result > 0) {
+	        					// 성공 모달 띄우기
+	        					$('#goToCart #result').text('장바구니에 담겼습니다.');
+	        				} else {
+	        					// 실패 모달 띄우기
+	        					$('#goToCart #result').text('장바구니 추가에 실패하였습니다.');
+	        				}
 	        			},error:function(){
-	        				alert("로그인 후 이용 가능합니다.");
 	        			}
 	        		});
         		}
