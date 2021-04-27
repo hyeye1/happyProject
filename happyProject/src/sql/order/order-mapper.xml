@@ -19,7 +19,7 @@
 		  )
 		  VALUES
 		  (
-		     SEQ_CNO
+		     SEQ_CNO.NEXTVAL
 		   , ?
 		   , ?
 		   , ?

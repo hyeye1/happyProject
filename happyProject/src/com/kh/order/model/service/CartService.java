@@ -15,7 +15,7 @@ public class CartService {
 		
 		int result = new CartDao().insertCart(conn, c);
 		
-		if(result == 1) {
+		if(result > 0){
 			commit(conn);
 		}else {
 			rollback(conn);

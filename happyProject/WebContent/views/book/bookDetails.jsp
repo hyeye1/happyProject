@@ -4,7 +4,6 @@
  	Book b = (Book)request.getAttribute("b");
  	Image i = (Image)request.getAttribute("i");
  	Member m = (Member)request.getAttribute("m");
-
 %>
 <!DOCTYPE html>
 <html>
@@ -205,12 +204,12 @@
 	                    <input type=number name=amount value="1" min="1" max="10" readonly onchange="change();" style="text-align: center;">
 	                    <input type=button value="+" onclick="add();" class="btn btn-primary btn-sm" style="background:lightgray; border:none;"> <br>
 	                    <!-- 회원이 선택한 수량만큼의 값 -->
-	                    <input type="number" name="sum" size="10" readonly> 
+	                    <input type="hidden" name="sum" size="10" readonly> 
                 	</div>
                 	<!-- 주문하기, 보관하기 버튼 -->
 			        <div>
 			            <button type="button" class="goToLink btn btn-warning btn-lg">바로구매</button>&nbsp;&nbsp;
-			            <button type="button" id="inputCart" class="goToLink btn btn-warning btn-lg" data-toggle="modal" data-target="#goToCart" onclick="cart();">장바구니</button>&nbsp;&nbsp;
+			            <button onclick="cart();" type="button" id="inputCart" class="goToLink btn btn-warning btn-lg" >장바구니</button>&nbsp;&nbsp;
 			            <button type="button" class="goToLink btn btn-warning btn-lg">보관함</button>
 			        </div>
                 </div>
@@ -250,43 +249,23 @@
                     </script>
             </div>
             <input type="hidden" id="bkNo" value="<%= b.getBookNo() %>">
-           <%--  <input type="hidden" id="bkTitle" value="<%= b.getBkName() %>">
-            <input type="hidden" id="bkMainImg" value="<%= b.getBkMainImg() %>">
-            <input type="hidden" id="author" value="<%= b.getAuthor() %>">
-            <input type="hidden" id="orgPrice" value="<%= b.getBkOrgPrice() %>">
-            <input type="hidden" id="price" value="<%= b.getBkPrice() %>">
-            <input type="hidden" id="memNo" value="<%= m.getMemNo() %>">
-            <input type="hidden" id="amount" name="amount">
-            <input type="hidden" id="sum" name="sum">
-             --%>
         </form>         
-       <%--  <script>
-        	$("#inputCart").click(function(){
+        <script>
+        	//$("#inputCart").click(function(){
+        		function cart() {
         		var bkNo = $("#bkNo").val();
-        		var title = $("#bkTitle").val();
-        		var mainImg = $("#bkMainImg").val;
-        		var author = $("#author").val;
-        		var orgPrice = $("#orgPrice").val;
-        		var price = $("#price").val;
-        		//var memNo = $("#memNo").val;
-        		var amount = $('input[name=amount]').val; //val이 맞는지 뭔지..
-        		var sum = $('input[name=sum]').val;
+        		var amount = $('input[name=amount]').val();
+        		var sum = $('input[name=sum]').val();
         		
-        		var data = {
-        				bkNo : bookNo,
-        				title : bkName,
-        				mainImg : bkMainImg,
-        				author : author,
-        				orgPrice : bkOrgPrice,
-        				price : bkPrice,
-        				//memNo : memNo,
-        				amount : amount, //카트정보
-        				sum : ttPrice	// 카트정보
-        		};
+        		
         		$.ajax({
         			url:"<%= contextPath %>/insertCart.or",
         			type:"get",
-        			data:data,
+        			data: {
+        				bookNo: bkNo,
+        				amount: amount,
+        				totalPrice: sum
+        			},
         			success:function(data){
         				alert("카트담기성공제발@@@");
         				
@@ -294,10 +273,11 @@
         				alert("실패를했단다^^~");
         			}
         		});
-        	};
-        </script>  --%>
+        		}
+        	//});
+        </script>
         		
-        
+        <!-- 폼태그와 모달...함께할수없을까..? -->
         <!-- 로그인 전 -->
         <% if(loginUser == null) { %>
 	        <!-- The Modal for 로그인전 장바구니버튼 클릭 -->
@@ -489,7 +469,7 @@
                 </tbody>
             </table>
         </div>
-        
+        <br><br><br><br><br><br><br><br>
         
     </div>
 
