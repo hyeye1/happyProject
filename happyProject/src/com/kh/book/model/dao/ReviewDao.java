@@ -11,11 +11,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.book.model.dao.ReviewDao;
 import com.kh.book.model.vo.Review;
 
+
+
+
+
 public class ReviewDao {
-	
+
 private Properties prop = new Properties();
 	
 	public ReviewDao() {
@@ -30,39 +33,36 @@ private Properties prop = new Properties();
 		
 	}
 	
-	public ArrayList<Review> selectReviewList(Connection conn, int reNo){
-		// select문 => ResultSet객체 (여러행)
-		
+	public ArrayList<Review> selectReviewList(Connection conn){
+		// select문 => ResultSet객체(여러행)
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectReviewList"); 
+		String sql = prop.getProperty("selectReviewList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, reNo);
-			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				
-				list.add(new Review(rset.getInt("re_no"),
-								  	rset.getInt("mem_no_re"),
-								  	rset.getInt("bk_no_re"),
-								  	rset.getDate("reDate"),
-								  	rset.getString("reContent"),
-								  	rset.getString("reStatus")));
+				list.add(new Review(rset.getDate("re_date"),
+								 	rset.getString("re_content")));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			
 			close(rset);
 			close(pstmt);
 		}
+		
 		return list;
+		
 	}
 	
-
+	
+	
 }

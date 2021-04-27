@@ -9,17 +9,19 @@ import java.util.ArrayList;
 import com.kh.book.model.dao.ReviewDao;
 import com.kh.book.model.vo.Review;
 
+
 public class ReviewService {
 
-	public ArrayList<Review> selectReviewList(int reNo){
-	      
-	      Connection conn = getConnection();
-	      
-	      ArrayList<Review> list = new ReviewDao().selectReviewList(conn, reNo);
-	      
-	      close(conn);
-	      
-	      return list;
-	   }
-	   
+	public ArrayList<Review> selectReviewList(){
+		Connection conn = getConnection();
+		
+		ArrayList<Review> list = new ReviewDao().selectReviewList(conn);
+		
+		close(conn);
+		
+		return list;
+		
+	}
+	
+	
 }

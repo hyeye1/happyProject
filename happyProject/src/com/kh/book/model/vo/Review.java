@@ -22,6 +22,16 @@ public class Review {
 		this.reContent = reContent;
 		this.reStatus = reStatus;
 	}
+	
+	
+	
+
+	public Review(Date reDate, String reContent) {
+		super();
+		this.reDate = reDate;
+		this.reContent = reContent;
+	}
+
 
 	public int getReNo() {
 		return reNo;
@@ -77,7 +87,5 @@ public class Review {
 				+ ", reContent=" + reContent + ", reStatus=" + reStatus + "]";
 	}
 
-	
-	
 	
 }
