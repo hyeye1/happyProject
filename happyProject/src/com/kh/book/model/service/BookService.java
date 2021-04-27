@@ -45,8 +45,7 @@ public class BookService {
    }
    
    public Member loginMem(int memNo) {
-	   
-	   
+
 	   // 상세페이지에서 장바구니 이용하는 회원 번호
 	   Connection conn = getConnection();
 	   Member m = new BookDao().loginMem(conn, memNo);

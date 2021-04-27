@@ -36,8 +36,8 @@ public class HashtagSearchServlet extends HttpServlet {
 		String hashkey = request.getParameter("hashkey");
 		
 		ArrayList<Book> list = new BookService().hashSearchList(hashkey);
-		System.out.println(hashkey);
-		System.out.println(list);
+		//System.out.println(hashkey);
+		//System.out.println(list);
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/book/tagSearchView.jsp").forward(request, response);

@@ -7,7 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kh.book.model.service.BookService;
+import com.kh.book.model.vo.Book;
+import com.kh.member.model.vo.Member;
 import com.kh.order.model.service.CartService;
 import com.kh.order.model.vo.Cart;
 
@@ -31,49 +35,41 @@ public class CartInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
 		request.setCharacterEncoding("utf-8");
 		
-		/*
-		   Book b = CartDao.selectedBook(bookNo);
-		   
-		   Cart c = new Cart(); 
-		   c.setBookDetail(b); 
-			
-		   CartDao.insert(c);
-		*/
-		
-		// 요청된값들 뽑아서 Cart에 넣기
-		// Cart에 Insert할 주문정보
-		int cartNo = Integer.parseInt(request.getParameter("cartNo"));
 		int bkNo = Integer.parseInt(request.getParameter("bookNo"));
-		int memNo = Integer.parseInt(request.getParameter("memNo")); 
-		int amount = Integer.parseInt(request.getParameter("amount")); 
-		int total = Integer.parseInt(request.getParameter("ttprice")); 
-		//String status = request.getParameter("status"); 
-		String title = request.getParameter("title");
-		String author = request.getParameter("author");
-		int orgPrice = Integer.parseInt(request.getParameter("orgPrice"));
-		int price = Integer.parseInt(request.getParameter("price"));
-		String mainImg = request.getParameter("mainImg");
+		int amount = Integer.parseInt(request.getParameter("amount"));
+		int sum = Integer.parseInt(request.getParameter("totalPrice"));
+		
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		int memNo = loginUser.getMemNo();
+		
+		Book b = new BookService().bookDetail(bkNo);
 		
 		Cart c = new Cart();
-		c.setCartNo(cartNo);
 		c.setBookNo(bkNo);
-		c.setMemNo(memNo);
 		c.setAmount(amount);
-		c.setTtPrice(total);
-		//c.setStatus(status);
-		c.setTitle(title);
-		c.setAuthor(author);
-		c.setOrgPrice(orgPrice);
-		c.setPrice(price);
-		c.setMainImg(mainImg);
+		c.setTtPrice(sum);
+		c.setTitle(b.getBkName());
+		c.setAuthor(b.getAuthor());
+		c.setOrgPrice(b.getBkOrgPrice());
+		c.setPrice(b.getBkPrice());
+		c.setMainImg(b.getBkMainImg());
+		c.setMemNo(memNo);
 		
 		int result = new CartService().insertCart(c);
 		
-		request.getSession().setAttribute("c", "성공적으로 장바구니에 담겼습니다.");
-		response.sendRedirect(request.getContextPath() + "/bkDetails.bk"); 
+		
+		if(result > 0) { // 장바구니 담기 성공!
+			request.getRequestDispatcher("views/order/cart.jsp");
+		} else {		// 장바구니 담기 실패 -> 상세페이지로 돌아가기
+			response.sendRedirect(request.getContextPath() + "/bkDetails.bk"); 
+		}
+		
+		
+		
+		
 
 	
 	}

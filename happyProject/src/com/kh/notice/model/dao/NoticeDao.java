@@ -151,7 +151,7 @@ public class NoticeDao {
 				n= new Notice(rset.getInt("no_no"),
 						  	  rset.getString("no_title"),
 						  	  rset.getString("mem_id"),
-						  	  rset.getString("no_content"),
+						  	  rset.getString("no_count"),
 						  	  rset.getDate("no_date")
 							 );
 			}

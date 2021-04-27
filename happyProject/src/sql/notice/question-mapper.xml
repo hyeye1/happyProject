@@ -23,7 +23,7 @@
                                , Q_TITLE
                                , Q_FIELD
                                , Q_ANSWER_YN
-                               , OR_NO_FK
+                               , OR_NO_Q
 		                  FROM TB_QUESTION
 		                 WHERE  Q_DEL_YN = 'N'
 		                 ORDER
