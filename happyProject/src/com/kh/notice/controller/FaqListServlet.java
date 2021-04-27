@@ -46,13 +46,13 @@ public class FaqListServlet extends HttpServlet {
 		int endPage;		
 		
 		
-		listCount = new NoticeService().selectListCount();
+		listCount = new FaqService().selectListCount();
 		
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		
-		pageLimit =5;
+		pageLimit = 5;
 		
 		
 		boardLimit= 10;
@@ -82,6 +82,8 @@ public class FaqListServlet extends HttpServlet {
 		request.getRequestDispatcher("views/notice/faqListView.jsp").forward(request, response);
 		
 	}
+	
+
 		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
