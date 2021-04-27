@@ -39,8 +39,8 @@
             height: 36px;
             font-size: medium;
             font-weight: bold;
-            color: gray;
-            border: 1px solid lightgrey;
+            color: darkgray;
+            border: none;
             background-color: rgb(249, 219, 122);
             border-radius: 4px;
             cursor: pointer;
@@ -102,7 +102,9 @@
             font-weight: 900;
             line-height: 200%;			
             }
-
+       .tagSearch input::placeholder {
+                color:lightgrey; 
+            }
         .searchBook{
             width: 1000px;
             background-color: rgb(245, 245, 245);
@@ -173,7 +175,7 @@
         <br><br><br>
         <form class="tagSearch" action="" method="GET" align="center">
             <span>#</span>
-            <input id="searchBox" type="text" value="검색할 해쉬태그 입력">
+            <input id="searchBox" type="text" placeholder="검색할 해쉬태그 입력" name="hashkey">
             <button id="searchBtn">검색</button>
         </form>
         <div class="bestTag" align="center">
