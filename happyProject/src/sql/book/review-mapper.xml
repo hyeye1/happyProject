@@ -2,17 +2,12 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <entry key="selectReviewList">
-SELECT
-			   RE_NO
-			  , RE_DATE
+	SELECT
+                RE_DATE
 			  , RE_CONTENT
-			  , MEM_NO_RE
-			  , BK_NO_RE
-	       FROM TB_REVIEW R
-	       JOIN TB_MEMBER ON (MEM_NO_RE = MEM_NO)
-           JOIN TB_BOOK ON (BK_NO_RE = BK_NO)
-	      WHERE RE_NO = ?
-	        AND RE_STATUS = 'Y'
+	       FROM TB_REVIEW
+	      WHERE RE_STATUS = 'Y'
+
 </entry>
 	
 	
