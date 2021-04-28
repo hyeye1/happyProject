@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.book.model.vo.*, com.kh.member.model.vo.Member, com.kh.order.model.vo.Cart" %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.book.model.vo.*, com.kh.member.model.vo.Member, com.kh.order.model.vo.Cart" %>
 <%
  	Book b = (Book)request.getAttribute("b");
  	Image i = (Image)request.getAttribute("i");
  	Cart c = (Cart)request.getAttribute("c");
+ 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -434,7 +435,7 @@
         <% } %>
         <br><br>
 	
-		
+		<% if(list.isEmpty()) { %>
         <!-- 리뷰 없을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea">
@@ -443,29 +444,22 @@
             <p align="center" style="font-size:16px;">회원님께서 첫 리뷰의 주인공이 되어주세요.</p>
         </div>
         <br><br>
+        <% }else { %>
         <!-- 리뷰 있을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea" id="reviewList">
             <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
             <hr>
+            <% for(Review r:list) { %>
             <table>
                 <thead>
                     <tr>
-                        <th>user1</th>
-                        <td>진짜 재밌었어요~!</td>
-                        <td>2020-07-20</td>
+                    	 <td align="left"><%= r.getReDate() %></td>
+                        <td rowspan="2" align="center" style="width:500px;"><%= r.getReContent() %></td>
                     </tr>
-                    <tr>
-                        <th>user2</th>
-                        <td>추천합니다</td>
-                        <td>2020-07-01</td>
-                    </tr>
-                    <tr>
-                        <th>user3</th>
-                        <td>친구가 추천해줘서 봤는데 별로에요ㅠㅠ핵노잼</td>
-                        <td>2020-06-18</td>
-                    </tr>
-
+					<% } %>
+                
+              <% } %>
                 </thead>
                 <tbody>
 

@@ -7,6 +7,8 @@
 			  , RE_CONTENT
 	       FROM TB_REVIEW
 	      WHERE RE_STATUS = 'Y'
+	      ORDER
+		        BY RE_DATE DESC
 
 </entry>
 	
