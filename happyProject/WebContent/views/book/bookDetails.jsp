@@ -142,7 +142,7 @@
             border-bottom: 1px solid black;
             margin:auto;
             width:700px;
-            height:300px;
+            height:220px;
         }
         .bookDetailOuter .reviewArea table{
             margin:auto;
