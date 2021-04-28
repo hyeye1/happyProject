@@ -40,4 +40,22 @@ public class CartService {
 		return list;
 		
 	}
+	
+	public int insertCartFromCategory(Cart c) {
+		
+		Connection conn = getConnection();
+		int result = new CartDao().insertCartFromCategory(conn, c);
+		
+		if(result > 0){
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+		
+	}
 }
