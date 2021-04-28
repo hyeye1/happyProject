@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Review {
 
 	private int reNo;
-	private int memNoRe;
+	private String memNoRe;
 	private int  bkNoRe;
 	private Date reDate;
 	private String reContent;
@@ -13,7 +13,7 @@ public class Review {
 	
 	public Review() {}
 
-	public Review(int reNo, int memNoRe, int bkNoRe, Date reDate, String reContent, String reStatus) {
+	public Review(int reNo, String memNoRe, int bkNoRe, Date reDate, String reContent, String reStatus) {
 		super();
 		this.reNo = reNo;
 		this.memNoRe = memNoRe;
@@ -25,13 +25,26 @@ public class Review {
 	
 	
 	
-
+	
 	public Review(Date reDate, String reContent) {
 		super();
 		this.reDate = reDate;
 		this.reContent = reContent;
 	}
 
+	
+	
+
+
+	public Review(String memNoRe, Date reDate, String reContent) {
+		super();
+		this.memNoRe = memNoRe;
+		this.reDate = reDate;
+		this.reContent = reContent;
+	}
+	
+	
+	
 
 	public int getReNo() {
 		return reNo;
@@ -41,11 +54,11 @@ public class Review {
 		this.reNo = reNo;
 	}
 
-	public int getMemNoRe() {
+	public String getMemNoRe() {
 		return memNoRe;
 	}
 
-	public void setMemNoRe(int memNoRe) {
+	public void setMemNoRe(String memNoRe) {
 		this.memNoRe = memNoRe;
 	}
 

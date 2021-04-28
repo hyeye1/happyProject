@@ -3,10 +3,14 @@
 <properties>
 <entry key="selectReviewList">
 	SELECT
-                RE_DATE
+                MEM_ID
+              , RE_DATE
 			  , RE_CONTENT
 	       FROM TB_REVIEW
+           JOIN TB_MEMBER ON (MEM_NO_RE = MEM_NO)
 	      WHERE RE_STATUS = 'Y'
+	      ORDER
+		        BY RE_DATE DESC
 
 </entry>
 	

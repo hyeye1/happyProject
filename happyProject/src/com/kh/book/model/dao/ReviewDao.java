@@ -33,6 +33,7 @@ private Properties prop = new Properties();
 		
 	}
 	
+	
 	public ArrayList<Review> selectReviewList(Connection conn){
 		// select문 => ResultSet객체(여러행)
 		ArrayList<Review> list = new ArrayList<>();
@@ -47,7 +48,8 @@ private Properties prop = new Properties();
 			
 			while(rset.next()) {
 				
-				list.add(new Review(rset.getDate("re_date"),
+				list.add(new Review(rset.getString("mem_id"),
+									rset.getDate("re_date"),
 								 	rset.getString("re_content")));
 			}
 			
@@ -62,7 +64,6 @@ private Properties prop = new Properties();
 		return list;
 		
 	}
-	
 	
 	
 }
