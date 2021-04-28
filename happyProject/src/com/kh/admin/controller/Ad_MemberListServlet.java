@@ -66,9 +66,9 @@ public class Ad_MemberListServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		// 페이징정보들을 어딘가의 한 공간에 담자!!
+		// 페이징정보 담기 
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		System.out.println(pi);
+		// System.out.println(pi);
 		
 		ArrayList<Ad_Member> list = new Ad_MemberService().selectList(pi,searchType,search);
 	

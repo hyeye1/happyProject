@@ -1,31 +1,23 @@
-package com.kh.book.controller;
+package com.kh.order.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.kh.book.model.service.BookService;
-import com.kh.book.model.vo.Book;
-import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class BestBookListServlet
+ * Servlet implementation class CouponAjax
  */
-@WebServlet("/best.li")
-public class BestBookListServlet extends HttpServlet {
+@WebServlet("/couponAjax.me")
+public class CouponAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BestBookListServlet() {
+    public CouponAjax() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,16 +26,16 @@ public class BestBookListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int str = Integer.parseInt(request.getParameter("input"));
 		
 		
-		// 필요한 리스트 조회
-		ArrayList<Book> list = new BookService().bestBookList();
-		//System.out.println(list);
 		
-		request.setAttribute("list", list);
+		int responseData =   str;
 		
-		request.getRequestDispatcher("views/book/bestBk.jsp").forward(request, response);
 		
+		response.setContentType("text/html; charset=UTF-8");
+		
+		response.getWriter().print(responseData);
 	}
 
 	/**

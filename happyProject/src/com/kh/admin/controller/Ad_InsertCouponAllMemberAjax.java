@@ -1,31 +1,28 @@
-package com.kh.book.controller;
+package com.kh.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.kh.book.model.service.BookService;
-import com.kh.book.model.vo.Book;
-import com.kh.member.model.vo.Member;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.kh.admin.model.service.Ad_CouponService;
 
-/**
- * Servlet implementation class BestBookListServlet
- */
-@WebServlet("/best.li")
-public class BestBookListServlet extends HttpServlet {
+
+@WebServlet("/insertCouponAllMember.cou")
+public class Ad_InsertCouponAllMemberAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BestBookListServlet() {
+    public Ad_InsertCouponAllMemberAjax() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,16 +31,17 @@ public class BestBookListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int couNo = Integer.parseInt(request.getParameter("couNo"));
 		
+		int count = new Ad_CouponService().insertCouponAllMember(couNo);
 		
-		// 필요한 리스트 조회
-		ArrayList<Book> list = new BookService().bestBookList();
-		//System.out.println(list);
+		response.setContentType("application/json; charset=UTF-8");
 		
-		request.setAttribute("list", list);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		
-		request.getRequestDispatcher("views/book/bestBk.jsp").forward(request, response);
-		
+		Map<String,Object> resp = new HashMap<>();
+		resp.put("count", count);
+		gson.toJson(resp, response.getWriter()); // 응답할객체, 응답할스트림
 	}
 
 	/**

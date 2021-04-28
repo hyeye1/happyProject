@@ -36,12 +36,15 @@ public class CartListServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
+		
 		if (loginUser == null) {
 			//response.sendRedirect(request.getContextPath());
 		}
+		
 		int memNo = loginUser.getMemNo();
 		
 		ArrayList<Cart> list = new CartService().selectCartList(memNo);
+		
 		int total = 0;
 		int discountTotal = 0;
 		for (Cart c : list) {

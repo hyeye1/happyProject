@@ -448,14 +448,14 @@
         <!-- 리뷰 있을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea" id="reviewList">
-            <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
+            <h6 style="margin:15px;"><b>최신순</b></h6>
             <hr>
             <% for(Review r:list) { %>
             <table style="width:750px;">
                 <thead>
                     <tr>
-                    	 <td align="center"><b><%= r.getMemNoRe() %></b></td>
-                    	  <td align="center" style="width:550px;"><%= r.getReContent() %></td>
+                    	 <td align="center" style="color:rgb(249, 219, 5);"><b><%= r.getMemNoRe() %></b></td>
+                    	 <td align="center" style="width:550px;"><%= r.getReContent() %></td>
                     	 <td><%= r.getReDate() %></td>
                     </tr>
 					<% } %>

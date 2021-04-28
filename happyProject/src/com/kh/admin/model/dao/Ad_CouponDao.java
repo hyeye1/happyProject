@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.kh.admin.model.vo.Ad_Coupon;
@@ -98,6 +99,32 @@ public class Ad_CouponDao {
 				close(pstmt);
 			}
 			 return result;
+		}
+
+		public int insertCouponAllMember(Connection conn, int couNo, List<Integer> memNoList) {
+			int result = 0;
+			 PreparedStatement pstmt = null;
+			 
+			 String sql = prop.getProperty("insertCouponAllMember");
+			 
+			 try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(2, couNo);
+				for(int memNo: memNoList) {
+					pstmt.setInt(1, memNo);
+					result += pstmt.executeUpdate();
+				}
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			 
+			return result;
+			
 		}
 
 			

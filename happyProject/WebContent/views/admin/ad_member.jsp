@@ -115,7 +115,7 @@
         background-color:#f3f3f3;
         border: none;
     }
-    #sendCouBtn{
+    #sendCouModalBtn{
         background-color: #f08080;
         border: none;
     }
@@ -428,17 +428,135 @@
     .show-popup_End{
         display:block !important;
     }
+/* 상세정보 팝업창 */
+         .detailwrap{
+            position: absolute;
+            top:30%;
+            left:53%;
+            z-index: 10;
+            box-sizing: border-box;
+            width: 410px; 
+            height: 348px; 
+            margin-top: -75px;
+            margin-left: -150px; 
+            }
+		.detailwrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
 
+        /* 영역 나누기 */
+        #ptitle{height: 10%; background-color: rgb(249, 219, 122);}
+        #pcontent{height: 90%; background-color: white;}
+
+        
+        #ptitleName{
+            display:inline-block;
+            margin-left:160px;
+            margin-top:6px;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 1;
+            color: #3c3c3c;
+        }
+        #pbuyList{
+            border-color: #3c3c3c;
+            width: 320px;
+            height: 145px;
+            box-sizing: border-box;       
+            margin-top: 10px;  
+            margin-right: 5px;  
+        }
+        #pbuyTitle{
+            background-color: #f3f3f3;
+        }
+        #pcontent{
+            font-size:smaller;
+            text-align: center;
+        }
+        #pcontent table{
+            width: 400px;
+            height: 300px;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+        #pcloseBtn { 
+        float: right; 
+        width: 20px; 
+        line-height: 20px;
+        margin-right: 5px;
+        margin-top: 5px;
+        text-align: center; 
+        cursor: pointer; 
+        border-radius: 5px;
+        background-color: #f3f3f3; 
+         
+        } 
+        
+        #pcloseBtn:hover { 
+            background-color: lightgray; 
+        } 
+        
+          /* 쿠폰발송 팝업창 */
+    .couSendWrap{
+        position: absolute;
+        top:39%;
+        left:68%;
+        z-index: 10;
+        width: 410px; 
+        height: 248px; 
+        margin-top: -75px;
+        margin-left: -150px;
+        display: none; 
+    }
+	.couSendWrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
+
+    .couSendWrap>*{width: 100%;}
+    #couSendTitle{height: 35px; background-color: rgb(249, 219, 122);}
+    #couSendContent{height: 213px; background-color: white;}
+
+    #couSendName{
+        display:inline-block;
+        margin-left:175px;
+        margin-top:6px;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 1;
+        color: #3c3c3c;
+    }
+    #couSendContent{
+        font-size: smaller;
+        text-align: center;
+    }
+    #couSendTable{
+        margin: 3px;
+        width: 400px;
+        height: 130px;
+    }
+    #couSendTable tr{
+        height: 30px;
+    }
+    .couponText{
+        border: 1px solid gray;
+        height: 28px;
+        border-radius: 3px;
+        color: #5a5a5a;
+        padding-top: 3px;
+    }
+    #modal5{
+        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
+        top: 0; left: 0; z-index: 999; display: none;
+    }
+    .show-popup5{
+        display:block !important;
+    }
 </style>
 </head>
+
 
 <body>
     <div class="wrap">
         <div id="menubar">
             <div id="home">
-                <a href="" id="homelogo">HOME</a>
+                <a href="${pageContext.request.contextPath}/views/admin/ad_home.jsp" id="homelogo">HOME</a>
             </div>
-            
             <div id="title_name">
                 회원
             </div>
@@ -447,11 +565,14 @@
                 <ul id="btns">
                     <li><button class="menuBtn" id="memberBtn" type="button" style="background-color: rgb(249, 219, 122);">회원조회</button></li>
                 </ul>
-                
+                <script>
+                const memberBtn = document.getElementById('memberBtn');
+                memberBtn.addEventListener('click', function(){
+            		location.href='<%=request.getContextPath()%>/list.mem';
+            	});
+                </script>
             </div>
-            
         </div>
-        
         
         <div id="content">
             <div id="login">
@@ -476,7 +597,7 @@
                 </div>
                 <div id="choice_btn" style="padding: 20px">
                     <button id="deleteBtn" class="btn btn-primary">선택삭제</button> &nbsp;
-                    <button id="sendCouBtn" class="btn btn-primary">쿠폰발송</button>
+                    <button id="sendCouModalBtn" class="btn btn-primary">쿠폰발송</button>
                 </div>
                 
                 
@@ -509,7 +630,8 @@
                                 <tr>
                                     <td><input type="radio"></td>
                                     <td><%= b.getMemNo() %></td>
-                                    <td>
+                                    <td class="memId" data-memNo="<%= b.getMemNo() %>">
+                                    	
                                     	<%= b.getMemId() %>
                                     </td>
                                     <td><%= b.getMemName() %></td>
@@ -517,7 +639,7 @@
                                     <td><%= b.getEmail() %></td>
                                     <td><%= b.getOrderCnt() %></td>
                                     <td><%= b.getOrderTotalAmt() %></td>
-                                    <td style="color: red; font-weight: bold;"><%=b.getCouCnt() %></td>
+                                    <td id="memCoupon" style="color: red; font-weight: bold;"><%=b.getCouCnt() %></td>
                                 </tr>
                             <%}%>
                         <% } %>
@@ -567,104 +689,93 @@
             </div>
         </div>
     </div>
-    
-    <!-- 회원 상세정보 팝업 -->
-    <div id="modal">
-        <div class="detailwrap">
-            <div id="ptitle">
-                <h3 id=ptitleName>회원상세정보</h3>
-                <div id="pcloseBtn">&times;</div>
-            </div>
-            <div id="pcontent">
-                <table class="pmainContent">
-                    <tr>
-                        <th width="170px">회원번호</th>
-                        <td colspan="3">2</td>
-                    </tr>
-                    <tr>
-                        <th>아이디</th>
-                        <td colspan="3">abc</td>
-                    </tr>
-                    <tr>
-                        <th>이름</th>
-                        <td colspan="3">홍길동</td>
-                    </tr>
-                    <tr>
-                        <th>주소</th>
-                        <td colspan="3">서울특별시 강남구 역삼동 11-111</td>
-                    </tr>
-                    <tr>
-                        <th>가입일</th>
-                        <td colspan="3">2020.04.15</td>
-                    </tr>
-                    <tr>
-                        <th>최근 방문일</th>
-                        <td colspan="3">2020.04.16</td> 
-                    </tr>
-                    <tr>
-                        <th>가입 경로</th>
-                        <td colspan="3">자사</td>
-                    </tr>
-                    <tr>
-                        <th rowspan="7">구매내역</th>
-                        <td colspan="3">
-                            <table border="1" solid id="pbuyList" >
-                                <thead>
-                                    <tr id="pbuyTitle">
-                                        <th width="30px">NO</th>
-                                        <th width="90px">일자</th>
-                                        <th>[도서번호] 도서명</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>2021.04.16</td>
-                                        <td>[105] 해리포터</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>2021.03.30</td>
-                                        <td>[200] 달러구트</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>2021.01.01</td>
-                                        <td>[100] 해리포터</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>2020.11.01</td>
-                                        <td>[501] 클린코드</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>2020.07.29</td>
-                                        <td>[807] 자바 웹을 다루는 기술</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+
+
+  <!-- 회원 상세정보 팝업 -->
+   <div class="detailwrap">
+    <div id="ptitle">
+        <h3 id=ptitleName>회원상세정보</h3>
+        <div id="pcloseBtn">&times;</div>
+        
+    </div>
+    <div id="pcontent">
+        <table>
+            <tr>
+                <th width="90">회원번호</th>
+                <td id="mem__no">100</td>
+            </tr>
+            <tr>
+                <th>아이디</th>
+                <td id="mem__id">아이디1234</td>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <td id="mem__name">김말똥</td>
+            </tr>
+            <tr>
+                <th>주소</th>
+                <td id="mem__address">서울특별시</td>
+            </tr>
+            <tr>
+                <th>가입일</th>
+                <td id="mem__enroll__date">2020-01-12</td>
+            </tr>
+            <tr>
+                <th>최근로그인</th>
+                <td id="mem__recent__login">2021</td>
+            </tr>
+            <tr>
+                <th>가입경로</th>
+                <td id="mem__enroll__route">자사</td>
+            </tr>
+            <tr>
+                <th>이메일수신여부</th>
+                <td id="mem__email__yn">Y</td>
+            </tr>
+        </table>
     </div>
 
-    <script>
-        $(".memId").click(function(){
-            $(".detailwrap").css({display:"block"});
-            $("#modal").addClass('show-popup');
-        });
-        $("#pcloseBtn").click(function(){
-            $(".detailwrap").css({display:"none"});
-            $("#modal").removeClass('show-popup');
-        });
-    </script>
+</div>
 
-    
+<script>
+    $(".memId").click(function(){
+    	
+    	var memNo = $(this).attr("data-memNo");
+    	
+    	$.ajax({
+ 			url:"/happyProject/memInfo.mem?memNo="+memNo,
+ 			type:"get",
+    		success:function(resp){
+    			$("#mem__no").text(resp.memNo);
+    			$("#mem__id").text(resp.memId);
+    			$("#mem__name").text(resp.memName);
+    			$("#mem__address").text(resp.memAddress);
+    			$("#mem__enroll__date").text(resp.enrollDate);
+    			$("#mem__recent__login").text(resp.recentLogin);
+    			$("#mem__enroll__route").text(resp.enrollRoute);
+    			$("#mem__email__yn").text(resp.emailYn);
+    			$(".detailwrap").css({display:"block"});
+    		},
+    		error:function(err){
+    			
+    		}
+    	});
+    });
+    $("#pcloseBtn").click(function(){
+        $(".detailwrap").css({display:"none"});
+        $("#mem__no").text("");
+		$("#mem__id").text("");
+		$("#mem__name").text("");
+		$("#mem__address").text("");
+		$("#mem__enroll__date").text("");
+		$("#mem__recent__login").text("");
+		$("#mem__enroll__route").text("");
+		$("#mem__email__yn").text("");
+    });
+</script> 
 
-    <!-- 쿠폰 상세 팝업 -->
+
+<!-- 쿠폰 상세 팝업 -->
     <div id="modal3">
         <div class="couponWrap">
             <div id="couTitle">
@@ -719,7 +830,7 @@
     </div>
 
     <script>
-        $(".memCoupon").click(function(){
+        $("#memCoupon").click(function(){
             $(".couponWrap").css({display:"block"});
             $("#modal3").addClass('show-popup3');
         });
@@ -728,7 +839,8 @@
             $("#modal3").removeClass('show-popup3');
         });
     </script>
-
+    
+    
     <!-- 삭제 팝업 -->
     <div id="modal4">
         <div class="deleteWrap">
@@ -784,17 +896,17 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
+                  <!--   <tr>
                         <th>발송회원</th>
                         <td style="padding-top: 8px;">
                             <input type="radio" id="allMem" name="sendCou"> <label for="allMem">전체회원</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="radio" id="choiceMem" name="sendCou"> <label for="choiceMem">선택회원(조회화면에서 선택)</label>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>할인액</th>
                         <td>
-                            <div class="couponText">
+                            <div class="couponText" id="cou__discount">
                                 1000
                             </div>
                         </td>
@@ -802,7 +914,7 @@
                     <tr>
                         <th width="30%">유효기간</th>
                         <td>
-                            <div class="couponText">
+                            <div class="couponText" id="cou__date">
                                 2021-03-15 ~ 2021-03-22
                             </div>
                         </td>
@@ -810,27 +922,87 @@
                     <tr>
                         <th>사용조건</th>
                         <td>
-                            <div class="couponText">
+                            <div class="couponText" id="cou__condition">
                                 구매금액 10000원 이상
                             </div>
                         </td>
                     </tr>
                 </table>
-                <button type="button" class="btn btn-info btn-sm" style=" margin-top:10px ; width:55px; border: none; background-color: rgb(249, 219, 122);">확인</button>
+                <button type="button" id="okSendBtn" class="btn btn-info btn-sm" style=" margin-top:10px ; width:55px; border: none; background-color: rgb(249, 219, 122);">확인</button>
                 &nbsp;
-                <button button type="button" id="cancleSendBtn" class="btn btn-info btn-sm" style="margin-top: 10px; width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+                <button type="button" id="cancleSendBtn" class="btn btn-info btn-sm" style="margin-top: 10px; width: 55px; border: none; background-color: #e0e0e0;">취소</button>
             </div>
         </div>
     </div>
 
     <script>
-        $("#sendCouBtn").click(function(){
-            $(".couSendWrap").css({display:"block"});
-            $("#modal5").addClass('show-popup5');
+    	let couponListTemp;
+
+    	//쿠폰발송모달창 클릭 이벤
+        $("#sendCouModalBtn").click(function(){
+        	
+        	$.ajax({
+     			url:"/happyProject/getCouponList.cou",
+     			type:"get",
+        		success:function(resp){
+        			couponListTemp = resp;
+        			
+        			
+        			let optionStr = "";
+        			for(var i = 0;i < resp.length;i++){
+        				optionStr+=`<option name="\${resp[i].couName}" value="\${resp[i].couNo}">\${resp[i].couName}</option>`;
+        			}
+        			$("#selectCou").html(optionStr);
+        			$("#cou__discount").text(resp[0].discount);
+        			$("#cou__date").text(resp[0].couStart + " ~ " + resp[0].couEnd);
+        			$("#cou__condition").text("구매금액 " + resp[0].couCondition + "원 이상");
+        			
+        			
+        			$(".couSendWrap").css({display:"block"});
+                    $("#modal5").addClass('show-popup5');
+        		},
+        		error:function(err){
+        			
+        		}
+        	});
         });
+        
+    	//쿠폰발송모달창 확인버튼 클릭 이벤
+        $("#okSendBtn").on("click",function(){
+        	var couNo = $("#selectCou").val();
+        	var couName = $("#selectCou").find('option:selected').attr("name");
+        	if(confirm("[ "+couName+" ]을 전체회원에게 발송하시겠습니까?")){
+        		
+        		$.ajax({
+         			url:"/happyProject/insertCouponAllMember.cou",
+         			type:"post",
+         			data:{"couNo":couNo},
+            		success:function(resp){
+            			alert(resp.count + "명의 회원에게 쿠폰발송 완료 :)");
+            			 $("#cancleSendBtn").click();
+            		},
+            		error:function(err){
+            			
+            		}
+            	});
+        	}
+        });
+        
+    	//쿠폰발송모달창 취소버튼 클릭 이벤트 
         $("#cancleSendBtn").click(function(){
             $(".couSendWrap").css({display:"none"});
             $("#modal5").removeClass('show-popup5');
+        });
+        
+        //쿠폰발송모달창 셀렉트박스 체인지 이벤
+        $("#selectCou").on("change",function(){
+        	couponListTemp.forEach(function(coupon){
+	        	if(coupon.couNo == $("#selectCou").val()){
+	        		$("#cou__discount").text(coupon.discount);
+	    			$("#cou__date").text(coupon.couStart + " ~ " + coupon.couEnd);
+	    			$("#cou__condition").text("구매금액 " + coupon.couCondition + "원 이상");
+	        	}
+        	});
         });
     </script>
 
@@ -846,13 +1018,13 @@
                     관리메뉴를 종료하시겠습니까?
                 </div>    
                 <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    2021.04.18 15:01:33
-                </div>
-                <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
+          		     <%= sf.format(nowTime)%>
+           		</div>	
+            	<div id="adEndBtn" style="margin-left: 26%;">
+                	<a href="#" onClick="self.close();" class="btn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</a>
+                	&nbsp;&nbsp;
+                	<button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+            	</div>     
             </div>    
         </div>
     </div>
