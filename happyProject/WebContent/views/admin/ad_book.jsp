@@ -6,6 +6,7 @@
 	ArrayList<Ad_Book> list = (ArrayList<Ad_Book>)request.getAttribute("list");
 	String search = (String)request.getAttribute("search") == null ? "" : (String)request.getAttribute("search");
 	String searchType = (String)request.getAttribute("searchType") == null ? "" : (String)request.getAttribute("searchType");
+	int listCount = (Integer)request.getAttribute("listCount");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -18,7 +19,6 @@
 <%
 		Date nowTime = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
-		
 %>
 
 <!DOCTYPE html>
@@ -389,7 +389,7 @@
                         <option value="end">최근 등록일 순</option>
                     </select>
                     &nbsp;
-                    <label for="countMem" style="font-weight: bold;">총 도서</label> 
+                    <label for="countMem" style="font-weight: bold;">총 도서</label> <u style="color: #f08080;";"><%=listCount %></u> 권
 
                 </div>
                 <div id="choice_btn" style="padding: 20px;">
@@ -481,8 +481,11 @@
         			function fnSearch(){
         				var searchType = $("select[name=searchType]").val();
         				 
-        				location.href='/list.bk?searchType='+searchType+'&search='+$("#searchText").val();
+        				location.href='<%=request.getContextPath()%>/list.bk?searchType='+searchType+'&search='+$("#searchText").val();
         			}
+        			$(function(){
+        				$("select[name=searchType]").val("<%=searchType%>" == "" ? "bk_name" : "<%=searchType%>");
+        			})
         		</script>
                 
             </div>
@@ -543,14 +546,13 @@
                     관리메뉴를 종료하시겠습니까?
                 </div>    
                 <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    <%= sf.format(nowTime)%>
-
-                </div>
-                <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
+          		     <%= sf.format(nowTime)%>
+           		</div>	
+            	<div id="adEndBtn" style="margin-left: 26%;">
+                	<a href="#" onClick="self.close();" class="btn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</a>
+                	&nbsp;&nbsp;
+                	<button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+            	</div>   
             </div>    
         </div>
     </div>
