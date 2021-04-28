@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.MyAddress"%>
+
+   
  <%@ include file = "../common/menubar.jsp" %>
  	
  	<%
 	MyAddress selectMyAddress = (MyAddress)session.getAttribute("selectMyAddress");
-	%>
- 	
- 	<%
-		String adNo      = selectMyAddress.getAdNo();
+	
+		int adNo      = selectMyAddress.getAdNo();
 		String adPost    = selectMyAddress.getAdPost();
 		String adRoad    = selectMyAddress.getAdRoad();
 		String adDetail  = selectMyAddress.getAdDetail();
