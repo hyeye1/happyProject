@@ -283,7 +283,7 @@
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;페이지수</th>
-                        <td><input type="text" name="bkPageNo" placeholder="숫자만 입력하세요"></td>
+                        <td><input type="text" name="bkPageNo" ></td>
                         <th></th>
                         <td></td>
                     </tr>
