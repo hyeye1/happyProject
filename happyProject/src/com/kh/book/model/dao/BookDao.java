@@ -14,7 +14,7 @@ import java.util.Properties;
 import com.kh.book.model.vo.Book;
 import com.kh.book.model.vo.Image;
 import com.kh.member.model.vo.Member;
-import com.kh.notice.model.dao.NoticeDao;
+
 
 public class BookDao {
 	
@@ -22,7 +22,7 @@ public class BookDao {
 	
 	public BookDao() {
 		
-		String fileName = NoticeDao.class.getResource("/sql/book/book-mapper.xml").getPath();
+		String fileName = BookDao.class.getResource("/sql/book/book-mapper.xml").getPath();
 		
 			try {
 				prop.loadFromXML(new FileInputStream(fileName));

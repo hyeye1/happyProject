@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kh.member.model.vo.Member;
 import com.kh.order.model.service.CartService;
 import com.kh.order.model.vo.Cart;
 
@@ -32,11 +34,27 @@ public class CartListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 카트 리스트페이지에 필요한 카트정보 가져오기
-		//ArrayList<Cart> list = new CartService().selectCartList();
-		//request.setAttribute("list", list);
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		if (loginUser == null) {
+			//response.sendRedirect(request.getContextPath());
+		}
+		int memNo = loginUser.getMemNo();
+		
+		ArrayList<Cart> list = new CartService().selectCartList(memNo);
+		int total = 0;
+		int discountTotal = 0;
+		for (Cart c : list) {
+			total += c.getTtPrice();
+			discountTotal += (c.getOrgPrice() - c.getPrice());
+		}
+		
+		request.setAttribute("list", list);
+		request.setAttribute("total", total);
+		request.setAttribute("discountTotal", discountTotal);
 		
 		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
+		
 	}
 
 	/**

@@ -69,10 +69,6 @@
             float: right;
             font-size: 12px;
         }
-        #postcodify_search_button{ 
-            width: 100%; 
-            font-size: 12px;
-        }
         #join2Submit{
             width: 300px;
             font-size: 13.5px;
@@ -117,6 +113,7 @@
         #phoneCheckNumTitle, #phoneCheckYTitle{
             height: 40px;
             border-bottom: none;
+            background-color: rgb(249, 219, 122);
         }
         #phoneCheckNumContent, #phoneCheckYContent{
             background-color: white;
@@ -136,8 +133,9 @@
         .addressInput input {
         	font-size: 12px;
         	color: gray;
+        	
         }
-        #addInput{width:274px;}
+        #addInput{width:275px;}
     </style>
 </head>
 <body>
@@ -163,7 +161,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>비밀번호 확인</th>
+                    <th>비밀번호확인</th>
                     <td colspan="2"> 
                         <input type="password" name="memPwd2" id="memPwd2" placeholder="비밀번호를 한번 더 입력해주세요" required>
                     </td>
@@ -175,17 +173,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>이메일 *</th>
-                    <td colspan="2"><input type="email" name="email" placeholder="abc@happybook.com" required></td>
+                    <th>휴대폰 *</th>
+                    <td colspan="2"><input type="text" id="memPhone" name="memPhone" placeholder="010-xxxx-xxxx"  required></td>
                 </tr>
                 <tr>
-                    <th>휴대폰 *</th>
-                    <td><input type="text" id="memPhone" name="memPhone" placeholder="010-xxxx-xxxx"  required></td>
-                    <td><button type="button" id="phoneCheck" class="join2Check">인증번호받기</button></td>
+                    <th>이메일 *</th>
+                    <td><input type="email" name="email" placeholder="abc@happybook.com" required></td>
+                    <td><button type="button" id="phoneCheck" class="join2Check" onclick="emailCheck();">인증번호받기</button></td>
                 </tr>
                 <tr class="phoneCheckInput">
                     <th></th>
-                    <td><input type="number" id="phoneCheckNum" minlength=6 maxlength=6 required></td>
+                    <td><input type="text" id="phoneCheckNum" required></td>
                     <td><button type="button" id="phoneCheckYN" class="join2Check">인증번호확인</button></td>
                 </tr>
                 <tr class="phoneCheckInput">
@@ -200,7 +198,7 @@
                 </tr>
                 <tr class="addressInput">
                     <th></th>
-                    <td colspan="2"> 
+                    <td colspan="2" width="274px";	> 
 						<input type="text" name="address" class="adList" id="sample6_address" placeholder="주소" required><br>
 						<input type="text" name="extra" class="adList"  id="sample6_extraAddress" placeholder="참고항목">      
 						<input type="text" name="details" class="adList"  id="sample6_detailAddress" placeholder="상세주소" required>
@@ -279,7 +277,7 @@
 	        	// 아이디 중복확인
 	        	function idCheck(){
 	        		
-	        		var $memId = $("#enrollForm input[name=memId]");
+	        		var $memId = $("#enrollForm input[name=email]");
 	        		
 	        		$.ajax({
 	        			url:"idCheck.me",
@@ -346,7 +344,38 @@
 	        	}
 	        	
 	        	
-	        	
+				function emailCheck(){
+	        		
+	        		var $email = $("#enrollForm input[name=email]");
+	        		
+	        		console.log($email.val());
+	        		
+	        		$.ajax({
+	        			url:"emailCheck.me",
+	        			type:"get",
+	        			data:{checkEmail:$email.val()},
+	        			success:function(saveKey){
+	        				
+	        				console.log(saveKey);
+	        				
+	        				if(saveKey == "NN"){ // 사용불가
+
+	        				}else if (result == ""){ // 입력안함
+	        					
+
+	        				}else if (result == "620") {// 6자 이상 20자 미만
+
+	        			
+	        				}else{ // 사용가능
+	        					
+	        					
+	        				}
+	        			},error:function(){
+	        				console.log("이메일 인증번호 통신 실패")
+	        			}
+	        		});
+	        		
+	        	}
 	        	
 	        
 	        	// 주소검색
@@ -410,25 +439,7 @@
 	            	});
 	             });
 	                        
-                        
-                  // 휴대폰인증
-                        $("#phoneCheck").click(function(){
-                            $("#memPhone").attr("readonly", true);
-                            $("#phoneCheck").attr("disabled", true);
-                            $(".phoneCheckNumWrap").show();
-                            $(".phoneCheckInput").show();
-                        });
-                        $(".okBtn").click(function() {
-                            $(".phoneCheckNumWrap").hide();
-                            $(".phoneCheckYWrap").hide();
-                        });
-                        $("#phoneCheckYN").click(function(){
-                            $("#phoneCheckNum").attr("disabled", true);
-                            $("#phoneCheckYN").attr("disabled", true);
-                            $(".phoneCheckYWrap").show();
-                        });
-
-                       
+    
                         // 이용약관 동의 
                        $(function(){
                            // 전체 동의 
@@ -502,7 +513,25 @@
 							
 							
 							
-							
+		                    /*    
+			                  // 휴대폰인증
+			                        $("#phoneCheck").click(function(){
+			                            $("#memPhone").attr("readonly", true);
+			                            $("#phoneCheck").attr("disabled", true);
+			                            $(".phoneCheckNumWrap").show();
+			                            $(".phoneCheckInput").show();
+			                        });
+			                        $(".okBtn").click(function() {
+			                            $(".phoneCheckNumWrap").hide();
+			                            $(".phoneCheckYWrap").hide();
+			                        });
+			                        $("#phoneCheckYN").click(function(){
+			                            $("#phoneCheckNum").attr("disabled", true);
+			                            $("#phoneCheckYN").attr("disabled", true);
+			                            $(".phoneCheckYWrap").show();
+			                        });
+			*/
+			                   					
 							
 							
 							

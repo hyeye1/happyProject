@@ -1,6 +1,7 @@
 package com.kh.book.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.book.model.service.BookService;
+import com.kh.book.model.service.ReviewService;
 import com.kh.book.model.vo.Book;
 import com.kh.book.model.vo.Image;
+import com.kh.book.model.vo.Review;
 import com.kh.member.model.vo.Member;
 
 /**
@@ -42,6 +45,10 @@ public class BookDetailsServlet extends HttpServlet {
 	   request.setAttribute("b", b);
 	   request.setAttribute("i", i);
 	   
+	   	ArrayList<Review> list = new ReviewService().selectReviewList();
+		request.setAttribute("list", list);
+		//System.out.println(list);
+		
 	   request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
 	   response.setContentType("application/json; charset=UTF-8");
       

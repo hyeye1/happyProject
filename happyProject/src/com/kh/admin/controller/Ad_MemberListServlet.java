@@ -49,7 +49,11 @@ public class Ad_MemberListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		listCount = new Ad_MemberService().selectListCount();
+		// 검색 조건 가져오기
+		String searchType = (String)request.getParameter("searchType");
+		String search = (String)request.getParameter("search");
+		
+		listCount = new Ad_MemberService().selectListCount(searchType,search);
 		
 		pageLimit = 5;
 		boardLimit = 10;
@@ -66,12 +70,14 @@ public class Ad_MemberListServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		System.out.println(pi);
 		
-		ArrayList<Ad_Member> list = new Ad_MemberService().selectList(pi);
+		ArrayList<Ad_Member> list = new Ad_MemberService().selectList(pi,searchType,search);
 	
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("views/admin/ad_book.jsp").forward(request, response);
+		request.setAttribute("listCount", listCount);
+		request.setAttribute("search", search);
+		request.setAttribute("searchType", searchType);
+		request.getRequestDispatcher("views/admin/ad_member.jsp").forward(request, response);
 	}
 
 	/**

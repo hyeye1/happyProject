@@ -1,6 +1,7 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+import com.kh.member.model.service.MyAddressService;
+
+import com.kh.member.model.vo.MyAddress;
 
 /**
  * Servlet implementation class MyaddressServlet
@@ -28,6 +34,8 @@ public class MyaddressServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<MyAddress> list = new MyAddressService().selectMyAddress();
+		request.setAttribute("list", list);
 		
 		//배송지 응답페이지
 		RequestDispatcher view = request.getRequestDispatcher("views/member/my_myAddress.jsp");

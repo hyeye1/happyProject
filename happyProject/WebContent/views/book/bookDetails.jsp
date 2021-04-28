@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.book.model.vo.*, com.kh.member.model.vo.Member, com.kh.order.model.vo.Cart" %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.book.model.vo.*, com.kh.member.model.vo.Member, com.kh.order.model.vo.Cart" %>
 <%
  	Book b = (Book)request.getAttribute("b");
  	Image i = (Image)request.getAttribute("i");
- 	Member m = (Member)request.getAttribute("m");
- 	//Cart c = (Cart)request.getAttribute("c");
- 	//Member loginUser = (Member)session.getAttribute("loginUser");
+ 	Cart c = (Cart)request.getAttribute("c");
+ 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -143,7 +142,7 @@
             border-bottom: 1px solid black;
             margin:auto;
             width:700px;
-            height:300px;
+            height:220px;
         }
         .bookDetailOuter .reviewArea table{
             margin:auto;
@@ -278,12 +277,12 @@
 	        <div class="modal" id="goToCart">
 	            <div class="modal-dialog">
 	                <div class="modal-content">
-	            
+	            	<input type="hidden" value="${loginUser}" name="loginUser">
 	                <!-- Modal Header -->
 	                <div class="modal-body" align="center">
-	                    <h5 class="modal-title" style="text-align: center;"><br><br> 
-	                        장바구니에 담겼습니다.  <br>
-	                        <a href="<%= contextPath %>/cList.or?bookNo=<%= b.getBookNo() %>" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
+	                    <h5 class="modal-title" style="text-align: center;"><br><br>                     
+	                        <span id="result"></span>  <br>
+	                        <a href="<%= contextPath %>/cList.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
 	                    </h5>
 	                </div>
 	                
@@ -315,10 +314,15 @@
 	        				amount: amount,
 	        				totalPrice: sum
 	        			},
-	        			success:function(data){
-	        				
+	        			success:function(result){
+	        				if (result > 0) {
+	        					// 성공 모달 띄우기
+	        					$('#goToCart #result').text('장바구니에 담겼습니다.');
+	        				} else {
+	        					// 실패 모달 띄우기
+	        					$('#goToCart #result').text('장바구니 추가에 실패하였습니다.');
+	        				}
 	        			},error:function(){
-	        				alert("로그인 후 이용 가능합니다.");
 	        			}
 	        		});
         		}
@@ -431,7 +435,7 @@
         <% } %>
         <br><br>
 	
-		
+		<% if(list.isEmpty()) { %>
         <!-- 리뷰 없을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea">
@@ -440,29 +444,23 @@
             <p align="center" style="font-size:16px;">회원님께서 첫 리뷰의 주인공이 되어주세요.</p>
         </div>
         <br><br>
+        <% }else { %>
         <!-- 리뷰 있을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea" id="reviewList">
             <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
             <hr>
-            <table>
+            <% for(Review r:list) { %>
+            <table style="width:750px;">
                 <thead>
                     <tr>
-                        <th>user1</th>
-                        <td>진짜 재밌었어요~!</td>
-                        <td>2020-07-20</td>
+                    	 <td align="center"><b><%= r.getMemNoRe() %></b></td>
+                    	  <td align="center" style="width:550px;"><%= r.getReContent() %></td>
+                    	 <td><%= r.getReDate() %></td>
                     </tr>
-                    <tr>
-                        <th>user2</th>
-                        <td>추천합니다</td>
-                        <td>2020-07-01</td>
-                    </tr>
-                    <tr>
-                        <th>user3</th>
-                        <td>친구가 추천해줘서 봤는데 별로에요ㅠㅠ핵노잼</td>
-                        <td>2020-06-18</td>
-                    </tr>
-
+					<% } %>
+                
+              <% } %>
                 </thead>
                 <tbody>
 

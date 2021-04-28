@@ -10,21 +10,36 @@
 	</entry>
 	
 	<entry key="selectList">
-		SELECT 
-	            MEM_NO
-	          , MEM_ID
-	          , MEM_PWD
-	          , MEM_NAME
-	          , MEM_ADDRESS
-	          , MEM_PHONE
-	          , EMAIL
-	          , EMAIL_YN
-	          , ENROLL_ROUTE
-	          , ENROLL_DATE
-	          , RECENT_LOGIN
-	          , ADMIN_YN
-		  FROM TB_MEMBER
-		 WHERE MEM_ID = ?
+		SELECT *
+		  FROM (
+		        SELECT
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT 
+				            MEM_NO
+				          , MEM_ID
+				          , MEM_PWD
+				          , MEM_NAME
+				          , MEM_ADDRESS
+				          , MEM_PHONE
+				          , EMAIL
+				          , EMAIL_YN
+				          , ENROLL_ROUTE
+				          , ENROLL_DATE
+				          , RECENT_LOGIN
+				          , ADMIN_YN
+				          ,(SELECT COUNT(*) FROM TB_MEM_COUPON C WHERE C.COU_YN = 'N' AND C.MEM_NO_COU = MEM_NO) AS "couCnt"
+						  ,(SELECT COUNT(*) FROM TB_ORDER O WHERE O.MEM_NO_OR = MEM_NO ) AS "orderCnt"
+						  ,NVL((SELECT SUM(OR_SUM) FROM TB_ORDER O WHERE O.MEM_NO_OR = MEM_NO ),'0') AS "orderTotalAmt"
+					  FROM TB_MEMBER
+                         ORDER
+                            BY MEM_NO DESC
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+		 
+		
 	</entry>
 	
 

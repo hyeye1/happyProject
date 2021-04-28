@@ -28,7 +28,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/hover-min.css">
 
-
 <style>
 
     div{box-sizing: border-box; }
@@ -47,7 +46,6 @@
     #sub_title{height: 12%;}
     #list{height:1%;}
     #table{height: 82%;}
-
 
      /* left menubar */
 
@@ -180,6 +178,7 @@
         box-sizing: border-box;
         resize: none;
     }
+    
     /* 관리자모드 종료 팝업창 */
     .adEndWrap{
         position: absolute;
@@ -218,6 +217,20 @@
     }
     #bkContent2>*{width: 100%;}
 
+    .acc01 {
+    	width:380px; height:487px; margin:30px 10px 20px; float:left; 
+    	background:url("../images/acc_bg.png") no-repeat center center; position:relative;
+    }
+	.acc01 span {
+		position:absolute; z-index:3; top:420px; left:120px; 
+	}
+	.acc_img {
+		width:370px; height:370px; position:absolute; z-index:3; top:0; left:0;
+	}
+	.acc_tt {
+		color:#070000; font-size:20px; font-weight:bold; text-align:center; 
+		position:absolute; z-index:3; top:385px; left:50%; transform:translateX(-50%);
+	}
 </style>
 </head>
 
@@ -259,24 +272,18 @@
                 <div id="bkContent">
                     <div id="bkContent1" align="center">
                         <span>표지이미지</span> <br>
-                        <img src="<%=b.getBkMainImg() %>" alt="" width="150" height="200"" align="center">
+                        <img src="<%=b.getBkMainImg() %>" alt="" width="150" height="200"" align="center" onclick="doImgPop(this.src)">
                         <br><br>
-                        
+                         
                         <% if(im != null) {%>
                             <span>상세이미지</span><br>
-                        	<img src="<%=im.getImgPath() %>" alt="" width="130" height="180"" align="center">
+                        	<img src="<%=im.getImgPath() %>" alt="" width="130" height="180"" align="center" onclick="doImgPop(this.src)">
                         <% } else {%>
                         	상세이미지가 없습니다.
                         <%} %>
                         
-                        
-                        <br><button type="button" id="backBook" class="btn btn-primary" style="margin-top:20px; margin-left: -110px;">이전</button>
-                    	<script>
-		                	const backBook = document.getElementById('backBook');
-		                    bkEnrollBtn.addEventListener('click', function(){
-		                		location.href="PagingList?page=${page}";
-		                	});
-		                </script>
+                        <br><button type="button" onClick="history.back();" id="backBook" class="btn btn-primary" style="margin-top:20px; margin-left: -110px;">이전</button>
+
                     </div>
                     <div id="bkContent2">
                         <div id="bkList">
@@ -339,11 +346,6 @@
             
             </div>
             
-            
-       
-
-        
-
     
         <!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
@@ -380,6 +382,32 @@
             });
         });
     </script>
+    <script>
+        function doImgPop(img){
+         img1= new Image();
+         img1.src=(img);
+         imgControll(img);
+        }
+        function imgControll(img){
+         if((img1.width!=0)&&(img1.height!=0)){
+            viewImage(img);
+          }
+          else{
+             controller="imgControll('"+img+"')";
+             intervalID=setTimeout(controller,20);
+          }
+        }
+        function viewImage(img){
+         W=img1.width;
+         H=img1.height;
+         O="width="+W+",height="+H+",scrollbars=yes";
+         imgWin=window.open("","",O);
+         imgWin.document.write("<html><head><title>확대보기</title></head>");
+         imgWin.document.write("<body topmargin=0 leftmargin=0>");
+         imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+         imgWin.document.close();
+        }
+        </script>
     
  
 </body>

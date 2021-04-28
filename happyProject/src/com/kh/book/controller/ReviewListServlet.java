@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kh.book.model.service.BookService;
+import com.kh.book.model.service.ReviewService;
 import com.kh.book.model.vo.Review;
+
+
 
 /**
  * Servlet implementation class ReviewListServlet
@@ -33,14 +35,9 @@ public class ReviewListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int bookNo = Integer.parseInt(request.getParameter("bookno"));
-		
-		ArrayList<Review> list = new BookService().selectReviewList(bookNo);
-		
-		response.setContentType("application/json; charset=UTF-8");
-		Gson gson = new Gson();
-		gson.toJson(list, response.getWriter());
-		
+		//ArrayList<Review> list = new ReviewService().selectReviewList();
+		//request.setAttribute("list", list);
+		//System.out.println(list);
 	}
 
 	/**

@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.order.model.vo.Cart, com.kh.book.model.vo.Book, java.util.ArrayList, java.text.*"%>
 <%
-	Book b = (Book)request.getAttribute("b");
+	ArrayList<Cart> list = (ArrayList<Cart>)request.getAttribute("list");
+
+	DecimalFormat df = new DecimalFormat("#,###,###");
+	int total = (Integer)request.getAttribute("total");
+	String totalComma = df.format(total);
+	
+	int discountTotal = (Integer)request.getAttribute("discountTotal");
+	String discountComma = df.format(discountTotal);
 %>
 <!DOCTYPE html>
 <html>
@@ -17,7 +24,7 @@
     <style>
         .cartOuter{
             width:1000px;
-            height:1000px;
+            height:100%;
             margin:auto;
         }
 
@@ -42,13 +49,12 @@
         /* 카트 창 */
         .cartOuter .cartView{
             width:680px;
-            height:600px;
+            /*height:300px;*/
             margin-top: 20px;
             float:left;
         }
         .cartOuter .cartView table{
             width:100%;
-            height:100%;
             font-size: 15px;
             line-height:20px;
             border-top:1px solid black;
@@ -56,6 +62,7 @@
         }
         .cartOuter .cartView table td{
             border-top:1px solid darkgray;
+            padding:20px;
         }
 
          /* 화살표 없애기 */
@@ -124,7 +131,6 @@
 </head>
 <body>
 	
-
 	<%@ include file = "../common/menubar.jsp" %>
 	
 	 <div class="cartOuter">
@@ -143,7 +149,6 @@
             </div>
         </div>
         <hr>
-       
         <!-- 장바구니 창 -->
         <div class="cartView">
             <table>
@@ -154,54 +159,21 @@
                     </td>
                     <td align="center"><button class="button">선택삭제</button></td>
                 </tr>
-                <tr>
-                    <td style="height:100px;"><input type="checkbox" checked></td>
-                    <td align="center"><img src="resources/images/도서이미지(수정)/소설/달러구트.jpg" style="width:80px; height:100px;"></td>
-                    <td>
-                        <p></p>
-                        <small></small> <br><br>
-                        <button class="button" onclick="minus();">-</button>
-                        <input type="number" value="1" min="1" max="9">
-                        <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>
-                    </td>
-                    <td align="center">9,000 원</td>
-                </tr>
-                <tr>
-                    <td style="height:100px;"><input type="checkbox" checked></td>
-                    <td align="center"><img src="../화면구현/img/돈의심리학.png" style="width:80px; height:100px;"></td>
-                    <td>
-                        <p>돈의 심리학</p>
-                        <small>모건 하우절</small> <br><br>
-                        <button class="button" onclick="minus();">-</button>
-                        <input type="number" value="1" min="1" max="9">
-                        <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>
-                    </td>
-                    <td align="center">10,000 원</td>
-                </tr>
-                <tr>
-                    <td style="height:100px;"><input type="checkbox" checked></td>
-                    <td align="center"><img src="../화면구현/img/해리포터.png" style="width:80px; height:100px;"></td>
-                    <td>
-                        <p>해리포터 시리즈 개정 번역판</p>
-                        <small>조앤.k.롤링</small> <br><br>
-                        <button class="button" onclick="minus();">-</button>
-                        <input type="number" value="1" min="1" max="9">
-                        <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>
-                    </td>
-                    <td align="center">20,000 원</td>
-                </tr>
-                <tr>
-                    <td style="height:100px;"><input type="checkbox" ></td>
-                    <td align="center"><img src="../화면구현/img/아몬드.png" style="width:80px; height:100px;"></td>
-                    <td>
-                        <p>아몬드</p>
-                        <small>손원평</small> <br><br>
-                        <button class="button" onclick="minus();">-</button>
-                        <input type="number" value="1" min="1" max="9">
-                        <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>
-                    </td>
-                    <td align="center">8,400 원</td>
-                </tr>
+                	
+	                <% for(Cart c : list) { %> 
+	                <tr>
+	                    <td style="height:100px;"><input type="checkbox" checked></td>
+	                    <td align="center"><img src="<%= c.getMainImg() %>" style="width:80px; height:100px;"></td>
+	                    <td>
+	                        <p><%= c.getTitle() %></p>
+	                        <small><%= c.getAuthor() %></small> <br><br>
+	                        <button class="button">-</button>
+	                        <input type="number" value="<%= c.getAmount() %>" min="1" max="9">
+	                        <button class="button">+</button> <button class="button" type="rest">삭제</button>
+	                    </td>
+	                    <td align="center"><%= c.getTtPrice() %> 원</td>
+	                </tr>
+	                <% } %>
             </table>
         </div>
 
@@ -217,11 +189,11 @@
                     </tr>
                     <tr>
                         <td>총 상품 금액</td>
-                        <td class="price" style="text-align: right;">39,000원</td>
+                        <td class="price" style="text-align: right;"><%= totalComma %>원</td>
                     </tr>
                     <tr>
                         <td>할인 금액</td>
-                        <td class="price" style="text-align: right;">0원</td>
+                        <td class="price" style="text-align: right;"><%= discountComma %>원</td>
                     </tr>
                 </table>
             </div>
@@ -229,7 +201,7 @@
                 <table>
                     <tr>
                         <td>합계</td>
-                        <td style="text-align: right;">39,000원</td>
+                        <td style="text-align: right;"><%= totalComma %>원</td>
                     </tr>
                 </table>
             </div>
@@ -242,7 +214,7 @@
        	</script>
     </div>
     
-    <br><br><br><br><br><br><br>
+    
 
 </body>
 </html>
