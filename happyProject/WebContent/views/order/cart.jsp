@@ -189,11 +189,11 @@
                     </tr>
                     <tr>
                         <td>총 상품 금액</td>
-                        <td class="price" style="text-align: right;"><%= totalComma %>원</td>
+                        <td class="price" style="text-align: right;"><%= totalComma %> 원</td>
                     </tr>
                     <tr>
                         <td>할인 금액</td>
-                        <td class="price" style="text-align: right;"><%= discountComma %>원</td>
+                        <td class="price" style="text-align: right;"><%= discountComma %> 원</td>
                     </tr>
                 </table>
             </div>
@@ -201,7 +201,7 @@
                 <table>
                     <tr>
                         <td>합계</td>
-                        <td style="text-align: right;"><%= totalComma %>원</td>
+                        <td style="text-align: right;"><%= totalComma %> 원</td>
                     </tr>
                 </table>
             </div>

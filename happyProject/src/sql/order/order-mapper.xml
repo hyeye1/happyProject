@@ -50,6 +50,36 @@
 		 WHERE MEM_NO_CA = ?
 	</entry>
 	
+
+	<entry key="insertCartFromCategory">
+		INSERT
+		  INTO TB_CART
+		  (
+		    CA_NO
+		  , BK_NO_OR
+		  , MEM_NO_OR
+		  , AMOUNT
+		  , TOTAL_PRICE
+		  , BK_TITLE
+		  , AUTHOR
+		  , ORIGIN_PRICE
+		  , PRICE
+		  , MAIN_IMG
+		  )
+		  VALUES
+		  (
+		     SEQ_CNO.NEXTVAL
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   , ?
+		   )	
+	</entry>
 	
 	<entry key="selectCouponList">
 		SELECT COU_NAME,
@@ -72,7 +102,7 @@
 		  JOIN TB_COUPON C ON (C.COU_NO = COU_NO_COU)
 		 WHERE COU_YN ='N'
 		   AND M.MEM_NO = ?
-	
+
 	</entry>
 	
 
