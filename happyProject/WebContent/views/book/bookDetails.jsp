@@ -451,11 +451,12 @@
             <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
             <hr>
             <% for(Review r:list) { %>
-            <table>
+            <table style="width:750px;">
                 <thead>
                     <tr>
-                    	 <td align="left"><%= r.getReDate() %></td>
-                        <td rowspan="2" align="center" style="width:500px;"><%= r.getReContent() %></td>
+                    	 <td align="center"><b><%= r.getMemNoRe() %></b></td>
+                    	  <td align="center" style="width:550px;"><%= r.getReContent() %></td>
+                    	 <td><%= r.getReDate() %></td>
                     </tr>
 					<% } %>
                 
