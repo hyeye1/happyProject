@@ -81,7 +81,7 @@ private Properties prop = new Properties();
 									rset.getString("Q_TITLE"),
 									rset.getString("Q_FIELD"),
 									rset.getString("Q_ANSWER_YN"),
-									rset.getInt("OR_NO_Q")));
+									rset.getInt("OR_NO_FK")));
 			}
 			
 		} catch (SQLException e) {
