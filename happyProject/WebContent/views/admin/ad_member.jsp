@@ -1,5 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.admin.model.vo.Ad_Member, com.kh.common.model.vo.PageInfo" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Ad_Member> list = (ArrayList<Ad_Member>)request.getAttribute("list");
+	String search = (String)request.getAttribute("search") == null ? "" : (String)request.getAttribute("search");
+	String searchType = (String)request.getAttribute("searchType") == null ? "" : (String)request.getAttribute("searchType");
+	int listCount = (Integer)request.getAttribute("listCount");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
+
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+		Date nowTime = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+		
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -425,7 +446,6 @@
             <div id="title_Btn">
                 <ul id="btns">
                     <li><button class="menuBtn" id="memberBtn" type="button" style="background-color: rgb(249, 219, 122);">회원조회</button></li>
-                    <li><button class="menuBtn" id="couponBtn" type="button">쿠폰 관리</button></li>
                 </ul>
                 
             </div>
@@ -451,7 +471,7 @@
                         <option value="date" selected>가입일 순</option>
                     </select>
                     &nbsp;
-                    <label for="countMem" style="font-weight: bold;">총 회원</label> <u style="color: #f08080;";">80</u> 명 
+                    <label for="countMem" style="font-weight: bold;">총 회원</label> <u style="color: #f08080;";"><%=listCount %></u> 명 
 
                 </div>
                 <div id="choice_btn" style="padding: 20px">
@@ -478,141 +498,72 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td> <input type="checkbox"></td>
-                            <td>2</td>
-                            <td class="memId"><u>abc</u></td>
-                            <td>홍길동</td>
-                            <td>010-1234-5678</td>
-                            <td>aabbcc@naver.com</td>
-                            <td>3</td>
-                            <td>80000</td>
-                            <td class="memCoupon">2</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td class="memId"><u>def</u></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                       <!-- 조회 결과 없을 경우 -->
+                        <% if(list.isEmpty()) { %>
+                            <tr>
+                                <td colspan="10">조회된 리스트가 없습니다.</td>
+                            </tr>
+                        <% }else { %>
+                        <!-- 조회된 결과가 있을 경우 -->
+                            <% for(Ad_Member b : list) { %>
+                                <tr>
+                                    <td><input type="radio"></td>
+                                    <td><%= b.getMemNo() %></td>
+                                    <td>
+                                    	<%= b.getMemId() %>
+                                    </td>
+                                    <td><%= b.getMemName() %></td>
+                                    <td><%= b.getMemPhone() %></td>
+                                    <td><%= b.getEmail() %></td>
+                                    <td><%= b.getOrderCnt() %></td>
+                                    <td><%= b.getOrderTotalAmt() %></td>
+                                    <td style="color: red; font-weight: bold;"><%=b.getCouCnt() %></td>
+                                </tr>
+                            <%}%>
+                        <% } %>
                     </tbody>                    
                 </table>
 
                 
                 <br>
                 <div align="center" class="pagingArea">
-                    <button class="btn btn-outline-warning btn-sm"><</button>
-                    <button class="btn btn-outline-warning btn-sm">1</button>
-                    <button class="btn btn-outline-warning btn-sm">2</button>
-                    <button class="btn btn-outline-warning btn-sm">3</button>
-                    <button class="btn btn-outline-warning btn-sm">4</button>
-                    <button class="btn btn-outline-warning btn-sm">5</button>
-                    <button class="btn btn-outline-warning btn-sm">></button>
+                   <% if(currentPage != 1) { %>        
+                        <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.mem?currentPage=<%=currentPage-1%>&searchType=<%=searchType%>&search=<%=search%>';"> < </button>
+					<% } %>
+			
+					<% for(int p=startPage; p<=endPage; p++) { %>
+				
+						<% if(currentPage == p){ %>
+                            <button class="btn btn-outline-warning btn-sm" disabled><%= p %></button>
+                        <% }else{ %>
+                            <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.mem?currentPage=<%= p %>&searchType=<%=searchType%>&search=<%=search%>';"><%= p %></button>
+                        <% } %>
+					<% } %>
+			
+					<% if(currentPage != maxPage){ %> 
+                        <button class="btn btn-outline-warning btn-sm" onclick="location.href='<%=request.getContextPath()%>/list.mem?currentPage=<%=currentPage+1%>&searchType=<%=searchType%>&search=<%=search%>';"> > </button>
+					<% } %>
                 </div>
                 <br>
                 
-                <select name="searchList" id="searchList" style="margin-left: 25%; width: 70px;">
-                    <option value="" selected>아이디</option>
-                    <option value="">이름</option>
-                    <option value="">휴대폰번호</option>
+                <select name="searchType" id="searchList" style="margin-left: 25%; width: 70px;">
+                    <option value="mem_id" selected>아이디</option>
+                    <option value="mem_name">이름</option>
+                    <option value="mem_phone">휴대폰번호</option>
                 </select>
-
-                <input type="text" id="searchText" style="width: 270px;" placeholder="입력해주세요" > 
-                <input type="button" class="search" id="searchBtn" value="검색" style="font-weight: bold; background-color: rgb(249, 219, 122); border: none; width: 55px;">
+                <input type="text" id="searchText" style="width: 270px;" placeholder="입력해주세요" value="<%=search %>" > 
+                <input type="button" class="search" id="searchBtn" onclick="fnSearch();" value="검색" style="font-weight: bold; background-color: rgb(249, 219, 122); border: none; width: 55px;">
+                <script>
+        			function fnSearch(){
+        				var searchType = $("select[name=searchType]").val();
+        				 
+        				location.href='<%=request.getContextPath()%>/list.mem?searchType='+searchType+'&search='+$("#searchText").val();
+        			}
+        			$(function(){
+        				 ;
+        				$("select[name=searchType]").val("<%=searchType%>" == "" ? "mem_id" : "<%=searchType%>");
+        			})
+        		</script>
             </div>
         </div>
     </div>
