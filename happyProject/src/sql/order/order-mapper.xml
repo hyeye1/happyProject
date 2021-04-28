@@ -50,5 +50,30 @@
 		 WHERE MEM_NO_OR = ?
 	</entry>
 	
+	
+	<entry key="selectCouponList">
+		SELECT COU_NAME,
+			   COU_YN,
+			   DISCOUNT
+		  FROM TB_MEMBER M
+		  JOIN TB_MEM_COUPON ON (MEM_NO_COU = M.MEM_NO)
+		  JOIN TB_COUPON C ON (C.COU_NO = COU_NO_COU)
+		 WHERE COU_YN ='N'
+		   AND M.MEM_NO = ?
+	
+	</entry>
+	
+	<entry key="selectCoupon">
+		SELECT COU_NAME,
+			   COU_YN,
+			   DISCOUNT
+		  FROM TB_MEMBER M
+		  JOIN TB_MEM_COUPON ON (MEM_NO_COU = M.MEM_NO)
+		  JOIN TB_COUPON C ON (C.COU_NO = COU_NO_COU)
+		 WHERE COU_YN ='N'
+		   AND M.MEM_NO = ?
+	
+	</entry>
+	
 
 </properties>
