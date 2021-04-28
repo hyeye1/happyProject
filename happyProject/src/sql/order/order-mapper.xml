@@ -7,8 +7,8 @@
 		  INTO TB_CART
 		  (
 		    CA_NO
-		  , BK_NO_OR
-		  , MEM_NO_OR
+		  , BK_NO_CA
+		  , MEM_NO_CA
 		  , AMOUNT
 		  , TOTAL_PRICE
 		  , BK_TITLE
@@ -35,8 +35,8 @@
 	<entry key="selectCartList">
 		SELECT
 		       CA_NO
-		     , BK_NO_OR
-		     , MEM_NO_OR
+		     , BK_NO_CA
+		     , MEM_NO_CA
 		     , AMOUNT
 		     , TOTAL_PRICE
 		     , STATUS
@@ -46,8 +46,8 @@
 		     , PRICE
 		     , MAIN_IMG
 		  FROM TB_CART
-		  JOIN TB_MEMBER ON (MEM_NO_OR = MEM_NO)
-		 WHERE MEM_NO_OR = ?
+		  JOIN TB_MEMBER ON (MEM_NO_CA = MEM_NO)
+		 WHERE MEM_NO_CA = ?
 	</entry>
 	
 	

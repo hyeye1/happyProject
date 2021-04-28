@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문하기</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -311,11 +312,11 @@
                     </tr>
                     <tr>
                         <th>
-                            <input type="checkbox" id="happyOrder" style="vertical-align: middle;">
+                            <input type="checkbox" id="happyOrder" style="vertical-align: middle;" onclick="happyDelivery();">
                             <label for="happyOrder"> HAPPY배송</label>
                         </th>
                         <td>
-                           <input type="date" name="happyDate">
+                           <input type="date" name="happyDate" disabled>
                         </td>
                     </tr>
             </table>
@@ -450,10 +451,10 @@
                 <ul class="list_price">
                     <li>
                         <span class="label">상품금액</span>
-                        <span class="price" id="price" name="price" value="2900">39000</span>원
+                        <span class="price" id="price" name="price">39000</span>원
                     </li>
                     <li><span class="label">배송비</span>
-                        <span class="price" id="delivery" name="delivery" value="500">500</span>원
+                        <span class="price" id="delivery" name="delivery">0</span>원
                     </li>
                     <li><span class="label">할인금액</span>
                         <span class="price" id="couponDiscount">0</span>원
@@ -462,18 +463,11 @@
                     <li class="total">
                         <strong class="label" >최종 결제금액</strong>
                         <strong class="price">
-                            <span class="number" id="lastPrice" name="lastPrice" value="39500">39500</span>원
+                            <span class="number" id="lastPrice" name="lastPrice">0</span>원
                         </strong>
                     </li>
                     <hr>
-                    <li>
-                        <span class="label">적립예정 통합포인트</span>0원
-                        <b>p</b>
-                        <div style="clear:both; text-align: left; padding-top:10px; font-size: 12px;">
-                            쿠폰,통합포인트 사용시 주문완료 후 <br>
-                            적립예정 포인트가 변동 될 수 있습니다.
-                        </div>
-                    </li>
+     
                 </ul>
             </div>
             <!-- 주문내역 동의 -->
@@ -569,28 +563,7 @@
                 </div>
             </div>
         </div>
-        <!-- //Modal -->
-		<!-- 
-        The Modal for 결제하기
-        <div class="modal fade" id="pay">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                
-                    Modal body
-                    <div class="modal-body">
-                        <img src="../SemiProject_WorkSpace/화면구현/img/결제샷.png" alt="">
-                    </div>
-                    
-                    Modal footer
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
- 		-->
-
+  
 
     </div>
 
@@ -599,15 +572,42 @@
 
     <script>
     
+   		 $(':checkbox:not(:checked)').attr('disabled', false);
+    
+    
+    	function happyDelivery(){
+    		$("#happyDate").removeAttr("disabled");
+    	}
+    
+    
+    	
 	    $(function(){
+	    	
+	    	
+	    	$("#couponBtn").click(function(){
+	    		
+	    		//console.log($("#couponCategory option:selected").val());
+	    		
+	    		// 최종결제금액 : 상품금액 + 배송비 - 할인액
+	    		var result = Number($("#price").text()) + Number($("#delivery").text()) - Number($("#couponCategory option:selected").val());
+	    		$("#lastPrice").text(result);
+	    		
+	    	})
+	    	
+	    	
+	    	
+	    
+	    	
+	    	
+	    	
 			$("#couponBtn").click(function(){
 				
 
 				$.ajax({
 					url: "couponAjax.me",
 					type: "get",
-					data:{input:$("#couponCategory").val()},
-					success:function(result){// success:ajax 통신 성공시 실행할 함수 정의
+					data:{couponCategory:$("#couponCategory").val()},
+					success:function(result){
 						
 						console.log("ajax 통신 성공");	
 						console.log(result);
@@ -615,83 +615,24 @@
 						$("#couponDiscount").html(result);
 					
 					},
-					error: function(){ // error : ajax 통신 실패시 실행할 함수 정의
+					error: function(){ 
 						console.log("ajax 통신 실패");
 					},
-					complete:function(){ // complete: ajax 통신 성공여부와 상관없이 무조건 실행할 함수 정의
+					complete:function(){
 					}
 				});
 			})
-		})
-		/*
-		
-		
-		 $(function(){
-			$("#couponBtn").click(function(){
-				
-
-				$.ajax({
-					url: "couponAjax.me",
-					type: "get",
-					data:{input:$("#delivery").val()},
-					success:function(result){// success:ajax 통신 성공시 실행할 함수 정의
-						
-						console.log("ajax 통신 성공");	
-						console.log(result);
-						
-						$("#couponDiscount").html(result);
-					
-					},
-					error: function(){ // error : ajax 통신 실패시 실행할 함수 정의
-						console.log("ajax 통신 실패");
-					},
-					complete:function(){ // complete: ajax 통신 성공여부와 상관없이 무조건 실행할 함수 정의
-						$("#couponDiscount").html(result);
-					}
-				});
-			})
+			
+			
+			
+			
 		})
 		
 		
-		*/
 		
 		
 		
 		
-		
-		
-		/*
-		 $(function(){
-			$("#couponBtn").click(function(){
-				
-
-				$.ajax({
-					url: "couponAjax2.me",
-					type: "get",
-					data:{
-						  price:$("#price").val(),
-						  delivery:$("#delivery").val(),
-						  couponCategory:$("#couponCategory").val(),
-	
-						  
-						 },
-					success:function(result){// success:ajax 통신 성공시 실행할 함수 정의
-						
-						console.log("ajax 통신 성공");	
-						console.log(result);
-						
-						$("#delivery").html(result);
-
-					},
-					error: function(){ // error : ajax 통신 실패시 실행할 함수 정의
-						console.log("ajax 통신 실패");
-					},
-					complete:function(){ // complete: ajax 통신 성공여부와 상관없이 무조건 실행할 함수 정의
-					}
-				});
-			})
-		})
-	    */
 		
 		
     
