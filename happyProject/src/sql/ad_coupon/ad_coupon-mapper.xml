@@ -45,6 +45,21 @@
 		  , ?
 		  )
 	</entry>
+	
+	<entry key="insertCouponAllMember">
+	
+	
+		INSERT INTO TB_MEM_COUPON
+		(
+			COU_MEM_NO,
+			MEM_NO_COU,
+			COU_NO_COU,
+			COU_DATE,
+			COU_YN
+		)
+		VALUES(SEQ_CMN.NEXTVAL, ?, ?, SYSDATE, 'N')		
+	</entry>
+	
 
 
 </properties>
