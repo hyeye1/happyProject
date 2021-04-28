@@ -16,11 +16,15 @@ public class Ad_Member {
 	private Date enrollDate;
 	private Date recentLogin;
 	private String adminYn;
+	private String orderCnt;
+	private String orderTotalAmt;
+	private String couCnt;
 	
 	public Ad_Member() {}
 
 	public Ad_Member(int memNo, String memId, String memPwd, String memName, String memAddress, String memPhone,
-			String email, String emailYn, String enrollRoute, Date enrollDate, Date recentLogin, String adminYn) {
+			String email, String emailYn, String enrollRoute, Date enrollDate, Date recentLogin, String adminYn
+,String orderCnt , String orderTotalAmt ,String couCnt) {
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -34,6 +38,9 @@ public class Ad_Member {
 		this.enrollDate = enrollDate;
 		this.recentLogin = recentLogin;
 		this.adminYn = adminYn;
+		this.orderCnt=orderCnt;
+		this.orderTotalAmt=orderTotalAmt;
+		this.couCnt=couCnt;
 	}
 
 	public int getMemNo() {
@@ -139,7 +146,29 @@ public class Ad_Member {
 				+ ", enrollRoute=" + enrollRoute + ", enrollDate=" + enrollDate + ", recentLogin=" + recentLogin
 				+ ", adminYn=" + adminYn + "]";
 	}
-	
-	
+
+	public String getOrderCnt() {
+		return orderCnt;
+	}
+
+	public void setOrderCnt(String orderCnt) {
+		this.orderCnt = orderCnt;
+	}
+
+	public String getOrderTotalAmt() {
+		return orderTotalAmt;
+	}
+
+	public void setOrderTotalAmt(String orderTotalAmt) {
+		this.orderTotalAmt = orderTotalAmt;
+	}
+
+	public String getCouCnt() {
+		return couCnt;
+	}
+
+	public void setCouCnt(String couCnt) {
+		this.couCnt = couCnt;
+	}
 	
 }

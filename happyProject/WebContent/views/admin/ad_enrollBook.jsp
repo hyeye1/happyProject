@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+		Date nowTime = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+		
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -347,13 +354,13 @@
                     관리메뉴를 종료하시겠습니까?
                 </div>    
                 <div id="adEndIntro" style="text-align: center; font-size:small;">
-                    2021.04.18 15:01:33
-                </div>
-                <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
+          		     <%= sf.format(nowTime)%>
+           		</div>	
+            	<div id="adEndBtn" style="margin-left: 26%;">
+                	<a href="#" onClick="self.close();" class="btn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</a>
+                	&nbsp;&nbsp;
+                	<button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+            	</div>   
             </div>    
         </div>
     </div>

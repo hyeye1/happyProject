@@ -11,18 +11,18 @@ import com.kh.common.model.vo.PageInfo;
 
 public class Ad_MemberService {
 	
-	public int selectListCount() {
+	public int selectListCount(String searchType,String search) {
 		Connection conn = getConnection();
-		int listCount = new Ad_MemberDao().selectListCount(conn);
+		int listCount = new Ad_MemberDao().selectListCount(conn,searchType,search);
 		
 		close(conn);
 		
 		return listCount;
 	}
 
-	public ArrayList<Ad_Member> selectList(PageInfo pi) {
+	public ArrayList<Ad_Member> selectList(PageInfo pi,String searchType,String search){
 		Connection conn = getConnection();
-		ArrayList<Ad_Member> list = new Ad_MemberDao().selectList(conn);
+		ArrayList<Ad_Member> list = new Ad_MemberDao().selectList(conn,pi,searchType,search);
 		
 		close(conn);
 		

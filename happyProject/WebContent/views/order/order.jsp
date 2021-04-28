@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.member.model.vo.Member, com.kh.member.model.vo.Coupon"%>
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
-	// > 로그인 전 menubar.jsp 로딩시 : null
-	// > 로그인 성공 후 menubar.jsp 로딩시 : 로그인한 회원의 정보들이 담겨있는 객체
 	
-	String contextPath = request.getContextPath(); // "/jsp"
+
+	ArrayList<Coupon> cou = (ArrayList<Coupon>)request.getAttribute("cou");
+	 
+	Coupon cp = (Coupon)request.getAttribute("cp");
+	
+	String contextPath = request.getContextPath(); 
 	
 %>
 <!DOCTYPE html>
@@ -19,6 +22,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <style>
         .orderOuter{
             width:1000px;
@@ -112,9 +116,10 @@
             border-bottom: 1px solid darkgray;
         }
 
-        .orderOuter table .discount{
+        .orderOuter table #couponBtn{
             background:rgb(249, 219, 122);
             border-radius: 10px;
+            
             padding:13px 15px 13px 15px;
             font-weight: bolder;
         }
@@ -239,7 +244,7 @@
     </style>
 </head>
 <body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <%		
 		String userId = loginUser.getMemId();	   // 필수입력사항이라 무조건 값이 존재함
 		String userName = loginUser.getMemName(); // 필수입력사항이라 무조건 값이 존재함
@@ -310,22 +315,7 @@
                             <label for="happyOrder"> HAPPY배송</label>
                         </th>
                         <td>
-                            2021년 
-                            <select name="month" id="month">
-                                <option value="jan">1</option>
-                                <option value="feb">2</option>
-                                <option value="mar">3</option>
-                                <option value="apr">4</option>
-                                <option value="may">5</option>
-                                <option value="jun">6</option>
-                                <option value="jul">7</option>
-                                <option value="aug">8</option>
-                                <option value="sep">9</option>
-                                <option value="oct">10</option>
-                                <option value="nov">11</option>
-                                <option value="dec">12</option>
-                            </select>월
-                            <input type="number" value="1" min="0" max="31" style="height:25px;">일
+                           <input type="date" name="happyDate">
                         </td>
                     </tr>
             </table>
@@ -392,24 +382,39 @@
         <br><br>
         
         <!-- 쿠폰/적립금 -->
-        <legend><h4 style="font-weight: bolder;">쿠폰/적립금</h4></legend>
+        <legend><h4 style="font-weight: bolder;">쿠폰</h4></legend>
         <br>
         <table class="coupon">
             <tr>
-                <td><div class="discount" style="width:100px; height:45px; line-height: 1.3;">할인쿠폰</div></td>
-                 <td width="500" align="left">사용가능한 쿠폰이 없습니다.
-                        <select name="category">
-                            <option value="10">공통</option>
-                            <option value="20">운동</option>
-                            <option value="30">등산</option>
-                            <option value="40">게임</option>
-                            <option value="50">낚시</option>
-                            <option value="60">요리</option>
-                            <option value="70">기타</option>
+                <td>
+                    <div class="discount" align="left">
+                    <button   id="couponBtn" style="width:100px; height:45px; line-height: 1.3;" >적용하기</button>
+                    </div>
+                </td>
+                <% if(cou.isEmpty()){ %>
+             	<tr>
+             		<td colspan="5">존재하는 쿠폰이 없습니다. </td>
+             	</tr>
+            <%} else { %>
+	                <tr>
+                        <select name="couponCategory" id="couponCategory"> 
+                        <option value="0">선택안함</option>
+                        <%int count =0; %>
+	            	<% for(Coupon c:cou) { %>
+	            				
+	                            <option value="<%=c.getDiscount() %>" ><%= c.getCouName() %></option>
+	                       		<%count++; %>
+	
+		            <%} %>
                         </select>
-                    </td>
-          
-            </tr>
+                       
+	
+	                   
+	                </tr>
+             <%} %>
+               
+      
+           
         </table>
         
         
@@ -445,19 +450,19 @@
                 <ul class="list_price">
                     <li>
                         <span class="label">상품금액</span>
-                        <span class="price">39,000</span>원
+                        <span class="price" id="price" name="price" value="2900">39000</span>원
                     </li>
                     <li><span class="label">배송비</span>
-                        <span class="price">0</span>원
+                        <span class="price" id="delivery" name="delivery" value="500">500</span>원
                     </li>
                     <li><span class="label">할인금액</span>
-                        <span class="price">0</span>원
+                        <span class="price" id="couponDiscount">0</span>원
                     </li>
                     <hr>
                     <li class="total">
-                        <strong class="label">최종 결제금액</strong>
+                        <strong class="label" >최종 결제금액</strong>
                         <strong class="price">
-                            <span class="number">39,000</span>원
+                            <span class="number" id="lastPrice" name="lastPrice" value="39500">39500</span>원
                         </strong>
                     </li>
                     <hr>
@@ -593,6 +598,103 @@
 
 
     <script>
+    
+	    $(function(){
+			$("#couponBtn").click(function(){
+				
+
+				$.ajax({
+					url: "couponAjax.me",
+					type: "get",
+					data:{input:$("#couponCategory").val()},
+					success:function(result){// success:ajax 통신 성공시 실행할 함수 정의
+						
+						console.log("ajax 통신 성공");	
+						console.log(result);
+						
+						$("#couponDiscount").html(result);
+					
+					},
+					error: function(){ // error : ajax 통신 실패시 실행할 함수 정의
+						console.log("ajax 통신 실패");
+					},
+					complete:function(){ // complete: ajax 통신 성공여부와 상관없이 무조건 실행할 함수 정의
+					}
+				});
+			})
+		})
+		/*
+		
+		
+		 $(function(){
+			$("#couponBtn").click(function(){
+				
+
+				$.ajax({
+					url: "couponAjax.me",
+					type: "get",
+					data:{input:$("#delivery").val()},
+					success:function(result){// success:ajax 통신 성공시 실행할 함수 정의
+						
+						console.log("ajax 통신 성공");	
+						console.log(result);
+						
+						$("#couponDiscount").html(result);
+					
+					},
+					error: function(){ // error : ajax 통신 실패시 실행할 함수 정의
+						console.log("ajax 통신 실패");
+					},
+					complete:function(){ // complete: ajax 통신 성공여부와 상관없이 무조건 실행할 함수 정의
+						$("#couponDiscount").html(result);
+					}
+				});
+			})
+		})
+		
+		
+		*/
+		
+		
+		
+		
+		
+		
+		/*
+		 $(function(){
+			$("#couponBtn").click(function(){
+				
+
+				$.ajax({
+					url: "couponAjax2.me",
+					type: "get",
+					data:{
+						  price:$("#price").val(),
+						  delivery:$("#delivery").val(),
+						  couponCategory:$("#couponCategory").val(),
+	
+						  
+						 },
+					success:function(result){// success:ajax 통신 성공시 실행할 함수 정의
+						
+						console.log("ajax 통신 성공");	
+						console.log(result);
+						
+						$("#delivery").html(result);
+
+					},
+					error: function(){ // error : ajax 통신 실패시 실행할 함수 정의
+						console.log("ajax 통신 실패");
+					},
+					complete:function(){ // complete: ajax 통신 성공여부와 상관없이 무조건 실행할 함수 정의
+					}
+				});
+			})
+		})
+	    */
+		
+		
+    
         $(function (){
             $(".selectedWay").click(function(){
 
