@@ -17,73 +17,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-        .outer{
-            margin: auto;
-            border: 1px solid black;
-            width: 1000px;
-            height: 1140px;
-        }
-        .path{
-            height:2%;
-            width: 1000px;
-            text-align: right;
-        }
-        .myAddress{
-            width: 650px;
-            height: 800px;
-            float:right;
-        }
-        #adBtn{
-            background-color: #F9DB7A;
-            margin-left: 380px;
-            margin-top: 40px;
-            margin-bottom: 30px;
-            width: 100px;
-            height: 30px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-
-        }
-        #adBtn:hover{
-            color: white;
-        }
-        #adBtn:focus{
-            color: white;
-        }
-        #myaddress_table{
-            width: 500px;
-            height: 300px;
-            text-align: center;
-        }
-        th{
-            height: 30px;
-        }
-        #modiBtn, #delBtn{
-            width: 80px;
-            height: 30px;
-            border: none;
-            border-radius: 5px;
-        }
-        #modiBtn{
-            margin-bottom: 20px;
-            background-color: #F9DB7A;  
-        }
-        #delBtn{
-            background-color: lightgray;
-        }
-        #modiBtn:hover{color: white;}
-        #modiBtn:focus{color: white;}
-
-        #delBtn:hover{color: white;}
-        #delBtn:focus{color: white;}
-
-    </style>
+<title>나의 배송지 </title>
+	<link rel="stylesheet" href="resources/css/MyAddress.css">
 </head>
 <body>
-
 
 	    <div class="outer">
         <div class="path"> 홈>마이페이지>나의 배송지 관리</div>     
@@ -93,7 +30,7 @@
             
             <button id="adBtn">+ 배송지 추가 </button>
             
-           <form action="<%= request.getContextPath() %>/myaddress.me" method="post" id="myAddressForm">
+           <form>
             <table id="myaddress_table" border="1" style="border-collapse: collapse;">
                 <tr style="background-color: lightgray;">
                     <th><input type="checkbox"></th>
@@ -115,7 +52,7 @@
                     <td>이독자</td>
                     <td>서울특별시 강남구 테헤란로 14길 6 </td>
                     <td>
-                        <button id="modiBtn">수정</button><br>
+                        <button type=submit id="modiBtn">수정</button><br>
                         <button id="delBtn">삭제</button>
                     </td>
                 </tr>
