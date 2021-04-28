@@ -37,7 +37,7 @@ public class CartListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		if (loginUser == null) {
-			//  로그인페이지로돌아가기
+			//response.sendRedirect(request.getContextPath());
 		}
 		int memNo = loginUser.getMemNo();
 		

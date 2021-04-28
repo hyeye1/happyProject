@@ -24,7 +24,7 @@
     <style>
         .cartOuter{
             width:1000px;
-            height:5000px;
+            height:100%;
             margin:auto;
         }
 
@@ -49,13 +49,12 @@
         /* 카트 창 */
         .cartOuter .cartView{
             width:680px;
-            height:600px;
+            /*height:300px;*/
             margin-top: 20px;
             float:left;
         }
         .cartOuter .cartView table{
             width:100%;
-            height:100%;
             font-size: 15px;
             line-height:20px;
             border-top:1px solid black;
@@ -63,6 +62,7 @@
         }
         .cartOuter .cartView table td{
             border-top:1px solid darkgray;
+            padding:20px;
         }
 
          /* 화살표 없애기 */
@@ -174,43 +174,6 @@
 	                    <td align="center"><%= c.getTtPrice() %> 원</td>
 	                </tr>
 	                <% } %>
-                
-                <!-- <tr>
-                    <td style="height:100px;"><input type="checkbox" checked></td>
-                    <td align="center"><img src="../화면구현/img/돈의심리학.png" style="width:80px; height:100px;"></td>
-                    <td>
-                        <p>돈의 심리학</p>
-                        <small>모건 하우절</small> <br><br>
-                        <button class="button" onclick="minus();">-</button>
-                        <input type="number" value="1" min="1" max="9">
-                        <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>
-                    </td>
-                    <td align="center">10,000 원</td>
-                </tr>
-                <tr>
-                    <td style="height:100px;"><input type="checkbox" checked></td>
-                    <td align="center"><img src="../화면구현/img/해리포터.png" style="width:80px; height:100px;"></td>
-                    <td>
-                        <p>해리포터 시리즈 개정 번역판</p>
-                        <small>조앤.k.롤링</small> <br><br>
-                        <button class="button" onclick="minus();">-</button>
-                        <input type="number" value="1" min="1" max="9">
-                        <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>
-                    </td>
-                    <td align="center">20,000 원</td>
-                </tr>
-                <tr>
-                    <td style="height:100px;"><input type="checkbox" ></td>
-                    <td align="center"><img src="../화면구현/img/아몬드.png" style="width:80px; height:100px;"></td>
-                    <td>
-                        <p>아몬드</p>
-                        <small>손원평</small> <br><br>
-                        <button class="button" onclick="minus();">-</button>
-                        <input type="number" value="1" min="1" max="9">
-                        <button class="button" onclick="plus();">+</button> <button class="button" type="rest">삭제</button>
-                    </td>
-                    <td align="center">8,400 원</td>
-                </tr> -->
             </table>
         </div>
 
@@ -251,7 +214,7 @@
        	</script>
     </div>
     
-    <br><br><br><br><br><br><br>
+    
 
 </body>
 </html>
