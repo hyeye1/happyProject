@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.member.model.service.MemberService;
+
 /**
  * Servlet implementation class EmailCheckAjax
  */
@@ -48,12 +50,12 @@ public class EmailCheckAjax extends HttpServlet {
 		// SMTP 서버 정보를 설정한다.
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.port", "456");
+		props.put("mail.smtp.port", "465");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.ssl.enable", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.debug", "true");
-		props.put("mail.smtp.socketFactory.port","456");
+		props.put("mail.smtp.socketFactory.port","465");
 		props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.socketFactory.fallback","false");
 
@@ -88,13 +90,13 @@ public class EmailCheckAjax extends HttpServlet {
 		// email 전송
 		try {
 				MimeMessage msg = new MimeMessage(session);
-				msg.setFrom(new InternetAddress(user));
+				msg.setFrom(new InternetAddress(user, "해피북스데이"));
 				msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 				
 				// 메일 제목
 				msg.setSubject("해피북스데이 회원가입 인증 메일입니다.");
 				// 메일 내용
-				msg.setText("인증 번호는 " + temp);
+				msg.setText("인증 번호는 " + temp + " 입니다. 정확히 입력 후 회원가입을 진행해주세요.");
 				
 				Transport.send(msg);
 				System.out.println("이메일 전송");
@@ -105,6 +107,7 @@ public class EmailCheckAjax extends HttpServlet {
 		HttpSession saveKey = request.getSession();
 		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
 		
+		response.getWriter().print(AuthenticationKey);
 		
 	}
 
