@@ -62,7 +62,9 @@ public class CartInseretFromCategoryServlet extends HttpServlet {
 		c.setPrice(price);
 		c.setMainImg(mainImg);
 		c.setMemNo(memNo);
-	
+		
+		//if(c.getMemNo() < 1) { // 만약 카트ㅇ 회원번호가 존재하면 카트에 전체 인설트 
+		
 		int result = new CartService().insertCartFromCategory(c);
 		
 		response.setContentType("application/json; charset=UTF-8");

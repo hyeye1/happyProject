@@ -105,6 +105,15 @@
 
 	</entry>
 	
+
+	<entry key="updateCart">
+				UPDATE
+       TB_CART
+           SET AMOUNT = AMOUNT + ?
+             , TOTAL_PRICE = TOTAL_PRICE + ?
+         WHERE MEM_NO_CA = ?
+	</entry>
+	
 	<entry key="insertOrder">
 		INSERT INTO TB_ORDER
                     ( 
