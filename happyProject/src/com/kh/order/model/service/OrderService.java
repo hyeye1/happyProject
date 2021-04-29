@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.kh.member.model.vo.Coupon;
 import com.kh.order.model.dao.OrderDao;
 import com.kh.order.model.vo.Cart;
+import com.kh.order.model.vo.Order;
 
 public class OrderService {
 	
@@ -35,6 +36,10 @@ public class OrderService {
 		ArrayList<Cart> ca = new OrderDao().selectCartList(conn, userNo);
 		close(conn);
 		return ca;
+		
+	}
+	
+	public int insertOrder(Order or) {
 		
 	}
 
