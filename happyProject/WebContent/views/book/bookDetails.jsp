@@ -435,7 +435,7 @@
         <!-- 리뷰 없을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea">
-            <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
+            <h6 style="color:rgb(249, 219, 122); margin:15px; float:left;">최신순</h6>
             <hr>
             <p align="center" style="font-size:16px;">회원님께서 첫 리뷰의 주인공이 되어주세요.</p>
         </div>
