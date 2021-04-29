@@ -1,0 +1,61 @@
+@charset "UTF-8";
+  .outer{
+            margin: auto;
+            border: 1px solid black;
+            width: 1000px;
+            height: 1140px;
+        }
+        .path{
+            height:2%;
+            width: 1000px;
+            text-align: right;
+        }
+        .myAddress{
+            width: 650px;
+            height: 800px;
+            float:right;
+        }
+        #adBtn{
+            background-color: #F9DB7A;
+            margin-left: 380px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+
+        }
+        #adBtn:hover{
+            color: white;
+        }
+        #adBtn:focus{
+            color: white;
+        }
+        #myaddress_table{
+            width: 500px;
+            height: 300px;
+            text-align: center;
+        }
+        th{
+            height: 30px;
+        }
+        #modiBtn, #delBtn{
+            width: 80px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+        }
+        #modiBtn{
+            margin-bottom: 20px;
+            background-color: #F9DB7A;  
+        }
+        #delBtn{
+            background-color: lightgray;
+        }
+        #modiBtn:hover{color: white;}
+        #modiBtn:focus{color: white;}
+
+        #delBtn:hover{color: white;}
+        #delBtn:focus{color: white;}

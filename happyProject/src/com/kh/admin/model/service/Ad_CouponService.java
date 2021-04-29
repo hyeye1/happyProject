@@ -4,8 +4,10 @@ import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.kh.admin.model.dao.Ad_CouponDao;
+import com.kh.admin.model.dao.Ad_MemberDao;
 import com.kh.admin.model.vo.Ad_Coupon;
 
 public class Ad_CouponService {
@@ -45,6 +47,18 @@ public class Ad_CouponService {
 		
 		close(conn);
 		return result;
+	}
+
+	public int insertCouponAllMember(int couNo) {
+		Connection conn = getConnection();
+		
+		List<Integer> memNoList = new Ad_MemberDao().selectAllMemNo(conn);
+		
+		int count = new Ad_CouponDao().insertCouponAllMember(conn, couNo, memNoList);
+		
+		close(conn);
+		
+		return count;
 	}
 	
 	

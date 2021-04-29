@@ -115,6 +115,8 @@
 		SELECT 
 			   MEM_NO,
 		       RPAD(SUBSTR(MEM_ID, 1, 4), LENGTHB(MEM_ID), '*') MEM_ID,
+		       MEM_ID MEM_ID2,
+		       RPAD(SUBSTR(MEM_PWD, 1, 1), LENGTHB(MEM_PWD), '*') MEM_PWD2,
 		       MEM_PWD,
 		       MEM_NAME,
 		       EMAIL,
@@ -129,8 +131,10 @@
 		<entry key="findPwdMember">
 		SELECT 
 			   MEM_NO,
-			   MEM_ID,
-		       RPAD(SUBSTR(MEM_PWD, 1, 1), LENGTHB(MEM_PWD), '*') MEM_PWD,
+			   RPAD(SUBSTR(MEM_ID, 1, 4), LENGTHB(MEM_ID), '*') MEM_ID,
+		       MEM_ID MEM_ID2,
+		       RPAD(SUBSTR(MEM_PWD, 1, 1), LENGTHB(MEM_PWD), '*') MEM_PWD2,
+		       MEM_PWD,
 		       MEM_NAME,
 		       EMAIL,
 		       MEM_STATUS
