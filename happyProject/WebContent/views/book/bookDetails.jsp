@@ -403,7 +403,7 @@
             <form action="<%= contextPath %>/insert.re" method="post">
                 <div class="inputReview">
                     <div class="reviewBtDiv" align="right">
-                        <button class="insertRvBt btn btn-primary"  data-toggle="modal" data-target="#insertReview">등록</button>
+                        <button type="submit" class="insertRvBt btn btn-primary"  data-toggle="modal" data-target="#insertReview">등록</button>
                     </div>
                     <div class="reviewContent">
                         <textarea name="content" id="reviewContent" placeholder="작품과 무관한 광고,욕설, 및 비방,청소년보호정책에 위배되는 내용은 사전 동의 없이 비공개 처리 될 수 있습니다." required></textarea>

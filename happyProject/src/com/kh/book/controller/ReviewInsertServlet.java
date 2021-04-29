@@ -46,9 +46,8 @@ public class ReviewInsertServlet extends HttpServlet {
 		r.setMemNoRe(String.valueOf(memNo));
 		
 		int result = new ReviewService().insertReview(r);
-		
-			response.sendRedirect(request.getContextPath() + "/bkDetails.bk");
-		
+																
+		request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
 		
 		
 	}
