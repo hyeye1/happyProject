@@ -63,15 +63,9 @@ public class CartInseretFromCategoryServlet extends HttpServlet {
 		c.setMainImg(mainImg);
 		c.setMemNo(memNo);
 		
-		if(c.getMemNo() < 1) { // 카트에 회원번호가 존재하지 않으면 카트에 전체 인설트 
+		//if(c.getMemNo() < 1) { // 만약 카트ㅇ 회원번호가 존재하면 카트에 전체 인설트 
 		
 		int result = new CartService().insertCartFromCategory(c);
-		
-		}else { // 카트에 회원번호가 존재하면 update문 실행
-			
-			int result2 = new
-			
-		}
 		
 		response.setContentType("application/json; charset=UTF-8");
 		Gson gson = new Gson();
