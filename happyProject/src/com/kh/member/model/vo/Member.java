@@ -6,6 +6,7 @@ public class Member {
 	
 	private int memNo;
 	private String memId;
+	private String memId2;
 	private String memPwd;
 	private String memName;
 	private String memAddress;
@@ -20,6 +21,8 @@ public class Member {
 	
 	public Member() {}
 
+	
+	
 	public Member(int memNo, String memId, String memPwd, String memName, String memAddress, String memPhone,
 			String email, String emailYN, String enrollRoute, Date enrollDate, Date recentLogin,
 			String adminYN, String memStatus) {
@@ -40,6 +43,40 @@ public class Member {
 	}
 	
 	
+public Member(int memNo, String memId, String memId2, String memPwd, String memName, String memAddress,
+			String memPhone, String email, String emailYN, String enrollRoute, Date enrollDate, Date recentLogin,
+			String adminYN, String memStatus) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memId2 = memId2;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.memAddress = memAddress;
+		this.memPhone = memPhone;
+		this.email = email;
+		this.emailYN = emailYN;
+		this.enrollRoute = enrollRoute;
+		this.enrollDate = enrollDate;
+		this.recentLogin = recentLogin;
+		this.adminYN = adminYN;
+		this.memStatus = memStatus;
+	}
+
+
+
+	public Member(int memNo, String memId, String memId2,String memPwd, String memName, String email, String memStatus) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memId2 = memId2;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.email = email;
+		this.memStatus = memStatus;
+	}
+	
+	
 
 	public Member(int memNo, String memId, String memPwd, String memName, String email, String memStatus) {
 		super();
@@ -50,6 +87,7 @@ public class Member {
 		this.email = email;
 		this.memStatus = memStatus;
 	}
+
 
 
 	public Member(String memId, String memPwd, String memName, String memAddress, String memPhone, String email, String emailYN) {
@@ -193,13 +231,28 @@ public class Member {
 		this.memStatus = memStatus;
 	}
 
-	@Override 
-	public String toString() {
-		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", memName=" + memName
-				+ ", memAddress=" + memAddress + ", memPhone=" + memPhone + ", email=" + email + ", emailYN=" + emailYN
-				+ ", enrollRoute=" + enrollRoute + ", enrollDate=" + enrollDate + ", recentLogin=" + recentLogin
-				+ ", adminYN=" + adminYN + ", memStatus=" + memStatus + "]";
+	public String getMemId2() {
+		return memId2;
 	}
+
+
+
+	public void setMemId2(String memId2) {
+		this.memId2 = memId2;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Member [memNo=" + memNo + ", memId=" + memId + ", memId2=" + memId2 + ", memPwd=" + memPwd
+				+ ", memName=" + memName + ", memAddress=" + memAddress + ", memPhone=" + memPhone + ", email=" + email
+				+ ", emailYN=" + emailYN + ", enrollRoute=" + enrollRoute + ", enrollDate=" + enrollDate
+				+ ", recentLogin=" + recentLogin + ", adminYN=" + adminYN + ", memStatus=" + memStatus + "]";
+	}
+
+
+
 
 	
 	

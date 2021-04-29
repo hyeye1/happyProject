@@ -375,7 +375,7 @@
 	        			data:{checkEmail:$email.val()},
 	        			success:function(result){
 	        				
-	        				console.log("인증번호는 " + result);
+	        				//console.log("인증번호는 " + result);
 							
 	        				$("#phoneCheckYN").on("click",function(){
 

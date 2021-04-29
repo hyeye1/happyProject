@@ -115,6 +115,7 @@
 		SELECT 
 			   MEM_NO,
 		       RPAD(SUBSTR(MEM_ID, 1, 4), LENGTHB(MEM_ID), '*') MEM_ID,
+		       MEM_ID MEM_ID2,
 		       MEM_PWD,
 		       MEM_NAME,
 		       EMAIL,
