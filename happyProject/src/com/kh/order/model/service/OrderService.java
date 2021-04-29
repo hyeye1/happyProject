@@ -7,8 +7,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.member.model.vo.Coupon;
-import com.kh.member.model.vo.Member;
 import com.kh.order.model.dao.OrderDao;
+import com.kh.order.model.vo.Cart;
 
 public class OrderService {
 	
@@ -27,6 +27,15 @@ public class OrderService {
 		
 		close(conn);
 		return cp;
+	}
+	
+	public ArrayList<Cart> selectCartList(int userNo){
+		Connection conn = getConnection();
+		
+		ArrayList<Cart> ca = new OrderDao().selectCartList(conn, userNo);
+		close(conn);
+		return ca;
+		
 	}
 
 }

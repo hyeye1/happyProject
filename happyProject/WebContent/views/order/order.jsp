@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.member.model.vo.Member, com.kh.member.model.vo.Coupon"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.member.model.vo.Member, com.kh.member.model.vo.Coupon, com.kh.order.model.vo.Cart
+    							,java.text.*"%>
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	
+	
+	int total = (Integer)request.getAttribute("total");
+	
 
 	ArrayList<Coupon> cou = (ArrayList<Coupon>)request.getAttribute("cou");
+	ArrayList<Cart> ca = (ArrayList<Cart>)request.getAttribute("ca");
 	 
 	Coupon cp = (Coupon)request.getAttribute("cp");
 	
@@ -23,6 +28,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     
     <style>
         .orderOuter{
@@ -273,225 +280,207 @@
         </div>
         <hr>
         <br><br>
-
-        <!-- 배송정보 입력란 -->
-        <div>
-        <form class="dvForm" action="" style="width:600px;">
-            <fieldset style="border:none;">
-                <legend><h4 style="font-weight: bolder;">배송정보</h4></legend>
-                <br>
-                <table>
-                    <tr>
-                        <th width="100">이름*</th>
-                        <td><input type="text" name="name" value="<%= userName %>" style="width:400px" required> 
-                            <a class="dvButton btn btn-warning btn-sm" data-toggle="modal" data-target="#shipping">배송지 변경</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>휴대폰  *</th>
-                        <td>
-                            <input type="text" name="phone" placeholder=" (-포함해서 입력)" value="<%= phone %>">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>이메일*</th>
-                        <td><input type="text" name="mail" value="<%= email %>" style="width:400px" required></td>
-                    </tr>
-                    <tr>
-                        <th>주소*</th>
-                        <td>
-                            <input type="text" name="" value="01234" style="width:150px;"> 
-                            <a class="dvButton btn btn-warning btn-sm"  data-toggle="modal" data-target="#post">우편번호</a> <br>
-                            <input type="text" name="address" value="<%= address %>" style="width:500px; margin-bottom: 4px;"> <br>
-                            <input type="text" name="" value=""  style="width:500px;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>배송시 요청사항</th>
-                        <td><textarea name="dvDemand" id="" rows="4" style="width:500px; resize:none;"></textarea></td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" id="happyOrder" style="vertical-align: middle;" onclick="happyDelivery();">
-                            <label for="happyOrder"> HAPPY배송</label>
-                        </th>
-                        <td>
-                           <input type="date" name="happyDate" disabled>
-                        </td>
-                    </tr>
-            </table>
-            </fieldset>
-        </form>
-    </div>
-        <br><br>
-
-        <hr>
-        <br><br>
-        
-        <!-- 주문상품 폼 -->
-        <form class="orderForm" action="" style="width:600px">
-            <fieldset style="border:none;">
-                <legend><h4 style="font-weight: bolder;">주문상품</h4></legend>
-                <br>
-                <table class="odTable">
-                    <tr>
-                        <th colspan="2" style="width:460px; text-align: center;">상품정보</th>
-                        <th algin="center" style="text-align: center;">판매가</th>
-                    </tr>
-                    <tr>
-                        <td style="width:100px; height:100px;">
-                            <img src="../화면구현/img/달러구트_표지.png" id="" style="width:80px; height:100px;">
-                        </td>
-                        <td>
-                            <b>달러구트 꿈 백화점|잠들어야만 입장 가능합니다</b> <br>
-                            <small>이미예</small> <br><br>
-                            <button class="odButton1 btn btn-warning btn-sm" disabled>소득공제</button>
-                            <button class="odButton2 btn btn-warning btn-sm" disabled>무료배송</button>
-                        </td>
-                        <td>9,000원 | 수량 1개</td>
-                    </tr>
-                    <tr>
-                        <td style="width:100px; height:100px;">
-                            <img src="../화면구현/img/돈의심리학.png" id="" style="width:80px; height:100px;">
-                        </td>
-                        <td>
-                            <b>돈의심리학</b> <br>
-                            <small>모건 하우절</small> <br><br>
-                            <button class="odButton1 btn btn-warning btn-sm" disabled>소득공제</button>
-                            <button class="odButton2 btn btn-warning btn-sm" disabled>무료배송</button>
-                        </td>
-                        <td>10,000원 | 수량 1개</td>
-                    </tr>
-                    <tr>
-                        <td style="width:100px; height:100px;">
-                            <img src="../화면구현/img/해리포터.png" id="" style="width:80px; height:100px;">
-                        </td>
-                        <td>
-                            <b>해리포터시리즈 개정번역판</b> <br>
-                            <small>조앤.k.롤링</small> <br><br>
-                            <button class="odButton1 btn btn-warning btn-sm" disabled>소득공제</button>
-                            <button class="odButton2 btn btn-warning btn-sm" disabled>무료배송</button>
-                        </td>
-                        <td>20,000원 | 수량 1개</td>
-                    </tr>
+        <form>
+            <!-- 배송정보 입력란 -->
+            <div>
+            <div class="dvForm" action="" style="width:600px;">
+                <fieldset style="border:none;">
+                    <legend><h4 style="font-weight: bolder;">배송정보</h4></legend>
+                    <br>
+                    <table>
+                        <tr>
+                            <th width="100">이름*</th>
+                            <td><input type="text" name="name" id="userName" value="<%= userName %>" style="width:400px" required> 
+                                <a class="dvButton btn btn-warning btn-sm" data-toggle="modal" data-target="#shipping">배송지 변경</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>휴대폰  *</th>
+                            <td>
+                                <input type="text" name="phone" id="phone" placeholder=" (-포함해서 입력)" value="<%= phone %>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이메일*</th>
+                            <td><input type="text" name="mail" id="email" value="<%= email %>" style="width:400px" required></td>
+                        </tr>
+                        <tr>
+                            <th>주소*</th>
+                            <td>
+                                <input type="text" name="" value="01234" style="width:150px;"> 
+                                <a class="dvButton btn btn-warning btn-sm"  data-toggle="modal" data-target="#post">우편번호</a> <br>
+                                <input type="text" name="address" id="address" value="<%= address %>" style="width:500px; margin-bottom: 4px;"> <br>
+                                <input type="text" name="" value=""  style="width:500px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>배송시 요청사항</th>
+                            <td><textarea name="dvDemand" id="" rows="4" style="width:500px; resize:none;"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="happyDelivery" style="vertical-align: middle;" onclick="happyDelivery();">
+                                <label for="happyOrder"> HAPPY배송</label>
+                            </th>
+                            <td>
+                            <input type="date" id="happyDate" name="happyDate" disabled>
+                            </td>
+                        </tr>
                 </table>
-            </fieldset>
-        </form>
-
-        <br><br>
-        <hr>
-        <br><br>
-        
-        <!-- 쿠폰/적립금 -->
-        <legend><h4 style="font-weight: bolder;">쿠폰</h4></legend>
-        <br>
-        <table class="coupon">
-            <tr>
-                <td>
-                    <div class="discount" align="left">
-                    <button   id="couponBtn" style="width:100px; height:45px; line-height: 1.3;" >적용하기</button>
-                    </div>
-                </td>
-                <% if(cou.isEmpty()){ %>
-             	<tr>
-             		<td colspan="5">존재하는 쿠폰이 없습니다. </td>
-             	</tr>
-            <%} else { %>
-	                <tr>
-                        <select name="couponCategory" id="couponCategory"> 
-                        <option value="0">선택안함</option>
-                        <%int count =0; %>
-	            	<% for(Coupon c:cou) { %>
-	            				
-	                            <option value="<%=c.getDiscount() %>" ><%= c.getCouName() %></option>
-	                       		<%count++; %>
-	
-		            <%} %>
-                        </select>
-                       
-	
-	                   
-	                </tr>
-             <%} %>
-               
-      
-           
-        </table>
-        
-        
-
-        <br><br>
-        <hr>
-        <br><br>
-
-        <!-- 결제방법 -->
-        <h4 style="font-weight: bolder;">결제방법</h4>
-        <br>
-        <div class="selectedWay">
-            <span class="ShowSelectedWay">신용카드</span>
-        </div> 
-
-        <table class="payways">
-            <tr>
-                <td><a href="">신용카드</a></td>
-                <td><a href="">실시간계좌이체</a></td>
-                <td><a href="">휴대폰결제</a></td>
-            </tr>
-            <tr>
-                <td><a href=""><img src="resources/images/pay_naver.png"></a></td>
-                <td><a href=""><img src="resources/images/pay_kakao.png"></a></td>
-                <td><a href=""><img src="resources/images/pay_samsung.png"></a></td>
-            </tr>
-        </table>
-
-        
-        <!-- 사이드바 -->
-        <form class="remote" action="<%= contextPath %>/orderConf.or" method="post">
-            <div class="info">
-                <ul class="list_price">
-                    <li>
-                        <span class="label">상품금액</span>
-                        <span class="price" id="price" name="price">39000</span>원
-                    </li>
-                    <li><span class="label">배송비</span>
-                        <span class="price" id="delivery" name="delivery">0</span>원
-                    </li>
-                    <li><span class="label">할인금액</span>
-                        <span class="price" id="couponDiscount">0</span>원
-                    </li>
-                    <hr>
-                    <li class="total">
-                        <strong class="label" >최종 결제금액</strong>
-                        <strong class="price">
-                            <span class="number" id="lastPrice" name="lastPrice">0</span>원
-                        </strong>
-                    </li>
-                    <hr>
-     
-                </ul>
+                </fieldset>
             </div>
-            <!-- 주문내역 동의 -->
-            <div class="orderAgree">
-                <div class="confirmBox">
-                    <label for="orderConfirm">
-                        <input type="checkbox" class="checkbox" id=orderConfirm required>주문내역확인 동의(필수)
-                    </label>
-                </div>
-                <div class="confrimContent">
-                    <ul style="font-size:12px;">
-                        <li>주문시 입력하신 배송정보는 배송을 위한 목적으로 사용됩니다.</li>
+        </div>
+            <br><br>
+
+            <hr>
+            <br><br>
+            
+            <!-- 주문상품 폼 -->
+            <div class="orderForm" action="" style="width:600px">
+                <fieldset style="border:none;">
+                    <legend><h4 style="font-weight: bolder;">주문상품</h4></legend>
+                    <br>
+                    <table class="odTable">
+                        <tr>
+                            <th colspan="2" style="width:460px; text-align: center;">상품정보</th>
+                            <th algin="center" style="text-align: center;">판매가</th>
+                        </tr>
+                        
+                        <% for(Cart caa : ca) { %> 
+                        <tr>
+                            <td style="width:100px; height:100px;">
+                                <img src="<%= caa.getMainImg() %>" style="width:80px; height:100px;">
+                            </td>
+                            <td>
+                                <b><%= caa.getTitle() %></b> <br>
+                                <small><%= caa.getAuthor() %></small> <br><br>
+                                <button class="odButton1 btn btn-warning btn-sm" disabled>소득공제</button>
+                                <button class="odButton2 btn btn-warning btn-sm" disabled>무료배송</button>
+                            </td>
+                            <td><%= caa.getTtPrice() %>원 | 수량 1개</td>
+                        </tr>
+                    <% } %>
+                    
+                
+                    </table>
+                </fieldset>
+            </div>
+
+            <br><br>
+            <hr>
+            <br><br>
+            
+            <!-- 쿠폰/적립금 -->
+            <legend><h4 style="font-weight: bolder;">쿠폰</h4></legend>
+            <br>
+            <table class="coupon">
+                <tr>
+                    <td>
+                        <div class="discount" align="left">
+                        <button   id="couponBtn" style="width:100px; height:45px; line-height: 1.3;" >적용하기</button>
+                        </div>
+                    </td>
+                    <% if(cou.isEmpty()){ %>
+                    <tr>
+                        <td colspan="5">존재하는 쿠폰이 없습니다. </td>
+                    </tr>
+                <%} else { %>
+                        <tr>
+                            <select name="couponCategory" id="couponCategory"> 
+                            <option value="0">선택안함</option>
+                            <%int count =0; %>
+                        <% for(Coupon c:cou) { %>
+                                    
+                                    <option value="<%=c.getDiscount() %>" ><%= c.getCouName() %></option>
+                                    <%count++; %>
+        
+                        <%} %>
+                            </select>
+                        
+        
+                        
+                        </tr>
+                <%} %>
+                
+        
+            
+            </table>
+            
+            
+
+            <br><br>
+            <hr>
+            <br><br>
+
+            <!-- 결제방법 -->
+            <h4 style="font-weight: bolder;">결제방법</h4>
+            <br>
+            <div class="selectedWay">
+                <span class="ShowSelectedWay">신용카드</span>
+            </div> 
+
+            <table class="payways">
+                <tr>
+                    <td><a href="">신용카드</a></td>
+                    <td><a href="">실시간계좌이체</a></td>
+                    <td><a href="">휴대폰결제</a></td>
+                </tr>
+                <tr>
+                    <td><a href=""><img src="resources/images/pay_naver.png"></a></td>
+                    <td><a href=""><img src="resources/images/pay_kakao.png"></a></td>
+                    <td><a href=""><img src="resources/images/pay_samsung.png"></a></td>
+                </tr>
+            </table>
+
+            
+            <!-- 사이드바 -->
+            <div class="remote" action="<%= contextPath %>/orderConf.or" method="post">
+                <div class="info">
+                    <ul class="list_price">
                         <li>
-                            주문할 상품의 상품명, 가격, 배송정보 등을 최종 확인하였으며, 구매에 동의하십니까? <br>
-                            (전자상거래법 제 8조 2항)
+                            <span class="label">상품금액</span>
+                            <span class="price" id="price" name="price"><%= total %></span>원
                         </li>
+                        <li><span class="label">배송비</span>
+                            <span class="price" id="delivery" name="delivery">0</span>원
+                        </li>
+                        <li><span class="label">할인금액</span>
+                            <span class="price" id="couponDiscount">0</span>원
+                        </li>
+                        <hr>
+                        <li class="total">
+                            <strong class="label" >최종 결제금액</strong>
+                            <strong class="price">
+                                <span class="number" id="lastPrice" name="lastPrice"><%= total %></span>원
+                            </strong>
+                        </li>
+                        <hr>
+        
                     </ul>
                 </div>
-            </div>
-            <!-- 결제하기, 장바구니 버튼 -->
-            <div style="border-top: 1px solid #ddd; background: #fbfbfb;">
-                <div class="finalBt">
-                    <div><button type="submit" class="pay btn btn-warning btn-lg"">결제하기</button></div> <br>
-                    <div><button class="goBackToCart btn btn-warning btn-lg">장바구니 가기</button></div>
+                <!-- 주문내역 동의 -->
+                <div class="orderAgree">
+                    <div class="confirmBox">
+                        <label for="orderConfirm">
+                            <input type="checkbox" class="checkbox" id=orderConfirm required>주문내역확인 동의(필수)
+                        </label>
+                    </div>
+                    <div class="confrimContent">
+                        <ul style="font-size:12px;">
+                            <li>주문시 입력하신 배송정보는 배송을 위한 목적으로 사용됩니다.</li>
+                            <li>
+                                주문할 상품의 상품명, 가격, 배송정보 등을 최종 확인하였으며, 구매에 동의하십니까? <br>
+                                (전자상거래법 제 8조 2항)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 결제하기, 장바구니 버튼 -->
+                <div style="border-top: 1px solid #ddd; background: #fbfbfb;">
+                    <div class="finalBt">
+                        <div><button type="submit" class="pay btn btn-warning btn-lg" id="payBtn"  >결제하기</button></div> <br>
+                        <div><button class="goBackToCart btn btn-warning btn-lg">장바구니 가기</button></div>
+                    </div>
                 </div>
             </div>
         </form>
@@ -572,12 +561,20 @@
 
     <script>
     
-   		 $(':checkbox:not(:checked)').attr('disabled', false);
+   		 
     
+    	$('#happyDelivery').change(function() {
+    	    var value = $(this).val();              // value
+    	    var checked = $(this).prop('checked');  // checked 상태 (true, false)
+ 
+    	 
+    	
+    	    if(checked)
+    	        $("#happyDate").removeAttr("disabled");     
+    	    else
+    	        $("#happyDate").attr("disabled", true);   
+    	});
     
-    	function happyDelivery(){
-    		$("#happyDate").removeAttr("disabled");
-    	}
     
     
     	
@@ -629,12 +626,7 @@
 		})
 		
 		
-		
-		
-		
-		
-		
-		
+	
     
         $(function (){
             $(".selectedWay").click(function(){
@@ -649,6 +641,39 @@
                 }
             })
         })
+        
+        
+       $(function(){
+    	   $('#payBtn').click(function(){
+    		   IMP.init('imp14238630');
+    			
+    			IMP.request_pay({
+    			    pg : 'inicis', // version 1.1.0부터 지원.
+    			    pay_method : 'card',
+    			    merchant_uid : 'merchant_' + new Date().getTime(),
+    			    name : '주문명:해피북결제',
+    			    amount : Number($("#lastPrice").text()), //판매 가격
+    			    buyer_email : $("#email").val(),
+    			    buyer_name : $("#userName").val(),
+    			    buyer_tel : $("#phone").val(),
+    			    buyer_addr : $("#address").val(),
+    			    buyer_postcode : '123-456'
+    			}, function(rsp) {
+    			    if ( rsp.success ) {
+    			        var msg = '결제가 완료되었습니다.';
+    			        msg += '고유ID : ' + rsp.imp_uid;
+    			        msg += '상점 거래ID : ' + rsp.merchant_uid;
+    			        msg += '결제 금액 : ' + rsp.paid_amount;
+    			        msg += '카드 승인번호 : ' + rsp.apply_num;
+    			    } else {
+    			        var msg = '결제에 실패하였습니다.';
+    			        msg += '에러내용 : ' + rsp.error_msg;
+    			    }
+    			    alert(msg);
+    			});
+    	   })
+       })
+		
     </script>
 </body>
 </html>
