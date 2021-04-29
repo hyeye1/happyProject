@@ -63,6 +63,7 @@
 		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
 		                     , BK_DIVISION
 		                     , BK_GENRE
+		                     , BK_ORIGIN_PRICE
 		                     , BK_PRICE
 		                     , BK_MAIN_IMG
 		                     , BK_HITS
@@ -82,6 +83,7 @@
 		                     , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
 		                     , BK_DIVISION
 		                     , BK_GENRE
+		                     , BK_ORIGIN_PRICE
 		                     , BK_PRICE
 		                     , BK_MAIN_IMG
 		                     , BK_HITS
@@ -102,6 +104,7 @@
 		                     , BK_DIVISION
 		                     , BK_GENRE
 		                     , BK_PRICE
+		                     , BK_ORIGIN_PRICE
 		                     , BK_MAIN_IMG
                              , BK_HITS
                              , BK_ENROLL_DATE   
@@ -122,6 +125,7 @@
 		                     , BK_DIVISION
 		                     , BK_GENRE
 		                     , BK_PRICE
+		                     , BK_ORIGIN_PRICE
 		                     , BK_MAIN_IMG
                              , BK_HITS
                              , BK_ENROLL_DATE   
@@ -142,6 +146,7 @@
 		                     , BK_DIVISION
 		                     , BK_GENRE
 		                     , BK_PRICE
+		                     , BK_ORIGIN_PRICE
 		                     , BK_MAIN_IMG
                              , BK_HITS
                              , BK_ENROLL_DATE   

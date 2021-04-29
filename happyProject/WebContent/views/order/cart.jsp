@@ -166,8 +166,7 @@
                     </td>
                     <td align="center"><button class="button">선택삭제</button></td>
                 </tr>
-                	
-	                <% for(Cart c : list) { %> 
+	            <% for(Cart c : list) { %> 
 	                <tr>
 	                    <td style="height:100px;"><input type="checkbox" checked></td>
 	                    <td align="center"><img src="<%= c.getMainImg() %>" style="width:80px; height:100px;"></td>
@@ -178,9 +177,9 @@
 	                        <input type="number" value="<%= c.getAmount() %>" min="1" max="9">
 	                        <button class="button">+</button> <button class="button" type="rest">삭제</button>
 	                    </td>
-	                    <td align="center"><%= c.getTtPrice() %> 원</td>
+	                    <td align="center"><h7>판매가</h7><br> <%= c.getTtPrice() %> 원</td>
 	                </tr>
-	                <% } %>
+	            <% } %>
             </table>
         </div>
 
@@ -213,9 +212,9 @@
                 </table>
             </div>
         </div>
-        <button id="selectBuy" class="btn btn-warning btn-lg" onclick="cartPage();">선택 구매하기</button>
+        <button id="selectBuy" class="btn btn-warning btn-lg" onclick="goToOrder();">선택 구매하기</button>
        	<script>
-       		function cartPage(){
+       		function goToOrder(){
        			location.href = "<%= contextPath %>/order.or";
        		}
        	</script>

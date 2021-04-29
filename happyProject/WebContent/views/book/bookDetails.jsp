@@ -447,7 +447,7 @@
             <h6 style="margin:15px;"><b>최신순</b></h6>
             <hr>
             <% for(Review r:list) { %>
-            <table style="width:750px;">
+            <table style="width:100%;">
                 <thead>
                     <tr>
                     	 <td align="center" style="color:rgb(249, 219, 5);"><b><%= r.getMemNoRe() %></b></td>

@@ -35,7 +35,6 @@ public class BestBookListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		// 필요한 리스트 조회
 		ArrayList<Book> list = new BookService().bestBookList();
 		//System.out.println(list);
