@@ -138,8 +138,8 @@
         }
         .bookDetailOuter .reviewArea{
             border-top:1px solid black;
-            border-bottom: 1px solid black;
             margin:auto;
+            margin-bottom:200px;
             width:700px;
             height:220px;
         }
@@ -400,7 +400,7 @@
         <% }else { %>
             <!-- 로그인 후 리뷰내용 입력했을 때  -->
             <h5 class="detailTitle" id="reviewLink">리뷰</h5>
-            <div action="">
+            <form action="<%= contextPath %>/insert.re" method="post">
                 <div class="inputReview">
                     <div class="reviewBtDiv" align="right">
                         <button class="insertRvBt btn btn-primary"  data-toggle="modal" data-target="#insertReview">등록</button>
@@ -409,7 +409,7 @@
                         <textarea name="content" id="reviewContent" placeholder="작품과 무관한 광고,욕설, 및 비방,청소년보호정책에 위배되는 내용은 사전 동의 없이 비공개 처리 될 수 있습니다." required></textarea>
                     </div>
                 </div>
-            </div>
+            </form>
             <!-- The Modal -->
             <div class="modal" id="insertReview">
                 <div class="modal-dialog">
