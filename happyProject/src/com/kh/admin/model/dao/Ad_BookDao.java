@@ -41,30 +41,37 @@ private Properties prop = new Properties();
 		
 		String sql = prop.getProperty("selectListCount");
 		
-		if(searchType != null && search != null){
+		   
+		if(searchType != null && search != null  ) {
+				
+			if(searchType.equals("") == false  && search.equals("") == false) {
 			
-			if(searchType.equals("bk_name")){
-
-				sql += "AND bk_name LIKE '%'||?||'%'";
-			}else if(searchType.equals("author")){
-				
-				sql += "AND author LIKE '%'||?||'%'";
-			}else if(searchType.equals("publisher")){
-				
-				sql += "AND publisher LIKE '%'||?||'%'";
+				if(searchType.equals("bk_name")){
+	
+					sql += "AND bk_name LIKE '%'||?||'%'";
+				}else if(searchType.equals("author")){
+					
+					sql += "AND author LIKE '%'||?||'%'";
+				}else if(searchType.equals("publisher")){
+					
+					sql += "AND publisher LIKE '%'||?||'%'";
+				}
+			
 			}
 			
 		}
 		
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			if(searchType != null && search != null){
+			if(searchType != null && search != null  ) {
 				
-				pstmt.setString(1, search);
+				if(searchType.equals("") == false  && search.equals("") == false) {
+				
+					pstmt.setString(1, search);
+				
+				}
 			}
-			
 			
 			rset = pstmt.executeQuery();
 			
@@ -109,16 +116,22 @@ private Properties prop = new Properties();
         sql+= "                  , BK_STOCK";
         sql+= "               FROM TB_BOOK ";
         sql+= "              WHERE BK_STATUS = 'Y'"; 
-        if(searchType != null && search != null){
-	        if(searchType.equals("bk_name")){
-	
-				sql += "AND bk_name LIKE '%'||?||'%'";
-			}else if(searchType.equals("author")){
+        
+        if(searchType != null && search != null  ) {
+			
+			if(searchType.equals("") == false  && search.equals("") == false) {
 				
-				sql += "AND author LIKE '%'||?||'%'";
-			}else if(searchType.equals("publisher")){
-				
-				sql += "AND publisher LIKE '%'||?||'%'";
+		        if(searchType.equals("bk_name")){
+		
+					sql += "AND bk_name LIKE '%'||?||'%'";
+				}else if(searchType.equals("author")){
+					
+					sql += "AND author LIKE '%'||?||'%'";
+				}else if(searchType.equals("publisher")){
+					
+					sql += "AND publisher LIKE '%'||?||'%'";
+				}
+		        
 			}
         }
 		sql+= "              ORDER";
@@ -133,12 +146,19 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			
 			
-			if(searchType != null && search != null){
+			if(searchType != null && search != null  ) {
 				
-				pstmt.setString(1, search);
-				pstmt.setInt(2, (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1);
-				pstmt.setInt(3, pi.getCurrentPage() * pi.getBoardLimit());
-				
+				if(searchType.equals("") == false  && search.equals("") == false) {
+					
+					pstmt.setString(1, search);
+					pstmt.setInt(2, (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1);
+					pstmt.setInt(3, pi.getCurrentPage() * pi.getBoardLimit());
+					
+				}else{
+					
+					pstmt.setInt(1, (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1);
+					pstmt.setInt(2, pi.getCurrentPage() * pi.getBoardLimit());
+				}
 			}else{
 				
 				pstmt.setInt(1, (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1);
@@ -260,7 +280,7 @@ private Properties prop = new Properties();
 			if(rset.next()) {
 				im = new Ad_Image();
 				im.setImgNo(rset.getInt("img_no"));
-				im.setBkNoImg(rset.getInt("bk_no_img"));
+				im.setBkNoImg(rset.getInt("bk_no"));
 				im.setImgPath(rset.getString("img_path"));
 				im.setImgEnrollDate(rset.getDate("img_enroll_date"));
 				

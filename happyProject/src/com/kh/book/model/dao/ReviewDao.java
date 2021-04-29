@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.book.model.vo.Review;
+import com.kh.notice.model.vo.Faq;
 
 
 
@@ -64,6 +65,55 @@ private Properties prop = new Properties();
 		return list;
 		
 	}
+	
+	
+	public int insertReview(Connection conn, Review r) {
+		// insert문 => 처리된 행수
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, r.getMemNoRe());
+			pstmt.setInt(2, r.getBkNoRe());
+			pstmt.setString(3, r.getReContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
+	
+	public int deleteReview(Connection conn, int reNo) {
+		// update문 => 처리된 행수
+		int result =0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	
 	
 }

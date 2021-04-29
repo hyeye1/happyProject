@@ -17,19 +17,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.member.model.service.MemberService;
-
 /**
- * Servlet implementation class EmailCheckAjax
+ * Servlet implementation class FindIdAjax
  */
-@WebServlet("/emailCheck.me")
-public class EmailCheckAjax extends HttpServlet {
+@WebServlet("/sendId.me")
+public class FindIdAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmailCheckAjax() {
+    public FindIdAjax() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,14 +36,15 @@ public class EmailCheckAjax extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String checkEmail = request.getParameter("checkEmail");
+		String memId2 = request.getParameter("memId2");
+		String memId = request.getParameter("memId");
+		String to_email = request.getParameter("email");
 		// mail server 설정
 		String host = "smtp.gmail.com";
 		String user = "happybookreader123@gmail.com";
 		String password = "book!123";
 		
 		// 메일 받을 주소
-		String to_email = checkEmail;
 		System.out.println(to_email);
 		// SMTP 서버 정보를 설정한다.
 		Properties props = new Properties();
@@ -60,27 +59,6 @@ public class EmailCheckAjax extends HttpServlet {
         props.put("mail.smtp.socketFactory.fallback","false");
 
 		
-		// 인증번호생성기
-		StringBuffer temp = new StringBuffer();
-		Random rnd = new Random();
-		for(int i =0; i<10; i++) {
-			int rIndex = rnd.nextInt(3);
-			switch (rIndex) {
-			case 0: 
-				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-				break;
-			case 1: 
-				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-				break;
-			case 2: 
-				temp.append((rnd.nextInt(10)));
-				break;
-			}
-		}
-		String AuthenticationKey = temp.toString();
-		System.out.println(AuthenticationKey);
-		
-		
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(user, password);
@@ -94,9 +72,9 @@ public class EmailCheckAjax extends HttpServlet {
 				msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 				
 				// 메일 제목
-				msg.setSubject("해피북스데이 회원가입 인증 메일입니다.");
+				msg.setSubject("해피북스데이 아이디 찾기 결과 메일입니다.");
 				// 메일 내용
-				msg.setText("인증 번호는 " + temp + " 입니다. 정확히 입력 후 회원가입을 진행해주세요.");
+				msg.setText("아이디는 " + memId2 + " 입니다.");
 				
 				Transport.send(msg);
 				System.out.println("이메일 전송");
@@ -105,10 +83,9 @@ public class EmailCheckAjax extends HttpServlet {
 				e.printStackTrace();
 		}
 		HttpSession saveKey = request.getSession();
-		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
+		saveKey.setAttribute("memId2", memId2);
 		
-		response.getWriter().print(AuthenticationKey);
-		
+		response.getWriter().print(saveKey);
 	}
 
 	/**

@@ -104,18 +104,14 @@
 
 	<%@ include file="../common/menubar.jsp" %>
 
-
     <div class="bestOuter" align="center">
         
         <div class="bestHeader">
             <p align="left" style="color: gray; font-size:11px; font-weight: bolder;">HOME > 베스트도서</p>
             <br>
             <h2>베스트도서</h2>
-
         </div>
-
         <br>
-
         <div>
         	
             <table class="bestBody">
@@ -160,17 +156,14 @@
 	        <div class="modal" id="goToCart">
 	            <div class="modal-dialog">
 		            <div class="modal-content">
-		            
 		                <!-- Modal Header -->
 		                <div class="modal-body" align="center">
 		                <h6 class="modal-title" style="text-align: center;"><br><br> 로그인 후 서비스 이용 가능합니다. <br><br> </h6>
 		                </div>
-		            
 		                <!-- Modal footer -->
 		                <div class="modal-footer">
 		                <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">OK</button>
 		                </div>
-		                
 		            </div>
 	            </div>
 	        </div>
@@ -187,14 +180,12 @@
 	                        <a href="<%= contextPath %>/cList.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
 	                    </h5>
 	                </div>
-	                
 	                    <!-- Modal footer -->
 	                <div class="modal-footer">
 	                    <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">
 	                    	<h6 style="margin-top:10px;"> 쇼핑 계속하기 </h6>
 	                    </button>
 	                </div>
-	                
 	                </div>
 	            </div>
 	        </div>
@@ -239,14 +230,10 @@
 	        		});
         		}
         </script>   
-            
         </div>
-
     </div>
 
-
 	<%@ include file="../common/footer.jsp" %>
-
 
 </body>
 </html>

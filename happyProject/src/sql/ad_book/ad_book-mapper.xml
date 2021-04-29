@@ -20,8 +20,8 @@
                              , BK_NAME
                              , AUTHOR
                              , PUBLISHER
-                             , BK_DIVISION
-                             , BK_GENRE
+                             , decode(BK_DIVISION, 'in','국내도서', 'out','외국도서' , BK_DIVISION)  AS BK_DIVISION
+                             , decode(BK_GENRE, 'novel' , '문학', 'economy','경제/경영','poem','시','science','과학','travel','여행',BK_GENRE) AS BK_GENRE 
                              , BK_ORIGIN_PRICE
                              , BK_PRICE
                              , BK_STOCK
@@ -33,38 +33,8 @@
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
-	
-	<!-- 책 상세보기 -->
-	<entry key="bookDetail">
-		SELECT
-		       BK_NO
-		     , BK_NAME
-		     , AUTHOR
-		     , PUBLISHER
-		     , BK_PUBLISH_DATE
-		     , BK_DIVISION
-		     , BK_GENRE
-		     , BK_ORIGIN_PRICE
-		     , BK_PRICE
-		     , BK_DESCRIPTION
-		     , AT_DESCRIPTION
-		     , BK_CONTENT_LIST
-		     , BK_MAIN_IMG
-		  FROM TB_BOOK
-		  JOIN TB_IMAGE ON (BK_NO = BK_NO_IMG)
-		 WHERE BK_NO = ?
-		   AND BK_STATUS = 'Y' 
-	</entry>
-	
-	<entry key="bookInfoImg">
-		SELECT
-			   IMG_NO
-			 , BK_NO_IMG
-		     , IMG_PATH
-		  FROM TB_IMAGE
-		 WHERE BK_NO_IMG = ?
-	</entry>
 
+	
 	<entry key="selectBook">
 		SELECT 
 		       BK_ENROLL_DATE
@@ -100,8 +70,6 @@
 		 WHERE BK_NO = ?
 		   AND BK_STATUS = 'Y' 
 	</entry>
-	
-	
 	<entry key="insertBookAdmin">
 		INSERT INTO TB_BOOK 
 		(
@@ -204,7 +172,7 @@
 	</entry>
 	
 	<entry key="insertImageAdmin">
-		 INSERT INTO TB_IMAGE VALUES ( seq_img.nextval, ?, ?, SYSDATE )
+		 INSERT INTO TB_IMAGE ( IMG_NO,  BK_NO_IMG , IMG_PATH, IMG_ENROLL_DATE )  VALUES ( seq_img.nextval, ?, ?, SYSDATE )
 	</entry>
 	
 </properties>

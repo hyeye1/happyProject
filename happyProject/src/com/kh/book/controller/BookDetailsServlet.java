@@ -45,10 +45,9 @@ public class BookDetailsServlet extends HttpServlet {
 	   request.setAttribute("b", b);
 	   request.setAttribute("i", i);
 	   
-	   	ArrayList<Review> list = new ReviewService().selectReviewList();
-		request.setAttribute("list", list);
-		//System.out.println(list);
-		
+	   ArrayList<Review> list = new ReviewService().selectReviewList();
+	   request.setAttribute("list", list);
+	   
 	   request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
 	   response.setContentType("application/json; charset=UTF-8");
       

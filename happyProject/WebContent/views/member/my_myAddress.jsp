@@ -1,87 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.MyAddress"%>
+
+   
  <%@ include file = "../common/menubar.jsp" %>
+ 	
+ 	<%
+	MyAddress selectMyAddress = (MyAddress)session.getAttribute("selectMyAddress");
+	
+		int adNo      = selectMyAddress.getAdNo();
+		String adPost    = selectMyAddress.getAdPost();
+		String adRoad    = selectMyAddress.getAdRoad();
+		String adDetail  = selectMyAddress.getAdDetail();
+	%>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-        .outer{
-            margin: auto;
-            border: 1px solid black;
-            width: 1000px;
-            height: 1140px;
-        }
-        .path{
-            height:2%;
-            width: 1000px;
-            text-align: right;
-        }
-        .myAddress{
-            width: 650px;
-            height: 800px;
-            float:right;
-        }
-        #adBtn{
-            background-color: #F9DB7A;
-            margin-left: 380px;
-            margin-top: 40px;
-            margin-bottom: 30px;
-            width: 100px;
-            height: 30px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-
-        }
-        #adBtn:hover{
-            color: white;
-        }
-        #adBtn:focus{
-            color: white;
-        }
-        #myaddress_table{
-            width: 500px;
-            height: 300px;
-            text-align: center;
-        }
-        th{
-            height: 30px;
-        }
-        #modiBtn, #delBtn{
-            width: 80px;
-            height: 30px;
-            border: none;
-            border-radius: 5px;
-        }
-        #modiBtn{
-            margin-bottom: 20px;
-            background-color: #F9DB7A;  
-        }
-        #delBtn{
-            background-color: lightgray;
-        }
-        #modiBtn:hover{color: white;}
-        #modiBtn:focus{color: white;}
-
-        #delBtn:hover{color: white;}
-        #delBtn:focus{color: white;}
-
-    </style>
+<title>나의 배송지 </title>
+	<link rel="stylesheet" href="resources/css/MyAddress.css">
 </head>
 <body>
-	<% String myAddress = %> 
-	<script>
-	 		var msg = "<%= session.getAttribute("alertMsg") %>"; // 알람창으로 출력할 메세지
-	 		// var msg = "메세지" / "null";
-	 		
-	 		if(msg != "null"){
-	 			alert(msg);
-	 			// 알람창 띄어준 후에 session에 담긴 메세지 지워야됨!!(안 그러면 메뉴바 포함된 매 페이지 열 때마다 alert계속 뜰거임)
-	 			<% session.removeAttribute("alertMsg"); %>
-	 		}
-	 </script>
+
 	    <div class="outer">
         <div class="path"> 홈>마이페이지>나의 배송지 관리</div>     
         <section>
@@ -90,7 +30,7 @@
             
             <button id="adBtn">+ 배송지 추가 </button>
             
-            <form>
+           <form>
             <table id="myaddress_table" border="1" style="border-collapse: collapse;">
                 <tr style="background-color: lightgray;">
                     <th><input type="checkbox"></th>
@@ -112,7 +52,7 @@
                     <td>이독자</td>
                     <td>서울특별시 강남구 테헤란로 14길 6 </td>
                     <td>
-                        <button id="modiBtn">수정</button><br>
+                        <button type=submit id="modiBtn">수정</button><br>
                         <button id="delBtn">삭제</button>
                     </td>
                 </tr>

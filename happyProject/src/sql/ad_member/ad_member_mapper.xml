@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
-	
 	<entry key="selectListCount">
 		SELECT COUNT(*) LISTCOUNT
   		FROM TB_MEMBER
@@ -38,9 +36,29 @@
 		               ) A
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
-		 
-		
 	</entry>
 	
+	
+	<entry key="selectMember">
+		SELECT
+		       MEM_NO
+		     , MEM_ID
+		     , MEM_NAME
+		     , MEM_ADDRESS
+		     , ENROLL_DATE
+		     , RECENT_LOGIN
+		     , ENROLL_ROUTE
+		     , EMAIL_YN
+		  FROM TB_MEMBER
+		 WHERE MEM_NO = ?
+		   AND MEM_STATUS = 'Y'
+	</entry>
+	
+	
+	<entry key = "selectAllMemNo">
+		SELECT MEM_NO
+		  FROM TB_MEMBER
+         WHERE MEM_STATUS = 'Y'
+	</entry>
 
 </properties>
