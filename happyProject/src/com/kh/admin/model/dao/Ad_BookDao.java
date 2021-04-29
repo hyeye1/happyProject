@@ -89,6 +89,7 @@ private Properties prop = new Properties();
 		return listCount; // 총 게시글 개수
 	}
 	
+	
 	public ArrayList<Ad_Book> selectList(Connection conn, PageInfo pi,String searchType,String search){
 		
 		ArrayList<Ad_Book> list = new ArrayList<>();
@@ -109,8 +110,8 @@ private Properties prop = new Properties();
         sql+= "                  , BK_NAME";
         sql+= "                  , AUTHOR";
         sql+= "                  , PUBLISHER";
-        sql+= "                  , BK_DIVISION";
-        sql+= "                  , BK_GENRE";
+        sql+= "                  , decode(BK_DIVISION, 'in','국내도서', 'out','외국도서' , BK_DIVISION)  AS BK_DIVISION";
+        sql+= "                  , decode(BK_GENRE, 'novel' , '문학', 'economy','경제/경영','poem','시','science','과학','travel','여행',BK_GENRE) AS BK_GENRE";
         sql+= "                  , BK_ORIGIN_PRICE";
         sql+= "                  , BK_PRICE";
         sql+= "                  , BK_STOCK";
@@ -188,6 +189,7 @@ private Properties prop = new Properties();
 		return list;
 	}
 	
+	
 	public int insertBook(Connection conn, Ad_Book b) {
 		// insert문 => 처리된행수
 	
@@ -226,6 +228,8 @@ private Properties prop = new Properties();
 		return result;
 		
 	}
+	
+	
 	public Ad_Book selectBook(Connection conn, int bkNo) {
 		// select문 => ResultSet객체(한행) 
 		Ad_Book b = null;
@@ -280,11 +284,9 @@ private Properties prop = new Properties();
 			if(rset.next()) {
 				im = new Ad_Image();
 				im.setImgNo(rset.getInt("img_no"));
-				im.setBkNoImg(rset.getInt("bk_no"));
+				im.setBkNoImg(rset.getInt("bk_no_img"));
 				im.setImgPath(rset.getString("img_path"));
 				im.setImgEnrollDate(rset.getDate("img_enroll_date"));
-				
-				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
