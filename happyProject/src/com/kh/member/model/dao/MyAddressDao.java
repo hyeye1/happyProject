@@ -10,12 +10,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+import com.kh.member.model.vo.Member;
 import com.kh.member.model.vo.MyAddress;
 import com.kh.member.model.dao.MyAddressDao;
 
 public class MyAddressDao {
 	
+	private static final String adLocation = null;
 	private Properties prop = new Properties();
 
 	public MyAddressDao() { //실시간으로 파일로딩해오는것 
@@ -47,7 +48,8 @@ public class MyAddressDao {
 		           pstmt. setInt (1,adNo);  // 사용자가 입력했던 값
 		           pstmt. setString(2, adPost); 
 		           pstmt. setString(3, adRoad);
-		           pstmt. setString(4, adDetail);  //=> 완성형태sql문 =>실행가능해짐!
+		           pstmt. setString(4, adDetail);
+		       
 		           
 		           
 			//이제, select문 실행되어진다!
@@ -79,6 +81,46 @@ public class MyAddressDao {
 
 
 	}	
+	
+	
+	
+	//update
+	public int updateMyAddress(Connection conn, MyAddress a) {
+		// Update문 => 처리된 행수
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateMyAddress");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a.getAdName());
+			pstmt.setString(2, a.getAdLocation());
+			pstmt.setString(3, a.getAdPost());
+			pstmt.setString(4, a.getAdRoad());
+			pstmt.setString(5, a.getAdDetail());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public Member selectMyAddress(Connection conn, String adPost, String adRoad, String adDetail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	
 		
 	
 }

@@ -20,7 +20,20 @@
         AND	 AD_POST =? 
 		AND	 AD_ROAD =?
 		AND	 AD_DETAIL =?
-
 	</entry>
-
+	
+	
+	<entry key="updateMyAddress">
+		UPDATE
+		   	   TB_ADDRESS_LIST
+		   SET AD_NAME= ?
+		   	 , AD_LOCATION= ?
+		     , AD_POST= ?
+		     , AD_ROAD= ?
+		     , AD_DETAIL
+		 WHERE AD_LOCATION= ?  
+	</entry>
+	
+	
+	
 </properties>
