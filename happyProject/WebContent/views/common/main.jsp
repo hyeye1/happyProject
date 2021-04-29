@@ -133,13 +133,13 @@
             .weeklyBest{
                 clear: both; 
                 width: 100%;
-                height: 900px;
+                height: 950px;
             }     
             .weeklyBest ul {display: inline; margin: 30px;}
-            .weeklyBest li {display:table-row; font-weight: 700;}
-            .weeklyBest a{text-decoration: none; color: black;}
+            .weeklyBest li {display:table-row; font-weight: 700; }
+            .weeklyBest a{text-decoration: none; color: black; }
             .weeklyTop1 p {margin-left: 20px;}
-            .weeklyTop1 .author {margin-left: 0px; }
+            .weeklyTop1 .author2 {margin-left: 0px;}
             .rankNum{ 
                 float: left; 
                 font-weight: 700; 
@@ -152,7 +152,7 @@
                 margin-top: 25px;
                 }
             .weeklyTops .title{font-size: 11px;}
-            .weeklyBest .author{
+            .weeklyBest .author2{
                 font-weight: 500; 
                 font-size: 10px; 
                 float: left;
@@ -161,7 +161,7 @@
                 margin-right: 70px; 
                 color:gray;
                 }
-            .weeklyTops .author{font-size: 9px;}
+            .weeklyTops .author2{font-size: 9px;}
             .coverImg2{
                 width: 60px;
                 height: 84px;
@@ -171,7 +171,12 @@
                 float: left;
                 margin-bottom: 40px;
             }
-            .tops{ float: left; margin-left: 10px; }
+            .tops{ float: left; margin-left: 10px; width:120px; }
+            .tops .author2{ margin-right: 20px;}
+            #Top1Info{
+            	width: 200px;
+            	heiht: 100px;
+			}
         </style>
     </head>
     <body>
@@ -320,218 +325,200 @@
             <div class="weeklyBest" align="center">
                 <ul id="total5"> 
                     <li>전체 TOP 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a style="font-size: 8px; color: gray;"  href="">더보기</a>
+                        <a style="font-size: 8px; color: gray;"  href="<%= contextPath %>/best.li">더보기</a>
                     </li>
                     
                     <li>    <!-- 전체 1위 -->
                         <br>
-                        <div class="weeklyTop1" >
+                        <div class="weeklyTop1" id="weeklyTop1" >
                             <br>
-                            <input class="coverImg" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                            
-                            <p>
-                                <p class="rankNum">1</p>
-                                <a class="title" href="">그런 사람 또 없습니다</a>
-                            </p>
-                            <p class="author">원태연</p>
+                            <a class="detailUrl2" href="<%= contextPath %>/bkDetails.bk">
+	                            <input class="coverImg" type="image" src="">
+	                            
+	                            <div id="Top1Info">
+		                            <p>
+		                                <p class="rankNum" id="rankNum1">1</p>
+		                                <a class="title" href=""></a><br>	
+			                            <p class="author2"></p>
+		                            </p>
+	                            </div>
+                        	 </a>
                         </div>
+                        
                     </li>
     
+                    <% for( int i=2; i<=5; i++) {%>
                     <li>
-                        <div class="weeklyTops" >
+                        <div class="weeklyTops" id="weeklyTop<%=i %>" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <a class="detailUrl2" href="<%= contextPath %>/bkDetails.bk">
+                            <input class="coverImg2" type="image" src="">
                             
                             <div class="tops">
                                 <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
+                                    <p class="rankNum" id="rankNum<%=i%>"><%=i%></p>
+                                    <a class="title" href=""></a><br><br>
+                               		<p class="author2"></p>
                                 </p>
-                                <p class="author">원태연</p>
                             </div>
+                            </a>
                         </div>
                     </li>
-                    <li>
-                        <div class="weeklyTops" >
-                            <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                            
-                            <div class="tops">
-                                <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
-                                </p>
-                                <p class="author">원태연</p>
-                            </div>
-                    </li>
-                    <li>
-                        <div class="weeklyTops" >
-                            <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                            
-                            <div class="tops">
-                                <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
-                                </p>
-                                <p class="author">원태연</p>
-                            </div>
-                    </li>
-                    <li>
-                        <div class="weeklyTops" >
-                            <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                            
-                            <div class="tops">
-                                <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
-                                </p>
-                                <p class="author">원태연</p>
-                            </div>
-                    </li>
+                    <%} %>
                 </ul>
-    
+    			<script>
+    			
+                $(function(){
+                	for (var i=1; i<=5; i++) {
+                		(function(i) {
+                			
+                			$.ajax({
+    		            		 url:"<%= contextPath %>/weeklyAll.bk",
+    		            		 method:"GET",
+    		            		 success: function(data) {
+    		            			 var id = '#weeklyTop' + i;
+    		            			 $(id + ' .title').text(data[i-1].bkName);
+    		            			 $(id + ' .author2').text(data[i-1].author);
+    		            			 $(id + ' .coverImg').attr('src', data[i-1].bkMainImg);
+    		            			 $(id + ' .coverImg2').attr('src', data[i-1].bkMainImg);
+    		            			 $(id + ' .detailUrl2').attr('href', '<%= contextPath %>/bkDetails.bk?bookNo=' + data[i-1].bookNo);
+     		            		 }
+    		            	 });
+                			
+                		})(i);
+                	}
+                });  
+    			</script>
                 <ul id="novel5">
                     <li>소설 TOP 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a style="font-size: 8px; color: gray;"  href="">더보기</a>
                     </li>
                     
-                    <li>    <!-- 소설 1위 -->
+                     <li>    <!-- 소설 1위 -->
                         <br>
-                        <div class="weeklyTop1" >
+                        <div class="weeklyTop1" id="novelTop1" >
                             <br>
-                            <input class="coverImg" type="image" src="resources/books/novel/달러구트.jpg" alt="도서이미지-달러구트 꿈 백화점">
-                            <p>
-                                <p class="rankNum">1</p>
-                                <a class="title" href="">달러구트 꿈 백화점</a>
-                            </p>
-                            <p class="author">이미예</p>
-                        </div>
-                    </li>
-    
-                    <li>
-                        <div class="weeklyTops" >
-                            <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                            <div class="tops">
-                                <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
-                                </p>
-                                <p class="author">원태연</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="weeklyTops" >
-                            <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <a class="detailUrl2" href="<%= contextPath %>/bkDetails.bk">
+                            <input class="coverImg" type="image" src="">
                             
-                            <div class="tops">
-                                <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
-                                </p>
-                                <p class="author">원태연</p>
-                            </div>
-                    </li>
-                    <li>
-                        <div class="weeklyTops" >
-                            <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                            
-                            <div class="tops">
-                                <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
-                                </p>
-                                <p class="author">원태연</p>
-                            </div>
-                    </li>
-                    <li>                    <div class="weeklyTops" >
-                        <br>
-                        <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+	                            <div id="Top1Info">
+		                            <p>
+		                                <p class="rankNum" id="rankNum1">1</p>
+		                                <a class="title" href=""></a><br><br>	
+			                            <p class="author2"></p>
+		                            </p>
+	                            </div>
+                        </div>
                         
-                        <div class="tops">
-                            <p>
-                                <p class="rankNum">2</p>
-                                <a class="title" href="">그런 사람 또 없습니다</a>
-                            </p>
-                            <p class="author">원태연</p>
+                    </li>
+    
+                    <% for( int i=2; i<=5; i++) {%>
+                    <li>
+                        <div class="weeklyTops" id="novelTop<%=i %>" >
+                            <br>
+                            <a class="detailUrl2" href="<%= contextPath %>/bkDetails.bk">
+                            <input class="coverImg2" type="image" src="">
+                            
+                            <div class="tops">
+                                <p>
+                                    <p class="rankNum" id="rankNum<%=i%>"><%=i%></p>
+                                    <a class="title" href=""></a><br><br>
+                               		<p class="author2"></p>
+                                </p>
+                            </div>
+                            </a>
                         </div>
                     </li>
+                    <%} %>
                 </ul>
-    
+    			<script>
+    			
+                $(function(){
+                	for (var i=1; i<=5; i++) {
+                		(function(i) {
+                			
+                			$.ajax({
+    		            		 url:"<%= contextPath %>/weeklyNovel.bk",
+    		            		 method:"GET",
+    		            		 success: function(data) {
+    		            			 var id = '#novelTop' + i;
+    		            			 $(id + ' .title').text(data[i-1].bkName);
+    		            			 $(id + ' .author2').text(data[i-1].author);
+    		            			 $(id + ' .coverImg').attr('src', data[i-1].bkMainImg);
+    		            			 $(id + ' .coverImg2').attr('src', data[i-1].bkMainImg);
+    		            			 $(id + ' .detailUrl2').attr('href', '<%= contextPath %>/bkDetails.bk?bookNo=' + data[i-1].bookNo);
+     		            		 }
+    		            	 });
+                			
+                		})(i);
+                	}
+                });  
+    			</script>
+    			
                 <ul id="eco15">
-                    <li>경제 TOP 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li>시 TOP 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a style="font-size: 8px; color: gray;"  href="">더보기</a></li>
                     
-                    <li>    <!-- 경제 1위 -->
+                        <li>    <!-- 시 1위 -->
                         <br>
-                        <div class="weeklyTop1" >
+                        <div class="weeklyTop1" id="poemTop1" >
                             <br>
-                            <input class="coverImg" type="image" src="resources/books/economy/02_돈의심리학.jpg" alt="도서이미지-돈의심리학">
-                            <p>
-                                <p class="rankNum">1</p>
-                                <a class="title" href="">돈의 심리학</a>
-                            </p>
-                            <p class="author">모건 하우절</p>
+                            <a class="detailUrl2" href="<%= contextPath %>/bkDetails.bk">
+                            <input class="coverImg" type="image" src="">
+                            
+	                            <div id="Top1Info">
+		                            <p>
+		                                <p class="rankNum" id="rankNum1">1</p>
+		                                <a class="title" href=""></a><br>
+		                            <p class="author2"></p>
+		                            </p>
+	                            </div>
                         </div>
+                        
                     </li>
     
+                    <% for( int i=2; i<=5; i++) {%>
                     <li>
-                        <div class="weeklyTops" >
+                        <div class="weeklyTops" id="poemTop<%=i %>" >
                             <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                            <div class="tops">
-                                <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
-                                </p>
-                                <p class="author">원태연</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="weeklyTops" >
-                            <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
+                            <a class="detailUrl2" href="<%= contextPath %>/bkDetails.bk">
+                            <input class="coverImg2" type="image" src="">
                             
                             <div class="tops">
                                 <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
+                                    <p class="rankNum" id="rankNum<%=i%>"><%=i%></p>
+                                    <a class="title" href=""></a><br><br>
+                               		<p class="author2"></p>
                                 </p>
-                                <p class="author">원태연</p>
                             </div>
-                    </li>
-                    <li>
-                        <div class="weeklyTops" >
-                            <br>
-                            <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                            
-                            <div class="tops">
-                                <p>
-                                    <p class="rankNum">2</p>
-                                    <a class="title" href="">그런 사람 또 없습니다</a>
-                                </p>
-                                <p class="author">원태연</p>
-                            </div>
-                    </li>
-                    <li>                    <div class="weeklyTops" >
-                        <br>
-                        <input class="coverImg2" type="image" src="resources/books/poem/그런사람또없습니다_표지.jpg" alt="도서이미지-그런 사람 또 없습니다">
-                        
-                        <div class="tops">
-                            <p>
-                                <p class="rankNum">2</p>
-                                <a class="title" href="">그런 사람 또 없습니다</a>
-                            </p>
-                            <p class="author">원태연</p>
+                            </a>
                         </div>
                     </li>
+                    <%} %>
                 </ul>
+    			<script>
+    			
+                $(function(){
+                	for (var i=1; i<=5; i++) {
+                		(function(i) {
+                			
+                			$.ajax({
+    		            		 url:"<%= contextPath %>/weeklyPoem.bk",
+    		            		 method:"GET",
+    		            		 success: function(data) {
+    		            			 var id = '#poemTop' + i;
+    		            			 $(id + ' .title').text(data[i-1].bkName);
+    		            			 $(id + ' .author2').text(data[i-1].author);
+    		            			 $(id + ' .coverImg').attr('src', data[i-1].bkMainImg);
+    		            			 $(id + ' .coverImg2').attr('src', data[i-1].bkMainImg);
+    		            			 $(id + ' .detailUrl2').attr('href', '<%= contextPath %>/bkDetails.bk?bookNo=' + data[i-1].bookNo);
+     		            		 }
+    		            	 });
+                			
+                		})(i);
+                	}
+                });  
+    			</script>
             </div>
     
 
