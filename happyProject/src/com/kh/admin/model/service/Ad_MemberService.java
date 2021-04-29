@@ -29,4 +29,19 @@ public class Ad_MemberService {
 		return list;
 	}
 
+	public Ad_Member selectMember(int memNo) {
+		Connection conn = getConnection();
+		Ad_Member adMember = new Ad_MemberDao().selectMember(conn, memNo);
+		
+		close(conn);
+		
+		return adMember;
+		
+	}
+	
+//	public Ad_Member selectMember(int memberNo) {
+//		Connection conn = getConnection();
+//		Ad_Member m = new Ad_MemberDao().selectMember(conn, memberNo);
+//	}
+
 }

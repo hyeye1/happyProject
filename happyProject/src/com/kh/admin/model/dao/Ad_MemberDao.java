@@ -1,5 +1,7 @@
 package com.kh.admin.model.dao;
 
+import static com.kh.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,20 +9,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.kh.admin.model.vo.Ad_Member;
-import com.kh.book.model.vo.Book;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.member.model.vo.Member;
-
-import static com.kh.common.JDBCTemplate.*;
 
 public class Ad_MemberDao {
 	private Properties prop = new Properties();
 	public Ad_MemberDao() {
 		
-		String fileName = Ad_MemberDao.class.getResource("/sql/ad_member/ad_member-mapper.xml").getPath();
+		String fileName = Ad_MemberDao.class.getResource("/sql/ad_member/ad_member_mapper.xml").getPath();
 		
 		try {
 			prop.loadFromXML(new FileInputStream(fileName)); // 물리적 경
@@ -190,5 +189,65 @@ public class Ad_MemberDao {
 		}
 		return list;
 	}
+	
+	
+	public Ad_Member selectMember(Connection conn, int memNo) {
+		Ad_Member adMember = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset = pstmt.executeQuery();
+			
+			
+			while(rset.next()) {
+				adMember = new Ad_Member();
+				adMember.setMemNo(rset.getInt("MEM_NO"));
+				adMember.setMemId(rset.getString("MEM_ID"));
+				adMember.setMemName(rset.getString("MEM_NAME"));
+				adMember.setMemAddress(rset.getString("MEM_ADDRESS"));
+				adMember.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				adMember.setRecentLogin(rset.getDate("RECENT_LOGIN"));
+				adMember.setEnrollRoute(rset.getString("ENROLL_ROUTE"));
+				adMember.setEmailYn(rset.getString("EMAIL_YN"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return adMember;
+	}
+
+	public List<Integer> selectAllMemNo(Connection conn) {
+		List<Integer> memNoList = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAllMemNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				memNoList.add(rset.getInt("MEM_NO"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		return memNoList;
+	}
+	
+	
 
 }
