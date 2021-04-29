@@ -110,7 +110,7 @@
                 가입시 입력한 이메일로 아이디를 발송해드립니다. <br>
                 아래 발송 요청 버튼을 클릭해주세요.
             </p>
-            <button type="button" id="findIdSSend"  >아이디 발송 요청</button>
+            <button type="button" id="findIdSSend" onclick="sendId();" >아이디 발송 요청</button>
         </div>
         
         <script>
@@ -129,6 +129,15 @@
 						
         		});
         	})
+        	
+        	function sendId(){
+        		
+        		$.ajax({
+        			url:"sendId.me"
+        			type:"get",
+        			data:{ }
+        		})
+        	}
 	 	
         </script>
 

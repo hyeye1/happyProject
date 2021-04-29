@@ -183,8 +183,8 @@
                 </tr>
                 <tr class="phoneCheckInput">
                     <th></th>
-                    <td><input type="text" id="phoneCheckNum" required></td>
-                    <td><button type="button" id="phoneCheckYN" class="join2Check">인증번호확인</button></td>
+                    <td><input type="text" id="phoneCheckNum" name="emailCC" required></td>
+                    <td><button type="button" id="phoneCheckYN" class="join2Check" >인증번호확인</button></td>
                 </tr>
                 <tr class="phoneCheckInput">
                     <th></th>
@@ -277,7 +277,8 @@
 	        	// 아이디 중복확인
 	        	function idCheck(){
 	        		
-	        		var $memId = $("#enrollForm input[name=email]");
+	        		var $memId = $("#enrollForm input[name=memId]");
+	        		
 	        		
 	        		$.ajax({
 	        			url:"idCheck.me",
@@ -347,36 +348,87 @@
 				function emailCheck(){
 	        		
 	        		var $email = $("#enrollForm input[name=email]");
+	        		var $emailcc = $("#enrollForm input[name=emailCC]");
 	        		
 	        		console.log($email.val());
+	        		if( $email.val() == null || $email.val() == ""){
+    					Swal.fire({
+    						  icon: 'error',
+    						  title: '',
+    						  text: '이메일을 입력해 주세요.',
+    						  confirmButtonColor: 'rgb(249, 219, 122)'
+    						})
+	        		} else{
+	        		Swal.fire({
+						  icon: 'success',
+						  title: '인증번호가 발송되었습니다!',
+						  text: '입력한 이메일의 수신함을 확인해주세요.',
+						  confirmButtonColor: 'rgb(249, 219, 122)'
+						})
+	        		$(".phoneCheckInput").show();
+	   				$("#enrollForm input[name=email]").attr("readonly", true);
+	   				
 	        		
 	        		$.ajax({
 	        			url:"emailCheck.me",
 	        			type:"get",
 	        			data:{checkEmail:$email.val()},
-	        			success:function(saveKey){
+	        			success:function(result){
 	        				
-	        				console.log(saveKey);
-	        				
-	        				if(saveKey == "NN"){ // 사용불가
+	        				console.log("인증번호는 " + result);
+							
+	        				$("#phoneCheckYN").on("click",function(){
 
-	        				}else if (result == ""){ // 입력안함
-	        					
-
-	        				}else if (result == "620") {// 6자 이상 20자 미만
-
-	        			
-	        				}else{ // 사용가능
-	        					
-	        					
-	        				}
+	        					$.ajax({
+	        	        			url:"emailCheck2.me",
+	        	        			type:"get",
+	        	        			data:{checkEmailcc:$emailcc.val(), result:result},
+	        	        			success:function(result){
+	        	        				console.log(result);
+	        	        				
+	        	        				if(result == 'NN'){ // 사용불가
+	        	        					Swal.fire({
+		      	        						  icon: 'error',
+		      	        						  title: '인증번호가 일치하지 않습니다.',
+		      	        						  text: '입력한 이메일로 받은 인증번호를 확인해주세요.',
+		      	        						  confirmButtonColor: 'rgb(249, 219, 122)'
+		      	        						})
+		      	        						$("#enrollForm :submit").prop("disabled", true);
+	        	        				}else if (result == ""){ // 입력안함
+	        	        					Swal.fire({
+	      	        						  icon: 'error',
+	      	        						  title: '',
+	      	        						  text: '이메일로 받은 인증번호를 입력해주세요.',
+	      	        						  confirmButtonColor: 'rgb(249, 219, 122)'
+	      	        						})
+	      	        						$("#enrollForm :submit").prop("disabled", true);
+	        	        				}else{ // 사용가능
+	        	        					Swal.fire({
+		      	        						  icon: 'success',
+		      	        						  title: '',
+		      	        						  text: '인증에 성공했습니다!',
+		      	        						  confirmButtonColor: 'rgb(249, 219, 122)'
+		      	        						})
+		      	        						$("#enrollForm :submit").removeAttr("disabled");
+	        	        						$("#enrollForm input[name=emailCC]").attr("readonly", true);
+	        	        						$(" #phoneCheck").prop("disabled", true);
+	        	        						$(" #phoneCheckYN").prop("disabled", true);
+	        	        				}
+	        	        			},error:function(){
+	        	        				console.log("이메일 인증번호확인 통신 실패");
+	        	        			}
+	        	        		});	
+								
+							});	        				
 	        			},error:function(){
-	        				console.log("이메일 인증번호 통신 실패")
+	        				console.log("이메일 인증번호 통신 실패");
 	        			}
+	        			
 	        		});
-	        		
+	        		}
 	        	}
 	        	
+				
 	        
 	        	// 주소검색
 			 function sample6_execDaumPostcode() {
