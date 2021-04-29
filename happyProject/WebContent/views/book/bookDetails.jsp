@@ -138,6 +138,7 @@
         }
         .bookDetailOuter .reviewArea{
             border-top:1px solid black;
+            border-bottom:1px solid black;
             margin:auto;
             margin-bottom:200px;
             width:700px;
@@ -444,7 +445,7 @@
         <!-- 리뷰 있을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea" id="reviewList">
-            <h6 style="margin:15px;"><b>최신순</b></h6>
+            <h6 align="right" style="margin:15px;"><b>최신순</b></h6>
             <hr>
             <% for(Review r:list) { %>
             <table style="width:100%;">
