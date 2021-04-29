@@ -31,13 +31,16 @@ public class SearchBookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 필요한 리스트 조회
-		//ArrayList<Book> list = new BookService().bestBookList();
+		request.setCharacterEncoding("utf-8");
+		
+		String searchKey = request.getParameter("searchKey");
+		
+		ArrayList<Book> list = new BookService().searchBookList(searchKey);
+		//System.out.println(searchKey);
 		//System.out.println(list);
 		
-		//request.setAttribute("list", list);
-		
-		//request.getRequestDispatcher("views/.jsp").forward(request, response);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/book/bookSearchView.jsp").forward(request, response);
 	}
 
 	/**

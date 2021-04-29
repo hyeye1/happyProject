@@ -191,7 +191,7 @@
           WHERE BK_KEYWORD LIKE '%' || ? || '%'
    </entry>
    
-   <entry key="SearchBookList">
+   <entry key="searchBookList">
          SELECT
                 BK_NO                           
               , RPAD(SUBSTR(BK_NAME, 1, 14), 20, ' ') BK_NAME
