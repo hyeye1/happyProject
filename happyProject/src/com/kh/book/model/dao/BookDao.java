@@ -425,7 +425,7 @@ public class BookDao {
 	      return list;
 	   }
 
-	   public ArrayList<Book> searchBookList(Connection conn, String hashkey) {
+	   public ArrayList<Book> searchBookList(Connection conn, String searchKey) {
 	      // select문 => ResultSet객체 (한행) => book객체
 	      ArrayList<Book> list = new ArrayList<>();
 	      PreparedStatement pstmt = null;
@@ -436,11 +436,11 @@ public class BookDao {
 	      try {
 	         pstmt = conn.prepareStatement(sql); // 미완성된sql문 담음
 	         // 실행
-	         pstmt.setString(1, hashkey);
-	         pstmt.setString(2, hashkey);
-	         pstmt.setString(3, hashkey);
-	         pstmt.setString(4, hashkey);
-	         pstmt.setString(5, hashkey);
+	         pstmt.setString(1, searchKey);
+	         pstmt.setString(2, searchKey);
+	         pstmt.setString(3, searchKey);
+	         pstmt.setString(4, searchKey);
+	         pstmt.setString(5, searchKey);
 	         
 	         rset = pstmt.executeQuery();
 	         
