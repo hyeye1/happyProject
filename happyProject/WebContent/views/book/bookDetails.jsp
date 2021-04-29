@@ -138,6 +138,7 @@
         }
         .bookDetailOuter .reviewArea{
             border-top:1px solid black;
+            border-bottom:1px solid black;
             margin:auto;
             margin-bottom:200px;
             width:700px;
@@ -403,7 +404,7 @@
             <form action="<%= contextPath %>/insert.re" method="post">
                 <div class="inputReview">
                     <div class="reviewBtDiv" align="right">
-                        <button class="insertRvBt btn btn-primary"  data-toggle="modal" data-target="#insertReview">등록</button>
+                        <button type="submit" class="insertRvBt btn btn-primary"  data-toggle="modal" data-target="#insertReview">등록</button>
                     </div>
                     <div class="reviewContent">
                         <textarea name="content" id="reviewContent" placeholder="작품과 무관한 광고,욕설, 및 비방,청소년보호정책에 위배되는 내용은 사전 동의 없이 비공개 처리 될 수 있습니다." required></textarea>
@@ -435,7 +436,7 @@
         <!-- 리뷰 없을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea">
-            <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
+            <h6 style="color:rgb(249, 219, 122); margin:15px; float:left;">최신순</h6>
             <hr>
             <p align="center" style="font-size:16px;">회원님께서 첫 리뷰의 주인공이 되어주세요.</p>
         </div>
@@ -444,7 +445,7 @@
         <!-- 리뷰 있을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea" id="reviewList">
-            <h6 style="margin:15px;"><b>최신순</b></h6>
+            <h6 align="right" style="margin:15px;"><b>최신순</b></h6>
             <hr>
             <% for(Review r:list) { %>
             <table style="width:100%;">

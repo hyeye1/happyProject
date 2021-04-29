@@ -71,6 +71,20 @@
             border-top:1px solid darkgray;
             padding:20px;
         }
+        
+        /* 카트 비었을 때 */
+        .cartOuter .emptyCart{
+            border:1px solid darkgray;
+            width:680px;
+            height:500px;
+            float:left;
+        }
+        .cartOuter .emptyCart p{
+            color:darkgray;
+        }
+        .cartOuter #cartImg{
+            margin-top:140px;
+        }
 
          /* 화살표 없애기 */
         input[type="number"]::-webkit-outer-spin-button,
@@ -158,6 +172,12 @@
         <hr>
         <!-- 장바구니 창 -->
         <div class="cartView">
+        	<% if(list.isEmpty()) {%>
+        		<div class="emptyCart" align="center">
+		        	<img id="cartImg" src="resources/images/cart/장바구니.png" alt="">
+		            <p>장바구니에 담긴 책이 없습니다.</p>
+		        </div>
+            <% } else{ %>
             <table>
                 <tr>
                     <td colspan="3" style="height:50px;">
@@ -181,6 +201,7 @@
 	                </tr>
 	            <% } %>
             </table>
+            <% } %>
         </div>
 
         <!-- 장바구니 써머리 창 -->
@@ -218,11 +239,9 @@
        			location.href = "<%= contextPath %>/order.or";
        		}
        	</script>
-    
-    <br><br><br><br><br><br>
     </div>
     
     
-
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
