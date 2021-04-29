@@ -347,9 +347,7 @@
         <h5 class="detailTitle" id="infoLink">책소개</h5>
         <div class="link">
             <p><%= b.getBkDescription() %></p>
-        	<% if(i.getBookNo() == b.getBookNo()){ %>    
-            	<img class="detailImg" src="<%= contextPath %>/<%= i.getImgPath() %>" onerror="this.style.display='none'">
-        	<% } %>
+            <img class="detailImg" src="<%= contextPath %>/<%= i.getImgPath() %>" onerror="this.style.display='none'">
         </div>
 	   
         <!-- 목차 -->

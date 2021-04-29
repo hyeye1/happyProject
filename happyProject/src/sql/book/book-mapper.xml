@@ -5,7 +5,7 @@
    <!-- 실시간추천 -->
    <entry key="selectBookList">
       SELECT 
-            BK_NO
+             BK_NO
            , BK_NAME
            , AUTHOR
            , BK_MAIN_IMG
@@ -30,14 +30,13 @@
            , BK_CONTENT_LIST
            , BK_MAIN_IMG
         FROM TB_BOOK
-        JOIN TB_IMAGE ON(BK_NO = BK_NO_IMG)
        WHERE BK_NO = ?
    </entry>
    
    <entry key="bookInfoImg">
       SELECT
-            IMG_NO
-          , BK_NO_IMG
+             IMG_NO
+           , BK_NO_IMG
            , IMG_PATH
         FROM TB_IMAGE
        WHERE BK_NO_IMG = ?

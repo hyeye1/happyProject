@@ -131,16 +131,12 @@
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
                 <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
-
-
                 <input type="text" id="menubarSearchInput" > <button type="submit" class="menubarSearch" id="menubarSearchButton" >검색</button>
-
     		</div>
             </form>
     		<% if(loginUser == null) { %>
     		
                 <!-- 로그인전 div -->
-               
 	                <div id="loginBefore"  >
 	               		<input type="button" class="menubarSearch" id="menubarSearchButton" value="검색" onclick="bookSearch();">
  
