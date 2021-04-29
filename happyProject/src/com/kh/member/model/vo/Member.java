@@ -8,6 +8,7 @@ public class Member {
 	private String memId;
 	private String memId2;
 	private String memPwd;
+	private String memPwd2;
 	private String memName;
 	private String memAddress;
 	private String memPhone;
@@ -65,11 +66,12 @@ public Member(int memNo, String memId, String memId2, String memPwd, String memN
 
 
 
-	public Member(int memNo, String memId, String memId2,String memPwd, String memName, String email, String memStatus) {
+	public Member(int memNo, String memId, String memId2,String memPwd, String memPwd2, String memName, String email, String memStatus) {
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
 		this.memId2 = memId2;
+		this.memPwd2 = memPwd2;
 		this.memPwd = memPwd;
 		this.memName = memName;
 		this.email = email;
@@ -243,13 +245,30 @@ public Member(int memNo, String memId, String memId2, String memPwd, String memN
 
 
 
+	public String getMemPwd2() {
+		return memPwd2;
+	}
+
+
+
+	public void setMemPwd2(String memPwd2) {
+		this.memPwd2 = memPwd2;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memId=" + memId + ", memId2=" + memId2 + ", memPwd=" + memPwd
-				+ ", memName=" + memName + ", memAddress=" + memAddress + ", memPhone=" + memPhone + ", email=" + email
-				+ ", emailYN=" + emailYN + ", enrollRoute=" + enrollRoute + ", enrollDate=" + enrollDate
-				+ ", recentLogin=" + recentLogin + ", adminYN=" + adminYN + ", memStatus=" + memStatus + "]";
+				+ ", memPwd2=" + memPwd2 + ", memName=" + memName + ", memAddress=" + memAddress + ", memPhone="
+				+ memPhone + ", email=" + email + ", emailYN=" + emailYN + ", enrollRoute=" + enrollRoute
+				+ ", enrollDate=" + enrollDate + ", recentLogin=" + recentLogin + ", adminYN=" + adminYN
+				+ ", memStatus=" + memStatus + "]";
 	}
+
+
+
+
 
 
 

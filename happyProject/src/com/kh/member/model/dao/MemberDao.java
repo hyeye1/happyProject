@@ -266,6 +266,7 @@ public class MemberDao {
 				m = new Member(rset.getInt("mem_no"),
 							   rset.getString("mem_id"),
 							   rset.getString("mem_id2"),
+							   rset.getString("mem_pwd2"),
 							   rset.getString("mem_pwd"),
 							   rset.getString("mem_name"),
 							   rset.getString("email"),
@@ -301,6 +302,8 @@ public class MemberDao {
 			if(rset.next()) {
 				m = new Member(rset.getInt("mem_no"),
 							   rset.getString("mem_id"),
+							   rset.getString("mem_id2"),
+							   rset.getString("mem_pwd2"),
 							   rset.getString("mem_pwd"),
 							   rset.getString("mem_name"),
 							   rset.getString("email"),

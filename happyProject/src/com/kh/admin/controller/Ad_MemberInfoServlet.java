@@ -1,23 +1,29 @@
-package com.kh.order.controller;
+package com.kh.admin.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.kh.admin.model.service.Ad_MemberService;
+import com.kh.admin.model.vo.Ad_Member;
+
 /**
- * Servlet implementation class CouponAjax
+ * Servlet implementation class Ad_MemberInfoServlet
  */
-@WebServlet("/couponAjax.me")
-public class CouponAjax extends HttpServlet {
+@WebServlet("/memInfo.mem")
+public class Ad_MemberInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CouponAjax() {
+    public Ad_MemberInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,16 +32,15 @@ public class CouponAjax extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int couponCategory = Integer.parseInt(request.getParameter("couponCategory"));
 		
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		
+		Ad_Member adMember = new Ad_MemberService().selectMember(memNo);
 		
-		int responseData =   couponCategory;
+		response.setContentType("application/json; charset=UTF-8");
 		
-		
-		response.setContentType("text/html; charset=UTF-8");
-		
-		response.getWriter().print(responseData);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		gson.toJson(adMember, response.getWriter()); // 응답할객체, 응답할스트림
 	}
 
 	/**

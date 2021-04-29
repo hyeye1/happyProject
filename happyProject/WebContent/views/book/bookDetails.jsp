@@ -3,7 +3,6 @@
 <%
  	Book b = (Book)request.getAttribute("b");
  	Image i = (Image)request.getAttribute("i");
- 	Cart c = (Cart)request.getAttribute("c");
  	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
@@ -247,11 +246,11 @@
 	                            }
 	                        sum.value = parseInt(hm.value) * price;
 	                    }  
-                    </script>
+                   </script>
             </div>
             <input type="hidden" id="bkNo" value="<%= b.getBookNo() %>">
         </form>
-                <!-- 로그인 전 -->
+        <!-- 로그인 전 -->
         <% if(loginUser == null) { %>
 	        <!-- The Modal for 로그인전 장바구니버튼 클릭 -->
 	        <div class="modal" id="goToCart">
@@ -328,10 +327,6 @@
         		}
         	//});
         </script>
-        		
-
-		
-		
 		
         <br><br>
         <hr>
@@ -351,14 +346,15 @@
         <h5 class="detailTitle" id="infoLink">책소개</h5>
         <div class="link">
             <p><%= b.getBkDescription() %></p>
-            <img class="detailImg" src="<%= contextPath %>/<%= i.getImgPath() %>" onerror="this.style.display='none'">
+        	<% if(i.getBookNo() == b.getBookNo()){ %>    
+            	<img class="detailImg" src="<%= contextPath %>/<%= i.getImgPath() %>" onerror="this.style.display='none'">
+        	<% } %>
         </div>
 	   
-       
         <!-- 목차 -->
         <h5  class="detailTitle" id="contentLink">목차</h5>
         <div class="link">
-<pre>
+<pre style="font-size: 16px; color:dimgray; letter-spacing: -1px;">
 <%= b.getBkContentList() %>
 </pre>
         </div>

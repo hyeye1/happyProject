@@ -4,11 +4,18 @@
 	ArrayList<Cart> list = (ArrayList<Cart>)request.getAttribute("list");
 
 	DecimalFormat df = new DecimalFormat("#,###,###");
+	
+	int orgTotal = (Integer)request.getAttribute("orgTotal");
+	String orgTotalComma = df.format(orgTotal);
+	
 	int total = (Integer)request.getAttribute("total");
 	String totalComma = df.format(total);
 	
 	int discountTotal = (Integer)request.getAttribute("discountTotal");
 	String discountComma = df.format(discountTotal);
+	
+	int totalAmount = (Integer)request.getAttribute("totalAmount");
+	String AmountComma = df.format(totalAmount);
 %>
 <!DOCTYPE html>
 <html>
@@ -184,12 +191,12 @@
                     <tr>
                         <td colspan="2">
                             <img src="resources/images/cart/checked2.png" style="width:20px;"> 
-                            <label for="">0권을 선택하셨습니다.</label> 
+                            <label for=""><%= AmountComma %>권을 선택하셨습니다.</label> 
                         </td>
                     </tr>
                     <tr>
                         <td>총 상품 금액</td>
-                        <td class="price" style="text-align: right;"><%= totalComma %> 원</td>
+                        <td class="price" style="text-align: right;"><%= orgTotalComma %> 원</td>
                     </tr>
                     <tr>
                         <td>할인 금액</td>
@@ -212,6 +219,8 @@
        			location.href = "<%= contextPath %>/order.or";
        		}
        	</script>
+    
+    <br><br><br><br><br><br>
     </div>
     
     
