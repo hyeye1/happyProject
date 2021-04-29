@@ -1,6 +1,6 @@
 package com.kh.book.model.service;
 
-import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.*;
 import static com.kh.common.JDBCTemplate.commit;
 import static com.kh.common.JDBCTemplate.getConnection;
 import static com.kh.common.JDBCTemplate.rollback;
@@ -30,8 +30,12 @@ public class ReviewService {
 		Connection conn = getConnection();
 		int result = new ReviewDao().insertReview(conn, r);
 		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		close(conn);
-		
 		return result;
 	}
 	

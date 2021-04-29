@@ -24,12 +24,7 @@ public class MyReview {
 	}
 	
 	
-
-	public MyReview(String bkNoRe, String reContent) {
-		super();
-		this.bkNoRe = bkNoRe;
-		this.reContent = reContent;
-	}
+	
 
 	public int getReNo() {
 		return reNo;

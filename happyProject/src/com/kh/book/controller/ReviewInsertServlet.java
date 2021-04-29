@@ -1,9 +1,6 @@
 package com.kh.book.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,21 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.book.model.service.BookService;
-import com.kh.book.model.vo.Book;
+import com.kh.book.model.service.ReviewService;
+import com.kh.book.model.vo.Review;
 import com.kh.member.model.vo.Member;
 
+
 /**
- * Servlet implementation class BestBookListServlet
+ * Servlet implementation class ReviewInsertServlet
  */
-@WebServlet("/best.li")
-public class BestBookListServlet extends HttpServlet {
+@WebServlet("/insert.re")
+public class ReviewInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BestBookListServlet() {
+    public ReviewInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,13 +33,22 @@ public class BestBookListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 필요한 리스트 조회
-		ArrayList<Book> list = new BookService().bestBookList();
-		//System.out.println(list);
+		request.setCharacterEncoding("utf-8");
 		
-		request.setAttribute("list", list);
+		String reviewContent = request.getParameter("content");
 		
-		request.getRequestDispatcher("views/book/bestBk.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		int memNo = loginUser.getMemNo();
+		
+		Review r = new Review();
+		r.setReContent(reviewContent);
+		r.setMemNoRe(String.valueOf(memNo));
+		
+		int result = new ReviewService().insertReview(r);
+																
+		request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
+		
 		
 	}
 

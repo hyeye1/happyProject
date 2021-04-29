@@ -65,11 +65,25 @@
             font-size: 15px;
             line-height:20px;
             border-top:1px solid black;
-            border-bottom:1px solid black;
+            border-bottom:1px solid darkgray;
         }
         .cartOuter .cartView table td{
             border-top:1px solid darkgray;
-            padding:20px;
+            padding:15px;
+        }
+        
+        /* 카트 비었을 때 */
+        .cartOuter .emptyCart{
+            border:1px solid darkgray;
+            width:680px;
+            height:500px;
+            float:left;
+        }
+        .cartOuter .emptyCart p{
+            color:darkgray;
+        }
+        .cartOuter #cartImg{
+            margin-top:140px;
         }
 
          /* 화살표 없애기 */
@@ -158,31 +172,67 @@
         <hr>
         <!-- 장바구니 창 -->
         <div class="cartView">
+        	<% if(list.isEmpty()) {%>
+        		<div class="emptyCart" align="center">
+		        	<img id="cartImg" src="resources/images/cart/장바구니.png" alt="" onclick="goToDetail();">
+		            <p>장바구니에 담긴 책이 없습니다.</p>
+		        </div>
+            <% } else{ %>
             <table>
+            	<thead>
                 <tr>
                     <td colspan="3" style="height:50px;">
-                        <input type="checkbox" id="selectAll" checked>
-                        <label for="selectAll">전체선택</label>
+                        <input type="checkbox" style="vertical-align: middle;" id="idSelectAll" name="selectAll" onclick="selectAll(this)" checked>
+                        <label for="idSelectAll">전체선택</label>
                     </td>
-                    <td align="center"><button class="button">선택삭제</button></td>
+                    <td align="center"><button type="submit" class="button btn btn-warning" onclick="selectiondelete()">선택삭제</button></td>
                 </tr>
-                	
-	                <% for(Cart c : list) { %> 
+                </thead>
+	            <% for(Cart c : list) { %>
+	            <tbody>
 	                <tr>
-	                    <td style="height:100px;"><input type="checkbox" checked></td>
+	                    <td style="height:100px;"><input type="checkbox" name="book" onclick="checkSelectAll(this)" checked></td>
 	                    <td align="center"><img src="<%= c.getMainImg() %>" style="width:80px; height:100px;"></td>
 	                    <td>
 	                        <p><%= c.getTitle() %></p>
 	                        <small><%= c.getAuthor() %></small> <br><br>
 	                        <button class="button">-</button>
 	                        <input type="number" value="<%= c.getAmount() %>" min="1" max="9">
-	                        <button class="button">+</button> <button class="button" type="rest">삭제</button>
+	                        <button class="button">+</button> <button class="button btn btn-warning" type="rest">삭제</button>
 	                    </td>
-	                    <td align="center"><%= c.getTtPrice() %> 원</td>
+	                    <td align="center"><h7>판매가</h7><br> <%= c.getTtPrice() %> 원</td>
 	                </tr>
-	                <% } %>
+	            </tbody> 
+	            <% } %>
             </table>
+            <% } %>
         </div>
+        
+        <!-- checkBox script -->
+        <script>
+	        function checkSelectAll(checkbox)  {
+	        	  const selectall = document.querySelector('input[name="selectAll"]');
+	        	  if(checkbox.checked === false)  {
+	        	    selectall.checked = false;
+	        	  }
+	        }
+	        function selectAll(selectAll)  {
+	        	 const checkboxes = document.getElementsByName("book");
+	        	 checkboxes.forEach((checkbox) => {checkbox.checked = selectAll.checked})
+	        }
+	        function selectiondelete(ths){
+	            var ths = $(ths);
+	            
+	            ths.parents("tr").remove();
+	        }
+        </script>
+        <!-- selection delete script -->
+        <script>
+	        function selectiondelete(){
+	        	
+	        }
+        </script>
+      
 
         <!-- 장바구니 써머리 창 -->
         <div class="summaryBox">
@@ -213,14 +263,12 @@
                 </table>
             </div>
         </div>
-        <button id="selectBuy" class="btn btn-warning btn-lg" onclick="cartPage();">선택 구매하기</button>
+        <button id="selectBuy" class="btn btn-warning btn-lg" onclick="goToOrder();">선택 구매하기</button>
        	<script>
-       		function cartPage(){
+       		function goToOrder(){
        			location.href = "<%= contextPath %>/order.or";
        		}
        	</script>
-    
-    <br><br><br><br><br><br>
     </div>
     
     

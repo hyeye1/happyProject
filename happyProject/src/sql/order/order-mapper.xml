@@ -106,4 +106,38 @@
 	</entry>
 	
 
+	<entry key="updateCart">
+		UPDATE
+       		   TB_CART
+           SET AMOUNT = AMOUNT + ?
+             , TOTAL_PRICE = TOTAL_PRICE + ?
+         WHERE MEM_NO_CA = ?
+	</entry>
+	
+	<entry key="insertOrder">
+		INSERT INTO TB_ORDER
+                    ( 
+                      OR_NO,
+                      MEM_NO_OR,
+                      AD_NO_OR,
+                      RECEIVER,
+                      OR_SUM,
+                      OR_DELIVERY,
+                      OR_REQUEST,
+                      OR_HD_DATE
+                      )
+               VALUES
+                      (
+                        SEQ_ORNO.NEXTVAL
+                      , ?
+                      , 2
+                      , ?
+                      , ?
+                      , ?
+                      , ?
+                      , ?
+                      )
+	</entry>
+	
+
 </properties>

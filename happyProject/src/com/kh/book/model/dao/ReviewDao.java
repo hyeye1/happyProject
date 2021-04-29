@@ -75,9 +75,8 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, r.getMemNoRe());
-			pstmt.setInt(2, r.getBkNoRe());
-			pstmt.setString(3, r.getReContent());
+			pstmt.setInt(1, Integer.parseInt(r.getMemNoRe()));
+			pstmt.setString(2, r.getReContent());
 			
 			result = pstmt.executeUpdate();
 			

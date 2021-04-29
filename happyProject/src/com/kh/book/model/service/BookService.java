@@ -106,14 +106,33 @@ public class BookService {
 	   }
    
    
-   public ArrayList<Book> searchBookList(String hashkey){
+   public ArrayList<Book> searchBookList(String searchKey){
 	      Connection conn = getConnection();
-	      ArrayList<Book> list = new BookDao().hashSearchList(conn, hashkey);
+	      ArrayList<Book> list = new BookDao().searchBookList(conn, searchKey);
 	      close(conn);
 	      return list;
 	   }
       
-
+   public ArrayList<Book> weeklyBestAll(){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().weeklyBestAll(conn);
+	      close(conn);
+	      return list;
+	   }
+   
+   public ArrayList<Book> weeklyBestNovel(){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().weeklyBestNovel(conn);
+	      close(conn);
+	      return list;
+	   }
+   
+   public ArrayList<Book> weeklyBestPoem(){
+	      Connection conn = getConnection();
+	      ArrayList<Book> list = new BookDao().weeklyBestPoem(conn);
+	      close(conn);
+	      return list;
+	   }
 
 
 	

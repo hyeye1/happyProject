@@ -68,7 +68,7 @@
         
         <div align="center">
             <br><br>
-            <img src="../SemiProject_WorkSpace/img/check.png" alt="">
+            <img src="resources/images/cart/check.png" alt="">
             <h2>주문이 성공적으로 접수되었습니다.</h2>
             <br>
             <div>

@@ -13,13 +13,11 @@
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
 %>
-
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%
 		Date nowTime = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
-		
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +57,6 @@
     #choice_btn{width: 65%; text-align: right;}
 
     /* left menubar */
-
     #menubar{background-color: rgb(224, 224, 224);}
     #content{border-left: 5px double rgb(249, 219, 122);}
 
@@ -80,10 +77,7 @@
         text-shadow:1px 4px 10px rgb(133, 133, 133);
         text-align: center;
     }
-     #btns{
-        list-style: none;
-        padding-left: 26px;
-    }
+    #btns{list-style: none; padding-left: 26px;}
     .menuBtn{
         font-size:large;
         font-weight: bold;
@@ -170,73 +164,9 @@
     .memCoupon{color:#f08080}
     .memPoint:hover, .memCoupon:hover, .memId:hover{font-weight: bold;}
 
-    /* 상세정보 팝업창 */
-    .detailwrap{
-        position: absolute;
-        top:39%;
-        left:53%;
-        z-index: 10;
-        box-sizing: border-box;
-        width: 410px; 
-        height: 348px; 
-        margin-top: -75px;
-        margin-left: -150px; 
-        display: none;
-    }
-	.detailwrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
-    #ptitle{height: 10%; background-color: rgb(249, 219, 122);}
-    #pcontent{height: 90%; background-color: white;}
-
-    #ptitleName{
-        display:inline-block;
-        margin-left:160px;
-        margin-top:6px;
-        font-size: 15px;
-        font-weight: bold;
-        margin-top: 1;
-        color: #3c3c3c;
-    }
-    #pbuyList{
-        border-color: #3c3c3c;
-        width: 320px;
-        height: 145px;
-        box-sizing: border-box;       
-        margin-top: 10px;  
-        margin-right: 5px;  
-    }
-    #pbuyTitle{
-        background-color: #f3f3f3;
-    }
-    #pcontent{
-        font-size: smaller;
-        padding-left: 10px;
-    }
-    #pcontent td{
-        text-align: center;
-    }
-
-    #pcloseBtn { 
-    float: right; 
-    width: 20px; 
-    line-height: 20px;
-    margin-right: 5px;
-    margin-top: 5px;
-    text-align: center; 
-    cursor: pointer; 
-    border-radius: 5px;
-    background-color: #f3f3f3; 
-    } 
-    #pcloseBtn:hover { background-color: lightgray; } 
-    #modal{
-        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
-        top: 0; left: 0; z-index: 999; display: none;
-    }
-    .show-popup{
-        display:block !important;
-    }
-
 
     
+
 
      /* 보유쿠폰 팝업창 */
     .couponWrap{
@@ -392,6 +322,8 @@
     .show-popup5{
         display:block !important;
     }
+
+
     /* 관리자모드 종료 팝업창 */
     .adEndWrap{
         position: absolute;
@@ -428,23 +360,25 @@
     .show-popup_End{
         display:block !important;
     }
-/* 상세정보 팝업창 */
-         .detailwrap{
-            position: absolute;
-            top:30%;
-            left:53%;
-            z-index: 10;
-            box-sizing: border-box;
-            width: 410px; 
-            height: 348px; 
-            margin-top: -75px;
-            margin-left: -150px; 
-            }
+
+
+	/* 회원 상세정보 팝업창 */
+    .detailwrap{
+		position: absolute;
+		top:36%;
+		left:55%;
+		z-index: 10;
+		box-sizing: border-box;
+		width: 410px; 
+		height: 300px; 
+		margin-top: -75px;
+		margin-left: -150px; 
+	}
 		.detailwrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
 
         /* 영역 나누기 */
-        #ptitle{height: 10%; background-color: rgb(249, 219, 122);}
-        #pcontent{height: 90%; background-color: white;}
+        #ptitle{height: 35px; background-color: rgb(249, 219, 122);}
+        #pcontent{height: 265px; background-color: white;}
 
         
         #ptitleName{
@@ -456,24 +390,14 @@
             margin-top: 1;
             color: #3c3c3c;
         }
-        #pbuyList{
-            border-color: #3c3c3c;
-            width: 320px;
-            height: 145px;
-            box-sizing: border-box;       
-            margin-top: 10px;  
-            margin-right: 5px;  
-        }
-        #pbuyTitle{
-            background-color: #f3f3f3;
-        }
+        
         #pcontent{
             font-size:smaller;
             text-align: center;
         }
         #pcontent table{
             width: 400px;
-            height: 300px;
+            height: 250px;
             margin-top: 5px;
             margin-left: 5px;
         }
@@ -487,21 +411,23 @@
         cursor: pointer; 
         border-radius: 5px;
         background-color: #f3f3f3; 
-         
         } 
+        #pcloseBtn:hover { background-color: lightgray;} 
+        #modal{
+        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
+        top: 0; left: 0; z-index: 999; display: none;
+    }
+    .show-popup{display:block !important;}
         
-        #pcloseBtn:hover { 
-            background-color: lightgray; 
-        } 
         
-          /* 쿠폰발송 팝업창 */
+    /* 쿠폰발송 팝업창 */
     .couSendWrap{
         position: absolute;
-        top:39%;
+        top:36%;
         left:68%;
         z-index: 10;
         width: 410px; 
-        height: 248px; 
+        height: 220px; 
         margin-top: -75px;
         margin-left: -150px;
         display: none; 
@@ -510,7 +436,7 @@
 
     .couSendWrap>*{width: 100%;}
     #couSendTitle{height: 35px; background-color: rgb(249, 219, 122);}
-    #couSendContent{height: 213px; background-color: white;}
+    #couSendContent{height: 185px; background-color: white;}
 
     #couSendName{
         display:inline-block;
@@ -547,6 +473,99 @@
     .show-popup5{
         display:block !important;
     }
+    
+    /* 로딩 */
+	#loading {
+	height: 100%;
+	left: 0px;
+	position: fixed;
+	position:absolute; 
+	top: 0px;
+	width: 100%;
+	filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	opacity : 0.5;
+	}
+	.loading {
+	background-color: white;
+	z-index: 199;
+	}
+	#loading_img{
+	position:absolute; 
+	top:29%;
+	left:51%;
+	height:35px;
+	margin-top:-75px;
+	margin-left:-75px; 
+	z-index: 200;
+	}
+	
+	 /* 보유쿠폰 팝업창 */
+    .couponWrap{
+        position: absolute;
+        top:39%;
+        left:65%;
+        z-index: 10;
+        box-sizing: border-box;
+        width: 410px; 
+        height: 218px; 
+        margin-top: -75px;
+        margin-left: -150px; 
+        display: none;
+    }
+	.couponWrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
+    #couTitle{background-color: rgb(249, 219, 122);}
+    #couContent{height: 90%; background-color: white;}
+
+    #couTitleName{
+        display:inline-block;
+        margin-left:160px;
+        margin-top:6px;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 1;
+        color: #3c3c3c;
+    }
+    #couContent{
+        font-size: smaller;
+        text-align: center;
+    }
+    #couCloseBtn { 
+        float: right; 
+        width: 20px; 
+        line-height: 20px;
+        margin-right: 5px;
+        margin-top: 5px;
+        text-align: center; 
+        cursor: pointer; 
+        border-radius: 5px;
+        background-color: #f3f3f3; 
+    } 
+    #couCloseBtn:hover { 
+        background-color: lightgray; 
+    } 
+    #couTable{
+        margin: 3px;
+        width: 400px;
+        height: 80px;
+    }
+    #couTable2{
+        width: 400px;
+        height: 100px;
+        margin: 3px;
+    }
+    #couTable2>thead{
+        background-color: #f3f3f3;
+    }
+    #modal3{
+        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
+        top: 0; left: 0; z-index: 999; display: none;
+    }
+    .show-popup3{
+        display:block !important;
+    }
+	
+   
 </style>
 </head>
 
@@ -628,7 +647,7 @@
                         <!-- 조회된 결과가 있을 경우 -->
                             <% for(Ad_Member b : list) { %>
                                 <tr>
-                                    <td><input type="radio"></td>
+                                    <td><input type="checkbox"></td>
                                     <td><%= b.getMemNo() %></td>
                                     <td class="memId" data-memNo="<%= b.getMemNo() %>">
                                     	
@@ -639,7 +658,9 @@
                                     <td><%= b.getEmail() %></td>
                                     <td><%= b.getOrderCnt() %></td>
                                     <td><%= b.getOrderTotalAmt() %></td>
-                                    <td id="memCoupon" style="color: red; font-weight: bold;"><%=b.getCouCnt() %></td>
+                                    <td class="memCoupon" style="color: red; font-weight: bold;">
+                                    	<%=b.getCouCnt() %>
+                                    </td>
                                 </tr>
                             <%}%>
                         <% } %>
@@ -691,91 +712,95 @@
     </div>
 
 
-  <!-- 회원 상세정보 팝업 -->
-   <div class="detailwrap">
-    <div id="ptitle">
-        <h3 id=ptitleName>회원상세정보</h3>
-        <div id="pcloseBtn">&times;</div>
-        
+    <!-- 회원 상세정보 팝업 -->
+    <div id="modal">
+        <div class="detailwrap">
+            <div id="ptitle">
+                <h3 id=ptitleName>회원상세정보</h3>
+                <div id="pcloseBtn">&times;</div>
+                
+            </div>
+            <div id="pcontent">
+                <table>
+                    <tr>
+                        <th width="90">회원번호</th>
+                        <td id="mem__no">100</td>
+                    </tr>
+                    <tr>
+                        <th>아이디</th>
+                        <td id="mem__id">아이디1234</td>
+                    </tr>
+                    <tr>
+                        <th>이름</th>
+                        <td id="mem__name">김말똥</td>
+                    </tr>
+                    <tr>
+                        <th>주소</th>
+                        <td id="mem__address">서울특별시</td>
+                    </tr>
+                    <tr>
+                        <th>가입일</th>
+                        <td id="mem__enroll__date">2020-01-12</td>
+                    </tr>
+                    <tr>
+                        <th>최근로그인</th>
+                        <td id="mem__recent__login">2021</td>
+                    </tr>
+                    <tr>
+                        <th>가입경로</th>
+                        <td id="mem__enroll__route">자사</td>
+                    </tr>
+                    <tr>
+                        <th>이메일수신여부</th>
+                        <td id="mem__email__yn">Y</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-    <div id="pcontent">
-        <table>
-            <tr>
-                <th width="90">회원번호</th>
-                <td id="mem__no">100</td>
-            </tr>
-            <tr>
-                <th>아이디</th>
-                <td id="mem__id">아이디1234</td>
-            </tr>
-            <tr>
-                <th>이름</th>
-                <td id="mem__name">김말똥</td>
-            </tr>
-            <tr>
-                <th>주소</th>
-                <td id="mem__address">서울특별시</td>
-            </tr>
-            <tr>
-                <th>가입일</th>
-                <td id="mem__enroll__date">2020-01-12</td>
-            </tr>
-            <tr>
-                <th>최근로그인</th>
-                <td id="mem__recent__login">2021</td>
-            </tr>
-            <tr>
-                <th>가입경로</th>
-                <td id="mem__enroll__route">자사</td>
-            </tr>
-            <tr>
-                <th>이메일수신여부</th>
-                <td id="mem__email__yn">Y</td>
-            </tr>
-        </table>
-    </div>
-
-</div>
-
-<script>
-    $(".memId").click(function(){
-    	
-    	var memNo = $(this).attr("data-memNo");
-    	
-    	$.ajax({
- 			url:"/happyProject/memInfo.mem?memNo="+memNo,
- 			type:"get",
-    		success:function(resp){
-    			$("#mem__no").text(resp.memNo);
-    			$("#mem__id").text(resp.memId);
-    			$("#mem__name").text(resp.memName);
-    			$("#mem__address").text(resp.memAddress);
-    			$("#mem__enroll__date").text(resp.enrollDate);
-    			$("#mem__recent__login").text(resp.recentLogin);
-    			$("#mem__enroll__route").text(resp.enrollRoute);
-    			$("#mem__email__yn").text(resp.emailYn);
-    			$(".detailwrap").css({display:"block"});
-    		},
-    		error:function(err){
-    			
-    		}
-    	});
-    });
-    $("#pcloseBtn").click(function(){
-        $(".detailwrap").css({display:"none"});
-        $("#mem__no").text("");
-		$("#mem__id").text("");
-		$("#mem__name").text("");
-		$("#mem__address").text("");
-		$("#mem__enroll__date").text("");
-		$("#mem__recent__login").text("");
-		$("#mem__enroll__route").text("");
-		$("#mem__email__yn").text("");
-    });
-</script> 
 
 
-<!-- 쿠폰 상세 팝업 -->
+    <script>
+        $(".memId").on("click",function(){
+            
+            var memNo = $(this).attr("data-memNo");
+            
+            $.ajax({
+                url:"/happyProject/memInfo.mem?memNo="+memNo,
+                type:"get",
+                success:function(resp){
+                    $(".detailwrap").css({display:"block"});
+                    $("#modal").addClass('show-popup');
+                    $("#mem__no").text(resp.memNo);
+                    $("#mem__id").text(resp.memId);
+                    $("#mem__name").text(resp.memName);
+                    $("#mem__address").text(resp.memAddress);
+                    $("#mem__enroll__date").text(resp.enrollDate);
+                    $("#mem__recent__login").text(resp.recentLogin);
+                    $("#mem__enroll__route").text(resp.enrollRoute);
+                    $("#mem__email__yn").text(resp.emailYn);
+                },
+                error:function(err){
+                    
+                }
+            });
+        });
+        $("#pcloseBtn").on("click",function(){
+            $(".detailwrap").css({display:"none"});
+            $("#modal").removeClass('show-popup');
+            $("#mem__no").text("");
+            $("#mem__id").text("");
+            $("#mem__name").text("");
+            $("#mem__address").text("");
+            $("#mem__enroll__date").text("");
+            $("#mem__recent__login").text("");
+            $("#mem__enroll__route").text("");
+            $("#mem__email__yn").text("");
+        });
+    </script> 
+
+
+	<!-- 쿠폰 상세 팝업 -->
     <div id="modal3">
         <div class="couponWrap">
             <div id="couTitle">
@@ -786,11 +811,11 @@
                 <table id="couTable">
                     <tr>
                         <th width="30%">회원번호</th>
-                        <td>22</td>
+                        <td id="mem__couNo">22</td>
                     </tr>
                     <tr>
                         <th>사용 가능한 쿠폰</th>
-                        <td style="font-weight: bold; color: red;"><u>2</u></td>
+                        <td id="cou__cnt" style="font-weight: bold; color: red;"><u>2</u></td>
                     </tr>
                     <tr>
                         <th>쿠폰내역</th>
@@ -806,10 +831,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>봄비 내릴땐 해피북스데이</td>
-                            <td>2000</td>
-                            <td>2021.04.16</td>
-                            <td>20000</td>
+                            <td id="cou__name">봄비 내릴땐 해피북스데이</td>
+                            <td id="cou__discount">2000</td>
+                            <td id="cou__date">2021.04.16</td>
+                            <td id="cou__condition">20000</td>
                         </tr>
                         <tr>
                             <td>4월 봄맞이 쿠폰</td>
@@ -830,17 +855,18 @@
     </div>
 
     <script>
-        $("#memCoupon").click(function(){
-            $(".couponWrap").css({display:"block"});
-            $("#modal3").addClass('show-popup3');
+        $(".memCoupon").on("click",function(){
+ 			$(".couponWrap").css({display:"block"});
+        	$("#modal3").addClass('show-popup3');
         });
-        $("#couCloseBtn").click(function(){
+        $("#couCloseBtn").on("click",function(){
             $(".couponWrap").css({display:"none"});
             $("#modal3").removeClass('show-popup3');
         });
     </script>
-    
-    
+
+
+
     <!-- 삭제 팝업 -->
     <div id="modal4">
         <div class="deleteWrap">
@@ -866,11 +892,11 @@
 
     <script>
         $(function(){
-            $("#deleteBtn").click(function(){
+            $("#deleteBtn").on("click",function(){
                 $(".deleteWrap").show();
                 $("#modal4").addClass('show-popup4');
             });
-            $("#cancleDelBtn").click(function(){
+            $("#cancleDelBtn").on("click",function(){
                 $(".deleteWrap").hide();
                 $("#modal4").removeClass('show-popup4');
             });
@@ -896,13 +922,6 @@
                             </select>
                         </td>
                     </tr>
-                  <!--   <tr>
-                        <th>발송회원</th>
-                        <td style="padding-top: 8px;">
-                            <input type="radio" id="allMem" name="sendCou"> <label for="allMem">전체회원</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" id="choiceMem" name="sendCou"> <label for="choiceMem">선택회원(조회화면에서 선택)</label>
-                        </td>
-                    </tr> -->
                     <tr>
                         <th>할인액</th>
                         <td>
@@ -938,8 +957,8 @@
     <script>
     	let couponListTemp;
 
-    	//쿠폰발송모달창 클릭 이벤
-        $("#sendCouModalBtn").click(function(){
+    	//쿠폰발송모달창 클릭 이벤트 
+        $("#sendCouModalBtn").on("click",function(){
         	
         	$.ajax({
      			url:"/happyProject/getCouponList.cou",
@@ -967,7 +986,7 @@
         	});
         });
         
-    	//쿠폰발송모달창 확인버튼 클릭 이벤
+    	//쿠폰발송모달창 확인버튼 클릭 이벤트 
         $("#okSendBtn").on("click",function(){
         	var couNo = $("#selectCou").val();
         	var couName = $("#selectCou").find('option:selected').attr("name");
@@ -989,16 +1008,16 @@
         });
         
     	//쿠폰발송모달창 취소버튼 클릭 이벤트 
-        $("#cancleSendBtn").click(function(){
+        $("#cancleSendBtn").on("click",function(){
             $(".couSendWrap").css({display:"none"});
             $("#modal5").removeClass('show-popup5');
         });
         
-        //쿠폰발송모달창 셀렉트박스 체인지 이벤
+        //쿠폰발송모달창 셀렉트박스 체인지 이벤트 
         $("#selectCou").on("change",function(){
-        	couponListTemp.forEach(function(coupon){
-	        	if(coupon.couNo == $("#selectCou").val()){
-	        		$("#cou__discount").text(coupon.discount);
+            couponListTemp.forEach(function(coupon){
+	            if(coupon.couNo == $("#selectCou").val()){
+	        	    $("#cou__discount").text(coupon.discount);
 	    			$("#cou__date").text(coupon.couStart + " ~ " + coupon.couEnd);
 	    			$("#cou__condition").text("구매금액 " + coupon.couCondition + "원 이상");
 	        	}
@@ -1006,6 +1025,23 @@
         });
     </script>
 
+	<!--  AJAX 실행중 로딩바  -->
+	<script>
+	$(document).ready(function(){
+		var loading = $('<div id="loading" class="loading"></div><img id="loading_img" alt="loading" src="${pageContext.request.contextPath}/resources/images/admin/ajax-loader (1).gif" />')
+		.appendTo(document.body).hide();
+		$(window) 
+		.ajaxStart(function(){
+		loading.show();
+		})
+		.ajaxStop(function(){
+		loading.hide();
+		});
+		});
+	
+	</script>
+	
+	
     <!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
         <div class="adEndWrap">
@@ -1031,11 +1067,11 @@
 
     <script>
         $(function(){
-            $("#adLock").click(function(){
+            $("#adLock").on("click",function(){
                 $(".adEndWrap").show();
                 $("#modal_End").addClass('show-popup_End');
             });
-            $("#cancleEndBtn").click(function(){
+            $("#cancleEndBtn").on("click",function(){
                 $(".adEndWrap").hide();
                 $("#modal_End").removeClass('show-popup_End');
             });

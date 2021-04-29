@@ -12,6 +12,7 @@
             width: 1000px; 
             height: 350px;
             margin: auto;
+            cursor: default;
             }
         .footerNotice{
             height:45px; 
