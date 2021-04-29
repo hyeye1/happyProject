@@ -272,11 +272,11 @@
                     <tr>
                         <th><b>*</b> 도서명</th>
                         <td><input type="text" name="bkName" placeholder="도서명을 입력하세요" required></td>
-                        <th>&nbsp;&nbsp;&nbsp;저자</th>
+                        <th><b>*</b> 저자</th>
                         <td><input type="text" name="author"placeholder="저자명을 입력하세요"></td>
                     </tr>
                     <tr>
-                        <th>&nbsp;&nbsp;&nbsp;출판사</th>
+                        <th><b>*</b> 출판사</th>
                         <td><input type="text" name="publisher" placeholder="출판사를 입력하세요"></td>
                         <th>&nbsp;&nbsp;&nbsp;출간일</th>
                         <td><input type="date" name="bkPublishDate"> </td>
@@ -315,16 +315,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>&nbsp;&nbsp;&nbsp;표지 이미지</th>
+                        <th><b>*</b> 표지 이미지</th>
                         <td><input type="file" name="bkMainImg"></td>
                         <th></th>
                         <td></td>
                     </tr>
                     <tr>
-                        <th>&nbsp;&nbsp;&nbsp;상세이미지</th>
+                        <th><b>*</b> 상세이미지</th>
                         <td><input type="file" name="bkDetailImg"></td>
                         <th><b>*</b> 수량</th>
-                        <td><input type="number" name="bkStock" placeholder="입고 수량" style="width: 100px; color: red;" required></td>
+                        <td><input type="number" name="bkStock" min="0" placeholder="입고 수량" style="width: 100px; color: red;" required></td>
                     </tr>
                 </table>
                 
@@ -367,11 +367,11 @@
 
     <script>
         $(function(){
-            $("#adLock").click(function(){
+            $("#adLock").on("click",function(){
                 $(".adEndWrap").show();
                 $("#modal_End").addClass('show-popup_End');
             });
-            $("#cancleEndBtn").click(function(){
+            $("#cancleEndBtn").on("click",function(){
                 $(".adEndWrap").hide();
                 $("#modal_End").removeClass('show-popup_End');
             });

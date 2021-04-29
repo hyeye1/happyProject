@@ -274,11 +274,11 @@
 
     <script>
         $(function(){
-            $("#adLock").click(function(){
+            $("#adLock").on("click",function(){
                 $(".adEndWrap").show();
                 $("#modal_End").addClass('show-popup_End');
             });
-            $("#cancleEndBtn").click(function(){
+            $("#cancleEndBtn").on("click",function(){
                 $(".adEndWrap").hide();
                 $("#modal_End").removeClass('show-popup_End');
             });
