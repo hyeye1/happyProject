@@ -45,16 +45,23 @@ public class CartListServlet extends HttpServlet {
 		
 		ArrayList<Cart> list = new CartService().selectCartList(memNo);
 		
+		int orgTotal = 0;
 		int total = 0;
 		int discountTotal = 0;
+		int totalAmount = 0;
+		
 		for (Cart c : list) {
+			orgTotal += ((c.getOrgPrice()) * (c.getAmount())) ;
 			total += c.getTtPrice();
 			discountTotal += (c.getOrgPrice() - c.getPrice());
+			totalAmount += c.getAmount();
 		}
 		
+		request.setAttribute("orgTotal", orgTotal);
 		request.setAttribute("list", list);
 		request.setAttribute("total", total);
 		request.setAttribute("discountTotal", discountTotal);
+		request.setAttribute("totalAmount", totalAmount);
 		
 		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
 		

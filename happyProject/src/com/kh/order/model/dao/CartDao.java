@@ -78,8 +78,8 @@ public class CartDao {
 				
 				Cart c = new Cart();
 				c.setCartNo(rset.getInt("ca_no"));
-				c.setBookNo(rset.getInt("bk_no_or"));
-				c.setMemNo(rset.getInt("mem_no_or"));
+				c.setBookNo(rset.getInt("bk_no_ca"));
+				c.setMemNo(rset.getInt("mem_no_ca"));
 				c.setAmount(rset.getInt("amount"));
 				c.setTtPrice(rset.getInt("total_price"));
 				c.setStatus(rset.getString("author"));

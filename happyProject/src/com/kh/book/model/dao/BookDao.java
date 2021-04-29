@@ -15,7 +15,6 @@ import com.kh.book.model.vo.Book;
 import com.kh.book.model.vo.Image;
 import com.kh.member.model.vo.Member;
 
-
 public class BookDao {
 	
 	private Properties prop = new Properties();
