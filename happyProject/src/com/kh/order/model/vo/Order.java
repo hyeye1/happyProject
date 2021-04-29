@@ -13,13 +13,13 @@ public class Order {
 	private String orDelivery;
 	private String orStatus;
 	private String orRequest;
-	private Date orHdDate;
+	private String orHdDate;
 	private int couMemNoOr;
 	
 	public Order() {}
 
 	public Order(int orNO, int memNoOr, int adNoOr, String receiver, int orSum, Date orDate, String orDelivery,
-			String orStatus, String orRequest, Date orHdDate, int couMemNoOr) {
+			String orStatus, String orRequest, String orHdDate, int couMemNoOr) {
 		super();
 		this.orNO = orNO;
 		this.memNoOr = memNoOr;
@@ -106,11 +106,11 @@ public class Order {
 		this.orRequest = orRequest;
 	}
 
-	public Date getOrHdDate() {
+	public String getOrHdDate() {
 		return orHdDate;
 	}
 
-	public void setOrHdDate(Date orHdDate) {
+	public void setOrHdDate(String orHdDate) {
 		this.orHdDate = orHdDate;
 	}
 
@@ -128,7 +128,5 @@ public class Order {
 				+ ", orSum=" + orSum + ", orDate=" + orDate + ", orDelivery=" + orDelivery + ", orStatus=" + orStatus
 				+ ", orRequest=" + orRequest + ", orHdDate=" + orHdDate + ", couMemNoOr=" + couMemNoOr + "]";
 	}
-	
-	
 
 }

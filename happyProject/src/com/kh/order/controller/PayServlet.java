@@ -1,6 +1,7 @@
-package com.kh.book.controller;
+package com.kh.order.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,22 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.book.model.service.ReviewService;
-import com.kh.book.model.vo.Review;
 import com.kh.member.model.vo.Member;
-
+import com.kh.order.model.service.OrderService;
+import com.kh.order.model.vo.Order;
 
 /**
- * Servlet implementation class ReviewInsertServlet
+ * Servlet implementation class PayServlet
  */
-@WebServlet("/insert.re")
-public class ReviewInsertServlet extends HttpServlet {
+@WebServlet("/orderConf.pay")
+public class PayServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewInsertServlet() {
+    public PayServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,24 +32,32 @@ public class ReviewInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("utf-8");
-		
-		String reviewContent = request.getParameter("content");
+		String name = request.getParameter("userName");
+		String hDate = request.getParameter("happyDate");
+		int sum = Integer.parseInt(request.getParameter("total"));
+		String dvDemand = request.getParameter("dvDemand");
+		String happyDelivery = request.getParameter("happyDelivery");
 		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		int memNo = loginUser.getMemNo();
+		int userNo = loginUser.getMemNo();
 		
-		Review r = new Review();
-		r.setReContent(reviewContent);
-		r.setMemNoRe(String.valueOf(memNo));
+		Order or = new Order();
+		or.setReceiver(name);
+		or.setMemNoOr(userNo);
+		or.setOrSum(sum);
+		or.setOrDelivery(happyDelivery);
+		or.setOrRequest(dvDemand);
+		or.setOrHdDate(hDate);
 		
-		int result = new ReviewService().insertReview(r);
-																
-		request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
-		
-		
+		int result = new OrderService().insertOrder(or);
+		if(result>0) { 
+			request.getRequestDispatcher("views/order/orderConfirmation.jsp").forward(request, response);
+			
+		}else {
+			
+		}
 	}
 
 	/**
