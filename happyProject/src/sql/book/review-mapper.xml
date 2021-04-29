@@ -14,6 +14,26 @@
 
 	</entry>
 	
+<entry key="insertReview">
+		INSERT 
+		   INTO TB_REVIEW
+		   (
+		    RE_NO
+          , MEM_NO_RE
+          , BK_NO_RE
+		  , RE_CONTENT
+		   )
+		    VALUES
+		   (
+		    SEQ_FAN.NEXTVAL
+		   , ?
+           , ?
+           , ?
+		   )
+	</entry>
+	
+
+	
 	<entry key="deleteReview">
 		UPDATE
 				TB_REVIEW
