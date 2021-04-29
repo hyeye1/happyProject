@@ -254,9 +254,9 @@
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <%		
-		String userId = loginUser.getMemId();	   // 필수입력사항이라 무조건 값이 존재함
-		String userName = loginUser.getMemName(); // 필수입력사항이라 무조건 값이 존재함
-		String phone = (loginUser.getMemPhone() == null) ? "" : loginUser.getMemPhone();	// "010-1111-2222" / null
+		String userId = loginUser.getMemId();	   
+		String userName = loginUser.getMemName();
+		String phone = (loginUser.getMemPhone() == null) ? "" : loginUser.getMemPhone();	
 		String email = (loginUser.getEmail() == null) ? "" : loginUser.getEmail();
 		String address = (loginUser.getMemAddress() == null) ? "" : loginUser.getMemAddress();
 		
@@ -280,9 +280,9 @@
         </div>
         <hr>
         <br><br>
-        <form>
+        <!--  <form>-->
             <!-- 배송정보 입력란 -->
-            <div>
+        <div>
             <div class="dvForm" action="" style="width:600px;">
                 <fieldset style="border:none;">
                     <legend><h4 style="font-weight: bolder;">배송정보</h4></legend>
@@ -434,7 +434,7 @@
 
             
             <!-- 사이드바 -->
-            <div class="remote" action="<%= contextPath %>/orderConf.or" method="post">
+            <form class="remote" action="<%= contextPath %>/orderConf.or" method="post">
                 <div class="info">
                     <ul class="list_price">
                         <li>
@@ -482,8 +482,8 @@
                         <div><button class="goBackToCart btn btn-warning btn-lg">장바구니 가기</button></div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        <!--</form> -->
         <!-- //사이드바 -->
         
 
