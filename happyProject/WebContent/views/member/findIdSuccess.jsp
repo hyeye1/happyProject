@@ -100,7 +100,7 @@
         <div class="findIdSInput">
             <p>아이디 찾기가 완료되었습니다. <br> 개인정보 보호를 위해 아이디 일부를 별표*로 표시하였습니다.</p>
             <!-- 사용자 아이디 찾아 넣기 -->
-            <input type="text" id="findIdSName" placeholder="<%= findId.getMemId() %>" disabled><br>
+            <input type="text" id="findIdSName" placeholder="<%= findId.getMemId() %> " disabled><br>
             <button type="submit" id="findIdSSubmit" onclick="location.href= '<%= request.getContextPath() %>/loginForm.me';">로그인하기</button> <br>
         </div>
 
@@ -110,7 +110,7 @@
                 가입시 입력한 이메일로 아이디를 발송해드립니다. <br>
                 아래 발송 요청 버튼을 클릭해주세요.
             </p>
-            <button type="button" id="findIdSSend" onclick="sendId();" >아이디 발송 요청</button>
+            <button type="button" id="findIdSSend">아이디 발송 요청</button>
         </div>
         
         <script>
@@ -118,6 +118,15 @@
         		$("#findIdSSend").on("click",function(){
 					// 이메일 보내고
 					// 버튼!
+        		
+        		$.ajax({
+        			url:"sendId.me",
+        			type:"get",
+        			data:{memId2:"<%= findId.getMemId2() %>",email:"<%= findId.getEmail() %>"},
+        			success:function(result){
+        				
+        
+        				
         			Swal.fire({
 						  icon: 'success',
 						  title: '',
@@ -126,18 +135,15 @@
 						}).then(response =>{
 							return location.href='<%= request.getContextPath() %>';
 						})
+        			},error:function(){
+        				console.log("아이디 찾기 이메일 전송 실패");
+        			}
+        		})
 						
         		});
         	})
         	
-        	function sendId(){
-        		
-        		$.ajax({
-        			url:"sendId.me"
-        			type:"get",
-        			data:{ }
-        		})
-        	}
+        	
 	 	
         </script>
 

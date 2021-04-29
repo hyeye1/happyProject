@@ -244,7 +244,6 @@
             <script>
             // 오늘의 추천
             $(function(){
-            	
             	for (var i=1; i<=6; i++) {
             		(function(i) {
             			
@@ -535,12 +534,7 @@
                 </ul>
             </div>
     
-    
-    
-    
-    
-    
-    
+
     
     
         </div> <!-- outer div-->

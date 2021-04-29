@@ -43,7 +43,7 @@ public class FindIdServlet extends HttpServlet {
 		
 		if(m == null) {
 			// 아이디찾기실패
-			response.getWriter().println("<script>alert('아이디찾기에 실패하였습니다. 입력한 성명 또는 이메일을 확인해주세요.');</script>");
+			response.getWriter().println("<script>alert('아이디찾기에 실패하였습니다. 입력한 성명 또는 이메일을 확인해주세요.');"+"history.back();</script>");
 			
 		}else if(m.getMemStatus().equals("N")) { // 탈퇴한 회원 로그인
 			response.getWriter().println("<script>alert('탈퇴한 회원입니다. 회원가입을 다시 진행해주세요.');"+"history.back();</script>");

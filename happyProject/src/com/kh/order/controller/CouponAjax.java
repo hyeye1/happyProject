@@ -26,11 +26,11 @@ public class CouponAjax extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int str = Integer.parseInt(request.getParameter("input"));
+		int couponCategory = Integer.parseInt(request.getParameter("couponCategory"));
 		
 		
 		
-		int responseData =   str;
+		int responseData =   couponCategory;
 		
 		
 		response.setContentType("text/html; charset=UTF-8");

@@ -20,7 +20,7 @@
                              , BK_NAME
                              , AUTHOR
                              , PUBLISHER
-                             , decode( bk_division, 'in','국내도서', 'out','외국도서' , bk_division)  AS bk_division
+                             , decode(BK_DIVISION, 'in','국내도서', 'out','외국도서' , BK_DIVISION)  AS BK_DIVISION
                              , decode(BK_GENRE, 'novel' , '문학', 'economy','경제/경영','poem','시','science','과학','travel','여행',BK_GENRE) AS BK_GENRE 
                              , BK_ORIGIN_PRICE
                              , BK_PRICE

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.member.model.vo.Coupon;
+import com.kh.order.model.vo.Cart;
 
 
 public class OrderDao {
@@ -85,6 +86,49 @@ private Properties prop = new Properties();
 		}
 		
 		return cp;
+	}
+	
+	public ArrayList<Cart> selectCartList(Connection conn, int userNo) {
+		ArrayList<Cart> ca = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectCartList");		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, userNo);
+
+			
+			rset = pstmt.executeQuery();
+				while(rset.next()) {
+				Cart c = new Cart();
+				c.setCartNo(rset.getInt("ca_no"));
+				c.setBookNo(rset.getInt("bk_no_ca"));
+				c.setMemNo(rset.getInt("mem_no_ca"));
+				c.setAmount(rset.getInt("amount"));
+				c.setTtPrice(rset.getInt("total_price"));
+				c.setStatus(rset.getString("author"));
+				c.setTitle(rset.getString("bk_title"));
+				c.setAuthor(rset.getString("author"));
+				c.setOrgPrice(rset.getInt("origin_price"));
+				c.setPrice(rset.getInt("price"));
+				c.setMainImg(rset.getString("main_img"));
+				
+				ca.add(c);
+			
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ca;
+		
 	}
 
 }

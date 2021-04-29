@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.kh.member.model.vo.Coupon;
 import com.kh.member.model.vo.Member;
 import com.kh.order.model.service.OrderService;
+import com.kh.order.model.vo.Cart;
 
 /**
  * Servlet implementation class OrderServlet
@@ -38,16 +39,27 @@ public class OrderServlet extends HttpServlet {
 		int userNo = loginUser.getMemNo();
 		
 		
+		ArrayList<Cart> ca = new OrderService().selectCartList(userNo);
+		request.setAttribute("ca", ca);
 		
-		/*
-		Member m = new Member();
-	    m.setMemNo(String.valueOf(userNo));
-		*/
+		
+		
 		ArrayList<Coupon> cou = new OrderService().selectCouponList(userNo);
 		request.setAttribute("cou", cou);
 		
 		Coupon cp = new OrderService().selectCoupon(userNo);
 		request.setAttribute("cp", cp);
+		
+		int total = 0;
+		int discountTotal = 0;
+		for (Cart c : ca) {
+			total += c.getTtPrice();
+			discountTotal += (c.getOrgPrice() - c.getPrice());
+		}
+		
+
+		request.setAttribute("total", total);
+		request.setAttribute("discountTotal", discountTotal);
 		
 
 		request.getRequestDispatcher("views/order/order.jsp").forward(request, response);

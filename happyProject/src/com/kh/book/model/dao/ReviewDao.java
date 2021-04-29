@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.book.model.vo.Review;
-import com.kh.notice.model.vo.Faq;
 
 
 

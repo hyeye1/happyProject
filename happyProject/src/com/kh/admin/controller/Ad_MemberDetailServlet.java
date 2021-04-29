@@ -1,23 +1,27 @@
-package com.kh.order.controller;
+package com.kh.admin.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.admin.model.service.Ad_MemberService;
+import com.kh.admin.model.vo.Ad_Member;
+
 /**
- * Servlet implementation class CouponAjax2
+ * Servlet implementation class Ad_MemberDetailServlet
  */
-@WebServlet("/couponAjax2.me")
-public class CouponAjax2 extends HttpServlet {
+@WebServlet("/detail.mem")
+public class Ad_MemberDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CouponAjax2() {
+    public Ad_MemberDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +31,11 @@ public class CouponAjax2 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int price = Integer.parseInt(request.getParameter("price"));
-		int delivery = Integer.parseInt(request.getParameter("delivery"));
-		int couponCategory = Integer.parseInt(request.getParameter("couponCategory"));
-
+		int memberNo = Integer.parseInt(request.getParameter("mno"));
 		
-		int responseData =  price -delivery  -couponCategory;
+//		Ad_Member m = new Ad_MemberService().selectMember(memberNo);
 		
 		
-		response.setContentType("text/html; charset=UTF-8");
-		
-		response.getWriter().print(responseData);
 	}
 
 	/**
