@@ -291,7 +291,7 @@
                     <table>
                         <tr>
                             <th width="100">이름*</th>
-                            <td><input type="text" name="name" id="userName" value="<%= userName %>" style="width:400px" required> 
+                            <td><input type="text" name="userName" id="userName" value="<%= userName %>" style="width:400px" required> 
                                 <a class="dvButton btn btn-warning btn-sm" data-toggle="modal" data-target="#shipping">배송지 변경</a>
                             </td>
                         </tr>
@@ -311,16 +311,16 @@
                                 <input type="text" name="" value="01234" style="width:150px;"> 
                                 <a class="dvButton btn btn-warning btn-sm"  data-toggle="modal" data-target="#post">우편번호</a> <br>
                                 <input type="text" name="address" id="address" value="<%= address %>" style="width:500px; margin-bottom: 4px;"> <br>
-                                <input type="text" name="addressEtc" value=""  style="width:500px;">
+                                <input type="text" name="addressEtc"  style="width:500px;">
                             </td>
                         </tr>
                         <tr>
                             <th>배송시 요청사항</th>
-                            <td><textarea name="dvDemand" id="" rows="4" style="width:500px; resize:none;"></textarea></td>
+                            <td><textarea name="dvDemand"  rows="4" style="width:500px; resize:none;"></textarea></td>
                         </tr>
                         <tr>
                             <th>
-                                <input type="checkbox" id="happyDelivery" style="vertical-align: middle;" onclick="happyDelivery();">
+                                <input type="checkbox" id="happyDelivery" name="happyDelivery" value="해피배송" style="vertical-align: middle;" onclick="happyDelivery();">
                                 <label for="happyOrder"> HAPPY배송</label>
                             </th>
                             <td>
@@ -453,6 +453,7 @@
                             <strong class="label" >최종 결제금액</strong>
                             <strong class="price">
                                 <span class="number" id="lastPrice" name="lastPrice"><%= total %></span>원
+                                <input type="hidden" name="total" id="total" value="<%= total %>">
                             </strong>
                         </li>
                         <hr>
@@ -464,7 +465,7 @@
                     <div class="confirmBox">
                     
                         <label for="orderConfirm">
-                            <input type="checkbox" class="checkbox" id=orderConfirm required>주문내역확인 동의(필수)
+                            <input type="checkbox" class="checkbox" id=orderConfirm >주문내역확인 동의(필수)
                         </label>
                     </div>
                     <div class="confrimContent">
@@ -480,7 +481,7 @@
                 <!-- 결제하기, 장바구니 버튼 -->
                 <div style="border-top: 1px solid #ddd; background: #fbfbfb;">
                     <div class="finalBt">
-                        <div><button type="submit" class="pay btn btn-warning btn-lg" id="payBtn" >결제하기</button></div> <br>
+                        <div><button type="button" class="pay btn btn-warning btn-lg" id="payBtn" disabled >결제하기</button></div> <br>
                         <div><button type="button" id="charBtn" class="goBackToCart btn btn-warning btn-lg">장바구니 가기</button></div>
                     </div>
                 </div>
@@ -576,6 +577,20 @@
     	    else
     	        $("#happyDate").attr("disabled", true);   
     	});
+    	
+    	
+
+        $(function(){
+            $("#orderConfirm").change(function(){
+                if($(this).prop("checked")){
+                    $("#payBtn").removeAttr("disabled");
+                }else{
+                    $("#payBtn").attr("disabled", true);
+                }
+            })
+        })
+
+   
     
     
     
@@ -667,15 +682,14 @@
                     buyer_addr : $("#address").val(),
                     buyer_postcode : '123-456'
                 }, function(rsp) {
-                    if ( rsp.success ) {
+                	if ( rsp.success ) {
                         var msg = '결제가 완료되었습니다.';
                         msg += '고유ID : ' + rsp.imp_uid;
                         msg += '상점 거래ID : ' + rsp.merchant_uid;
                         msg += '결제 금액 : ' + rsp.paid_amount;
                         msg += '카드 승인번호 : ' + rsp.apply_num;
-                    } else {
-                        var msg = '결제에 실패하였습니다.';
-                        msg += '에러내용 : ' + rsp.error_msg;
+
+                        $(".orderForm").submit();
                     }
                     alert(msg);
                 });

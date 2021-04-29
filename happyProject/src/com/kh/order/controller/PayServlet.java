@@ -32,7 +32,13 @@ public class PayServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
+		request.setCharacterEncoding("utf-8");
+		String name = request.getParameter("userName");
+		String hDate = request.getParameter("happyDate");
+		int sum = Integer.parseInt(request.getParameter("total"));
+		String dvDemand = request.getParameter("dvDemand");
+		String happyDelivery = request.getParameter("happyDelivery");
+		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		int userNo = loginUser.getMemNo();
@@ -40,12 +46,16 @@ public class PayServlet extends HttpServlet {
 		Order or = new Order();
 		or.setReceiver(name);
 		or.setMemNoOr(userNo);
+		or.setOrSum(sum);
+		or.setOrDelivery(happyDelivery);
+		or.setOrRequest(dvDemand);
+		or.setOrHdDate(hDate);
 		
 		int result = new OrderService().insertOrder(or);
 		if(result>0) { 
 			request.getRequestDispatcher("views/order/orderConfirmation.jsp").forward(request, response);
 			
-		}else { //실패 => 에러페이지
+		}else {
 			
 		}
 	}

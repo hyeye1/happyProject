@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.kh.member.model.vo.Coupon;
 import com.kh.order.model.vo.Cart;
+import com.kh.order.model.vo.Order;
 
 
 public class OrderDao {
@@ -130,5 +131,32 @@ private Properties prop = new Properties();
 		return ca;
 		
 	}
+	
+	public int insertOrder(Connection conn, Order or) {
+			
+			int result =0;
+			PreparedStatement pstmt =null;
+			String sql = prop.getProperty("insertOrder");
+			
+			try {
+				pstmt=conn.prepareStatement(sql); 
+				pstmt.setInt(1, or.getMemNoOr());
+				pstmt.setString(2, or.getReceiver());
+				pstmt.setInt(3, or.getOrSum());
+				pstmt.setString(4, or.getOrDelivery());
+				pstmt.setString(5, or.getOrRequest());
+				pstmt.setString(6, or.getOrHdDate());
+				
+				
+				result=pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			return result;
+		}
+		
+	
 
 }
