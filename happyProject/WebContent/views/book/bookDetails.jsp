@@ -138,6 +138,7 @@
         }
         .bookDetailOuter .reviewArea{
             border-top:1px solid black;
+            border-bottom:1px solid black;
             margin:auto;
             margin-bottom:200px;
             width:700px;
@@ -435,7 +436,7 @@
         <!-- 리뷰 없을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea">
-            <h6 style="color:rgb(249, 219, 122); margin:15px;">최신순</h6>
+            <h6 style="color:rgb(249, 219, 122); margin:15px; float:left;">최신순</h6>
             <hr>
             <p align="center" style="font-size:16px;">회원님께서 첫 리뷰의 주인공이 되어주세요.</p>
         </div>
@@ -444,10 +445,10 @@
         <!-- 리뷰 있을 때 list -->
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea" id="reviewList">
-            <h6 style="margin:15px;"><b>최신순</b></h6>
+            <h6 align="right" style="margin:15px;"><b>최신순</b></h6>
             <hr>
             <% for(Review r:list) { %>
-            <table style="width:750px;">
+            <table style="width:100%;">
                 <thead>
                     <tr>
                     	 <td align="center" style="color:rgb(249, 219, 5);"><b><%= r.getMemNoRe() %></b></td>

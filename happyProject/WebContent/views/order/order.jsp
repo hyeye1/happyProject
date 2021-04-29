@@ -280,10 +280,10 @@
         </div>
         <hr>
         <br><br>
-        <!--  <form>-->
+     <form>
             <!-- 배송정보 입력란 -->
-        <div>
-            <div class="dvForm" action="" style="width:600px;">
+        
+            <div class="dvForm" action="<%= contextPath %>/orderConf.or" style="width:600px;">
                 <fieldset style="border:none;">
                     <legend><h4 style="font-weight: bolder;">배송정보</h4></legend>
                     <br>
@@ -329,14 +329,14 @@
                 </table>
                 </fieldset>
             </div>
-        </div>
+        
             <br><br>
 
             <hr>
             <br><br>
             
             <!-- 주문상품 폼 -->
-            <div class="orderForm" action="" style="width:600px">
+            <div class="orderForm" style="width:600px">
                 <fieldset style="border:none;">
                     <legend><h4 style="font-weight: bolder;">주문상품</h4></legend>
                     <br>
@@ -377,7 +377,7 @@
                 <tr>
                     <td>
                         <div class="discount" align="left">
-                        <button   id="couponBtn" style="width:100px; height:45px; line-height: 1.3;" >적용하기</button>
+                        <button  type="button" id="couponBtn" style="width:100px; height:45px; line-height: 1.3;" >적용하기</button>
                         </div>
                     </td>
                     <% if(cou.isEmpty()){ %>
@@ -434,7 +434,7 @@
 
             
             <!-- 사이드바 -->
-            <form class="remote" action="<%= contextPath %>/orderConf.or" method="post">
+            <div class="remote" >
                 <div class="info">
                     <ul class="list_price">
                         <li>
@@ -479,11 +479,11 @@
                 <div style="border-top: 1px solid #ddd; background: #fbfbfb;">
                     <div class="finalBt">
                         <div><button type="submit" class="pay btn btn-warning btn-lg" id="payBtn"  >결제하기</button></div> <br>
-                        <div><button class="goBackToCart btn btn-warning btn-lg">장바구니 가기</button></div>
+                        <div><button type="button" id="charBtn" class="goBackToCart btn btn-warning btn-lg">장바구니 가기</button></div>
                     </div>
                 </div>
-            </form>
-        <!--</form> -->
+            </div>
+       </form> 
         <!-- //사이드바 -->
         
 
@@ -589,6 +589,10 @@
 	    		var result = Number($("#price").text()) + Number($("#delivery").text()) - Number($("#couponCategory option:selected").val());
 	    		$("#lastPrice").text(result);
 	    		
+	    	})
+	    	
+	    	$("#charBtn").click(function(){
+	    		location.href = "<%= contextPath %>/cList.or";
 	    	})
 	    	
 	    	

@@ -97,6 +97,23 @@ public class Book {
 		this.bkContentList = bkContentList;
 		this.bkMainImg = bkMainImg;
 	}
+	
+	
+
+	public Book(int bookNo, String bkName, String author, String bkDivision, String bkGenre, int bkOrgPrice,
+			int bkPrice, Date bkEnrollDate, String bkMainImg, int bkHits) {
+		super();
+		this.bookNo = bookNo;
+		this.bkName = bkName;
+		this.author = author;
+		this.bkDivision = bkDivision;
+		this.bkGenre = bkGenre;
+		this.bkOrgPrice = bkOrgPrice;
+		this.bkPrice = bkPrice;
+		this.bkEnrollDate = bkEnrollDate;
+		this.bkMainImg = bkMainImg;
+		this.bkHits = bkHits;
+	}
 
 	public int getBookNo() {
 		return bookNo;
