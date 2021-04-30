@@ -3,6 +3,17 @@
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	String contextPath = request.getContextPath();
+	
+	// 쿠키 id값 확인
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("memId")){
+				session.setAttribute("memId", cookie.getValue());
+			}
+		}
+	}
+
 %>
     <!DOCTYPE html>
     <html lang="en">
@@ -131,14 +142,15 @@
             <div class="menubarHeader">
                 <!-- 해피북스데이 + 검색창 + 로그인 + 회원가입 + 장바구니 -->
                 <a href="<%=contextPath%>"><img src="resources/images/logo.png" style="width: 120px;" id="menubarLogoImg"></a>
-                <input type="text" id="menubarSearchInput" > <button type="submit" class="menubarSearch" id="menubarSearchButton" >검색</button>
+                
+                <input type="text" id="menubarSearchInput" name="searchKey" > <button type="submit" class="menubarSearch" id="menubarSearchButton" >검색</button>
+
     		</div>
             </form>
     		<% if(loginUser == null) { %>
     		
                 <!-- 로그인전 div -->
 	                <div id="loginBefore"  >
-	               		<input type="button" class="menubarSearch" id="menubarSearchButton" value="검색" onclick="bookSearch();">
  
 	                    <input type="image" id="menubarCartBtn" src="resources/images/cart.png" onclick="beforeCheckCart();">
 	                    <input type="image" id="menubarJoinBtn" src="resources/images/join.png" onclick="joinPage();">

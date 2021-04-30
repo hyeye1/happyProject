@@ -499,6 +499,72 @@
 	margin-left:-75px; 
 	z-index: 200;
 	}
+	
+	 /* 보유쿠폰 팝업창 */
+    .couponWrap{
+        position: absolute;
+        top:39%;
+        left:65%;
+        z-index: 10;
+        box-sizing: border-box;
+        width: 410px; 
+        height: 218px; 
+        margin-top: -75px;
+        margin-left: -150px; 
+        display: none;
+    }
+	.couponWrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
+    #couTitle{background-color: rgb(249, 219, 122);}
+    #couContent{height: 90%; background-color: white;}
+
+    #couTitleName{
+        display:inline-block;
+        margin-left:160px;
+        margin-top:6px;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 1;
+        color: #3c3c3c;
+    }
+    #couContent{
+        font-size: smaller;
+        text-align: center;
+    }
+    #couCloseBtn { 
+        float: right; 
+        width: 20px; 
+        line-height: 20px;
+        margin-right: 5px;
+        margin-top: 5px;
+        text-align: center; 
+        cursor: pointer; 
+        border-radius: 5px;
+        background-color: #f3f3f3; 
+    } 
+    #couCloseBtn:hover { 
+        background-color: lightgray; 
+    } 
+    #couTable{
+        margin: 3px;
+        width: 400px;
+        height: 80px;
+    }
+    #couTable2{
+        width: 400px;
+        height: 100px;
+        margin: 3px;
+    }
+    #couTable2>thead{
+        background-color: #f3f3f3;
+    }
+    #modal3{
+        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
+        top: 0; left: 0; z-index: 999; display: none;
+    }
+    .show-popup3{
+        display:block !important;
+    }
+	
    
 </style>
 </head>
@@ -581,7 +647,7 @@
                         <!-- 조회된 결과가 있을 경우 -->
                             <% for(Ad_Member b : list) { %>
                                 <tr>
-                                    <td><input type="radio"></td>
+                                    <td><input type="checkbox"></td>
                                     <td><%= b.getMemNo() %></td>
                                     <td class="memId" data-memNo="<%= b.getMemNo() %>">
                                     	
@@ -592,7 +658,9 @@
                                     <td><%= b.getEmail() %></td>
                                     <td><%= b.getOrderCnt() %></td>
                                     <td><%= b.getOrderTotalAmt() %></td>
-                                    <td id="memCoupon" style="color: red; font-weight: bold;"><%=b.getCouCnt() %></td>
+                                    <td class="memCoupon" style="color: red; font-weight: bold;">
+                                    	<%=b.getCouCnt() %>
+                                    </td>
                                 </tr>
                             <%}%>
                         <% } %>
@@ -732,7 +800,7 @@
     </script> 
 
 
-<!-- 쿠폰 상세 팝업 -->
+	<!-- 쿠폰 상세 팝업 -->
     <div id="modal3">
         <div class="couponWrap">
             <div id="couTitle">
@@ -743,11 +811,11 @@
                 <table id="couTable">
                     <tr>
                         <th width="30%">회원번호</th>
-                        <td>22</td>
+                        <td id="mem__couNo">22</td>
                     </tr>
                     <tr>
                         <th>사용 가능한 쿠폰</th>
-                        <td style="font-weight: bold; color: red;"><u>2</u></td>
+                        <td id="cou__cnt" style="font-weight: bold; color: red;"><u>2</u></td>
                     </tr>
                     <tr>
                         <th>쿠폰내역</th>
@@ -763,10 +831,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>봄비 내릴땐 해피북스데이</td>
-                            <td>2000</td>
-                            <td>2021.04.16</td>
-                            <td>20000</td>
+                            <td id="cou__name">봄비 내릴땐 해피북스데이</td>
+                            <td id="cou__discount">2000</td>
+                            <td id="cou__date">2021.04.16</td>
+                            <td id="cou__condition">20000</td>
                         </tr>
                         <tr>
                             <td>4월 봄맞이 쿠폰</td>
@@ -787,15 +855,17 @@
     </div>
 
     <script>
-        $("#memCoupon").on("click",function(){
-            $(".couponWrap").css({display:"block"});
-            $("#modal3").addClass('show-popup3');
+        $(".memCoupon").on("click",function(){
+ 			$(".couponWrap").css({display:"block"});
+        	$("#modal3").addClass('show-popup3');
         });
         $("#couCloseBtn").on("click",function(){
             $(".couponWrap").css({display:"none"});
             $("#modal3").removeClass('show-popup3');
         });
     </script>
+
+
 
     <!-- 삭제 팝업 -->
     <div id="modal4">
@@ -955,6 +1025,7 @@
         });
     </script>
 
+	<!--  AJAX 실행중 로딩바  -->
 	<script>
 	$(document).ready(function(){
 		var loading = $('<div id="loading" class="loading"></div><img id="loading_img" alt="loading" src="${pageContext.request.contextPath}/resources/images/admin/ajax-loader (1).gif" />')
@@ -969,6 +1040,8 @@
 		});
 	
 	</script>
+	
+	
     <!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
         <div class="adEndWrap">

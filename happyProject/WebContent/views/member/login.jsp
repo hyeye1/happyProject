@@ -89,7 +89,16 @@
         </div>
         <div class="loginMid">
             <button type="submit" id="loginBtn">로그인</button> <br>
-            <span id="loginHoldYN"><input type="checkbox" id="loginOn"><label for = "loginOn">로그인 상태 유지</label></span>
+            <span id="loginHoldYN"><input type="checkbox" id="loginOn" name="loginOn" value="true" onclick="loginOn"><label for = "loginOn">로그인 상태 유지</label></span>
+            	<script>
+					$(function(){
+						$("#loginOn").change(function(){
+							if($(this).prop("checked")){
+								var value = "true";
+							}
+						})
+					})
+            	</script>
             <span id="joinNow"><a href="<%= request.getContextPath() %>/joinForm1.me">회원가입</a></span>
         </div>
         <div class="loginSns" align="center">

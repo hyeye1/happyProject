@@ -27,11 +27,12 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		HttpSession session = request.getSession();
+
+		String memId = (String)session.getAttribute("memId");
 		session.invalidate();	// 세선 무효화 
 		
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath()+ "?loginOn=false&id=" + memId );
 	}
 
 	/**

@@ -372,16 +372,18 @@
 
     <script>
         $(function(){
-            $("#adLock").click(function(){
+            $("#adLock").on("click",function(){
                 $(".adEndWrap").show();
                 $("#modal_End").addClass('show-popup_End');
             });
-            $("#cancleEndBtn").click(function(){
+            $("#cancleEndBtn").on("click",function(){
                 $(".adEndWrap").hide();
                 $("#modal_End").removeClass('show-popup_End');
             });
         });
     </script>
+    
+    <!-- 이미지 클릭 시 확대  -->
     <script>
         function doImgPop(img){
          img1= new Image();
@@ -407,7 +409,7 @@
          imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
          imgWin.document.close();
         }
-        </script>
+	</script>
     
  
 </body>

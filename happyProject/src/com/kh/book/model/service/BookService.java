@@ -106,9 +106,9 @@ public class BookService {
 	   }
    
    
-   public ArrayList<Book> searchBookList(String hashkey){
+   public ArrayList<Book> searchBookList(String searchKey){
 	      Connection conn = getConnection();
-	      ArrayList<Book> list = new BookDao().hashSearchList(conn, hashkey);
+	      ArrayList<Book> list = new BookDao().searchBookList(conn, searchKey);
 	      close(conn);
 	      return list;
 	   }

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.admin.model.vo.Ad_Coupon"%>
 <%
 	ArrayList<Ad_Coupon> list = (ArrayList<Ad_Coupon>) request.getAttribute("list");
+
 	
 %>
 <%@ page import="java.util.Date" %>
@@ -211,7 +212,7 @@
             </div>
             <div id="sub_title">쿠폰 관리</div>
             <div id="list"style="padding: 20px 20px; " align="right" >
-                    진행 : <b style="color: red;">2</b>  &nbsp;&nbsp; 종료 : <b>1</b> 
+                    진행 : <b style="color: red;">2</b>  &nbsp;&nbsp; 
             </div>
             
             <div id="table">
@@ -280,11 +281,11 @@
 
     <script>
         $(function(){
-            $("#adLock").click(function(){
+            $("#adLock").on("click",function(){
                 $(".adEndWrap").show();
                 $("#modal_End").addClass('show-popup_End');
             });
-            $("#cancleEndBtn").click(function(){
+            $("#cancleEndBtn").on("click",function(){
                 $(".adEndWrap").hide();
                 $("#modal_End").removeClass('show-popup_End');
             });

@@ -34,31 +34,12 @@ public class MyAddressServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
-
-		int adNo  = Integer.parseInt(request.getParameter("adNo")); 
-		String adPost = request.getParameter("adPost");
-		String adRoad = request.getParameter("adRoad");
-		String adDetail = request.getParameter("adDetail");
-		
-		MyAddress a = new MyAddressService().selectMyAddress(adNo, adPost, adRoad, adDetail);
-		
-		
 		RequestDispatcher view = request.getRequestDispatcher("views/member/my_myAddress.jsp");
 		view.forward(request, response);
-		
-		
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("selectMyAddress" , a);
-		
-		
-		
-		
-		
 	}
-	
 
+
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
