@@ -22,6 +22,17 @@ public class Ad_Coupon {
 		this.couEnd = couEnd;
 		this.couCondition = couCondition;
 	}
+	
+	
+
+	public Ad_Coupon(String couName, int discount, String couStart, String couEnd, int couCondition) {
+		super();
+		this.couName = couName;
+		this.discount = discount;
+		this.couStart = couStart;
+		this.couEnd = couEnd;
+		this.couCondition = couCondition;
+	}
 
 	public int getCouNo() {
 		return couNo;

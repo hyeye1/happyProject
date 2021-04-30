@@ -110,12 +110,62 @@
                       , ?
                       )
 	</entry>
-	
+
 	<entry key="cartDeleteAll">
 		DELETE 
 		  FROM TB_CART
 		 WHERE MEM_NO_CA = ?
 	</entry>
+
+	<entry key="insertPay">
+		INSERT INTO TB_PAY(
+                    PAY_NO,
+                    OR_NO_PAY,
+                    PAY_SUM)
+             VALUES
+                     (
+                        SEQ_PNO.NEXTVAL
+                      , ?
+                      , ?
+                      )
+	</entry>
+	<entry key="selectOrder">
+		SELECT 
+		        OR_NO,
+		        MEM_NO_OR,
+		        AD_NO_OR,
+		        RECEIVER,
+		        OR_SUM,
+		        OR_DATE,
+		        OR_DELIVERY,
+		        OR_STATUS,
+		        OR_REQUEST,
+		        OR_HD_DATE,
+		        COU_MEM_NO_OR
+		  FROM TB_ORDER O
+		 WHERE OR_NO = ?
+	</entry>
 	
+	<entry key="orderNo">
+		 SELECT * 
+			FROM(
+			    SELECT 
+			        OR_NO,
+			        MEM_NO_OR,
+			        AD_NO_OR,
+			        RECEIVER,
+			        OR_SUM,
+			        OR_DATE,
+			        OR_DELIVERY,
+			        OR_STATUS,
+			        OR_REQUEST,
+			        OR_HD_DATE,
+			        COU_MEM_NO_OR
+			        
+			      FROM TB_ORDER 
+			      ORDER BY OR_NO DESC)
+			    WHERE ROWNUM = 1
+	</entry>
+
 
 </properties>

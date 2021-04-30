@@ -15,6 +15,7 @@ public class Order {
 	private String orRequest;
 	private String orHdDate;
 	private int couMemNoOr;
+	private int discount;
 	
 	public Order() {}
 
@@ -32,6 +33,32 @@ public class Order {
 		this.orRequest = orRequest;
 		this.orHdDate = orHdDate;
 		this.couMemNoOr = couMemNoOr;
+	}
+	
+	
+	
+	
+
+	public Order(int orNO, int memNoOr, int adNoOr, String receiver, int orSum, Date orDate, String orDelivery,
+			String orStatus, String orRequest, String orHdDate, int couMemNoOr, int discount) {
+		super();
+		this.orNO = orNO;
+		this.memNoOr = memNoOr;
+		this.adNoOr = adNoOr;
+		this.receiver = receiver;
+		this.orSum = orSum;
+		this.orDate = orDate;
+		this.orDelivery = orDelivery;
+		this.orStatus = orStatus;
+		this.orRequest = orRequest;
+		this.orHdDate = orHdDate;
+		this.couMemNoOr = couMemNoOr;
+		this.discount = discount;
+	}
+
+	public Order(int orNO) {
+		super();
+		this.orNO = orNO;
 	}
 
 	public int getOrNO() {

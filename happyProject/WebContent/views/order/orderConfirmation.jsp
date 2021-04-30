@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.order.model.vo.Order, com.kh.order.model.vo.Pay, com.kh.member.model.vo.Member"%>
+ <% 
+ 	Pay p = (Pay)request.getAttribute("p");
+
+ %>
 
 <!DOCTYPE html>
 <html>
@@ -49,48 +53,57 @@
 <body>
 	
 	<%@ include file = "../common/menubar.jsp" %>
-
-	<div class="orderCompleteOuter">
-        <br><br>
-        <!-- 결제완료 타이틀, 단계-->
-        <div>
-            <div class="text">
-                <h2 style="display:inline;">결제완료</h2>
-            </div>
-            <div class="step">
-                <button class="showStep step1 btn btn-primary" disabled>01 장바구니 ></button>
-                <button class="showStep step1 btn btn-primary" disabled>02 주문하기 ></button>
-                <button class="showStep btn btn-primary" disabled>03 결제완료 </button>
-            </div>
-        </div>
-        <hr>
-        <br><br>
-        
-        <div align="center">
-            <br><br>
-            <img src="resources/images/cart/check.png" alt="">
-            <h2>주문이 성공적으로 접수되었습니다.</h2>
-            <br>
-            <div>
-                <span>주무번호(BOOK01)</span>
-                <span>|</span>
-                <span>안소은 고객님 감사합니다.</span>
-            </div>
-            <p>
-                주문 및 배송조회는 <a href="views/member/my_mypageMain.jsp">마이페이지</a> > <a href="">주문/배송조회</a> 에서 확인 가능합니다.
-            </p>
-            <br>
-            <button id="detailButton" class="btn btn-warning btn-lg" onclick="orderDetails();">주문내역 상세보기</button>
-        </div>
+	<%			   
+		String userName = loginUser.getMemName();
+	
+	%>
+	
+	<form action="<%= contextPath %>/orderDet.or"  method="post">
+		<div class="orderCompleteOuter">
+	        <br><br>
+	        <!-- 결제완료 타이틀, 단계-->
+	        <div>
+	            <div class="text">
+	                <h2 style="display:inline;">결제완료</h2>
+	            </div>
+	            <div class="step">
+	                <button class="showStep step1 btn btn-primary" disabled>01 장바구니 ></button>
+	                <button class="showStep step1 btn btn-primary" disabled>02 주문하기 ></button>
+	                <button class="showStep btn btn-primary" disabled>03 결제완료 </button>
+	            </div>
+	        </div>
+	        <hr>
+	        <br><br>
+	        
+	        <div align="center">
+	            <br><br>
+	            <img src="resources/images/cart/check.png" alt="">
+	            <h2>주문이 성공적으로 접수되었습니다.</h2>
+	            <br>
+	            <div>
+	                <span>주문번호 : BOOK<%=p.getOrNoPay() %></span>
+	                <input type="hidden" name="orNo" value="<%=p.getOrNoPay()%>">
+	                <span>|</span>
+	                <span><%=userName %> 고객님 감사합니다.</span>
+	            </div>
+	            <p>
+	                주문 및 배송조회는 <a href="views/member/my_mypageMain.jsp">마이페이지</a> > <a href="">주문/배송조회</a> 에서 확인 가능합니다.
+	            </p>
+	            <br>
+	            <button type="submit" id="detailButton" class="btn btn-warning btn-lg" onclick="orderDetails();">주문내역 상세보기</button>
+	        </div>
+   		 </div>
+	   </form>
+		
+		<!--  
 		<script type="text/javascript">
 			function orderDetails(){
 				location.href = "<%= contextPath %>/orderDet.or";
 			}
 		</script>
-        
+        -->
 
 
-    </div>
 	
 </body>
 </html>
