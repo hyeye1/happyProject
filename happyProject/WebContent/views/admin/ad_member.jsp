@@ -165,10 +165,65 @@
     .memPoint:hover, .memCoupon:hover, .memId:hover{font-weight: bold;}
 
 
-    
+    /* 회원 상세정보 팝업창 */
+    .detailwrap{
+		position: absolute;
+		top:36%;
+		left:55%;
+		z-index: 10;
+		box-sizing: border-box;
+		width: 410px; 
+		height: 300px; 
+		margin-top: -75px;
+		margin-left: -150px; 
+	}
+		.detailwrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
+
+        /* 영역 나누기 */
+        #ptitle{height: 35px; background-color: rgb(249, 219, 122);}
+        #pcontent{height: 265px; background-color: white;}
+
+        
+        #ptitleName{
+            display:inline-block;
+            margin-left:160px;
+            margin-top:6px;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 1;
+            color: #3c3c3c;
+        }
+        
+        #pcontent{
+            font-size:smaller;
+            text-align: center;
+        }
+        #pcontent table{
+            width: 400px;
+            height: 250px;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+        #pcloseBtn { 
+        float: right; 
+        width: 20px; 
+        line-height: 20px;
+        margin-right: 5px;
+        margin-top: 5px;
+        text-align: center; 
+        cursor: pointer; 
+        border-radius: 5px;
+        background-color: #f3f3f3; 
+        } 
+        #pcloseBtn:hover { background-color: lightgray;} 
+        #modal{
+        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
+        top: 0; left: 0; z-index: 999; display: none;
+    }
+    .show-popup{display:block !important;}
 
 
-     /* 보유쿠폰 팝업창 */
+     /* 보유쿠폰상세 팝업창 */
     .couponWrap{
         position: absolute;
         top:39%;
@@ -269,59 +324,8 @@
         display:block !important;
     }
 
-     /* 쿠폰발송 팝업창 */
-    .couSendWrap{
-        position: absolute;
-        top:39%;
-        left:68%;
-        z-index: 10;
-        width: 410px; 
-        height: 248px; 
-        margin-top: -75px;
-        margin-left: -150px;
-        display: none; 
-    }
-	.couSendWrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
 
-    .couSendWrap>*{width: 100%;}
-    #couSendTitle{height: 35px; background-color: rgb(249, 219, 122);}
-    #couSendContent{height: 213px; background-color: white;}
 
-    #couSendName{
-        display:inline-block;
-        margin-left:175px;
-        margin-top:6px;
-        font-size: 15px;
-        font-weight: bold;
-        margin-top: 1;
-        color: #3c3c3c;
-    }
-    #couSendContent{
-        font-size: smaller;
-        text-align: center;
-    }
-    #couSendTable{
-        margin: 3px;
-        width: 400px;
-        height: 130px;
-    }
-    #couSendTable tr{
-        height: 30px;
-    }
-    .couponText{
-        border: 1px solid gray;
-        height: 28px;
-        border-radius: 3px;
-        color: #5a5a5a;
-        padding-top: 3px;
-    }
-    #modal5{
-        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
-        top: 0; left: 0; z-index: 999; display: none;
-    }
-    .show-popup5{
-        display:block !important;
-    }
 
 
     /* 관리자모드 종료 팝업창 */
@@ -361,63 +365,6 @@
         display:block !important;
     }
 
-
-	/* 회원 상세정보 팝업창 */
-    .detailwrap{
-		position: absolute;
-		top:36%;
-		left:55%;
-		z-index: 10;
-		box-sizing: border-box;
-		width: 410px; 
-		height: 300px; 
-		margin-top: -75px;
-		margin-left: -150px; 
-	}
-		.detailwrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
-
-        /* 영역 나누기 */
-        #ptitle{height: 35px; background-color: rgb(249, 219, 122);}
-        #pcontent{height: 265px; background-color: white;}
-
-        
-        #ptitleName{
-            display:inline-block;
-            margin-left:160px;
-            margin-top:6px;
-            font-size: 15px;
-            font-weight: bold;
-            margin-top: 1;
-            color: #3c3c3c;
-        }
-        
-        #pcontent{
-            font-size:smaller;
-            text-align: center;
-        }
-        #pcontent table{
-            width: 400px;
-            height: 250px;
-            margin-top: 5px;
-            margin-left: 5px;
-        }
-        #pcloseBtn { 
-        float: right; 
-        width: 20px; 
-        line-height: 20px;
-        margin-right: 5px;
-        margin-top: 5px;
-        text-align: center; 
-        cursor: pointer; 
-        border-radius: 5px;
-        background-color: #f3f3f3; 
-        } 
-        #pcloseBtn:hover { background-color: lightgray;} 
-        #modal{
-        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
-        top: 0; left: 0; z-index: 999; display: none;
-    }
-    .show-popup{display:block !important;}
         
         
     /* 쿠폰발송 팝업창 */
@@ -474,7 +421,8 @@
         display:block !important;
     }
     
-    /* 로딩 */
+
+    /* AJAX 로딩바 */
 	#loading {
 	height: 100%;
 	left: 0px;
@@ -500,71 +448,7 @@
 	z-index: 200;
 	}
 	
-	 /* 보유쿠폰 팝업창 */
-    .couponWrap{
-        position: absolute;
-        top:39%;
-        left:65%;
-        z-index: 10;
-        box-sizing: border-box;
-        width: 410px; 
-        height: 218px; 
-        margin-top: -75px;
-        margin-left: -150px; 
-        display: none;
-    }
-	.couponWrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
-    #couTitle{background-color: rgb(249, 219, 122);}
-    #couContent{height: 90%; background-color: white;}
 
-    #couTitleName{
-        display:inline-block;
-        margin-left:160px;
-        margin-top:6px;
-        font-size: 15px;
-        font-weight: bold;
-        margin-top: 1;
-        color: #3c3c3c;
-    }
-    #couContent{
-        font-size: smaller;
-        text-align: center;
-    }
-    #couCloseBtn { 
-        float: right; 
-        width: 20px; 
-        line-height: 20px;
-        margin-right: 5px;
-        margin-top: 5px;
-        text-align: center; 
-        cursor: pointer; 
-        border-radius: 5px;
-        background-color: #f3f3f3; 
-    } 
-    #couCloseBtn:hover { 
-        background-color: lightgray; 
-    } 
-    #couTable{
-        margin: 3px;
-        width: 400px;
-        height: 80px;
-    }
-    #couTable2{
-        width: 400px;
-        height: 100px;
-        margin: 3px;
-    }
-    #couTable2>thead{
-        background-color: #f3f3f3;
-    }
-    #modal3{
-        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
-        top: 0; left: 0; z-index: 999; display: none;
-    }
-    .show-popup3{
-        display:block !important;
-    }
-	
    
 </style>
 </head>
@@ -650,7 +534,6 @@
                                     <td><input type="checkbox"></td>
                                     <td><%= b.getMemNo() %></td>
                                     <td class="memId" data-memNo="<%= b.getMemNo() %>">
-                                    	
                                     	<%= b.getMemId() %>
                                     </td>
                                     <td><%= b.getMemName() %></td>
@@ -658,7 +541,7 @@
                                     <td><%= b.getEmail() %></td>
                                     <td><%= b.getOrderCnt() %></td>
                                     <td><%= b.getOrderTotalAmt() %></td>
-                                    <td class="memCoupon" style="color: red; font-weight: bold;">
+                                    <td class="memCoupon" data-memNo="<%= b.getMemNo() %>" style="color: red; font-weight: bold;">
                                     	<%=b.getCouCnt() %>
                                     </td>
                                 </tr>
@@ -763,7 +646,7 @@
     <script>
         $(".memId").on("click",function(){
             
-            var memNo = $(this).attr("data-memNo");
+            var memNo = $(this).attr("data-memNo");  // attr: 값 가져올 때 
             
             $.ajax({
                 url:"/happyProject/memInfo.mem?memNo="+memNo,
@@ -811,7 +694,7 @@
                 <table id="couTable">
                     <tr>
                         <th width="30%">회원번호</th>
-                        <td id="mem__couNo">22</td>
+                        <td id="cou__mem__no">22</td>
                     </tr>
                     <tr>
                         <th>사용 가능한 쿠폰</th>
@@ -829,25 +712,13 @@
                         <th width="22%">유효기간</th>
                         <th width="22%">사용조건금액</th>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td id="cou__name">봄비 내릴땐 해피북스데이</td>
-                            <td id="cou__discount">2000</td>
-                            <td id="cou__date">2021.04.16</td>
-                            <td id="cou__condition">20000</td>
-                        </tr>
-                        <tr>
+                    <tbody id="mem__cou__list">
+                    	<!-- <tr>
                             <td>4월 봄맞이 쿠폰</td>
                             <td>1000</td>
                             <td>2021.04.30</td>
                             <td>15000</td>
-                        </tr>
-                        <tr>
-                            <td>4월 신규가입</td>
-                            <td>2000</td>
-                            <td>2021.04.30</td>
-                            <td>15000</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>        
             </div>
@@ -856,8 +727,40 @@
 
     <script>
         $(".memCoupon").on("click",function(){
- 			$(".couponWrap").css({display:"block"});
-        	$("#modal3").addClass('show-popup3');
+        	
+        	var memNo = $(this).attr("data-memNo");
+        	
+        	$.ajax({
+     			url:"/happyProject/getMemCou.cou",
+     			type:"get",
+     			data:{"memNo":memNo},
+        		success:function(resp){
+        		
+        			var str;
+        			
+        			resp.forEach(function(coupon){
+					str+=`
+						<tr>
+							<td>\${coupon.couName}</td>
+							<td>\${coupon.discount}</td>
+							<td>\${coupon.couEnd}</td>
+							<td>\${coupon.couCondition}</td>
+						</tr>`;
+        			});
+        			
+        			$("#mem__cou__list").html(str);
+        			$("#cou__mem__no").text(memNo);
+        			$("#cou__cnt").text(resp.length);
+        			
+        			$(".couponWrap").css({display:"block"});
+                	$("#modal3").addClass('show-popup3');
+        		},
+        		error:function(err){
+        			
+        		}
+        	});
+        	
+ 			
         });
         $("#couCloseBtn").on("click",function(){
             $(".couponWrap").css({display:"none"});
@@ -902,6 +805,7 @@
             });
         });
     </script>
+
 
     <!-- 쿠폰발송 팝업 -->
     <div id="modal5">
@@ -1032,12 +936,12 @@
 		.appendTo(document.body).hide();
 		$(window) 
 		.ajaxStart(function(){
-		loading.show();
+			loading.show();
 		})
-		.ajaxStop(function(){
-		loading.hide();
+		.ajaxStop(function(){ 
+			loading.hide();
 		});
-		});
+	});
 	
 	</script>
 	
