@@ -200,7 +200,7 @@
 	                        <input type="number" value="<%= c.getAmount() %>" min="1" max="9">
 	                        <button class="button">+</button> <button class="button btn btn-warning" type="rest">삭제</button>
 	                    </td>
-	                    <td align="center"><h7>판매가</h7><br> <%= c.getTtPrice() %> 원</td>
+	                    <td align="center"><h7>판매가</h7><br> <%= c.getPrice() %> 원</td>
 	                </tr>
 	            </tbody> 
 	            <% } %>

@@ -49,10 +49,11 @@ public class CartListServlet extends HttpServlet {
 		int total = 0;
 		int discountTotal = 0;
 		int totalAmount = 0;
+		int amount =0;
 		
 		for (Cart c : list) {
 			orgTotal += ((c.getOrgPrice()) * (c.getAmount())) ;
-			total += c.getTtPrice();
+			total += c.getPrice()*c.getAmount();
 			discountTotal += (c.getOrgPrice() - c.getPrice());
 			totalAmount += c.getAmount();
 		}
