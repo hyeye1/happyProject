@@ -3,8 +3,9 @@
 <properties>
 	<entry key="selectListCount">
 		SELECT COUNT(*) LISTCOUNT
-  		FROM TB_MEMBER
- 		WHERE ADMIN_YN='N'
+  		  FROM TB_MEMBER
+ 		 WHERE ADMIN_YN='N'
+ 		   AND MEM_STATUS = 'Y' 
 	</entry>
 	
 	<entry key="selectList">
@@ -31,9 +32,10 @@
 						  ,(SELECT COUNT(*) FROM TB_ORDER O WHERE O.MEM_NO_OR = MEM_NO ) AS "orderCnt"
 						  ,NVL((SELECT SUM(OR_SUM) FROM TB_ORDER O WHERE O.MEM_NO_OR = MEM_NO ),'0') AS "orderTotalAmt"
 					  FROM TB_MEMBER
-                         ORDER
-                            BY MEM_NO DESC
-		               ) A
+					 WHERE MEM_STATUS = 'Y'
+                     ORDER
+                           BY MEM_NO DESC
+		           ) A
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
