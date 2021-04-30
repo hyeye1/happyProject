@@ -44,10 +44,7 @@ public class PayServlet extends HttpServlet {
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		int userNo = loginUser.getMemNo();
 	
-		/*
-		Order r= new OrderService().selectOrder();
-		int rNO = r.getOrNO();
-		*/
+		
 		Order or = new Order();
 		or.setReceiver(name);
 		or.setMemNoOr(userNo);
@@ -59,9 +56,13 @@ public class PayServlet extends HttpServlet {
 		
 		int result1 = new OrderService().insertOrder(or);
 		
+		Order no = new OrderService().orderNo();
+		
 		Pay p = new Pay();
-		p.setOrNoPay(result1);
+		p.setOrNoPay(no.getOrNO());
 		p.setPaySum(sum);
+		
+		request.setAttribute("p", p);
 		
 		int result2 = new OrderService().insertPay(p);
 		

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.order.model.vo.Order"%>
+<% Order or = (Order)request.getAttribute("or"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,6 +101,15 @@
 <body>
 	
 	<%@ include file = "../common/menubar.jsp" %>
+	<%		
+		String userId = loginUser.getMemId();	   
+		String userName = loginUser.getMemName();
+		String phone = (loginUser.getMemPhone() == null) ? "" : loginUser.getMemPhone();	
+		String email = (loginUser.getEmail() == null) ? "" : loginUser.getEmail();
+		String address = (loginUser.getMemAddress() == null) ? "" : loginUser.getMemAddress();
+		
+						
+	%>
 
 	<div class="orderDetailsOuter">
         <br><br>
@@ -107,7 +117,7 @@
         <hr>
         <div style="line-height:0.5;">
             <p>주문일자 <b>2021.03.27</b> </p>
-            <p>주문번호 <b>BOOK01</b>는 <span style="color:rgb(249, 219, 122)">HAPPY배송</span> 으로 <span style="color:red; font-weight: bolder; font-size:26px;">4월 13일</span>에 도착할 예정입니다.</p>
+            <p>주문번호 <b>BOOK<%=or.getOrNO() %></b>는 <span style="color:rgb(249, 219, 122)"><%=or.getOrDelivery() %></span> 으로 <span style="color:red; font-weight: bolder; font-size:26px;"><%= or.getOrHdDate() %></span>에 도착할 예정입니다.</p>
         </div>
         <br><br><br><br>
 
@@ -173,7 +183,7 @@
             <tr class="firstInfo">
                 <td>
                     <span class="ifnoTitle">주문금액</span>
-                    <span class="infoContent"><b>42,000원</b></span>
+                    <span class="infoContent"><b><%=or.getOrSum() %>원</b></span>
                 </td>
                 <td>
                     <span class="ifnoTitle">할인금액</span>
@@ -181,7 +191,7 @@
                 </td>
                 <td>
                     <span class="ifnoTitle" style="line-height: 3; color:red;">결제금액</span>
-                    <span class="infoContent"><b style="font-size: 30px; color:red;">42,000원</b></span>
+                    <span class="infoContent"><b style="font-size: 30px; color:red;"><%=or.getOrSum() %></b></span>
                 </td>
             </tr>
             <tr class="secondInfo">
@@ -223,19 +233,19 @@
         <table class="dvInfo">
             <tr>
                 <td class="infoTitile">받는사람</td>
-                <td class="infoContent">안소은</td>
+                <td class="infoContent"><%=userName %></td>
             </tr>
             <tr>
                 <td class="infoTitile">휴대폰</td>
-                <td class="infoContent">010-1234-9876</td>
+                <td class="infoContent"><%=phone %></td>
             </tr>
             <tr>
                 <td class="infoTitile">주소</td>
-                <td class="infoContent">서울시 용산구 녹사평대로 132 1102호</td>
+                <td class="infoContent"><%=address %></td>
             </tr>
             <tr>
                 <td class="infoTitile">배송시 요청사항</td>
-                <td class="infoContent">경비실에 맡겨주세요^ㅇ^</td>
+                <td class="infoContent"><%=or.getOrRequest() %></td>
             </tr>
         </table>
 

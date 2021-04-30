@@ -72,14 +72,22 @@ public class OrderService {
 		return result;
 	}
 	
-	
-	
-	public Order selectOrder() {
+
+	public Order orderNo() {
 		Connection conn = getConnection();
-		Order r = new OrderDao().selectOrder(conn);
+		Order no = new OrderDao().orderNo(conn);
 		
 		close(conn);
-		return r;
+		return no;
+	}
+	
+	
+	public Order selectOrder(int orNo) {
+		Connection conn = getConnection();
+		Order or = new OrderDao().selectOrder(conn, orNo);
+		
+		close(conn);
+		return or;
 	}
 
 }

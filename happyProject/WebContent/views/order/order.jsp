@@ -320,7 +320,7 @@
                         </tr>
                         <tr>
                             <th>
-                                <input type="checkbox" id="happyDelivery" name="happyDelivery" value="해피배송" style="vertical-align: middle;" onclick="happyDelivery();">
+                                <input type="checkbox" id="happyDelivery" name="happyDelivery" value="HAPPY배송" style="vertical-align: middle;" onclick="happyDelivery();">
                                 <label for="happyOrder"> HAPPY배송</label>
                             </th>
                             <td>

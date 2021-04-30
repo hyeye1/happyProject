@@ -152,9 +152,41 @@
                       )
 	</entry>
 	<entry key="selectOrder">
-		select OR_NO
-			FROM TB_ORDER
-			WHERE OR_NO =?
+		SELECT 
+		        OR_NO,
+		        MEM_NO_OR,
+		        AD_NO_OR,
+		        RECEIVER,
+		        OR_SUM,
+		        OR_DATE,
+		        OR_DELIVERY,
+		        OR_STATUS,
+		        OR_REQUEST,
+		        OR_HD_DATE,
+		        COU_MEM_NO_OR
+		  FROM TB_ORDER O
+		 WHERE OR_NO = ?
+	</entry>
+	
+	<entry key="orderNo">
+		 SELECT * 
+			FROM(
+			    SELECT 
+			        OR_NO,
+			        MEM_NO_OR,
+			        AD_NO_OR,
+			        RECEIVER,
+			        OR_SUM,
+			        OR_DATE,
+			        OR_DELIVERY,
+			        OR_STATUS,
+			        OR_REQUEST,
+			        OR_HD_DATE,
+			        COU_MEM_NO_OR
+			        
+			      FROM TB_ORDER 
+			      ORDER BY ROWNUM DESC)
+			    WHERE ROWNUM = 1
 	</entry>
 
 </properties>

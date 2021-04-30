@@ -182,8 +182,8 @@ private Properties prop = new Properties();
 	
 	
 	
-	public Order selectOrder(Connection conn) {
-		Order r = null;
+	public Order selectOrder(Connection conn, int orNo) {
+		Order or = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -191,13 +191,22 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, r.getOrNO());
+			pstmt.setInt(1, orNo);
 			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				r= new Order(rset.getInt("OR_NO")
-							
+				or= new Order(rset.getInt("OR_NO"),
+						    rset.getInt("MEM_NO_OR"),
+						    rset.getInt("AD_NO_OR"),
+						    rset.getString("RECEIVER"),
+						    rset.getInt("OR_SUM"),
+						    rset.getDate("OR_DATE"),
+						    rset.getString("OR_DELIVERY"),
+						    rset.getString("OR_STATUS"),
+						    rset.getString("OR_REQUEST"),
+						    rset.getString("OR_HD_DATE"),
+						    rset.getInt("COU_MEM_NO_OR")
 						  	 
 							 );
 			}
@@ -208,7 +217,46 @@ private Properties prop = new Properties();
 			close(pstmt);
 		}
 		
-		return r;
+		return or;
+	}
+	
+	public Order orderNo(Connection conn) {
+		Order or = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("orderNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				or= new Order(rset.getInt("OR_NO"),
+						    rset.getInt("MEM_NO_OR"),
+						    rset.getInt("AD_NO_OR"),
+						    rset.getString("RECEIVER"),
+						    rset.getInt("OR_SUM"),
+						    rset.getDate("OR_DATE"),
+						    rset.getString("OR_DELIVERY"),
+						    rset.getString("OR_STATUS"),
+						    rset.getString("OR_REQUEST"),
+						    rset.getString("OR_HD_DATE"),
+						    rset.getInt("COU_MEM_NO_OR")
+
+						  	 
+							 );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return or;
 	}
 	
 		
