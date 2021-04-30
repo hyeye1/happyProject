@@ -419,5 +419,35 @@ private Properties prop = new Properties();
 		return result;
 	}
 
+
+
+	public void deleteChk(Connection conn, String[] bkNoList) {
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE TB_BOOK SET BK_STATUS = 'N' WHERE BK_NO IN (";
+		
+		String where = "";			
+		for (int i = 0 ; i < bkNoList.length ; i++) {
+			where+=bkNoList[i];
+			if((bkNoList.length-1)!=i) {
+				where+=",";
+			}
+		}
+		
+		sql+=where;
+		sql+=")";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int cnt = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+	}
+
 	
 }

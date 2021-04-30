@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.admin.model.dao.Ad_BookDao;
+import com.kh.admin.model.dao.Ad_CouponDao;
 import com.kh.admin.model.vo.Ad_Book;
 import com.kh.admin.model.vo.Ad_Image;
 import com.kh.common.model.vo.PageInfo;
@@ -115,5 +116,13 @@ public class Ad_BookService {
 		}
 		
 		close(conn);
+	}
+
+	public void deleteChk(String[] bkNoList) {
+		Connection conn = getConnection();
+		new Ad_BookDao().deleteChk(conn, bkNoList);
+		
+		close(conn);
+		
 	}
 }
