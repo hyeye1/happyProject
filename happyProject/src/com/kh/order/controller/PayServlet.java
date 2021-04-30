@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.kh.member.model.vo.Member;
 import com.kh.order.model.service.OrderService;
 import com.kh.order.model.vo.Order;
+import com.kh.order.model.vo.Pay;
 
 /**
  * Servlet implementation class PayServlet
@@ -42,7 +43,11 @@ public class PayServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		int userNo = loginUser.getMemNo();
-		
+	
+		/*
+		Order r= new OrderService().selectOrder();
+		int rNO = r.getOrNO();
+		*/
 		Order or = new Order();
 		or.setReceiver(name);
 		or.setMemNoOr(userNo);
@@ -51,8 +56,16 @@ public class PayServlet extends HttpServlet {
 		or.setOrRequest(dvDemand);
 		or.setOrHdDate(hDate);
 		
-		int result = new OrderService().insertOrder(or);
-		if(result>0) { 
+		
+		int result1 = new OrderService().insertOrder(or);
+		
+		Pay p = new Pay();
+		p.setOrNoPay(result1);
+		p.setPaySum(sum);
+		
+		int result2 = new OrderService().insertPay(p);
+		
+		if(result1>0 && result2>0) { 
 			request.getRequestDispatcher("views/order/orderConfirmation.jsp").forward(request, response);
 			
 		}else {

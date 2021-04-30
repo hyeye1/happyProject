@@ -10,7 +10,7 @@
 
 	ArrayList<Coupon> cou = (ArrayList<Coupon>)request.getAttribute("cou");
 	ArrayList<Cart> ca = (ArrayList<Cart>)request.getAttribute("ca");
-	 
+	int totalAmount = (Integer)request.getAttribute("totalAmount");
 	Coupon cp = (Coupon)request.getAttribute("cp");
 	
 	String contextPath = request.getContextPath(); 
@@ -358,7 +358,7 @@
                                 <button class="odButton1 btn btn-warning btn-sm" disabled>소득공제</button>
                                 <button class="odButton2 btn btn-warning btn-sm" disabled>무료배송</button>
                             </td>
-                            <td><%= caa.getTtPrice() %>원 | 수량 1개</td>
+                            <td><%= caa.getTtPrice() %>원 | 수량 <%= caa.getAmount() %>개</td>
                         </tr>
                     <% } %>
                     

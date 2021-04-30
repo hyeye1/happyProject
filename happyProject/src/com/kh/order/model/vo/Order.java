@@ -33,6 +33,13 @@ public class Order {
 		this.orHdDate = orHdDate;
 		this.couMemNoOr = couMemNoOr;
 	}
+	
+	
+
+	public Order(int orNO) {
+		super();
+		this.orNO = orNO;
+	}
 
 	public int getOrNO() {
 		return orNO;

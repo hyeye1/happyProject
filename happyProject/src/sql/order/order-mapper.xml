@@ -139,5 +139,22 @@
                       )
 	</entry>
 	
+	<entry key="insertPay">
+		INSERT INTO TB_PAY(
+                    PAY_NO,
+                    OR_NO_PAY,
+                    PAY_SUM)
+             VALUES
+                     (
+                        SEQ_PNO.NEXTVAL
+                      , ?
+                      , ?
+                      )
+	</entry>
+	<entry key="selectOrder">
+		select OR_NO
+			FROM TB_ORDER
+			WHERE OR_NO =?
+	</entry>
 
 </properties>

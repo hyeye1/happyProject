@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.order.model.vo.Order"%>
+ <% %>
 
 <!DOCTYPE html>
 <html>
@@ -49,6 +50,7 @@
 <body>
 	
 	<%@ include file = "../common/menubar.jsp" %>
+	
 
 	<div class="orderCompleteOuter">
         <br><br>
@@ -72,7 +74,7 @@
             <h2>주문이 성공적으로 접수되었습니다.</h2>
             <br>
             <div>
-                <span>주무번호(BOOK01)</span>
+                <span>주무번호()</span>
                 <span>|</span>
                 <span>안소은 고객님 감사합니다.</span>
             </div>
