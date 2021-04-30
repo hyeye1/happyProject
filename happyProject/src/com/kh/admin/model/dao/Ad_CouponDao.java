@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -125,6 +126,93 @@ public class Ad_CouponDao {
 			 
 			return result;
 			
+		}
+
+		public List<Ad_Coupon> selectMemCouponList(Connection conn, int memNo) {
+			ArrayList<Ad_Coupon> list = new ArrayList<>();
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectMemCouponList");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, memNo);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					list.add(new Ad_Coupon(rset.getInt("cou_no"),
+							rset.getString("cou_name"),
+							rset.getInt("discount"),
+							null,
+							rset.getString("cou_end"),
+							rset.getInt("cou_condition")));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return list;
+		}
+
+		public void deleteChk(Connection conn, String[] couNoList) {
+			PreparedStatement pstmt = null;
+			
+			String sql = "UPDATE TB_COUPON SET COU_STATUS = 'N' WHERE COU_NO IN (";
+			
+			String where = "";			
+			for (int i = 0 ; i < couNoList.length ; i++) {
+				where+=couNoList[i];
+				if((couNoList.length-1)!=i) {
+					where+=",";
+				}
+			}
+			
+			sql+=where;
+			sql+=")";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				int cnt = pstmt.executeUpdate();
+				
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			
+		}
+
+		public ArrayList<Ad_Coupon> selectEndCouList(Connection conn) {
+			
+			ArrayList<Ad_Coupon> list = new ArrayList<>();
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectEndCouList");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					list.add(new Ad_Coupon(rset.getInt("cou_no"),
+							rset.getString("cou_name"),
+							rset.getInt("discount"),
+							rset.getString("cou_start"),
+							rset.getString("cou_end"),
+							rset.getInt("cou_condition")));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return list;
 		}
 
 			

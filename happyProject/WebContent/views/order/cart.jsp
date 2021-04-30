@@ -16,6 +16,9 @@
 	
 	int totalAmount = (Integer)request.getAttribute("totalAmount");
 	String AmountComma = df.format(totalAmount);
+	
+	int orgPriceSum = (Integer)request.getAttribute("orgPriceSum");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -182,15 +185,16 @@
             	<thead>
                 <tr>
                     <td colspan="3" style="height:50px;">
-                        <input type="checkbox" style="vertical-align: middle;" id="idSelectAll" name="selectAll" onclick="selectAll(this)" checked>
+                        <input type="checkbox" style="vertical-align: middle; margin-top:5px;" id="idSelectAll" name="selectAll" onclick="selectAll(this)" checked>
                         <label for="idSelectAll">전체선택</label>
                     </td>
-                    <td align="center"><button type="submit" class="button btn btn-warning" onclick="selectiondelete()">선택삭제</button></td>
+                    <td align="center"><button type="submit" class="button btn btn-warning" id="selectiondelete">선택삭제</button></td>
                 </tr>
                 </thead>
 	            <% for(Cart c : list) { %>
 	            <tbody>
 	                <tr>
+	                	<input type="hidden" name="memNo" value="<%= c.getMemNo() %>">
 	                    <td style="height:100px;"><input type="checkbox" name="book" onclick="checkSelectAll(this)" checked></td>
 	                    <td align="center"><img src="<%= c.getMainImg() %>" style="width:80px; height:100px;"></td>
 	                    <td>
@@ -200,7 +204,11 @@
 	                        <input type="number" value="<%= c.getAmount() %>" min="1" max="9">
 	                        <button class="button">+</button> <button class="button btn btn-warning" type="rest">삭제</button>
 	                    </td>
-	                    <td align="center"><h7>판매가</h7><br> <%= c.getPrice() %> 원</td>
+	                    <td align="center">
+	                    	<h7>합계</h7><br>
+	                    	<s><%= orgPriceSum %> 원</s> <br>
+	                    	<%= c.getTtPrice() %> 원
+	                    </td>
 	                </tr>
 	            </tbody> 
 	            <% } %>
@@ -228,10 +236,24 @@
         </script>
         <!-- selection delete script -->
         <script>
-	        function selectiondelete(){
-	        	
-	        }
+	        $(function(){
+	        	memNo = $('input[name=memNo]').val();
+	            $("#selectiondelete").click(function(){
+	            	$.ajax({
+	            		url:"<%= contextPath %>/cDelete.or",
+	            		type:"get",
+	            		data:{
+	            			memNo:memNo
+	            		},
+	            		success:function(result){
+	            			location.reload();
+	            		},error:function(){
+	            		}
+	            	})
+	            });
+	        });
         </script>
+        
       
 
         <!-- 장바구니 써머리 창 -->
@@ -257,8 +279,8 @@
             <div class="totalInfo">
                 <table>
                     <tr>
-                        <td>합계</td>
-                        <td style="text-align: right;"><%= totalComma %> 원</td>
+                        <td><b>결제 예상금액</b></td>
+                        <td style="text-align: right;"><b><%= totalComma %> 원</b></td>
                     </tr>
                 </table>
             </div>

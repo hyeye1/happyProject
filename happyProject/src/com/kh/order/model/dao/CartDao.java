@@ -101,37 +101,28 @@ public class CartDao {
 		return list;
 	}
 	
-	public int insertCartFromCategory(Connection conn, Cart c) {
+	public int cartDeleteAll(Connection conn, int memNo) {
 		
-				// Insert문 => 처리된 행 수
-				int result = 0;
-				PreparedStatement pstmt = null;
-				String sql = prop.getProperty("insertCartFromCategory");
-				
-				try {
-					pstmt = conn.prepareStatement(sql);
-					
-					pstmt.setInt(1, c.getBookNo());
-					pstmt.setInt(2, c.getMemNo());
-					pstmt.setInt(3, c.getAmount());
-					pstmt.setInt(4, c.getTtPrice());
-					pstmt.setString(5, c.getTitle());
-					pstmt.setString(6, c.getAuthor());
-					pstmt.setInt(7, c.getOrgPrice());
-					pstmt.setInt(8, c.getPrice());
-					pstmt.setString(9, c.getMainImg());
-					
-					result = pstmt.executeUpdate();
-					// insert했을 때 성공하면1 실패하면 0
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
-				}
-				
-				return result;
-				
+		int result = 0; // 여러행 삭제
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("cartDeleteAll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
 	}
 	
 	

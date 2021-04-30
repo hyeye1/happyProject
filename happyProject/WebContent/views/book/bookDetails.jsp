@@ -3,6 +3,12 @@
 <%
  	Book b = (Book)request.getAttribute("b");
  	Image i = (Image)request.getAttribute("i");
+ 	
+ 	String imagePath = "";
+ 	if(i != null) {
+ 		imagePath = i.getImgPath();
+ 	}
+ 	
  	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
@@ -19,7 +25,7 @@
     <style>
         .bookDetailOuter{
             width:1000px;
-            height:4000px;
+            height:100%;
             margin:auto;
         }
         /* HOME/국내or해외 페이지로 바로가기*/
@@ -138,16 +144,15 @@
         }
         .bookDetailOuter .reviewArea{
             border-top:1px solid black;
-            border-bottom:1px solid black;
             margin:auto;
             margin-bottom:200px;
             width:700px;
-            height:220px;
+            height:100%;
         }
         .bookDetailOuter .reviewArea table{
             margin:auto;
             width:600px;
-            height:300px;
+            height:100%;
         }
         .bookDetailOuter .reviewArea>table tr:hover{
             background-color:wheat;
@@ -347,7 +352,7 @@
         <h5 class="detailTitle" id="infoLink">책소개</h5>
         <div class="link">
             <p><%= b.getBkDescription() %></p>
-            <img class="detailImg" src="<%= contextPath %>/<%= i.getImgPath() %>" onerror="this.style.display='none'">
+            <img class="detailImg" src="<%= contextPath %>/<%= imagePath %>" onerror="this.style.display='none'">
         </div>
 	   
         <!-- 목차 -->
@@ -462,7 +467,6 @@
                 </tbody>
             </table>
         </div>
-        <br><br><br><br><br><br><br><br>
         
     </div>
 

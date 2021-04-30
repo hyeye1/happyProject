@@ -37,35 +37,39 @@ public class CartListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if (loginUser == null) {
-			//response.sendRedirect(request.getContextPath());
+		if (loginUser != null) {
+			
+			int memNo = loginUser.getMemNo();
+			
+			ArrayList<Cart> list = new CartService().selectCartList(memNo);
+			
+			int orgTotal = 0;
+			int total = 0;	
+			int discountTotal = 0;	// 장바구니에 담긴 도서의 총 할인가 (총원가 - 총판매가)
+			int totalAmount = 0;	// 장바구니에 담긴 도서의 총 갯수
+			int orgPriceSum = 0;	// 도서별 원가의 합
+			
+			for (Cart c : list) {
+				orgTotal += ((c.getOrgPrice()) * (c.getAmount())) ;
+				total += c.getTtPrice();
+				discountTotal += (c.getOrgPrice() - c.getPrice()) * (c.getAmount());
+				totalAmount += c.getAmount();
+				orgPriceSum = (c.getOrgPrice() * (c.getAmount()));
+			}
+			
+			request.setAttribute("orgTotal", orgTotal);
+			request.setAttribute("list", list);
+			request.setAttribute("total", total);
+			request.setAttribute("discountTotal", discountTotal);
+			request.setAttribute("totalAmount", totalAmount);
+			request.setAttribute("orgPriceSum", orgPriceSum);
+			
+			request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);	
+		
+		} else {
+			response.sendRedirect(request.getContextPath());
 		}
-		
-		int memNo = loginUser.getMemNo();
-		
-		ArrayList<Cart> list = new CartService().selectCartList(memNo);
-		
-		int orgTotal = 0;
-		int total = 0;
-		int discountTotal = 0;
-		int totalAmount = 0;
-		int amount =0;
-		
-		for (Cart c : list) {
-			orgTotal += ((c.getOrgPrice()) * (c.getAmount())) ;
-			total += c.getPrice()*c.getAmount();
-			discountTotal += (c.getOrgPrice() - c.getPrice());
-			totalAmount += c.getAmount();
-		}
-		
-		request.setAttribute("orgTotal", orgTotal);
-		request.setAttribute("list", list);
-		request.setAttribute("total", total);
-		request.setAttribute("discountTotal", discountTotal);
-		request.setAttribute("totalAmount", totalAmount);
-		
-		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
-		
+			
 	}
 
 	/**

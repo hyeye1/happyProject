@@ -293,8 +293,8 @@ public class BookDao {
 	                           rset.getString("author"),
 	                           rset.getString("bk_division"),
 	                           rset.getString("bk_genre"),
-	                           rset.getInt("bk_price"),
 	                           rset.getInt("bk_origin_price"),
+	                           rset.getInt("bk_price"),
 	                           rset.getDate("bk_enroll_date"),
 	                           rset.getString("bk_main_img"),
 	                           rset.getInt("bk_hits")));
@@ -371,6 +371,7 @@ public class BookDao {
 	                           rset.getString("bk_division"),
 	                           rset.getString("bk_genre"),
 	                           rset.getInt("bk_price"),
+	                           rset.getInt("bk_origin_price"),
 	                           rset.getDate("bk_enroll_date"),
 	                           rset.getString("bk_main_img"),
 	                           rset.getInt("bk_hits")));
@@ -452,6 +453,7 @@ public class BookDao {
 	                           rset.getString("bk_division"),
 	                           rset.getString("bk_genre"),
 	                           rset.getInt("bk_price"),
+	                           rset.getInt("bk_origin_price"),
 	                           rset.getDate("bk_enroll_date"),
 	                           rset.getString("bk_main_img"),
 	                           rset.getInt("bk_hits")));
