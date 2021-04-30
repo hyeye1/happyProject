@@ -102,8 +102,8 @@
                            , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
                            , BK_DIVISION
                            , BK_GENRE
-                           , BK_PRICE
                            , BK_ORIGIN_PRICE
+                           , BK_PRICE
                            , BK_MAIN_IMG
                              , BK_HITS
                              , BK_ENROLL_DATE   
@@ -123,11 +123,11 @@
                            , RPAD(SUBSTR(AUTHOR, 1, 14), 17, ' ') AUTHOR
                            , BK_DIVISION
                            , BK_GENRE
-                           , BK_PRICE
                            , BK_ORIGIN_PRICE
+                           , BK_PRICE
+                           , BK_ENROLL_DATE 
                            , BK_MAIN_IMG
-                             , BK_HITS
-                             , BK_ENROLL_DATE   
+                           , BK_HITS
                         FROM TB_BOOK
                        ORDER 
                           BY BK_ENROLL_DATE DESC)
@@ -146,9 +146,9 @@
                            , BK_GENRE
                            , BK_PRICE
                            , BK_ORIGIN_PRICE
+                           , BK_ENROLL_DATE  
                            , BK_MAIN_IMG
-                             , BK_HITS
-                             , BK_ENROLL_DATE   
+                           , BK_HITS
                         FROM TB_BOOK
                        ORDER 
                           BY BK_HITS DESC)
@@ -166,9 +166,10 @@
                            , BK_DIVISION
                            , BK_GENRE
                            , BK_PRICE
+                           , BK_ORIGIN_PRICE
                            , BK_MAIN_IMG
-                             , BK_HITS
-                             , BK_ENROLL_DATE   
+                           , BK_HITS
+                           , BK_ENROLL_DATE   
                         FROM TB_BOOK
                        ORDER 
                           BY BK_ENROLL_DATE DESC)
@@ -199,6 +200,7 @@
               , BK_DIVISION
               , BK_GENRE
               , BK_PRICE
+              , BK_ORIGIN_PRICE
               , BK_MAIN_IMG
               , BK_HITS
               , BK_ENROLL_DATE  

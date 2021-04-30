@@ -16,7 +16,6 @@ public class CartService {
 	public int insertCart(Cart c) {
 		
 		Connection conn = getConnection();
-		
 		int result = new CartDao().insertCart(conn, c);
 		
 		if(result > 0){
@@ -24,11 +23,8 @@ public class CartService {
 		}else {
 			rollback(conn);
 		}
-		
 		close(conn);
-		
 		return result;
-		
 	}
 	
 	public ArrayList<Cart> selectCartList(int memNo) {
@@ -41,21 +37,20 @@ public class CartService {
 		
 	}
 	
-	public int insertCartFromCategory(Cart c) {
+	
+	public int cartDeleteAll(int memNo) {
 		
 		Connection conn = getConnection();
-		int result = new CartDao().insertCartFromCategory(conn, c);
+		int result = new CartDao().cartDeleteAll(conn, memNo);
 		
-		if(result > 0){
+		if(result > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		
-		close(conn);
 		
 		return result;
-		
 		
 	}
 }

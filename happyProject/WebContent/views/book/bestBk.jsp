@@ -18,7 +18,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   
    <style>
         .bestOuter{
             margin: auto;
@@ -129,26 +128,15 @@
 				                            <span class="bkPrice"><%= list.get(i+(j*5)).getBkPrice() + "원" %></span>
 				                        </p>
 		                            </a>
-		                           	<a type="button" onclick="cart();">
-		                        		<input type="image"  src="resources/images/addCart.png" data-toggle="modal" data-target="#goToCart">
+		                           	<a type="button" onclick="cart(<%= list.get(i+(j*5)).getBookNo() %>, <%= list.get(i+(j*5)).getBkPrice() %>);">
+		                        		<input type="image" src="resources/images/addCart.png" data-toggle="modal" data-target="#goToCart">
 		                    		</a>
 		                    </div>
-		                    			<input type="hidden" id="bkNo" value="<%= list.get(i+(j*5)).getBookNo() %>">
-	                    				<input type="hidden" name="amount" value="1">
-		                    		 	<input type="hidden" name="sum" value="<%= list.get(i+(j*5)).getBkPrice() %>">
-		                    		 	<input type="hidden" name="title" value="<%= list.get(i+(j*5)).getBkName() %>">
-		                    		 	<input type="hidden" name="author" value="<%= list.get(i+(j*5)).getAuthor() %>">
-		                    		 	<input type="hidden" name="orgPrice" value="<%= list.get(i+(j*5)).getBkOrgPrice() %>">
-		                    		 	<input type="hidden" name="price" value="<%= list.get(i+(j*5)).getBkPrice() %>">
-		                    		 	<input type="hidden" name="mainImg" value="<%= list.get(i+(j*5)).getBkMainImg() %>">
-		                    		 	<input type="hidden" name="memNo" value="<%= loginUser %>">
 	                    </td>
                 	<% } %>
                 </tr>
                 <% } %>
             </table>
-            
-            
             
         <!-- 로그인 전 -->
         <% if(loginUser == null) { %>
@@ -189,33 +177,17 @@
 	                </div>
 	            </div>
 	        </div>
-	        <!-- //Modal -->
+	    <!-- //Modal -->
         <% } %>
          <script>
-        		function cart() {
-	        		var bkNo = $("#bkNo").val();
-	        		var amount = $('input[name=amount]').val();
-	        		var sum = $('input[name=sum]').val();
-	        		var title = $('input[name=title]').val();
-	        		var author = $('input[name=author]').val();
-	        		var orgPrice = $('input[name=orgPrice]').val();
-	        		var price = $('input[name=price]').val();
-	        		var mainImg = $('input[name=mainImg]').val();
-	        		var memNo = $('input[name=memNo]').val();
-	        		
+        		function cart(bkNo, price) {        		        		
 	        		$.ajax({
-	        			url:"<%= contextPath %>/insertCart2.or",
+	        			url:"<%= contextPath %>/insertCart.or",
 	        			type:"get",
 	        			data: {
 	        				bookNo: bkNo,
-	        				amount: amount,
-	        				totalPrice: sum,
-	        				title: title,
-	        				author: author,
-	        				orgPrice: orgPrice,
-	        				price: price,
-	        				mainImg: mainImg,
-	        				memNo: memNo
+	        				amount: 1,
+	        				totalPrice: price
 	        			},
 	        			success:function(result){
 	        				if (result > 0) {
