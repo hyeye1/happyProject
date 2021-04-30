@@ -185,7 +185,7 @@
 			        COU_MEM_NO_OR
 			        
 			      FROM TB_ORDER 
-			      ORDER BY ROWNUM DESC)
+			      ORDER BY OR_NO DESC)
 			    WHERE ROWNUM = 1
 	</entry>
 

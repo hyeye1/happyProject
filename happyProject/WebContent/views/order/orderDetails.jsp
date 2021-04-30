@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.order.model.vo.Order"%>
-<% Order or = (Order)request.getAttribute("or"); %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.order.model.vo.Order, com.kh.order.model.vo.Cart"%>
+<% Order or = (Order)request.getAttribute("or");
+	ArrayList<Cart> ca = (ArrayList<Cart>)request.getAttribute("ca");
+	int total = (Integer)request.getAttribute("total");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,59 +118,44 @@
         <br><br>
         <h2>주문내역 상세보기</h2>
         <hr>
+        <br>
         <div style="line-height:0.5;">
-            <p>주문일자 <b>2021.03.27</b> </p>
-            <p>주문번호 <b>BOOK<%=or.getOrNO() %></b>는 <span style="color:rgb(249, 219, 122)"><%=or.getOrDelivery() %></span> 으로 <span style="color:red; font-weight: bolder; font-size:26px;"><%= or.getOrHdDate() %></span>에 도착할 예정입니다.</p>
+            <p>주문일자 <b><%=or.getOrDate() %></b> </p>
+           
+          
+            <%if(or.getOrDelivery() == null) { %>
+            	<p>주문번호 <b>BOOK<%=or.getOrNO() %></b>는 <span style="color:rgb(249, 219, 122)">일반배송</span> 입니다.</span></p>
+            <%} else{ %><p>주문번호 <b>BOOK<%=or.getOrNO() %></b>는 <span style="color:rgb(249, 219, 122)"><%=or.getOrDelivery() %></span> 으로 <span style="color:red; font-weight: bolder; font-size:26px;"><%= or.getOrHdDate() %></span>에 도착할 예정입니다.</p>
+            <%} %>
+           
         </div>
         <br><br><br><br>
 
         <!-- 주문상품 폼 -->
         <form class="orderForm" action="" style="width:1000px;">
             <fieldset style="border:none;">
-                <legend><h4 style="font-weight: bolder;">주문상품(3종3개)</h4></legend>
+                <legend><h4 style="font-weight: bolder;">주문상품</h4></legend>
                 <br>
                 <table class="odTable">
-                    <tr>
-                        <th colspan="2" style="width:500px; text-align: center;">상품정보</th>
-                        <th style="width:200px; text-align: center; ">배송비</th>
-                        <th algin="center" style="width:300px; text-align: center;">배송상태</th>
-                    </tr>
-                    <tr>
-                        <td style="width:100px; height:100px;">
-                            <img src="../화면구현/img/달러구트_표지.png" id="" style="width:80px; height:100px;">
-                        </td>
-                        <td class="bookInfo">
-                            <b>달러구트 꿈 백화점|잠들어야만 입장 가능합니다</b> <br>
-                            <small>이미예</small> <br><br>
-                            <span>9,000원 | 수량 1개</span>
-                        </td>
-                        <td>0원</td>
-                        <td>주문 접수 중</td>
-                    </tr>
-                    <tr>
-                        <td style="width:100px; height:100px;">
-                            <img src="../화면구현/img/돈의심리학.png" id="" style="width:80px; height:100px;">
-                        </td>
-                        <td class="bookInfo">
-                            <b>돈의심리학</b> <br>
-                            <small>모건 하우절</small> <br><br>
-                            <span>13,000원 | 수량 1개</span>
-                        </td>
-                        <td>0원</td>
-                        <td>주문 접수 중</td>
-                    </tr>
-                    <tr>
-                        <td style="width:100px; height:100px;">
-                            <img src="../화면구현/img/해리포터.png" id="" style="width:80px; height:100px;">
-                        </td>
-                        <td class="bookInfo">
-                            <b>해리포터시리즈 개정번역판</b> <br>
-                            <small>조앤.k.롤링</small> <br><br>
-                            <span>20,000원 | 수량 1개</span>
-                        </td>
-                        <td>0원</td>
-                        <td>주문 접수 중</td>
-                    </tr>
+	                    <tr>
+	                        <th colspan="2" style="width:500px; text-align: center;">상품정보</th>
+	                        <th style="width:200px; text-align: center; ">배송비</th>
+	                        <th algin="center" style="width:300px; text-align: center;">배송상태</th>
+	                    </tr>
+	                <% for(Cart caa : ca) { %> 
+	                    <tr>
+	                        <td style="width:100px; height:100px;">
+	                            <img src="<%= caa.getMainImg() %>" style="width:80px; height:100px;">
+	                        </td>
+	                        <td class="bookInfo">
+	                            <b><%= caa.getTitle() %></b> <br>
+	                            <small><%= caa.getAuthor() %></small> <br><br>
+	                            <span><%= caa.getTtPrice() %>원 | 수량 <%= caa.getAmount() %>개</span>
+	                        </td>
+	                        <td>무료</td>
+	                        <td>주문 접수 중</td>
+	                    </tr>
+                    <% } %>
                 </table>
             </fieldset>
         </form>
@@ -183,7 +171,7 @@
             <tr class="firstInfo">
                 <td>
                     <span class="ifnoTitle">주문금액</span>
-                    <span class="infoContent"><b><%=or.getOrSum() %>원</b></span>
+                    <span class="infoContent"><b><%=total %>원</b></span>
                 </td>
                 <td>
                     <span class="ifnoTitle">할인금액</span>
@@ -191,14 +179,14 @@
                 </td>
                 <td>
                     <span class="ifnoTitle" style="line-height: 3; color:red;">결제금액</span>
-                    <span class="infoContent"><b style="font-size: 30px; color:red;"><%=or.getOrSum() %></b></span>
+                    <span class="infoContent"><b style="font-size: 30px; color:red;"><%=or.getOrSum() %>원</b></span>
                 </td>
             </tr>
             <tr class="secondInfo">
                 <td>
                     <div>
                         <span class="ifnoTitle">상품금액</span>
-                        <span class="infoContent">42,000원</span>
+                        <span class="infoContent"><%=total %>원</span>
                     </div>
                     <div>
                         <span class="ifnoTitle">배송비</span>
@@ -218,9 +206,9 @@
                 <td>
                     <div>
                         <span class="ifnoTitle">신용/체크 카드</span>
-                        <span class="infoContent">42,000원</span>
+                        <span class="infoContent"><%=or.getOrSum() %>원</span>
                     </div>
-                    <div style="color:lightgray;">결제일시 2021.03.25 18:03</div>
+                    <div style="color:lightgray;">결제일 20<%=or.getOrDate() %></div>
                 </td>
             </tr>
         </table>
@@ -245,11 +233,19 @@
             </tr>
             <tr>
                 <td class="infoTitile">배송시 요청사항</td>
-                <td class="infoContent"><%=or.getOrRequest() %></td>
+                <td class="infoContent">
+                <%if(or.getOrRequest() == null) { %>
+         		   	<p></p>
+	            <%} else{ %>
+	            	 <%= or.getOrRequest() %>
+	            <%} %>
+                </td>
             </tr>
         </table>
 
     </div>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 </body>
 </html>
