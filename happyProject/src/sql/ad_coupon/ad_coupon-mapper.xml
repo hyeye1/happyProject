@@ -37,7 +37,7 @@
 		  )
 		  VALUES
 		  (
-		    SEQ_CNO.NEXTVAL
+		    SEQ_COUNO.NEXTVAL
 		  , ?
 		  , ?
 		  , ?
@@ -58,6 +58,37 @@
 			COU_YN
 		)
 		VALUES(SEQ_CMN.NEXTVAL, ?, ?, SYSDATE, 'N')		
+	</entry>
+	
+	<entry key="selectMemCouponList">
+		SELECT
+	       COU_NO
+	     , COU_NAME
+	     , DISCOUNT
+	     , TO_CHAR(COU_END,'YYYY-MM-DD') COU_END
+	     , COU_CONDITION
+	     FROM TB_COUPON
+		WHERE COU_NO IN(
+		    SELECT COU_NO_COU AS COU_NO
+		    FROM TB_MEM_COUPON
+		    WHERE COU_YN = 'N' AND MEM_NO_COU = ?
+	)
+	</entry>
+	
+	
+	<entry key = "selectEndCouList">
+			SELECT
+		       COU_NO
+		     , COU_NAME
+		     , DISCOUNT
+		     , TO_CHAR(COU_START,'YYYY-MM-DD') COU_START
+		     , TO_CHAR(COU_END,'YYYY-MM-DD') COU_END
+		     , COU_CONDITION
+		  FROM TB_COUPON
+		 WHERE COU_STATUS = 'N'
+		 ORDER 
+		    BY COU_NO DESC
+		
 	</entry>
 	
 
