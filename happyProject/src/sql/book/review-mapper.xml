@@ -8,9 +8,9 @@
 			  , RE_CONTENT
 	       FROM TB_REVIEW
            JOIN TB_MEMBER ON (MEM_NO_RE = MEM_NO)
-	      WHERE RE_STATUS = 'Y'
-	      ORDER
-		        BY RE_DATE DESC
+	      WHERE BK_NO_RE = ?
+	        AND RE_STATUS = 'Y'
+	      ORDER BY RE_DATE DESC
 
 	</entry>
 	
@@ -20,11 +20,13 @@
 			   (
 			    RE_NO
 	          , MEM_NO_RE
+	          , BK_NO_RE
 			  , RE_CONTENT
 			   )
 			    VALUES
 			   (
-			    SEQ_FAN.NEXTVAL
+			    SEQ_RNO.NEXTVAL
+	           , ?
 	           , ?
 	           , ?
 			   )

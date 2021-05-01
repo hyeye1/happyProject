@@ -113,7 +113,7 @@
         background-color: rgb(249, 219, 122);
         border: none;
     }
-    #deleteBook{
+    #select__delete{
         background-color:#f3f3f3;
         border: none;
     }
@@ -164,7 +164,9 @@
     }
     .bkName{cursor: pointer;color: rgb(88, 117, 247);}
     .bkName:hover{font-weight:bold}
-
+	#select__delete{
+		 background-color: #e0e0e0;
+	}
 
     /* 도서 상세 팝업창 */
 
@@ -248,7 +250,10 @@
     .show-popup{
         display:block !important;
     }
-
+	
+	#select__delete{
+		background-color: 
+	}
     /* 도서 상세이미지 팝업창 */
     .detailImgWrap{
         position: absolute;
@@ -389,12 +394,12 @@
                         <option value="end">최근 등록일 순</option>
                     </select>
                     &nbsp;
-                    <label for="countMem" style="font-weight: bold;">총 도서</label> <u style="color: #f08080;";"><%=listCount %></u> 권
+                    <label for="countMem" style="font-weight: bold;">총 도서</label> <u style="color: #f08080;"><%=listCount %></u> 권
 
                 </div>
                 <div id="choice_btn" style="padding: 20px;">
                 	
-                    <button type="button" id="deleteBook" class="btn btn-primary">도서삭제</button>
+                    <button type="button" id="select__delete" class="btn btn-primary">도서삭제</button>
                 </div>
                 
             </div>
@@ -409,7 +414,7 @@
                 <table>
                     <thead>
                         <tr> 
-                            <th width="20"><input type="radio" id="all" name="memcheck"></th>
+                            <th width="20"><input type="checkbox" id="coupon__all__check"></th>
                             <th width="40">번호</th>
                             <th width="220">도서명</th>
                             <th width="120">저자</th>
@@ -430,11 +435,10 @@
                         <!-- 조회된 결과가 있을 경우 -->
                             <% for(Ad_Book b : list) { %>
                                 <tr>
-                                    <td><input type="radio"></td>
+                                    <td><input class="book__checkbox" type="checkbox" data-bkNo="<%= b.getBkNo() %>"></td>
                                     <td><%= b.getBkNo() %></td>
                                     <td>
-                                     	<a href="${pageContext.request.contextPath}/detail.bk?bkno=<%=b.getBkNo()%>">
-                                    	<%= b.getBkName() %>
+                                     	<a href="${pageContext.request.contextPath}/detail.bk?bkno=<%=b.getBkNo()%>"><%= b.getBkName() %></a>
                                     </td>
                                     <td><%= b.getAuthor() %></td>
                                     <td><%= b.getPublisher() %></td>
@@ -496,44 +500,6 @@
     </div>
 	
 
-
-    <!-- 도서 삭제 팝업 -->
-    <div id="modal3">
-        <div class="deleteWrap">
-            <div id="delTitle">
-                <h3 id=delTitleName align="center">CONFIRM</h3>        
-            </div>
-        
-            <div id="delContent">
-                <div id="delText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
-                    선택 항목을 삭제 하시겠습니까? 
-                </div>    
-                <div id="delIntro" style="text-align: center; font-size:small;">
-                    삭제 후 복구 불가
-                </div>
-                <div id="delAns" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">확인</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleDelBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
-            </div>    
-        </div>
-    </div>
-
-    <script>
-        $(function(){
-            $("#deleteBook").on("click",function(){
-                $(".deleteWrap").show();
-                $("#modal3").addClass('show-popup3');
-
-            });
-            $("#cancleDelBtn").on("click",function(){
-                $(".deleteWrap").hide();
-                $("#modal3").removeClass('show-popup3');
-            });
-        });
-    </script>
-
         <!-- 관리자모드 종료 팝업 -->
     <div id="modal_End">
         <div class="adEndWrap">
@@ -568,6 +534,54 @@
                 $("#modal_End").removeClass('show-popup_End');
             });
         });
+    </script>
+    
+    <!-- 전체선택/삭제 체크박스 -->
+    
+    <script>
+    $("#coupon__all__check").off().on('click',function(){
+        var checked = $(this).prop('checked');
+        $(".book__checkbox").each(function(){
+            $(this).prop('checked',checked);
+        });
+    });
+    
+    $('#select__delete').off().on('click',function(){
+    	if(!confirm('선택항목을 삭제하시겠습니까?')){
+    		return;
+    	}
+    	
+    	var chkBk = [];
+    	
+    	$(".book__checkbox").each(function(){
+    	    if($(this).prop('checked')){
+    	        chkBk.push($(this).attr("data-bkNo"));
+    	    }
+    	});
+    	
+    	if(chkBk.length==0){
+    		alert('도서를 선택해주세요 :(');
+    		return;
+    	}
+    	
+    	$.ajax({
+ 			url:"/happyProject/deleteChk.bk",
+ 			type:"post",
+ 			data:{"bkNoList":chkBk},
+    		success:function(resp){
+    			if(resp.ok){
+    				alert("삭제완료!");
+    				location.href = "/happyProject/list.bk";
+    			}
+    		},
+    		error:function(err){
+    			
+    		}
+    	});
+    	
+    	console.log(chkBk);
+    });
+    
     </script>
     
  

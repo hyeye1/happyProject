@@ -1,29 +1,30 @@
-package com.kh.book.controller;
+package com.kh.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.kh.book.model.service.ReviewService;
-import com.kh.book.model.vo.Review;
-import com.kh.member.model.vo.Member;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.kh.admin.model.service.Ad_CouponService;
+import com.kh.admin.model.vo.Ad_Coupon;
 
 /**
- * Servlet implementation class ReviewInsertServlet
+ * Servlet implementation class Ad_CouponGetMemCouServlet
  */
-@WebServlet("/insert.re")
-public class ReviewInsertServlet extends HttpServlet {
+@WebServlet("/getMemCou.cou")
+public class Ad_CouponGetMemCouServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewInsertServlet() {
+    public Ad_CouponGetMemCouServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,19 +34,13 @@ public class ReviewInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String reviewContent = request.getParameter("content");
-		int bookNo = Integer.parseInt(request.getParameter("bno"));
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
+		List<Ad_Coupon> adCouponList = new Ad_CouponService().selectMemCouponList(memNo);
 		
-		int memNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
+		response.setContentType("application/json; charset=UTF-8");
 		
-		Review r = new Review();
-		r.setReContent(reviewContent);
-		r.setBkNoRe(bookNo);
-		r.setMemNoRe(String.valueOf(memNo));
-		
-		int result = new ReviewService().insertReview(r);
-		response.getWriter().print(result);
-		
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		gson.toJson(adCouponList, response.getWriter()); // 응답할객체, 응답할스트림
 	}
 
 	/**
