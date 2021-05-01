@@ -12,28 +12,28 @@ import com.kh.member.model.vo.MyAddress;
 public class MyAddressService {
 
 	//select
-	public MyAddress selectMyAddress(int adNo, String adPost, String adRoad, String adDetail) {
+	public MyAddress selectMyAddress(int memNo, String memName, String memAddress) {
 		
 		Connection conn = getConnection();
 		
-		MyAddress selectMyAddress = new MyAddressDao().selectMyAddress(conn, adNo, adPost, adRoad, adDetail);
+		MyAddress selectMyAddress = new MyAddressDao().selectMyAddress(conn, memNo, memName,memAddress);
 		
 		close(conn);
 		
 		return selectMyAddress;
 	}
 	
-	//update
+	//Insert
 	public Member updateMyAddress(MyAddress a) {
 		
 		Connection conn = getConnection();
-		int result = new MyAddressDao().updateMyAddress(conn, a);
+		int result = new MyAddressDao().insertMyAddress(conn, a);
 		
-		Member updateAdd = null;
+		Member insertAdd = null;
 		if(result > 0) { // update 성공 했을 경우 => 갱신된 회원 객체 다시 조회해야됨
 			commit(conn);
 			
-			updateAdd = new MyAddressDao().selectMyAddress(conn, a.getAdPost(), a.getAdRoad(), a.getAdDetail());
+			insertAdd = new MyAddressDao().insertMyAddress(conn, a.getAdPost(), a.getAdRoad(), a.getAdDetail());
 			
 		}else { // update 실패 했을 경우
 			rollback(conn);
@@ -41,9 +41,19 @@ public class MyAddressService {
 		
 		close(conn);
 		
-		return updateAdd;
+		return insertAdd;
 	}
-	
+
+	public MyAddress insertMyAddress1(int adNo, String adPost, String adRoad, String adDetail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public MyAddress insertMyAddress(int adNo, String adPost, String adRoad, String adDetail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }

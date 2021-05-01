@@ -183,7 +183,7 @@
             	<script>
             	const menubarAdminBtn = document.getElementById('menubarAdminBtn');
 				menubarAdminBtn.addEventListener('click',function(){
-					window.open("${pageContext.request.contextPath}/views/admin/ad_home.jsp", "관리자 로그인", "top=75, left=240, width=920, height=650"); 
+					window.open("${pageContext.request.contextPath}/views/admin/ad_home.jsp", "관리자 로그인", "top=73, left=240, width=920, height=650"); 
 				});
 					<%-- function adminPage(){
 						location.href = "<%= contextPath %>/adminForm.me";

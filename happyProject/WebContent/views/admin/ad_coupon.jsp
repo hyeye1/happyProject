@@ -148,8 +148,8 @@
      /* 완료 쿠폰내역 팝업창 */
     #couEndWrap{
         position: absolute;
-        top:36%;
-        left:68%;
+        top:38%;
+        left:67%;
         z-index: 10;
         width: 410px; 
         height: 200px; 
