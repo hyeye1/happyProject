@@ -16,9 +16,13 @@
 	        width: 1000px;
 	        text-align: right;
 	    }
-	
+		.like01{
+			width: 650px;
+            height: 800px;
+            float:right;
+		}
 	    #likeTb{
-	        width: 500px;
+	        width: 650px;
 	        height: 300px;
 	        text-align: center;
 	    }
@@ -58,7 +62,7 @@
 	        cursor: pointer;
 	    }
 	    #catrBtn2{
-	        margin-left: 135px;
+	        margin-left: 270px;
 	        width: 200px;
 	        height: 30px;
 	        border: none;
@@ -77,8 +81,10 @@
 
 </head>
 <body>
+  <%@ include file = "../common/menubar.jsp" %>
 	<div class="outer">
         <div class="path">홈>마이페이지>나의책갈피</div>
+      <section>
         <div class="like01">
             <h2>보관함</h2><hr>
             <div class="like02">
@@ -115,6 +121,11 @@
                 <button id="catrBtn2" style="background-color: #F9DB7A">선택상품 장바구니 담기</button>
             </div>
         </div>
+    </section>
+    <aside>
+   
+	  <%@ include file = "../common/sideBar.jsp" %>
+	</aside>
  	</div>
 
 </body>
