@@ -5,6 +5,7 @@ import static com.kh.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.admin.model.dao.Ad_CouponDao;
 import com.kh.admin.model.dao.Ad_MemberDao;
 import com.kh.admin.model.vo.Ad_Member;
 import com.kh.common.model.vo.PageInfo;
@@ -36,6 +37,14 @@ public class Ad_MemberService {
 		close(conn);
 		
 		return adMember;
+		
+	}
+
+	public void deleteMem(String[] memNoList) {
+		Connection conn = getConnection();
+		new Ad_MemberDao().deleteMem(conn, memNoList);
+		
+		close(conn);	
 		
 	}
 	
