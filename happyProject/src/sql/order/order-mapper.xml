@@ -166,6 +166,11 @@
 			      ORDER BY OR_NO DESC)
 			    WHERE ROWNUM = 1
 	</entry>
-
+	<entry key="cartDeleteOne">
+		DELETE
+		  FROM TB_CART
+		 WHERE BK_NO_CA = ?
+		   AND MEM_NO_CA = ?
+	</entry>
 
 </properties>

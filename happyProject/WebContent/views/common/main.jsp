@@ -247,7 +247,7 @@
             </div>
           
             <script>
-            // 오늘의 추천
+            // 실시간 추천
             $(function(){
             	for (var i=1; i<=6; i++) {
             		(function(i) {
@@ -257,10 +257,10 @@
 		            		 method:"GET",
 		            		 success: function(data) {
 		            			 var id = '#todayBk' + i;
-		            			 $(id + ' .bookName').text(data[0].bkName);
-		            			 $(id + ' .author').text(data[0].author);
-		            			 $(id + ' .coverImg').attr('src', data[0].bkMainImg);
-		            			 $(id + ' .detailUrl').attr('href', '<%= contextPath %>/bkDetails.bk?bookNo=' + data[0].bookNo);
+		            			 $(id + ' .bookName').text(data.bkName);
+		            			 $(id + ' .author').text(data.author);
+		            			 $(id + ' .coverImg').attr('src', data.bkMainImg);
+		            			 $(id + ' .detailUrl').attr('href', '<%= contextPath %>/bkDetails.bk?bookNo=' + data.bookNo);
  		            		 }
 		            	 });
             			

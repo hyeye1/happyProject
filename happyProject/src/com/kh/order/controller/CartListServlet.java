@@ -47,14 +47,13 @@ public class CartListServlet extends HttpServlet {
 			int total = 0;	
 			int discountTotal = 0;	// 장바구니에 담긴 도서의 총 할인가 (총원가 - 총판매가)
 			int totalAmount = 0;	// 장바구니에 담긴 도서의 총 갯수
-			int orgPriceSum = 0;	// 도서별 원가의 합
+			
 			
 			for (Cart c : list) {
 				orgTotal += ((c.getOrgPrice()) * (c.getAmount())) ;
 				total += c.getTtPrice();
 				discountTotal += (c.getOrgPrice() - c.getPrice()) * (c.getAmount());
 				totalAmount += c.getAmount();
-				orgPriceSum = (c.getOrgPrice() * (c.getAmount()));
 			}
 			
 			request.setAttribute("orgTotal", orgTotal);
@@ -62,7 +61,6 @@ public class CartListServlet extends HttpServlet {
 			request.setAttribute("total", total);
 			request.setAttribute("discountTotal", discountTotal);
 			request.setAttribute("totalAmount", totalAmount);
-			request.setAttribute("orgPriceSum", orgPriceSum);
 			
 			request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);	
 		

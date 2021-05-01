@@ -13,17 +13,6 @@ import com.kh.member.model.vo.Member;
 
 public class BookService {
    
-   public ArrayList<Book> selectBookList(int bookNo){
-      
-      Connection conn = getConnection();
-      
-      ArrayList<Book> list = new BookDao().selectBookList(conn, bookNo);
-      
-      close(conn);
-      
-      return list;
-   }
-   
    public Book bookDetail(int bookNo) {
       
       Connection conn = getConnection();

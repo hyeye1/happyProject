@@ -48,9 +48,22 @@ public class CartService {
 		}else {
 			rollback(conn);
 		}
-		
-		
 		return result;
-		
 	}
+	
+	
+	public int cartDeleteOne(int memNo, int bookNo) {
+		
+		Connection conn = getConnection();
+		int result = new CartDao().cartDeleteOne(conn, memNo, bookNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result;
+	}
+	
+	
 }
