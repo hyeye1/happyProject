@@ -60,7 +60,33 @@ public class Ad_CouponService {
 		
 		return count;
 	}
+
+	public List<Ad_Coupon> selectMemCouponList(int memNo) {
+		Connection conn = getConnection();
+		List<Ad_Coupon> adCouponList = new Ad_CouponDao().selectMemCouponList(conn, memNo);
+		
+		close(conn);
+		
+		return adCouponList;
+	}
+
+	public void deleteChk(String[] couNoList) {
+		Connection conn = getConnection();
+		new Ad_CouponDao().deleteChk(conn, couNoList);
+		
+		close(conn);		
+	}
 	
+	
+	public List<Ad_Coupon> selectEndCouList() {
+		
+		Connection conn = getConnection();
+		ArrayList<Ad_Coupon> list= new Ad_CouponDao().selectEndCouList(conn);
+		
+		close(conn);
+		
+		return list;
+	}
 	
 
 

@@ -33,7 +33,7 @@ if(loginOn != null && memId != null) {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Happy Books Day</title>
 </head>
 <body>
 	

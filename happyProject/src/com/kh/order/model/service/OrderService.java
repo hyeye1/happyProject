@@ -9,10 +9,10 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.member.model.vo.Coupon;
-import com.kh.notice.model.dao.NoticeDao;
 import com.kh.order.model.dao.OrderDao;
 import com.kh.order.model.vo.Cart;
 import com.kh.order.model.vo.Order;
+import com.kh.order.model.vo.Pay;
 
 public class OrderService {
 	
@@ -45,6 +45,7 @@ public class OrderService {
 	public int insertOrder(Order or) {
 		Connection conn = getConnection();
 		int result = new OrderDao().insertOrder(conn, or);
+	
 		
 		if(result>0) {
 			commit(conn);
@@ -54,6 +55,39 @@ public class OrderService {
 		
 		close(conn);
 		return result;
+	}
+	
+	public int insertPay(Pay p) {
+		Connection conn = getConnection();
+		int result = new OrderDao().insertPay(conn, p);
+	
+		
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+	
+
+	public Order orderNo() {
+		Connection conn = getConnection();
+		Order no = new OrderDao().orderNo(conn);
+		
+		close(conn);
+		return no;
+	}
+	
+	
+	public Order selectOrder(int orNo) {
+		Connection conn = getConnection();
+		Order or = new OrderDao().selectOrder(conn, orNo);
+		
+		close(conn);
+		return or;
 	}
 
 }

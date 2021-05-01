@@ -3,6 +3,12 @@
 <%
  	Book b = (Book)request.getAttribute("b");
  	Image i = (Image)request.getAttribute("i");
+ 	
+ 	String imagePath = "";
+ 	if(i != null) {
+ 		imagePath = i.getImgPath();
+ 	}
+ 	
  	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
@@ -19,7 +25,7 @@
     <style>
         .bookDetailOuter{
             width:1000px;
-            height:4000px;
+            height:100%;
             margin:auto;
         }
         /* HOME/국내or해외 페이지로 바로가기*/
@@ -138,16 +144,15 @@
         }
         .bookDetailOuter .reviewArea{
             border-top:1px solid black;
-            border-bottom:1px solid black;
             margin:auto;
             margin-bottom:200px;
             width:700px;
-            height:220px;
+            height:100%;
         }
         .bookDetailOuter .reviewArea table{
             margin:auto;
             width:600px;
-            height:300px;
+            height:100%;
         }
         .bookDetailOuter .reviewArea>table tr:hover{
             background-color:wheat;
@@ -347,7 +352,7 @@
         <h5 class="detailTitle" id="infoLink">책소개</h5>
         <div class="link">
             <p><%= b.getBkDescription() %></p>
-            <img class="detailImg" src="<%= contextPath %>/<%= i.getImgPath() %>" onerror="this.style.display='none'">
+            <img class="detailImg" src="<%= contextPath %>/<%= imagePath %>" onerror="this.style.display='none'">
         </div>
 	   
         <!-- 목차 -->
@@ -398,11 +403,11 @@
             </div>
         <% }else { %>
             <!-- 로그인 후 리뷰내용 입력했을 때  -->
-            <h5 class="detailTitle" id="reviewLink">리뷰</h5>
+            <h5 class="detailTitle" id="reviewLink">한 줄 리뷰</h5>
             <form action="<%= contextPath %>/insert.re" method="post">
                 <div class="inputReview">
                     <div class="reviewBtDiv" align="right">
-                        <button type="submit" class="insertRvBt btn btn-primary"  data-toggle="modal" data-target="#insertReview">등록</button>
+                        <button type="button" class="insertRvBt btn btn-primary"  data-toggle="modal" data-target="#insertReview" onclick="addReview();">등록</button>
                     </div>
                     <div class="reviewContent">
                         <textarea name="content" id="reviewContent" placeholder="작품과 무관한 광고,욕설, 및 비방,청소년보호정책에 위배되는 내용은 사전 동의 없이 비공개 처리 될 수 있습니다." required></textarea>
@@ -430,39 +435,100 @@
         <% } %>
         <br><br>
 	
-		<% if(list.isEmpty()) { %>
-        <!-- 리뷰 없을 때 list -->
+        <!-- 리뷰 없을 때 list
         <h6 class="detailTitle">전체</h6>
         <div class="reviewArea">
-            <h6 style="color:rgb(249, 219, 122); margin:15px; float:left;">최신순</h6>
+            <h6 style="color:rgb(249, 219, 122); margin:15px; float:right;"><b>최신순</b></h6>
+            <br>
             <hr>
-            <p align="center" style="font-size:16px;">회원님께서 첫 리뷰의 주인공이 되어주세요.</p>
-        </div>
-        <br><br>
-        <% }else { %>
-        <!-- 리뷰 있을 때 list -->
-        <h6 class="detailTitle">전체</h6>
-        <div class="reviewArea" id="reviewList">
-            <h6 align="right" style="margin:15px;"><b>최신순</b></h6>
-            <hr>
-            <% for(Review r:list) { %>
+          
             <table style="width:100%;">
                 <thead>
-                    <tr>
-                    	 <td align="center" style="color:rgb(249, 219, 5);"><b><%= r.getMemNoRe() %></b></td>
-                    	 <td align="center" style="width:550px;"><%= r.getReContent() %></td>
-                    	 <td><%= r.getReDate() %></td>
-                    </tr>
-					<% } %>
-                
-              <% } %>
+                    <p align="center" style="font-size:16px;">회원님께서 첫 리뷰의 주인공이 되어주세요.</p>
+                </thead>
+              
+            </table>
+           
+        </div>
+        <br><br>
+        -->
+        <!-- 리뷰 있을 때 list -->
+        <h6 class="detailTitle">전체 리뷰</h6>
+        <div class="reviewArea" id="reviewList">
+            <h6 align="right" style="margin:15px; color:rgb(249, 219, 122);"><b>최신순</b></h6>
+            <hr>
+          
+            <table style="width:100%;">
+                <thead align="center">
+                   
+			
                 </thead>
                 <tbody>
 
                 </tbody>
             </table>
         </div>
-        <br><br><br><br><br><br><br><br>
+       
+        <script>
+        	$(function(){
+        		
+        		selectReviewList();
+        		
+        		
+        	})
+        	
+        	// 해당 게시글에 작성용 ajax
+        	function addReview(){
+        		
+        		$.ajax({
+        			url:"<%=contextPath%>/insert.re",
+        			type:"post",
+        			data:{
+        				content:$("#reviewContent").val(),
+        				bno:<%=b.getBookNo()%>
+        			},success:function(result){
+        				
+        				if(result > 0){ // 댓글작성 성공
+        					// 갱신된 리스트 다시 조회해서 뿌려주기
+        					selectReviewList();
+        					$("#reviewContent").val("");
+        				}
+        				
+        				
+        			},error:function(){
+        				console.log("작성실패");
+        			}
+        		});
+        		
+        	}
+        	
+        	
+        	// 해당 게시글에 딸린 댓글 리스트 조회용 ajax
+        	function selectReviewList(){
+        		$.ajax({
+        			url:"<%=contextPath%>/review.list",
+        			data:{bno:<%=b.getBookNo()%>},
+        			success:function(list){
+        				
+        				var result = "";
+        				for(var i in list){
+        					result +=  "<tr>"
+                    	 		   +	"<td>" + list[i].memNoRe + "</td>"
+                    	 		   +	"<td>" + list[i].reContent + "</td>"
+                    	 		   +    "<td>" + list[i].reDate + "</td>"
+                    			   +    "</tr>";
+        				}
+        				
+        				$("#reviewList thead").html(result);
+        				
+        				
+        			},error:function(){
+        				console.log("댓글리스트 조회 실패");
+        			}
+        		});
+        		
+        	}
+        </script>
         
     </div>
 

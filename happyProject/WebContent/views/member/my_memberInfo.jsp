@@ -191,9 +191,9 @@
             <div class="modal-body" align="center">
             
              		<img src="resources/images/cry.png" width="80px" height="60"><br>
-		         	탈퇴 후 복구가 
+		         	<b>탈퇴 후 복구가 
 		         	<span style= color:red;>불가능</span>합니다. <br>
-		         	탈퇴를 원하시면 비밀번호를 입력해주세요.
+		         	탈퇴를 원하시면 비밀번호를 입력해주세요.</b>
 		      
 		         <br><br>	
 		         	
@@ -250,33 +250,10 @@
 		      		<script>
 		      			function validatePwd(){
 		      				if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val()){
-		      					alret("변경할 비밀버호가 일치하지 않습니다.");
+		      					alret("변경할 비밀번호가 일치하지 않습니다.");
 		      					return false;
 		      				}
 		      			}
-		      			
-		      			// 주소검색
-			            $(function() { $("#postcodify").postcodify({
-			                insertPostcode5 : "#postcode",
-			                insertAddress : "#address",
-			                insertDetails : "#details",
-			                insertExtraInfo : "#extra_info",
-			                hideOldAddresses : false
-			            }); });
-			        	
-			        	$(function() { $("#postcodify_search_button").postcodifyPopUp(); });
-			
-			            $(function(){    
-			                $("#postcodify_search_button").on("click",function(){
-				                var Y = $(".postcodify_address").is(":text");
-					                            
-				                if(Y){
-				                	$(".addressInput").show();
-				                }else{
-					                $(".addressInput").hide();
-					            }
-			            	});
-			             });
 		      			
 		      		</script>
 		      	</form>

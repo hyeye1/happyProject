@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	
 	<entry key="selectMyAddress">
 		
-	SELECT
-			 AD_NO
-			,MEM_NO_AD
-			,AD_LOCATION
-			,AD_NAME
-			,AD_PHONE
-			,AD_POST
-			,AD_ROAD
-			,AD_DETAIL
-			
-	 FROM 
-             TB_ADDRESS_LIST
-     WHERE 
-             AD_NO =  ?
-        AND	 AD_POST =? 
-		AND	 AD_ROAD =?
-		AND	 AD_DETAIL =?
-
+	SELECT 
+            MEM_NO
+          , MEM_NAME
+          , MEM_ADDRESS
+	FROM 
+             TB_MEMBER
+    WHERE 
+             MEM_ADDRESS=?
+	
+	</entry>
+	
+	
+	<entry key="insertMyAddress">
+		INSERT
+			INTO TB_ADDRESSLIST 
+			 (
+		       MEM_NO_AD
+		     , AD_LOCATION
+		     , AD_NAME
+		     , AD_POST
+		     , AD_ROAD
+		     , AD_DETAIL  
+		        )
+		 VALUES 
+		        (
+		        SEQ_ADN.NEXTVAL
+		      , ?
+		      , ?
+		      , ?
+		      , ?
+		      , ?
+		         )
 	</entry>
 
+	
+	
+	
 </properties>

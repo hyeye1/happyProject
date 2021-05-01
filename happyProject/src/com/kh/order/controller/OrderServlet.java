@@ -50,17 +50,20 @@ public class OrderServlet extends HttpServlet {
 		Coupon cp = new OrderService().selectCoupon(userNo);
 		request.setAttribute("cp", cp);
 		
+		int totalAmount = 0;
 		int total = 0;
 		int discountTotal = 0;
 		for (Cart c : ca) {
 			total += c.getTtPrice();
 			discountTotal += (c.getOrgPrice() - c.getPrice());
+			totalAmount += c.getAmount();
+		
 		}
 		
 
 		request.setAttribute("total", total);
 		request.setAttribute("discountTotal", discountTotal);
-		
+		request.setAttribute("totalAmount", totalAmount);
 
 		request.getRequestDispatcher("views/order/order.jsp").forward(request, response);
 	}

@@ -58,14 +58,15 @@ public class CartInsertServlet extends HttpServlet {
 		c.setPrice(b.getBkPrice());
 		c.setMainImg(b.getBkMainImg());
 		c.setMemNo(memNo);
-	
+		
 		int result = new CartService().insertCart(c);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		Gson gson = new Gson();
 		gson.toJson(result, response.getWriter());
-
+		
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -5,9 +5,8 @@ import java.util.ArrayList;
 
 import com.kh.common.model.vo.PageInfo;
 import com.kh.notice.model.dao.FaqDao;
-import com.kh.notice.model.dao.NoticeDao;
 import com.kh.notice.model.vo.Faq;
-import com.kh.notice.model.vo.Notice;
+
 
 import static com.kh.common.JDBCTemplate.*;
 

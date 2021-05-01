@@ -10,7 +10,7 @@
 
 	ArrayList<Coupon> cou = (ArrayList<Coupon>)request.getAttribute("cou");
 	ArrayList<Cart> ca = (ArrayList<Cart>)request.getAttribute("ca");
-	 
+	int totalAmount = (Integer)request.getAttribute("totalAmount");
 	Coupon cp = (Coupon)request.getAttribute("cp");
 	
 	String contextPath = request.getContextPath(); 
@@ -30,6 +30,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     
     <style>
         .orderOuter{
@@ -308,10 +309,10 @@
                         <tr>
                             <th>주소*</th>
                             <td>
-                                <input type="text" name="" value="01234" style="width:150px;"> 
-                                <a class="dvButton btn btn-warning btn-sm"  data-toggle="modal" data-target="#post">우편번호</a> <br>
-                                <input type="text" name="address" id="address" value="<%= address %>" style="width:500px; margin-bottom: 4px;"> <br>
-                                <input type="text" name="addressEtc"  style="width:500px;">
+                                <input type="text" name="" id="sample4_postcode" value="01234" style="width:150px;" readonly> 
+                                <a class="dvButton btn btn-warning btn-sm"  onclick="execDaumPostcode();" >우편번호</a> <br>
+                                <input type="text" name="address" id="sample4_roadAddress" value="<%= address %>" style="width:500px; margin-bottom: 4px;" readonly> <br>
+                                <input type="text" id="sample4_detailAddress" name="addressEtc"  style="width:500px;">
                             </td>
                         </tr>
                         <tr>
@@ -320,7 +321,7 @@
                         </tr>
                         <tr>
                             <th>
-                                <input type="checkbox" id="happyDelivery" name="happyDelivery" value="해피배송" style="vertical-align: middle;" onclick="happyDelivery();">
+                                <input type="checkbox" id="happyDelivery" name="happyDelivery" value="HAPPY배송" style="vertical-align: middle;" onclick="happyDelivery();">
                                 <label for="happyOrder"> HAPPY배송</label>
                             </th>
                             <td>
@@ -335,6 +336,66 @@
 
             <hr>
             <br><br>
+              
+                 <script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+</script>
+   
+            
             
             <!-- 주문상품 폼 -->
             <div class="orderForm" style="width:600px">
@@ -358,7 +419,7 @@
                                 <button class="odButton1 btn btn-warning btn-sm" disabled>소득공제</button>
                                 <button class="odButton2 btn btn-warning btn-sm" disabled>무료배송</button>
                             </td>
-                            <td><%= caa.getTtPrice() %>원 | 수량 1개</td>
+                            <td><%= caa.getTtPrice() %>원 | 수량 <%= caa.getAmount() %>개</td>
                         </tr>
                     <% } %>
                     
@@ -514,12 +575,25 @@
                                 010-1234-9876
                             </span>
                         </div>
+                        <hr>
+                       <div style="cursor: pointer;">
+                            <span id="choice" data-dismiss="modal" style="font-size:14px;">
+                                <b>[기본]</b><span><b>안소은(집주소)</b></span><br>
+                                <input type="text" id="sample4_postcode" placeholder="우편번호">
+                                <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+                                <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+                                <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+                                010-1234-9876
+                            </span>
+                        </div> 
                     </div>
                     
                 </div>
             </div>
         </div>
         <!-- //Modal -->
+      
+            
 
         <!-- The Modal for 우편번호 -->
         <div class="modal fade" id="post">
@@ -529,7 +603,7 @@
                     <!-- Modal Header -->
                     <div class="modal-header" style="background: rgb(249, 219, 122);">
                     <h4 class="modal-title">주소찾기</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
                     </div>
                     
                     <!-- Modal body -->

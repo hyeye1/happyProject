@@ -14,6 +14,7 @@ import java.util.Properties;
 import com.kh.member.model.vo.Coupon;
 import com.kh.order.model.vo.Cart;
 import com.kh.order.model.vo.Order;
+import com.kh.order.model.vo.Pay;
 
 
 public class OrderDao {
@@ -156,6 +157,108 @@ private Properties prop = new Properties();
 			}
 			return result;
 		}
+	
+	
+	public int insertPay(Connection conn, Pay p) {
+		int result =0;
+		PreparedStatement pstmt =null;
+		String sql = prop.getProperty("insertPay");
+		
+		try {
+			pstmt=conn.prepareStatement(sql); 
+			pstmt.setInt(1, p.getOrNoPay());
+			pstmt.setInt(2, p.getPaySum());
+			
+			
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	
+	public Order selectOrder(Connection conn, int orNo) {
+		Order or = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				or= new Order(rset.getInt("OR_NO"),
+						    rset.getInt("MEM_NO_OR"),
+						    rset.getInt("AD_NO_OR"),
+						    rset.getString("RECEIVER"),
+						    rset.getInt("OR_SUM"),
+						    rset.getDate("OR_DATE"),
+						    rset.getString("OR_DELIVERY"),
+						    rset.getString("OR_STATUS"),
+						    rset.getString("OR_REQUEST"),
+						    rset.getString("OR_HD_DATE"),
+						    rset.getInt("COU_MEM_NO_OR")
+						  	 
+							 );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return or;
+	}
+	
+	public Order orderNo(Connection conn) {
+		Order or = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("orderNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				or= new Order(rset.getInt("OR_NO"),
+						    rset.getInt("MEM_NO_OR"),
+						    rset.getInt("AD_NO_OR"),
+						    rset.getString("RECEIVER"),
+						    rset.getInt("OR_SUM"),
+						    rset.getDate("OR_DATE"),
+						    rset.getString("OR_DELIVERY"),
+						    rset.getString("OR_STATUS"),
+						    rset.getString("OR_REQUEST"),
+						    rset.getString("OR_HD_DATE"),
+						    rset.getInt("COU_MEM_NO_OR")
+
+						  	 
+							 );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return or;
+	}
+	
 		
 	
 
