@@ -3,7 +3,7 @@
 <%
 String loginOn = request.getParameter("loginOn");
 String memId = request.getParameter("memId");
-System.out.println("loginOn: " + loginOn + ", memId: " + memId);
+//System.out.println("loginOn: " + loginOn + ", memId: " + memId);
 
 if(loginOn != null && memId != null) {
 	// 쿠키처리
