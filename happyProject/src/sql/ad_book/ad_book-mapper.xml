@@ -175,4 +175,6 @@
 		 INSERT INTO TB_IMAGE ( IMG_NO,  BK_NO_IMG , IMG_PATH, IMG_ENROLL_DATE )  VALUES ( seq_img.nextval, ?, ?, SYSDATE )
 	</entry>
 	
+	
+	
 </properties>
