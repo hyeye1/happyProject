@@ -113,7 +113,7 @@
         background-color: #f08080;
         border: none;
     }
-    #deleteBtn{background-color: #e7e7e7;}
+    #select__delete{background-color: #e7e7e7;}
     #memTable{
         text-align: center;
         padding-left: 10px;
@@ -168,7 +168,7 @@
     /* 회원 상세정보 팝업창 */
     .detailwrap{
 		position: absolute;
-		top:36%;
+		top:38%;
 		left:55%;
 		z-index: 10;
 		box-sizing: border-box;
@@ -226,8 +226,8 @@
      /* 보유쿠폰상세 팝업창 */
     .couponWrap{
         position: absolute;
-        top:39%;
-        left:65%;
+        top:38%;
+        left:69%;
         z-index: 10;
         box-sizing: border-box;
         width: 410px; 
@@ -288,51 +288,12 @@
         display:block !important;
     }
 
-    /* 삭제확인 팝업창 */
-    .deleteWrap{
-        position: absolute;
-        top:39%;
-        left:75%;
-        z-index: 10;
-        width: 280px; 
-        height: 160px; 
-        margin-top: -75px;
-        margin-left: -150px; 
-        display: none;
-    }
-    .deleteWrap>*{width:100%;}
-    #delTitle{height: 35px; background-color: rgb(249, 219, 122);border: 1px solid #3c3c3c;}
-    #delContent{height: 125px; background-color: white;border: 1px solid #3c3c3c;}
-        
-    #delContent>*{width: 100%;}
-    #delText{height: 30%;}
-    #delIntro{height:30%;}
-    #delAns{height: 40%;}
-
-    #delTitleName{
-        margin-top:6px;
-        font-size: 15px;
-        font-weight: bold;
-        margin-top: 1;
-        color: #3c3c3c;
-    }
-    #modal4{
-        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
-        top: 0; left: 0; z-index: 999; display: none;
-    }
-    .show-popup4{
-        display:block !important;
-    }
-
-
-
-
 
     /* 관리자모드 종료 팝업창 */
     .adEndWrap{
         position: absolute;
-        top:42%;
-        left:50%;
+        top:43%;
+        left:51%;
         z-index: 10;
         box-sizing: border-box;
         width: 280px; 
@@ -370,8 +331,8 @@
     /* 쿠폰발송 팝업창 */
     .couSendWrap{
         position: absolute;
-        top:36%;
-        left:68%;
+        top:38%;
+        left:69%;
         z-index: 10;
         width: 410px; 
         height: 220px; 
@@ -440,7 +401,7 @@
 	}
 	#loading_img{
 	position:absolute; 
-	top:29%;
+	top:32%;
 	left:51%;
 	height:35px;
 	margin-top:-75px;
@@ -499,7 +460,7 @@
 
                 </div>
                 <div id="choice_btn" style="padding: 20px">
-                    <button id="deleteBtn" class="btn btn-primary">선택삭제</button> &nbsp;
+                    <button id="select__delete" class="btn btn-primary">선택삭제</button> &nbsp;
                     <button id="sendCouModalBtn" class="btn btn-primary">쿠폰발송</button>
                 </div>
                 
@@ -510,7 +471,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th width="20"><input type="checkbox" id="all" name="memcheck"></th>
+                            <th width="20"><input type="checkbox" id="member__all__check"></th>
                             <th width="40">번호</th>
                             <th width="130">아이디</th>
                             <th width="100">이름</th>
@@ -531,7 +492,7 @@
                         <!-- 조회된 결과가 있을 경우 -->
                             <% for(Ad_Member b : list) { %>
                                 <tr>
-                                    <td><input type="checkbox"></td>
+                                    <td><input type="checkbox" class="member__checkbox" data-memNo="<%= b.getMemNo() %>"></td>
                                     <td><%= b.getMemNo() %></td>
                                     <td class="memId" data-memNo="<%= b.getMemNo() %>">
                                     	<%= b.getMemId() %>
@@ -770,42 +731,6 @@
 
 
 
-    <!-- 삭제 팝업 -->
-    <div id="modal4">
-        <div class="deleteWrap">
-            <div id="delTitle">
-                <h3 id=delTitleName align="center">CONFIRM</h3>        
-            </div>
-        
-            <div id="delContent">
-                <div id="delText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
-                    선택 항목을 삭제 하시겠습니까? 
-                </div>    
-                <div id="delIntro" style="text-align: center; font-size:small;">
-                    삭제 후 복구 불가
-                </div>
-                <div id="delAns" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">확인</button>
-                    &nbsp;&nbsp;
-                    <button type="button" id="cancleDelBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
-                </div>    
-            </div>    
-        </div>        
-    </div>
-
-    <script>
-        $(function(){
-            $("#deleteBtn").on("click",function(){
-                $(".deleteWrap").show();
-                $("#modal4").addClass('show-popup4');
-            });
-            $("#cancleDelBtn").on("click",function(){
-                $(".deleteWrap").hide();
-                $("#modal4").removeClass('show-popup4');
-            });
-        });
-    </script>
-
 
     <!-- 쿠폰발송 팝업 -->
     <div id="modal5">
@@ -981,6 +906,54 @@
             });
         });
     </script>
-
+    
+    
+    
+    <!-- 전체선택/삭제 체크박스 -->
+	<script>
+    $("#member__all__check").off().on('click',function(){
+        var checked = $(this).prop('checked');
+        $(".member__checkbox").each(function(){
+            $(this).prop('checked',checked);
+        });
+    });
+    
+    $('#select__delete').off().on('click',function(){
+    	if(!confirm('선택항목을 삭제하시겠습니까?')){
+    		return;
+    	}
+    	
+    	var chkMem = [];
+    	
+    	$(".member__checkbox").each(function(){
+    	    if($(this).prop('checked')){
+    	        chkMem.push($(this).attr("data-memNo"));
+    	    }
+    	});
+    	
+    	if(chkMem.length==0){
+    		alert('회원을 선택해주세요 :(');
+    		return;
+    	}
+    	
+    	$.ajax({
+ 			url:"/happyProject/deleteChk.mem",
+ 			type:"post",
+ 			data:{"memNoList":chkMem},
+    		success:function(resp){
+    			if(resp.ok){
+    				alert("삭제완료!");
+    				location.href = "/happyProject/list.mem";
+    			}
+    		},
+    		error:function(err){
+    			
+    		}
+    	});
+    	
+    	console.log(chkMem);
+    });
+    
+    </script>
 </body>
 </html>

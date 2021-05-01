@@ -34,7 +34,7 @@ private Properties prop = new Properties();
 	}
 	
 	
-	public ArrayList<Review> selectReviewList(Connection conn){
+	public ArrayList<Review> selectReviewList(Connection conn, int bookNo){
 		// select문 => ResultSet객체(여러행)
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -44,6 +44,8 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bookNo);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -76,7 +78,8 @@ private Properties prop = new Properties();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(r.getMemNoRe()));
-			pstmt.setString(2, r.getReContent());
+			pstmt.setInt(2, r.getBkNoRe());
+			pstmt.setString(3, r.getReContent());
 			
 			result = pstmt.executeUpdate();
 			

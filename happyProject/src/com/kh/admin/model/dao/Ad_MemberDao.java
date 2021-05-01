@@ -117,6 +117,7 @@ public class Ad_MemberDao {
 		sql +="				  ,NVL((SELECT SUM(OR_SUM) FROM TB_ORDER O WHERE O.MEM_NO_OR = MEM_NO ),'0') AS \"orderTotalAmt\"";
 		sql +="			  FROM TB_MEMBER";
 	    sql+= "              WHERE 1 = 1";
+	    sql+= "              AND MEM_STATUS = 'Y'";
 		 if(searchType != null && search != null  ) {
 				
 				if(searchType.equals("") == false  && search.equals("") == false) {
@@ -246,6 +247,35 @@ public class Ad_MemberDao {
 		
 		
 		return memNoList;
+	}
+
+	public void deleteMem(Connection conn, String[] memNoList) {
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE TB_MEMBER SET MEM_STATUS = 'N' WHERE MEM_NO IN (";
+		
+		String where = "";			
+		for (int i = 0 ; i < memNoList.length ; i++) {
+			where+=memNoList[i];
+			if((memNoList.length-1)!=i) {
+				where+=",";
+			}
+		}
+		
+		sql+=where;
+		sql+=")";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int cnt = pstmt.executeUpdate();
+			
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
 	}
 	
 	

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.kh.book.model.service.ReviewService;
 import com.kh.book.model.vo.Review;
 
@@ -18,7 +19,7 @@ import com.kh.book.model.vo.Review;
 /**
  * Servlet implementation class ReviewListServlet
  */
-@WebServlet("/rList.bk")
+@WebServlet("/review.list")
 public class ReviewListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,9 +36,17 @@ public class ReviewListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//ArrayList<Review> list = new ReviewService().selectReviewList();
-		//request.setAttribute("list", list);
-		//System.out.println(list);
+		int bookNo = Integer.parseInt(request.getParameter("bno"));
+	
+		ArrayList<Review> list = new ReviewService().selectReviewList(bookNo);
+	
+		response.setContentType("application/json; charset=UTF-8"); 
+		
+		Gson gson = new GsonBuilder().setDateFormat("yyyy년 MM월 dd일").create();
+		gson.toJson(list, response.getWriter());
+		
+		
+		
 	}
 
 	/**

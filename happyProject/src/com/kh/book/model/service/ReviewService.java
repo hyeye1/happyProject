@@ -14,10 +14,11 @@ import com.kh.book.model.vo.Review;
 
 public class ReviewService {
 
-	public ArrayList<Review> selectReviewList(){
+	
+	public ArrayList<Review> selectReviewList(int bookNo){
 		Connection conn = getConnection();
 		
-		ArrayList<Review> list = new ReviewDao().selectReviewList(conn);
+		ArrayList<Review> list = new ReviewDao().selectReviewList(conn, bookNo);
 		
 		close(conn);
 		

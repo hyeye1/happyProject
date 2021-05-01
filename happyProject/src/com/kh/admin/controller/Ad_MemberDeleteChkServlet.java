@@ -1,9 +1,7 @@
 package com.kh.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,23 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.kh.admin.model.service.Ad_CouponService;
+import com.kh.admin.model.service.Ad_MemberService;
 
 /**
- * Servlet implementation class Ad_CouponDeleteChkServlet
+ * Servlet implementation class Ad_MemberDeleteChkServlet
  */
-@WebServlet("/deleteChk.cou")
-public class Ad_CouponDeleteChkServlet extends HttpServlet {
+@WebServlet("/deleteChk.mem")
+public class Ad_MemberDeleteChkServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Ad_CouponDeleteChkServlet() {
+    public Ad_MemberDeleteChkServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,8 +42,8 @@ public class Ad_CouponDeleteChkServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String[] couNoList = request.getParameterValues("couNoList[]");
-		new Ad_CouponService().deleteChk(couNoList);
+		String[] memNoList = request.getParameterValues("memNoList[]");
+		new Ad_MemberService().deleteMem(memNoList);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
@@ -56,6 +52,9 @@ public class Ad_CouponDeleteChkServlet extends HttpServlet {
 		Map<String,Object> resp = new HashMap<>();
 		resp.put("ok", true);
 		gson.toJson(resp, response.getWriter()); 
+	
+		
+		
 	}
 
 }

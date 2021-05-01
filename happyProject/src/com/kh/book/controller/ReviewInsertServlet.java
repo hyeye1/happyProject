@@ -33,22 +33,18 @@ public class ReviewInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("utf-8");
-		
 		String reviewContent = request.getParameter("content");
+		int bookNo = Integer.parseInt(request.getParameter("bno"));
 		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		int memNo = loginUser.getMemNo();
+		int memNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
 		
 		Review r = new Review();
 		r.setReContent(reviewContent);
+		r.setBkNoRe(bookNo);
 		r.setMemNoRe(String.valueOf(memNo));
 		
 		int result = new ReviewService().insertReview(r);
-																
-		request.getRequestDispatcher("views/book/bookDetails.jsp").forward(request, response);
-		
+		response.getWriter().print(result);
 		
 	}
 
