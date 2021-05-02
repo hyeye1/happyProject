@@ -157,7 +157,7 @@
                 <tr>
                     <th>비밀번호 *</th>
                     <td colspan="2"> 
-                        <input type="password" name="memPwd" id="memPwd" placeholder="영문/숫자/특수문자 2가지 이상 (8~20자)" required minlength=8 maxlength=20>
+                        <input type="password" name="memPwd" id="memPwd" placeholder="8~20자 안으로 입력해주세요" required minlength=8 maxlength=20>
                     </td>
                 </tr>
                 <tr>
@@ -350,7 +350,6 @@
 	        		var $email = $("#enrollForm input[name=email]");
 	        		var $emailcc = $("#enrollForm input[name=emailCC]");
 	        		
-	        		console.log($email.val());
 	        		if( $email.val() == null || $email.val() == ""){
     					Swal.fire({
     						  icon: 'error',

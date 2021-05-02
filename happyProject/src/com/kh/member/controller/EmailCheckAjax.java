@@ -46,7 +46,6 @@ public class EmailCheckAjax extends HttpServlet {
 		
 		// 메일 받을 주소
 		String to_email = checkEmail;
-		System.out.println(to_email);
 		// SMTP 서버 정보를 설정한다.
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host);
@@ -99,7 +98,7 @@ public class EmailCheckAjax extends HttpServlet {
 				msg.setText("인증 번호는 " + temp + " 입니다. 정확히 입력 후 회원가입을 진행해주세요.");
 				
 				Transport.send(msg);
-				System.out.println("이메일 전송");
+				//System.out.println("이메일 전송");
 				
 		} catch (Exception e) {
 				e.printStackTrace();
