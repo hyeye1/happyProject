@@ -17,11 +17,12 @@
         text-align: right;
     }
     .tdayList01{
-        width: 500px;
+        width: 650px;
         height: 1000px;
+        float:right
     }
     .tdayList02{
-        width: 500px;
+        width: 650px;
         height: 900px; 
     }
     .btnAll{
@@ -54,7 +55,7 @@
 
 
     #tdayTable{
-        width: 500px;
+        width: 650px;
         height: 800px;
         text-align: center;
         border-color: lightgray;
@@ -72,8 +73,10 @@
 
 </head>
 <body>
+ <%@ include file = "../common/menubar.jsp" %>
 <div class="outer">
     <div class="path">홈>마이페이지>나의책갈피</div>
+    <section>
     <div class="tdayList01">
         <h2>오늘 본 상품</h2><hr>
         <div class="tdayList02">
@@ -90,7 +93,7 @@
                 </tr>
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td><img src="my_resources/image/달러구트.jpg" alt=""></td>
+                    <td><img src="resources/books/novel/달러구트.jpg" alt=""></td>
                     <td>
                         <b>달러구트 꿈 백화점</b> <br>
                         이미예 지음/ 팩토리나인 <br>
@@ -98,13 +101,13 @@
                     </td>
                 </tr>
                     <td><input type="checkbox"></td>
-                    <td><img src="my_resources/image/달러구트.jpg" alt="" alt=""></td>
+                    <td><img src="resources/books/novel/달러구트.jpg" alt="" alt=""></td>
                     <td><b>달러구트 꿈 백화점</b> <br>
                         이미예 지음/ 팩토리나인 <br>
                         12,420 원</td>
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td><img src="my_resources/image/달러구트.jpg" alt="" alt=""></td>
+                    <td><img src="resources/books/novel/달러구트.jpg" alt="" alt=""></td>
                     <td><b>달러구트 꿈 백화점</b> <br>
                         이미예 지음/ 팩토리나인 <br>
                         12,420 원</td>
@@ -112,7 +115,11 @@
             </table>
         </div>
     </div>
-
+ </section>
+    <aside>
+   
+	  <%@ include file = "../common/sideBar.jsp" %>
+	</aside>
 </div>
 
         
