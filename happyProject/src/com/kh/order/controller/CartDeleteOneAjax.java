@@ -1,8 +1,6 @@
-package com.kh.book.controller;
+package com.kh.order.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,23 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.kh.book.model.service.BookService;
-import com.kh.book.model.vo.Book;
-import com.kh.common.MyFileRenamePolicy;
-import com.oreilly.servlet.MultipartRequest;
+import com.kh.order.model.service.CartService;
 
 /**
- * Servlet implementation class MainServlet
+ * Servlet implementation class CartDeleteOneAjax
  */
-@WebServlet("/mList.bk")
-public class RecomBookServlet extends HttpServlet {
+@WebServlet("/cDeleteOne.or")
+public class CartDeleteOneAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RecomBookServlet() {
+    public CartDeleteOneAjax() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,18 +29,21 @@ public class RecomBookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int min = 1;
-		int max = 130;
-		
-		int bookNo = (int)(Math.random()*(max-min+1));
 
-		Book b = new BookService().bookDetail(bookNo);
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
+		int bookNo = Integer.parseInt(request.getParameter("bookNo"));
 		
-		response.setContentType("application/json; charset=UTF-8");
-		Gson gson = new Gson();
-		gson.toJson(b, response.getWriter());
+		int result = new CartService().cartDeleteOne(memNo, bookNo);
 		
+		request.setAttribute("result", result);
+		
+		if(result > 0) {
+			response.sendRedirect(request.getContextPath() + "/cList.or");
+		}else {
+			
+		}
+		
+	
 	}
 
 	/**

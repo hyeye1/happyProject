@@ -31,41 +31,6 @@ public class BookDao {
 	      
 	   }
 	   
-	   public ArrayList<Book> selectBookList(Connection conn, int bookNo){
-	      // select문 => ResultSet객체 (여러행)
-	      
-	      ArrayList<Book> list = new ArrayList<>();
-	      PreparedStatement pstmt = null;
-	      ResultSet rset = null;
-	      
-	      String sql = prop.getProperty("selectBookList"); 
-	      
-	      try {
-	         pstmt = conn.prepareStatement(sql);
-	         
-	         //Array bookNoArray = conn.createArrayOf("integer", bookNoList.toArray());
-	      
-	         //pstmt.setArray(1, bookNoArray);
-	         pstmt.setInt(1, bookNo);
-	         
-	         rset = pstmt.executeQuery();
-	         
-	         while(rset.next()) {
-	            
-	            list.add(new Book(rset.getInt("bk_no"),
-	                          rset.getString("bk_name"),
-	                          rset.getString("author"),
-	                          rset.getString("bk_main_img")));
-	         }
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      } finally {
-	         close(rset);
-	         close(pstmt);
-	      }
-	      return list;
-	   }
-	   
 	   public Book bookDetail(Connection conn, int bookNo) {
 	      
 	      // SELECT문 - 한 행 조회

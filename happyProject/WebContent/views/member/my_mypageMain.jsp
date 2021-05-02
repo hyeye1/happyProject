@@ -46,15 +46,15 @@
                         <tbody>
                         <tr>
                             <td class="first">
-                                <div class="tit"><a href=>쿠폰</a></div>
+                                <div class="tit"><a href="<%=contextPath%>/coupon.me">쿠폰</a></div>
                                 <div class="info"><a href=><strong>0</strong></a>장</div>
                             </td>
-                            <td>
+                            <!--<td>
                                 <div class="tit"><a href=>적립금</a></div>
                                 <div class="info"><a href=><strong>1000</strong></a>원</div>
-                            </td>
+                            </td> -->
                             <td>
-                                <div class="tit"><a href=>보관함</a></div>
+                                <div class="tit"><a href="<%=contextPath%>/like.me">보관함</a></div>
                                 <div class="info"><a href=><strong>2</strong></a>건</div>
                             </td>
                             <td>

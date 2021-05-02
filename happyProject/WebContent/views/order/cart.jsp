@@ -17,8 +17,6 @@
 	int totalAmount = (Integer)request.getAttribute("totalAmount");
 	String AmountComma = df.format(totalAmount);
 	
-	int orgPriceSum = (Integer)request.getAttribute("orgPriceSum");
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -150,6 +148,17 @@
             font-size:16px;
             font-weight: bolder;
         }
+        /* 빈장바구니버튼 */
+        .cartOuter #selectBuy2{
+            width:300px;
+            height:60px;
+            float:right;
+            margin-top:10px;
+            background: lightgray;
+            border:none;
+            font-size:16px;
+            font-weight: bolder;
+        }
 
     </style>
 </head>
@@ -188,25 +197,26 @@
                         <input type="checkbox" style="vertical-align: middle; margin-top:5px;" id="idSelectAll" name="selectAll" onclick="selectAll(this)" checked>
                         <label for="idSelectAll">전체선택</label>
                     </td>
-                    <td align="center"><button type="submit" class="button btn btn-warning" id="selectiondelete">선택삭제</button></td>
+                    <td align="center"><button type="submit" class="button btn btn-warning" id="selectiondelete" onclick="selectiondelete();">선택삭제</button></td>
                 </tr>
                 </thead>
 	            <% for(Cart c : list) { %>
 	            <tbody>
 	                <tr>
 	                	<input type="hidden" name="memNo" value="<%= c.getMemNo() %>">
+	                	<input type="hidden" name="bookNo" value="<%= c.getBookNo() %>">
 	                    <td style="height:100px;"><input type="checkbox" name="book" onclick="checkSelectAll(this)" checked></td>
-	                    <td align="center"><img src="<%= c.getMainImg() %>" style="width:80px; height:100px;"></td>
+	                    <td align="center"><a href="<%= request.getContextPath() %>/bkDetails.bk?bookNo=<%= c.getBookNo() %>"><img src="<%= c.getMainImg() %>" style="width:80px; height:100px;"></a></td>
 	                    <td>
 	                        <p><%= c.getTitle() %></p>
 	                        <small><%= c.getAuthor() %></small> <br><br>
 	                        <button class="button">-</button>
 	                        <input type="number" value="<%= c.getAmount() %>" min="1" max="9">
-	                        <button class="button">+</button> <button class="button btn btn-warning" type="rest">삭제</button>
+	                        <button class="button">+</button> <button type="submit" class="button btn btn-warning" id="deleteOne" onclick="deleteOne(this);">삭제</button>
 	                    </td>
 	                    <td align="center">
 	                    	<h7>합계</h7><br>
-	                    	<s><%= orgPriceSum %> 원</s> <br>
+	                    	<s><%= c.getOrgPrice() * c.getAmount() %> 원</s> <br>
 	                    	<%= c.getTtPrice() %> 원
 	                    </td>
 	                </tr>
@@ -236,9 +246,10 @@
         </script>
         <!-- selection delete script -->
         <script>
-	        $(function(){
-	        	memNo = $('input[name=memNo]').val();
-	            $("#selectiondelete").click(function(){
+	       // $(function(){
+	    	  function selectiondelete(){
+	        	var memNo = $('input[name=memNo]').val();
+	           // $("#selectiondelete").click(function(){
 	            	$.ajax({
 	            		url:"<%= contextPath %>/cDelete.or",
 	            		type:"get",
@@ -247,11 +258,35 @@
 	            		},
 	            		success:function(result){
 	            			location.reload();
-	            		},error:function(){
+	            		},error:function(result){
 	            		}
-	            	})
-	            });
-	        });
+	            	});
+	           // });
+	    	  }
+	        //});
+        </script>
+        <!-- 책 하나삭제 -->
+        <script>
+        	//$(function(){
+        	  function deleteOne(){
+        		var memNo = $('input[name=memNo]').val();
+        		var bookNo = $('input[name=bookNo]').val();
+        		//$("#deleteOne").click(function(){
+        			$.ajax({
+        				url:"<%= contextPath %>/cDeleteOne.or",
+        				type:"get",
+        				data:{
+        					memNo:memNo,
+        					bookNo:bookNo
+        				},
+        				success:function(result){
+        					location.reload();
+        				},error:function(){
+        				}
+        			});
+        		//});
+        	  }
+        	//});
         </script>
         
       
@@ -285,7 +320,29 @@
                 </table>
             </div>
         </div>
+        <% if(list.isEmpty()) {%>
+        <button id="selectBuy2" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#clickButton">선택 구매하기</button>
+        <% } else{ %>
         <button id="selectBuy" class="btn btn-warning btn-lg" onclick="goToOrder();">선택 구매하기</button>
+        <% } %>
+        <!-- The Modal -->
+        <div class="modal" id="clickButton">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <!-- Modal Header -->
+                <div class="modal-body" align="center">
+                <h6 class="modal-title" style="text-align: center;"><br><br> 선택하신 도서가 없습니다 <br><br> </h6>
+                </div>
+            
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">OK</button>
+                </div>
+                
+            </div>
+            </div>
+        </div>
        	<script>
        		function goToOrder(){
        			location.href = "<%= contextPath %>/order.or";
@@ -294,6 +351,6 @@
     </div>
     
     
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

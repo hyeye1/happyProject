@@ -116,6 +116,8 @@ public class Ad_Book {
 		this.bkContentList = bkContentList;
 		this.bkMainImg = bkMainImg;
 	}
+	
+
 
 	public int getBkNo() {
 		return bkNo;

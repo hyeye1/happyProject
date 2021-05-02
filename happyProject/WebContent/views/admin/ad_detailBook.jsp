@@ -99,9 +99,10 @@
         background-color: rgb(249, 219, 122);
         border: none;
     }
-    #deleteBook{
+    #deleteBtn{
         background-color:#f3f3f3;
         border: none;
+        margin-left:90px;
     }
  
     .btn{
@@ -231,6 +232,92 @@
 		color:#070000; font-size:20px; font-weight:bold; text-align:center; 
 		position:absolute; z-index:3; top:385px; left:50%; transform:translateX(-50%);
 	}
+	
+	 /* 삭제확인 팝업창 */
+    .deleteWrap{
+        position: absolute;
+        top:48%;
+        left:54%;
+        z-index: 10;
+        box-sizing: border-box;
+        width: 280px; 
+        height: 160px; 
+        margin-top: -75px;
+        margin-left: -150px; 
+        display: none;
+    }
+    .deleteWrap>*{width:100%;}
+    #delTitle{height: 35px; background-color: rgb(249, 219, 122);border: 1px solid #3c3c3c;}
+    #delContent{height: 125px; background-color: white;border: 1px solid #3c3c3c;}
+    
+    #delContent>*{width: 100%;}
+    #delText{height: 30%;}
+    #delIntro{height:30%;}
+    #delAns{height: 40%;}
+
+    #delTitleName{
+        margin-top:6px;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 1;
+        color: #3c3c3c;
+    }
+    #modal2{
+        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
+        top: 0; left: 0; z-index: 999; display: none;
+    }
+    .show-popup2{
+        display:block !important;
+    }
+    
+    /* 도서수정 팝업창 */
+    .bkModifyWrap{
+        position: absolute;
+        top:39%;
+        left:70%;
+        z-index: 10;
+        box-sizing: border-box;
+        width: 280px; 
+        height: 275px; 
+        margin-top: -75px;
+        margin-left: -150px; 
+        display: none;
+    }
+	.bkModifyWrap>div{border: 1px solid #3c3c3c; box-sizing: border-box;}
+
+    .bkModifyWrap>*{width: 100%;}
+    #bkModiTitle{height: 35px; background-color: rgb(249, 219, 122);}
+    #bkModiContent{height: 240px; background-color: white;}
+
+    #bkModiTitleName{
+        display:inline-block;
+        margin-left:110px;
+        margin-top:8px;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 1;
+        color: #3c3c3c;
+    }
+    #bkModiContent{
+        font-size: smaller;
+        text-align: center;
+    }
+    #bkModiTable{
+        width: 276px;
+        height: 96px;
+        box-sizing: border-box;  
+    }
+    #bkModiTable tr{
+        height: 48px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    #modal3{
+        width: 100%; height: 100%; position: absolute; background: rgba(32, 32, 32, 0.3);
+        top: 0; left: 0; z-index: 999; display: none;
+    }
+    .show-popup3{
+        display:block !important;
+    }
 </style>
 </head>
 
@@ -272,14 +359,15 @@
                 <div id="bkContent">
                     <div id="bkContent1" align="center">
                         <span>표지이미지</span> <br>
-                        <img src="<%=b.getBkMainImg() %>" alt="" width="150" height="200"" align="center" onclick="doImgPop(this.src)">
+                        <img src="<%=b.getBkMainImg() %>"  width="150" height="200"" align="center" onclick="doImgPop(this.src)">
                         <br><br>
                          
                         <% if(im != null) {%>
                             <span>상세이미지</span><br>
-                        	<img src="<%=im.getImgPath() %>" alt="" width="130" height="180"" align="center" onclick="doImgPop(this.src)">
+                        	<img src="<%=im.getImgPath() %>" width="130" height="180"" align="center" onclick="doImgPop(this.src)">
                         <% } else {%>
-                        	상세이미지가 없습니다.
+                        	<span>상세이미지</span><br>
+                        	<img src="${pageContext.request.contextPath}/resources/images/admin/상세이미지없음.jpg" width="130" height="180"" align="center"  >
                         <%} %>
                         
                         <br><button type="button" onClick="history.back();" id="backBook" class="btn btn-primary" style="margin-top:20px; margin-left: -110px;">이전</button>
@@ -334,9 +422,10 @@
                         </div>
                         <div id="bkBtn">
                             
-                            <button type="button" id="modifyBook" class="btn btn-primary" >도서수정</button> &nbsp;
+                            
+							<button type="button" id="deleteBtn" class="btn btn-primary" >도서삭제</button> &nbsp;
 
-                        	<a href="${pageContext.request.contextPath}/delete.bk?bkno=<%=b.getBkNo()%>" class="btn btn-primary" id="deleteBook">도서삭제</a>
+                        	
                        	
                        
                         </div>
@@ -362,7 +451,7 @@
                     <%= sf.format(nowTime)%>
                 </div>
                 <div id="adEndBtn" style="margin-left: 26%;">
-                    <button type="button" class="btn btn-info btn-sm"  style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</button>
+                    <a href="#" onClick="self.close();" class="btn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">종료</a>
                     &nbsp;&nbsp;
                     <button type="button" id="cancleEndBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
                 </div>    
@@ -411,6 +500,42 @@
         }
 	</script>
     
+    
+    <!-- 삭제 팝업 -->
+    <div id="modal2">
+        <div class="deleteWrap">
+            <div id="delTitle">
+                <h3 id=delTitleName align="center">CONFIRM</h3>        
+            </div>
+
+            <div id="delContent">
+                <div id="delText" style="text-align: center; font-size:large; margin-top:10px; font-weight: bold;">
+                    선택 항목을 삭제 하시겠습니까? 
+                </div>    
+                <div id="delIntro" style="text-align: center; font-size:small;">
+                    삭제 후 복구 불가
+                </div>
+                <div id="delAns" style="margin-left: 26%;">
+                    <a href="${pageContext.request.contextPath}/delete.bk?bkno=<%=b.getBkNo()%>" class="btn btbtn btn-info btn-sm" style="margin-left: 3px; width:55px; border: none; background-color: rgb(249, 219, 122);">확인</a>
+                    &nbsp;&nbsp;
+                    <button type="button" id="cancleDelBtn"  class="btn btn-info btn-sm" style="width: 55px; border: none; background-color: #e0e0e0;">취소</button>
+                </div>    
+            </div>    
+        </div>
+    </div>    
+    <script>
+        $(function(){
+            $("#deleteBtn").click(function(){
+                $(".deleteWrap").show();
+                $("#modal2").addClass('show-popup2');
+            });
+            $("#cancleDelBtn").click(function(){
+                $(".deleteWrap").hide();
+                $("#modal2").removeClass('show-popup2');
+            });
+        });
+    </script>
+ 
  
 </body>
 </html>
