@@ -3,7 +3,7 @@
 <p align="center">
 <img align="center" style="margin:0 auto;" src="https://github.com/hyeye1/happyProject/blob/main/happyProject/WebContent/resources/images/logo.png">
 
-  <h2 align="center">해피북스데이</h2>
+  <h2>해피북스데이</h2>
 </p>
 
 ## 📑 프로젝트 소개
