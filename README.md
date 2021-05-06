@@ -50,7 +50,8 @@
 
 ## 💻 개발자
 
-| <img src="https://avatars.githubusercontent.com/u/73784921?v=4" width="55" height="55"><br>[정혜](https://github.com/hyeye1) | <img src="https://avatars.githubusercontent.com/u/81137837?v=4" width="55" height="55"><br>[김유진](https://github.com/yoo-jean) | <img src="https://avatars1.githubusercontent.com/u/40957996?s=400&u=df7fd20ae5c0afb399738e9b00fb770bea02d4b3&v=4" width="55" height="55"><br>[조재희](https://github.com/cbw1030) | <img src="https://avatars3.githubusercontent.com/u/73815879?s=400&v=4" width="55" height="55"><br>[박수현](https://github.com/suhyeon7846) | <img src="https://avatars1.githubusercontent.com/u/40957996?s=400&u=df7fd20ae5c0afb399738e9b00fb770bea02d4b3&v=4" width="55" height="55"><br>[조재희](https://github.com/cbw1030) | <img src="https://avatars3.githubusercontent.com/u/73815879?s=400&v=4" width="55" height="55"><br>[박수현](https://github.com/suhyeon7846) |
+| <img src="https://avatars.githubusercontent.com/u/73784921?v=4" width="55" height="55"><br>[정혜](https://github.com/hyeye1) | <img src="https://avatars.githubusercontent.com/u/81137837?v=4" width="55" height="55"><br>[김유진](https://github.com/yoo-jean) | <img src="https://avatars.githubusercontent.com/u/82758086?v=4" width="55" height="55"><br>[류길상](https://github.com/mmnn323) | <img src="https://avatars.githubusercontent.com/u/82366810?v=4" width="55" height="55"><br>[안소은](https://github.com/anseoun) |
+|  <img src="https://avatars.githubusercontent.com/u/82578902?v=4" width="55" height="55"><br>[오수민](https://github.com/smoooo) |  <img src="https://avatars.githubusercontent.com/u/82797570?v=4" width="55" height="55"><br>[정예빈](https://github.com/yebinJeong) |
 | --- | --- | --- | --- | --- | --- |
 
 ## Contribution
