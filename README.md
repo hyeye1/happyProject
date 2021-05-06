@@ -1,7 +1,7 @@
 # HappyBooksDay
 
 <p align="center">
-<img align="center" style="margin:0 auto;" src="https://github.com/hyeye1/happyProject/blob/main/happyProject/WebContent/resources/images/logo.png">
+<img align="center" style="margin:0 auto;" src="https://github.com/hyeye1/happyProject/blob/main/happyProject/WebContent/resources/images/logoo.png">
 
   <h2>해피북스데이</h2>
 </p>
