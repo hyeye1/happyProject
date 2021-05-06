@@ -50,8 +50,8 @@
 
 ## 💻 개발자
 
-| <img src="" width="55" height="55"><br>[정혜](https://github.com/hyeye1) | <img src="" width="55" height="55"><br>[]() | <img src="" width="55" height="55"><br>[]() | <img src="" width="55" height="55"><br>[]() |
-| --- | --- | --- | --- |
+| <img src="https://avatars.githubusercontent.com/u/73784921?v=4" width="55" height="55"><br>[정혜](https://github.com/hyeye1) | <img src="https://avatars.githubusercontent.com/u/81137837?v=4" width="55" height="55"><br>[김유진](https://github.com/yoo-jean) | <img src="https://avatars.githubusercontent.com/u/82758086?v=4" width="55" height="55"><br>[류길상](https://github.com/mmnn323) | <img src="https://avatars.githubusercontent.com/u/82366810?v=4" width="55" height="55"><br>[안소은](https://github.com/anseoun) |
+|  <img src="https://avatars.githubusercontent.com/u/82578902?v=4" width="55" height="55"><br>[오수민](https://github.com/smoooo) |  <img src="https://avatars.githubusercontent.com/u/82797570?v=4" width="55" height="55"><br>[정예빈](https://github.com/yebinJeong) | --- | --- |
 
 ## Contribution
   - 프로젝트 진행 총괄
