@@ -1,7 +1,7 @@
 # HappyBooksDay
 
 <p align="center">
-<img align="center" style="margin:0 auto;" src="happyProject/">
+<img align="center" style="margin:0 auto;" src="https://github.com/hyeye1/happyProject/blob/main/happyProject/WebContent/resources/images/logoo.png">
 
   <h2 align="center">해피북스데이</h2>
 </p>
@@ -23,7 +23,7 @@
 ![E-R Diagram]
 
 ## 📖 Issues 관리
-<img width="1516" alt="스크린샷 2020-12-26 오후 10 51 42" src="">
+<img width="1516" alt="스크린샷" src="">
 
 ## 🎞 실행 화면
 
