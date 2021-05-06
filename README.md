@@ -19,7 +19,7 @@
 ![프로젝트일정]
 
 ## 📊 E-R Diagram
-![E-R Diagram]
+![E-R Diagram](https://user-images.githubusercontent.com/73784921/117245586-0cdb3a80-ae76-11eb-9a0f-9969f8f00f2a.png)
 
 ## 📖 Issues 관리
 <img width="1516" alt="스크린샷" src="">
