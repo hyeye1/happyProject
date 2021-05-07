@@ -111,27 +111,26 @@
         <div>
             <table class="newBody">
            		 <% for(int j=0; j<4; j++) {%>
-                <tr>
-            		<%for(int i = 0; i<5; i++) {%>
-	                    <td>
-		                    <div class="bkD">
-		                        <h1><%= (i+1)+j*5 %></h1>
-		                            <a href="<%= request.getContextPath()%>/bkDetails.bk?bookNo=<%= list.get(i+(j*5)).getBookNo() %>">
-				                        <input class="coverImg" type="image" src="<%= list.get(i+(j*5)).getBkMainImg() %>">
-				                        <p>
-				                            <span class="bkName"><%= list.get(i+(j*5)).getBkName() %></span><br>
-				                            <span class="bkAuthor"><%= list.get(i+(j*5)).getAuthor() %></span><br>
-				                            <span class="bkPrice"><%= list.get(i+(j*5)).getBkPrice() + "원" %></span>
-				                        </p>
-		                            </a>
-		                            <a type="button" onclick="cart(<%= list.get(i+(j*5)).getBookNo() %>, <%= list.get(i+(j*5)).getBkPrice() %>);">
-		                        		<input type="image" src="resources/images/addCart.png" data-toggle="modal" data-target="#goToCart">
-		                    		</a>
-		                    </div>
-	                    </td>
-	                    
-                	<% } %>
-                </tr>
+	                <tr>
+	            		<%for(int i = 0; i<5; i++) {%>
+		                    <td>
+			                    <div class="bkD">
+			                        <h1><%= (i+1)+j*5 %></h1>
+			                            <a href="<%= request.getContextPath()%>/bkDetails.bk?bookNo=<%= list.get(i+(j*5)).getBookNo() %>">
+					                        <input class="coverImg" type="image" src="<%= list.get(i+(j*5)).getBkMainImg() %>">
+					                        <p>
+					                            <span class="bkName"><%= list.get(i+(j*5)).getBkName() %></span><br>
+					                            <span class="bkAuthor"><%= list.get(i+(j*5)).getAuthor() %></span><br>
+					                            <span class="bkPrice"><%= list.get(i+(j*5)).getBkPrice() + "원" %></span>
+					                        </p>
+			                            </a>
+			                            <a type="button" onclick="cart(<%= list.get(i+(j*5)).getBookNo() %>, <%= list.get(i+(j*5)).getBkPrice() %>);">
+			                        		<input type="image" src="resources/images/addCart.png" data-toggle="modal" data-target="#goToCart">
+			                    		</a>
+			                    </div>
+		                    </td>
+	                	<% } %>
+	                </tr>
                 <% } %>
             </table>
 
@@ -143,11 +142,11 @@
 		            <div class="modal-content">
 		                <!-- Modal Header -->
 		                <div class="modal-body" align="center">
-		                <h6 class="modal-title" style="text-align: center;"><br><br> 로그인 후 서비스 이용 가능합니다. <br><br> </h6>
+		                	<h6 class="modal-title" style="text-align: center;"><br><br> 로그인 후 서비스 이용 가능합니다. <br><br> </h6>
 		                </div>
 		                <!-- Modal footer -->
 		                <div class="modal-footer">
-		                <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">OK</button>
+		                	<button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">OK</button>
 		                </div>
 		            </div>
 	            </div>
@@ -158,47 +157,47 @@
 	        <div class="modal" id="goToCart">
 	            <div class="modal-dialog">
 	                <div class="modal-content">
-	                <!-- Modal Header -->
-	                <div class="modal-body" align="center">
-	                    <h5 class="modal-title" style="text-align: center;"><br><br>                     
-	                        <span id="result"></span>  <br>
-	                        <a href="<%= contextPath %>/cList.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
-	                    </h5>
-	                </div>
+		                <!-- Modal Header -->
+		                <div class="modal-body" align="center">
+		                    <h5 class="modal-title" style="text-align: center;"><br><br>                     
+		                        <span id="result"></span>  <br>
+		                        <a href="<%= contextPath %>/cList.or" style="text-decoration:none; color:rgb(249, 219, 122);"><h6>장바구니로 이동</h6></a><br>
+		                    </h5>
+		                </div>
 	                    <!-- Modal footer -->
-	                <div class="modal-footer">
-	                    <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">
-	                    	<h6 style="margin-top:10px;"> 쇼핑 계속하기 </h6>
-	                    </button>
-	                </div>
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" style="width:500px; background: rgb(249, 219, 122); border:none">
+		                    	<h6 style="margin-top:10px;"> 쇼핑 계속하기 </h6>
+		                    </button>
+		                </div>
 	                </div>
 	            </div>
 	        </div>
 	        <!-- //Modal -->
         <% } %>
-         <script>
-        		function cart(bkNo, price) {        		        		
-	        		$.ajax({
-	        			url:"<%= contextPath %>/insertCart.or",
-	        			type:"get",
-	        			data: {
-	        				bookNo: bkNo,
-	        				amount: 1,
-	        				totalPrice: price
-	        			},
-	        			success:function(result){
-	        				if (result > 0) {
-	        					// 성공 모달 띄우기
-	        					$('#goToCart #result').text('장바구니에 담겼습니다.');
-	        				} else {
-	        					// 실패 모달 띄우기
-	        					$('#goToCart #result').text('장바구니 추가에 실패하였습니다.');
-	        				}
-	        			},error:function(){
-	        			}
-	        		});
-        		}
-        </script>   
+	         <script>
+	        		function cart(bkNo, price) {        		        		
+		        		$.ajax({
+		        			url:"<%= contextPath %>/insertCart.or",
+		        			type:"get",
+		        			data: {
+		        				bookNo: bkNo,
+		        				amount: 1,
+		        				totalPrice: price
+		        			},
+		        			success:function(result){
+		        				if (result > 0) {
+		        					// 성공 모달 띄우기
+		        					$('#goToCart #result').text('장바구니에 담겼습니다.');
+		        				} else {
+		        					// 실패 모달 띄우기
+		        					$('#goToCart #result').text('장바구니 추가에 실패하였습니다.');
+		        				}
+		        			},error:function(){
+		        			}
+		        		});
+	        		}
+	        </script>   
         </div>
     </div>
 
