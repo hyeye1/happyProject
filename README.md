@@ -16,13 +16,10 @@
 | HTML5<br>CSS3<br>JavaScript | Servlet & JSP | Oracle | Apache Tomcat | Git|
 
 ## 📅 개발 기간
-![프로젝트일정]
+![프로젝트일정](https://user-images.githubusercontent.com/73784921/117533966-6ab08380-b02a-11eb-870f-2cb9d46cca17.png)
 
 ## 📊 E-R Diagram
 ![E-R Diagram](https://user-images.githubusercontent.com/73784921/117533389-849c9700-b027-11eb-9c5c-3e7ae1b0db79.png)
-
-## 📖 Issues 관리
-<img width="1516" alt="스크린샷" src="">
 
 ## 🎞 실행 화면
 
