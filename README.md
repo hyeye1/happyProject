@@ -21,29 +21,6 @@
 ## 📊 E-R Diagram
 ![E-R Diagram](https://user-images.githubusercontent.com/73784921/117533389-849c9700-b027-11eb-9c5c-3e7ae1b0db79.png)
 
-## 🎞 실행 화면
-
-✅ [1] 메인화면 : 
-![main]
-
-✅ [2] 회원가입 : 
-
-![signup]
-
-✅ [3] EMAIL & PASSWORD 검색 및 로그인 :
-
-![findIdPwd]
-
-✅ [4] 제안(사용자) :
-![offer]
-
-✅ [5] ?? : 
-
-![reverseOffer]
-
-
-✅ [12] 기타 : 이외에도 공지사항관리, 1:1문의, 관리자페이지(숙소등록관리,회원관리,이벤트&공지사항관리) 기능도 구현 하였습니다.
-
 ## 💻 개발자
 
 | <img src="https://avatars.githubusercontent.com/u/73784921?v=4" width="55" height="55"><br>[정혜](https://github.com/hyeye1) | <img src="https://avatars.githubusercontent.com/u/81137837?v=4" width="55" height="55"><br>[김유진](https://github.com/yoo-jean) | <img src="https://avatars.githubusercontent.com/u/82758086?v=4" width="55" height="55"><br>[류길상](https://github.com/mmnn323) | <img src="https://avatars.githubusercontent.com/u/82366810?v=4" width="55" height="55"><br>[안소은](https://github.com/anseoun) | <img src="https://avatars.githubusercontent.com/u/82578902?v=4" width="55" height="55"><br>[오수민](https://github.com/smoooo) | <img src="https://avatars.githubusercontent.com/u/82797570?v=4" width="55" height="55"><br>[정예빈](https://github.com/yebinJeong) |
